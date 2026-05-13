@@ -3,9 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon.png"
+    />
+    <link rel="stylesheet" href="./scss//main.scss" />
+    <script type="module" src="./js/main.js"></script>
+    <title>Furniro | Home</title>
   </head>
   <body>
-    APP
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container container--wide header__inner">
+        <a href="#/" class="header__logo">
+          <img src="./assets/images/Logo.png" alt="Logo" />
+        </a>
+
+        <!-- HAMBURGER -->
+        <button class="header__toggle" aria-label="Open menu">
+          <span class="header__toggle-line"></span>
+          <span class="header__toggle-line"></span>
+          <span class="header__toggle-line"></span>
+        </button>
+
+        <nav class="header__nav" aria-label="Main navigation">
+          <ul class="header__nav-list">
+            <li class="nav__item">
+              <a href="#/" class="header__nav-link nav-link active-link"
+                >Home</a
+              >
+            </li>
+            <li class="header__nav-item">
+              <a href="#/shop" class="header__nav-link nav-link">Shop</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#/about" class="header__nav-link nav-link">About</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#/contact" class="header__nav-link nav-link">Contact</a>
+            </li>
+          </ul>
+
+          <div class="header__actions">
+            <ul class="header__actions-list">
+              <li>
+                <a href="#" aria-label="Account">
+                  <svg class="icon">
+                    <use href="./assets/icons/sprite.svg#icon-user"></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" aria-label="Search">
+                  <svg class="icon">
+                    <use href="./assets/icons/sprite.svg#icon-search"></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li class="header__wishlist-item">
+                <a href="#/wishlist" aria-label="Wishlist">
+                  <svg class="icon">
+                    <use href="./assets/icons/sprite.svg#icon-heart"></use>
+                  </svg>
+                  <span class="header__count"></span>
+                </a>
+              </li>
+
+              <li class="header__cart-item">
+                <a href="#/cart" aria-label="Cart">
+                  <svg class="icon icon-search">
+                    <use href="./assets/icons/sprite.svg#icon-cart"></use>
+                  </svg>
+                  <span class="header__count-cart"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div id="app"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__inner container">
+        <div class="footer__info">
+          <a href="#/" class="footer__logo">
+            <img src="./assets/images/Logo.png" alt="Logo" />
+          </a>
+          <p class="footer__address text-body">
+            400 University Drive Suite 200 Coral Gables, <br />FL 33134 USA
+          </p>
+        </div>
+
+        <ul class="footer__links">
+          <li class="footer__heading">Links</li>
+          <li class="footer__item">
+            <a href="#/" class="footer__link active-link">Home</a>
+          </li>
+          <li class="footer__item">
+            <a href="#/shop" class="footer__link">Shop</a>
+          </li>
+          <li class="footer__item">
+            <a href="#/about" class="footer__link">About</a>
+          </li>
+          <li class="footer__item">
+            <a href="#/contact" class="footer__link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="footer__links">
+          <li class="footer__heading">Help</li>
+          <li class="footer__item">
+            <a href="#/payment" class="footer__link">Payment Options</a>
+          </li>
+          <li class="footer__item">
+            <a href="#/returns" class="footer__link">Returns</a>
+          </li>
+          <li class="footer__item">
+            <a href="#/policy" class="footer__link">Privacy Policy</a>
+          </li>
+        </ul>
+
+        <div class="footer__newsletter">
+          <h4 class="footer__heading">Newsletter</h4>
+          <form action="#" class="footer__form">
+            <input
+              type="email"
+              class="footer__mail"
+              id="mail"
+              placeholder="Enter Your Email Address"
+            />
+
+            <button class="footer__submit btn">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="footer__rights">
+          <p>2023 Furniro. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

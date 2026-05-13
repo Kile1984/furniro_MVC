@@ -1,0 +1,177 @@
+@use "../abstract/mixins" as *;
+
+.header {
+  @include respond(tablet) {
+    position: relative;
+  }
+
+  &.box-shadow {
+    box-shadow: 0px 1px 5px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    padding-block: 1.87rem;
+  }
+
+  &--open .header__toggle-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  &--open .header__toggle-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  &--open .header__toggle-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  &--open .header__nav {
+    transform: scaleY(1);
+  }
+
+  &__toggle {
+    display: none;
+
+    @include respond(tablet) {
+      width: 2rem;
+      height: 1.5rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      justify-self: end;
+
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &-line {
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-black);
+        transition: all 0.3s ease;
+      }
+    }
+
+    @include respond(tablet) {
+      width: 1.5rem;
+      height: 1rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+
+    @include respond(tablet) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-white);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform 0.35s ease;
+
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding-top: 1rem;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4.5rem;
+
+    @include respond(tablet) {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding-block: 2rem;
+    }
+  }
+
+  &__nav-link {
+    transition: color 0.3s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &__actions {
+    @include respond(small) {
+      grid-column: 2 / span 1;
+      justify-self: end;
+    }
+  }
+
+  &__actions-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2.8rem;
+
+    a {
+      display: flex;
+    }
+
+    @include respond(desktop) {
+      gap: 1.5rem;
+      color: var(--color-accent);
+    }
+
+    @include respond(mobile) {
+      gap: 1rem;
+    }
+  }
+
+  &__wishlist-item,
+  &__cart-item {
+    position: relative;
+  }
+
+  &__count,
+  &__count-cart {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--color-white);
+    position: absolute;
+    bottom: 10px;
+    right: -10px;
+    background: var(--color-accent);
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: anchor-center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+body.menu-open {
+  overflow: hidden;
+}
