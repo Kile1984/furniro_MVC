@@ -1,4 +1,4 @@
-import { state } from "./state";
+import { state } from "./state.js";
 
 export const actions = {
   setRoute(route) {
@@ -6,6 +6,8 @@ export const actions = {
   },
 
   addToCart(product) {
+    if (!product) return;
+
     const existingProduct = state.cart.find((item) => item.id === product.id);
 
     if (existingProduct) {

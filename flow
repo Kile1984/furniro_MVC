@@ -18,22 +18,11 @@
    ↓
    Remove item
 
-3. Sta app pamti STATE
-4. Sta menja state ACTIONS (goToShop,goToCart,addToCart,removeFromCart)
-5. Controler logika ( menja state, poziva render)
-6. Routing ( menja state.cuurrentView )
+3. Sta app pamti STATE - Inicijalizacija state-a
+4. Sta menja state ACTIONS - goToShop,goToCart,addToCart,removeFromCart
+5. Controler logika - menja state, poziva render
+6. Routing - menja state.cuurrentView
 7. View
 
 SLEDECE:
-🚀 Sledeći upgrade ideje
-update() umesto full render()
-quantity buttons (+ / -)
-localStorage persistence
-modal system
-reusable BaseView class
-pub/sub event bus
-async fetch products
-loading / error state
-
-ADD TO CART remove render
-QUANTITY = 0 remove render and add removeFromCart(ID)
+Kada app poraste odvojiti akcije u posbne fajlove(carActins, wishlistActions....)
