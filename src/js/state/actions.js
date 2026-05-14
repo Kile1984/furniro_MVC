@@ -2,7 +2,7 @@ import { state } from "./state.js";
 
 export const actions = {
   setRoute(route) {
-    state.route = route;
+    state.currentRoute = route;
   },
 
   addToCart(product) {

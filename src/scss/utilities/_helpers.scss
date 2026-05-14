@@ -1,0 +1,43 @@
+.active-link {
+  color: var(--color-accent);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-border {
+  border: none;
+}
+
+.pr-sm {
+  padding-right: 0.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-xl {
+  margin-bottom: 3rem;
+}
+
+.mt-xl {
+  margin-top: 3rem;
+}
+
+.border-top {
+  border-top: 1px solid rgba(#b0b0b0, 0.5);
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgba(#b0b0b0, 0.5);
+}
+
+.border-right {
+  border-right: 1px solid rgba(#b0b0b0, 0.5);
+}
+
+.d-flex {
+  display: flex;
+}

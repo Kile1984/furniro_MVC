@@ -1,9 +1,19 @@
 import { actions } from "../state/actions.js";
+import { renderApp } from "../core/render.js";
 
 export const controlRoutes = function () {
-  const route = window.location.hash.slice(1) || "/";
+  const hash = window.location.hash.slice(1) || "/";
 
-  actions.setRoute(route);
+  const routesMap = {
+    "/": "home",
+    "/shop": "shop",
+    "/about": "about",
+    "/contact": "contact",
+  };
 
-  console.log(route);
+  const view = routesMap[hash] || "home";
+
+  actions.setRoute(view);
+
+  renderApp();
 };

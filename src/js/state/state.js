@@ -1,5 +1,5 @@
 export const state = {
-  route: "home",
+  currentRoute: "/",
   products: [],
   cart: [],
   wishlist: [],

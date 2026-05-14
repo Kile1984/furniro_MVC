@@ -26,3 +26,13 @@
 
 SLEDECE:
 Kada app poraste odvojiti akcije u posbne fajlove(carActins, wishlistActions....)
+
+FAZA 1
+main.js pokrece aplikaciju (initRouter)
+router.js pokrece router controller na hashchange da vidimo koja je ruta
+routerController.js mapira rute i poziva glavni render u appView.js
+render.js menja inner aplikacije (#app)
+
+FAZA 2
+Svaki view ce vracati objekat sa metodama(render)
+render.js ce pozivati render() iz view-a

@@ -1,0 +1,16 @@
+.page-hero {
+  background: url("../assets/images/page-img-bgr.png");
+  background-size: cover;
+  padding-block: 6.5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-section);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+}

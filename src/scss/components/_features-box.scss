@@ -1,0 +1,36 @@
+@use "../abstract/mixins" as *;
+
+.features {
+  &__box {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem;
+    align-self: self-start;
+
+    @include respond(small) {
+      display: block;
+    }
+  }
+
+  &__title {
+    font-size: 23px;
+  }
+
+  &__img {
+    grid-row: 1 / span 2;
+    align-self: center;
+    justify-self: center;
+
+    @include respond(tablet) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__text {
+    color: var(--color-gray-light);
+    font-weight: 500;
+    grid-column: 2/-1;
+    align-self: self-end;
+    font-size: 20px;
+  }
+}
