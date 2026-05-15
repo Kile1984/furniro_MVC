@@ -1,8 +1,12 @@
 import { state } from "../state/state.js";
 import { views } from "../views/views.js";
 
-console.log(views);
+const appEl = document.querySelector("#app");
 
 export const renderApp = function () {
-  views[state.currentRoute]?.render();
+  const currentView = views[state.currentRoute];
+
+  const markup = currentView.generateMarkup();
+
+  appEl.innerHTML = markup;
 };

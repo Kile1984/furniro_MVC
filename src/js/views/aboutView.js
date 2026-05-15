@@ -1,7 +1,9 @@
 export const createAboutView = function (appEl) {
   return {
-    render() {
-      appEl.innerHTML = `<h1>About</h1>`;
+    generateMarkup() {
+      return `<h1>About</h1>`;
     },
+
+    bindEvents() {},
   };
 };

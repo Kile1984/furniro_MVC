@@ -1,0 +1,110 @@
+1. Definicija problema :
+
+- prikazuje proizvode
+- korisnik može da doda proizvod u cart
+- može da ode na cart page
+- može da ukloni proizvod iz cart-a
+
+2. User flow
+   SHOP PAGE
+   ↓
+   Add to cart
+   ↓
+   cart state updated
+   ↓
+   Go to cart
+   ↓
+   CART PAGE
+   ↓
+   Remove item
+
+3. Sta app pamti STATE - Inicijalizacija state-a
+4. Sta menja state ACTIONS - goToShop,goToCart,addToCart,removeFromCart
+5. Controler logika - menja state, poziva render
+6. Routing - menja state.cuurrentView
+7. View
+
+SLEDECE:
+Kada app poraste odvojiti akcije u posbne fajlove(carActins, wishlistActions....)
+
+
+1. APPLICATION ARCHITECTURE
+
+- Način organizacije aplikacije.
+
+2. MVC-ISH ARCHITECTURE
+
+- MVC
+
+3. SEPARATION OF CONCERNS
+
+- svaki layer ima svoju odgovornost
+
+4. ORCHESTRATION (controller orchestration ili application orchestration)
+
+- Controller koji pravi flow aplikacije:
+
+5. RENDER PIPELINE (rendering flow)
+
+- state-render-UI update
+
+6. SINGLE SOURCE OF TRUTH
+
+- state
+
+7. STATE-DRIVEN UI (state-driven rendering ili state-driven UI)
+
+- state.currentView = 'cart' -> render cart page
+
+8. EVENT-DRIVEN FLOW (event-driven architecture ili event-driven flow)
+
+- click -> controller -> action -> render
+
+9. ROUTING LAYER
+
+- URL -> application route
+
+10. APPLICATION FLOW
+
+- USER EVENT -> CONTROLLER -> ACTION -> STATE UPDATE -> RENDER -> VIEW UPDATE
+
+11. UI COMPOSITION (component composition)
+
+page
+├─ navbar
+├─ product grid
+├─ sidebar
+└─ footer
+
+12. SCALABLE FRONTEND STRUCTURE
+
+- app može da raste bez haosa
+
+13. ENGINEERING MINDSET KOJI UČIŠ (architectural thinking ili frontend engineering mindset)
+
+- Nrazmisljas: "kako da napravim button" -> Nego: "gde ova logika pripada?"
+
+14. TVOJ TRENUTNI MENTALNI MODEL
+main.js
+↓
+app bootstrap
+
+controller
+↓
+application orchestration
+
+router
+↓
+routing responsibility
+
+state
+↓
+single source of truth
+
+view
+↓
+UI rendering
+
+render
+↓
+state-driven UI update

@@ -1,7 +1,9 @@
 export const createShopView = function (appEl) {
   return {
-    render() {
-      appEl.innerHTML = `<h1>Shop</h1>`;
+    generateMarkup() {
+      return `<h1>Shop</h1>`;
     },
+
+    bindEvents() {},
   };
 };
