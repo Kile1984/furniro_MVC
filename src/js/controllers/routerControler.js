@@ -9,6 +9,9 @@ export const controlRoutes = function () {
     "/shop": "shop",
     "/about": "about",
     "/contact": "contact",
+    "/payment": "payment",
+    "/returns": "returns",
+    "/policy": "policy",
   };
 
   const view = routesMap[hash] || "home";

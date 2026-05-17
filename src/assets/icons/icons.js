@@ -1,0 +1,27 @@
+export const sprite = new URL("./sprite.svg", import.meta.url).href;
+
+export const icons = {
+  equalizer: "icon-equalizer",
+  grid1: "icon-grid1",
+  grid: "icon-grid",
+  phone: "icon-phone",
+  location: "icon-location2",
+  working_time: "icon-clock2",
+  eye: "icon-eye",
+  one_finger: "icon-one-finger-swipe-horizontally",
+  heart: "icon-heart",
+  user: "icon-user",
+  cart: "icon-cart",
+  search: "icon-search",
+  lock: "icon-lock",
+  bin: "icon-bin2",
+  star_empty: "icon-star-empty",
+  star_full: "icon-star-full",
+  heart_1: "icon-heart1",
+  cancel: "icon-cancel-circle",
+  tab: "icon-tab",
+  share: "icon-share2",
+  facebook: "icon-facebook2",
+  twitter: "icon-twitter",
+  linkedin: "icon-linkedin",
+};

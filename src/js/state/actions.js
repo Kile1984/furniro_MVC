@@ -5,6 +5,10 @@ export const actions = {
     state.currentRoute = route;
   },
 
+  setProducts(products) {
+    state.products = products;
+  },
+
   addToCart(product) {
     if (!product) return;
 

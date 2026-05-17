@@ -4,11 +4,30 @@
 @use "./base/base";
 @use "./base/typography";
 
+@use "./utilities/helpers";
+@use "./utilities/spacing";
+
 @use "./layout/header";
-@use "./layout/footer";
 @use "./layout/container";
+@use "./layout/footer";
 
 @use "./components/buttons";
 @use "./components/icons";
+@use "./components/product-card";
+@use "./components/toolbar";
+@use "./components/filter-drawer";
+@use "./components/cart" as componentCart;
+@use "./components/features-box";
+@use "./components/comparison";
+
+@use "./sections/features";
 
 @use "./pages/home";
+@use "./pages/shop";
+@use "./pages/about";
+@use "./pages/contact";
+@use "./pages/product";
+@use "./pages/cart" as pageCart;
+@use "./pages/checkout-page";
+@use "./pages/legal";
+@use "./pages/wishlist";
