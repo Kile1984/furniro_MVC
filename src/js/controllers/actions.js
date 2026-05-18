@@ -1,5 +1,6 @@
+import { storeActions } from "../state/storeActions.js";
+import { controlAddToCart } from "./cartControler.js";
+
 export const actions = {
-  "add-to-cart": function (target) {
-    console.log(target, "Add to cart");
-  },
+  "add-to-cart": controlAddToCart,
 };

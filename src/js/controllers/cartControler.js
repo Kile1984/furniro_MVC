@@ -1,8 +1,8 @@
-import { actions } from "../state/actions.js";
+import { storeActions } from "../state/storeActions.js";
 import { state } from "../state/state.js";
 
-export const controlAddToCart = function (id) {
-  const product = state.products.find((p) => p.id === id);
+export const controlAddToCart = function ({ dataset }) {
+  const product = state.products.find((p) => p.id === dataset.id);
 
-  actions.addToCart(product);
+  storeActions.addToCart(product);
 };

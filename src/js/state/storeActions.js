@@ -1,6 +1,6 @@
 import { state } from "./state.js";
 
-export const actions = {
+export const storeActions = {
   setRoute(route) {
     state.currentRoute = route;
   },
@@ -19,6 +19,7 @@ export const actions = {
     } else {
       state.cart.push({ ...product, quantity: 1 });
     }
+    console.log(state.cart);
   },
 
   removeFromCart() {},

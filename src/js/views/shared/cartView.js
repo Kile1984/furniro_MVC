@@ -38,6 +38,8 @@ export const createCartView = function () {
                 <button
                   type="button"
                   class="btn btn--secondary product-card__btn"
+                  data-id=${p.id}
+                  data-action="add-to-cart"
                 >
                   Add to cart
                 </button>

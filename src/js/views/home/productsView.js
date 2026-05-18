@@ -1,7 +1,7 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
-import { createCartView } from "./cartView.js";
+import { createCartView } from "../shared/cartView.js";
 import { state } from "../../state/state.js";
 
 const cartView = createCartView();
