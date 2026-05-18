@@ -1,28 +1,28 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
+import { formatPrice } from "../../utils/format.js";
+import { createCartView } from "./cartView.js";
+import { state } from "../../state/state.js";
+
+const cartView = createCartView();
 
 export const createProductView = function () {
   return {
-    get parentEl() {
-      return document.querySelector(".products__grid");
-    },
-
     generateDiscount(price) {
       const { original, discountPercent } = price;
       const hasDiscount = discountPercent > 0;
       const discountPrice = original - (original * discountPercent) / 100;
 
       const markup = ` 
-                <div class="product-card__price">
-                    <span class="product-card__price-current">${hasDiscount ? discountPrice : ""}</span>
-                    <span class="product-card__price-old">${original}</span>
-                </div>`;
+        <div class="product-card__price">
+            <span class="product-card__price-current">${hasDiscount ? `${formatPrice(discountPrice)}` : `${formatPrice(original)}`}</span>
+            <span class="product-card__price-old">${hasDiscount ? `${formatPrice(original)}` : ""}</span>
+        </div>`;
 
       return markup;
     },
 
     generateBadge(products) {
-      console.log(products);
       if (products.price.discountPercent > 0) {
         return `  <span class="product-card__badge  product-card__badge--discount">-${products.price.discountPercent}%</span>`;
       }
@@ -33,70 +33,19 @@ export const createProductView = function () {
     },
 
     generateMarkup(products) {
-      return products
-        .map((p) => {
-          return `
-         <article class="product-card">
-                <a href="product.html" class="product-card__stretched-link"></a>
-                <div class="product-card__overlay">
-                  <button
-                    type="button"
-                    class="btn btn--secondary product-card__btn"
-                  >
-                    Add to cart
-                  </button>
-
-                  <a href="product.html" class="btn  product-card__view">
-                    <svg class="icon">
-                        <use href="${sprite}#${icons.eye}"></use>
-                    </svg>
-                  </a>
-
-                  <div class="product-card__actions">
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="${sprite}#${icons.share}"></use>
-                      </svg>
-                      <span>Share</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="${sprite}#${icons.tab}"></use>
-                      </svg>
-                      <span>Compare</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                         <use href="${sprite}#${icons.heart}"></use>
-                      </svg>
-                      <span>Like</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="product-card__image-wrapper">
-                  <img
-                    src="${p.images.main}"
-                    alt="${p.images.title}"
-                    class="product-card__image"
-                  />
-                 ${this.generateBadge(p) ? this.generateBadge(p) : ""}
-                   
-                </div>
-
-                <div class="product-card__content">
-                  <h3 class="product-card__title">${p.title}</h3>
-                  <p class="product-card__description">Stylish cafe chair</p>
-                  ${this.generateDiscount(p.price)}
-                </div>
-              </article>
-        `;
-        })
-        .join("");
-    },
-
-    render(products) {
-      this.parentEl.innerHTML = this.generateMarkup(products);
+      return `
+          <!-- PRODUCTS -->
+          <section class="section products">
+            <div class="container">
+              <h2 class="section-title products__main-title text-center">
+                Our Product
+              </h2>
+              <div class="products__grid">
+               ${cartView.generateMarkup(state.products)}
+              </div>
+            </div>
+          </section>
+      `;
     },
   };
 };

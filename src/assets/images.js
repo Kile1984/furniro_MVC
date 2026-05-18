@@ -1,4 +1,5 @@
 export const images = {
+  logo: new URL("./images/Logo.png", import.meta.url).href,
   diningImg: new URL("./images/dining.png", import.meta.url).href,
   livingImg: new URL("./images/living-room.png", import.meta.url),
   bedroomImg: new URL("./images/bedroom.png", import.meta.url).href,

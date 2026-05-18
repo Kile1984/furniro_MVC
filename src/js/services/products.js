@@ -167,7 +167,7 @@ export const products = [
     category: "chair",
 
     price: {
-      original: 185,
+      original: 300,
       discountPercent: 30,
     },
 

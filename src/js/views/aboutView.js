@@ -1,6 +1,6 @@
 import { images } from "../../assets/images.js";
 
-export const createAboutView = function (appEl) {
+export const createAboutView = function () {
   return {
     generateMarkup() {
       return `  
@@ -122,7 +122,5 @@ export const createAboutView = function (appEl) {
       </main>
   `;
     },
-
-    bindEvents() {},
   };
 };

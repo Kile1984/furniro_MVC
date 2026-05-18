@@ -9,6 +9,4 @@ export const loadProducts = async function () {
   const products = await getProducts();
 
   actions.setProducts(products);
-
-  productView.render(state.products);
 };
