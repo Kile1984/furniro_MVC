@@ -1,5 +1,6 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
+import { state } from "../../state/state.js";
 
 export const createCartView = function () {
   return {
@@ -27,6 +28,19 @@ export const createCartView = function () {
       }
     },
 
+    updateCartButton(cartState, id) {
+      const product = cartState.find((p) => p.id === id);
+      const quantity = product.quantity;
+      const btn = document.querySelector(`[data-id="${id}"]`);
+
+      if (!btn) return;
+
+      btn.innerHTML =
+        quantity > 0
+          ? (btn.innerHTML = ` ${quantity}  `)
+          : (btn.innerHTML = `Add to Cart`);
+    },
+
     generateMarkup(products) {
       return `
           ${products
@@ -35,6 +49,7 @@ export const createCartView = function () {
             <article class="product-card">
               <a href="product.html" class="product-card__stretched-link"></a>
               <div class="product-card__overlay">
+              <div class="product-card__cart-state">
                 <button
                   type="button"
                   class="btn btn--secondary product-card__btn"
@@ -43,7 +58,8 @@ export const createCartView = function () {
                 >
                   Add to cart
                 </button>
-
+              </div>
+              
                 <a href="product.html" class="btn  product-card__view">
                   <svg class="icon">
                       <use href="${sprite}#${icons.eye}"></use>
@@ -94,3 +110,5 @@ export const createCartView = function () {
     },
   };
 };
+
+export const cartView = createCartView();
