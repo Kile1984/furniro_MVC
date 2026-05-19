@@ -79,9 +79,14 @@
     }
   }
 
+  &__cart-state {
+    color: var(--color-accent);
+    background-color: var(--color-white);
+    margin-bottom: 1.8rem;
+  }
+
   &__btn {
     // background-color: var(--color-white);
-    margin-bottom: 1.8rem;
     text-transform: capitalize;
 
     @media (hover: hover) {

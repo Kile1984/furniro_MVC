@@ -25,6 +25,12 @@ export const storeActions = {
     return state.cart;
   },
 
+  incrementQuantity(id) {
+    const product = state.cart.find((p) => p.id === id);
+
+    product.quantity++;
+  },
+
   removeFromCart() {},
   toggleWishlist() {},
 };

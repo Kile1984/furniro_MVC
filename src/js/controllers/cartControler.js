@@ -7,3 +7,8 @@ export const controlAddToCart = function ({ dataset }) {
   storeActions.addToCart(product);
   cartView.updateCartButton(state.cart, product.id);
 };
+
+export const controlIncrement = function ({ dataset }) {
+  storeActions.incrementQuantity(dataset.id);
+  cartView.updateCartButton(state.cart, dataset.id);
+};

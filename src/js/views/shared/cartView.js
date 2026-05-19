@@ -31,14 +31,29 @@ export const createCartView = function () {
     updateCartButton(cartState, id) {
       const product = cartState.find((p) => p.id === id);
       const quantity = product.quantity;
-      const btn = document.querySelector(`[data-id="${id}"]`);
+      const cart = document
+        .querySelector(`[data-id="${id}"]`)
+        .closest(".product-card__cart-state");
 
-      if (!btn) return;
+      if (!cart) return;
 
-      btn.innerHTML =
+      cart.innerHTML =
         quantity > 0
-          ? (btn.innerHTML = ` ${quantity}  `)
-          : (btn.innerHTML = `Add to Cart`);
+          ? ` <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${id}>-</button>
+                <span class="product-card__quantity">${quantity}</span>
+              <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${id}>+</button> `
+          : `Add to Cart`;
+    },
+
+    updateQuantity(cartState, id) {
+      const product = cartState.find((p) => p.id === id);
+      const quantity = product?.quantity || 0;
+
+      const quantityEl = document.querySelector(
+        `[data-id="${id}"] .product-card__quantity`,
+      );
+
+      quantityEl.textContent = quantity;
     },
 
     generateMarkup(products) {
@@ -49,7 +64,7 @@ export const createCartView = function () {
             <article class="product-card">
               <a href="product.html" class="product-card__stretched-link"></a>
               <div class="product-card__overlay">
-              <div class="product-card__cart-state">
+              <div class="product-card__cart-state" data-id=${p.id}>
                 <button
                   type="button"
                   class="btn btn--secondary product-card__btn"
