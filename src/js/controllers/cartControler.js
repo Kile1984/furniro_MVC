@@ -12,3 +12,13 @@ export const controlIncrement = function ({ dataset }) {
   storeActions.incrementQuantity(dataset.id);
   cartView.updateCartButton(state.cart, dataset.id);
 };
+
+export const controlDecrement = function ({ dataset }) {
+  storeActions.decrementQuantity(dataset.id);
+  cartView.updateCartButton(state.cart, dataset.id);
+};
+
+export const controlRemoveFromCart = function (id) {
+  const product = state.cart.find((p) => p.id === dataset.id);
+  storeActions.removeFromCart(product.id);
+};

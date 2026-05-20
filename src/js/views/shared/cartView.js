@@ -30,7 +30,7 @@ export const createCartView = function () {
 
     updateCartButton(cartState, id) {
       const product = cartState.find((p) => p.id === id);
-      const quantity = product.quantity;
+      const quantity = product?.quantity;
       const cart = document
         .querySelector(`[data-id="${id}"]`)
         .closest(".product-card__cart-state");
@@ -39,10 +39,19 @@ export const createCartView = function () {
 
       cart.innerHTML =
         quantity > 0
-          ? ` <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${id}>-</button>
+          ? ` <button class="btn product-card__btn--decrement"        data-action="qt-decrement" data-id=${id}>-
+              </button>
                 <span class="product-card__quantity">${quantity}</span>
-              <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${id}>+</button> `
-          : `Add to Cart`;
+              <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${id}>+
+              </button> `
+          : ` <button
+                  type="button"
+                  class="btn btn--secondary product-card__btn"
+                  data-id=${id}
+                  data-action="add-to-cart"
+                >
+                  Add to cart
+                </button>`;
     },
 
     updateQuantity(cartState, id) {
@@ -55,6 +64,8 @@ export const createCartView = function () {
 
       quantityEl.textContent = quantity;
     },
+
+    removeProductFromCart() {},
 
     generateMarkup(products) {
       return `

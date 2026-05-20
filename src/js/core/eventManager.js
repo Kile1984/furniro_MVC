@@ -11,7 +11,7 @@ export const initEventManager = function () {
     if (!target) return;
 
     const action = target.dataset.action;
-
+    console.log(action);
     actions[action]?.({ target: target, dataset: target.dataset });
   }
 };

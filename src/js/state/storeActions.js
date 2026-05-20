@@ -9,6 +9,22 @@ export const storeActions = {
     state.products = products;
   },
 
+  getCart() {
+    return state.cart;
+  },
+
+  getProductItemById(id) {
+    state.products.find((p) => p.id === id);
+  },
+
+  getCartItemById(id) {
+    return state.cart.find((p) => p.id === id);
+  },
+
+  save(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  },
+
   addToCart(product) {
     if (!product) return;
 
@@ -19,18 +35,37 @@ export const storeActions = {
     } else {
       state.cart.push({ ...product, quantity: 1 });
     }
+
+    this.save("cart", state.cart);
   },
 
-  getCart() {
-    return state.cart;
+  removeFromCart(id) {
+    state.cart = state.cart.filter((p) => p.id !== id);
+
+    this.save("cart", state.cart);
   },
 
   incrementQuantity(id) {
     const product = state.cart.find((p) => p.id === id);
 
     product.quantity++;
+
+    this.save("cart", state.cart);
   },
 
-  removeFromCart() {},
+  decrementQuantity(id) {
+    const product = state.cart.find((p) => p.id === id);
+
+    if (product.quantity !== 0) {
+      product.quantity--;
+    }
+
+    if (product.quantity === 0) {
+      this.removeFromCart(id);
+    }
+
+    this.save("cart", state.cart);
+  },
+
   toggleWishlist() {},
 };
