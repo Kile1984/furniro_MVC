@@ -22,12 +22,12 @@ export const createMiniCartView = function () {
       return markup;
     },
 
-    generateBadge(products) {
-      if (products.price.discountPercent > 0) {
-        return `  <span class="product-card__badge  product-card__badge--discount">-${products.price.discountPercent}%</span>`;
+    generateBadge(price, badges) {
+      if (price.discountPercent > 0) {
+        return `  <span class="product-card__badge  product-card__badge--discount">-${price.discountPercent}%</span>`;
       }
 
-      if (products.badges.isNew) {
+      if (badges.isNew) {
         return `  <span class="product-card__badge  product-card__badge--new">NEW</span>`;
       }
     },
@@ -58,16 +58,16 @@ export const createMiniCartView = function () {
                 </button>`;
     },
 
-    updateQuantity(cartState, id) {
-      const product = cartState.find((p) => p.id === id);
-      const quantity = product?.quantity || 0;
+    // updateQuantity(cartState, id) {
+    //   const product = cartState.find((p) => p.id === id);
+    //   const quantity = product?.quantity || 0;
 
-      const quantityEl = document.querySelector(
-        `[data-id="${id}"] .product-card__quantity`,
-      );
+    //   const quantityEl = document.querySelector(
+    //     `[data-id="${id}"] .product-card__quantity`,
+    //   );
 
-      quantityEl.textContent = quantity;
-    },
+    //   quantityEl.textContent = quantity;
+    // },
 
     generateMarkup(products) {
       return `
@@ -130,7 +130,7 @@ export const createMiniCartView = function () {
                   alt="${p.images.title}"
                   class="product-card__image"
                 />
-                ${this.generateBadge(p) ? this.generateBadge(p) : ""}
+                ${this.generateBadge(p.price, p.badges) ? this.generateBadge(p.price, p.badges) : ""}
                   
               </div>
 
@@ -147,4 +147,4 @@ export const createMiniCartView = function () {
   };
 };
 
-export const cartView = createMiniCartView();
+export const miniCartView = createMiniCartView();

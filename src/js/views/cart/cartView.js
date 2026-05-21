@@ -3,10 +3,11 @@ import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons";
 import { formatPrice } from "../../utils/format.js";
 import { getPrice } from "../../utils/getPrice.js";
+import { miniCartView } from "../shared/miniCartView.js";
 
 export const createCartView = function () {
   return {
-    generateMarkup() {
+    generateMarkup(data) {
       return ` 
      <!-- PAGE HEADING SHOP -->
       <main class="page page--cart">
@@ -43,14 +44,14 @@ export const createCartView = function () {
 
                 <div class="cart-page__item-wrapp">
                   <!-- JS -->
-                  ${state.cart
+                  ${data
                     .map((p) => {
                       return `
                      <div class="cart-page__item" data-id="P.ID">
                       <div class="cart-page__product">
                         <a href="#" class="cart-page__link">
                             <img
-                            src="${p.images.main}"
+                            src="${p.image}"
                             alt="${p.title}"
                             />
                             <span>${p.title}</span>
@@ -59,7 +60,7 @@ export const createCartView = function () {
 
                       <div class="cart-page__price">
                         <span class="cart-page__price-label">Price</span>
-                        <span>${getPrice.finalPrice}</span>
+                        <span>${formatPrice(p.finalPrice)}</span>
                       </div>
 
                       <div class="cart-page__quantity">
@@ -93,7 +94,7 @@ export const createCartView = function () {
 
                       <div class="cart-page__subtotal">
                         <span class="cart-page__price-label">Subtotal</span>
-                        <span class="cart-page__subtotal-value">${getPrice.finalPrice}</span>
+                        <span class="cart-page__subtotal-value">${formatPrice(p.subtotal)}</span>
                       </div>
 
                       <button class="cart-page__remove-btn" data-id=1>

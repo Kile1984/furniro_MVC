@@ -1,4 +1,4 @@
-import { controlRoutes } from "../controllers/routerControler.js";
+import { controlRoutes } from "../controllers/routerController.js";
 
 export const initRouter = function () {
   window.addEventListener("hashchange", controlRoutes);

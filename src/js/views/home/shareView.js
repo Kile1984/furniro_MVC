@@ -4,7 +4,7 @@ export const createShareView = function () {
   return {
     generateMarkup() {
       return `
-               <!-- SHARE -->
+        <!-- SHARE -->
         <section class="section share">
           <div class="share__heading text-center">
             <p class="text-body-xl range__text">Share your setup with</p>

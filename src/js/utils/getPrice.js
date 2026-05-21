@@ -4,6 +4,7 @@ export const getPrice = function (price) {
 
   return {
     hasDiscount,
+    original,
     finalPrice: hasDiscount
       ? original - (original * discountPercent) / 100
       : original,

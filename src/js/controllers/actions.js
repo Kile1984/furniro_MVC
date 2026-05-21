@@ -3,8 +3,8 @@ import {
   controlAddToCart,
   controlDecrement,
   controlRemoveFromCart,
-} from "./cartControler.js";
-import { controlIncrement } from "./cartControler.js";
+} from "./cartController.js";
+import { controlIncrement } from "./cartController.js";
 
 export const actions = {
   "add-to-cart": controlAddToCart,
