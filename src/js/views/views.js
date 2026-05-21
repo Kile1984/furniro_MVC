@@ -5,6 +5,7 @@ import { createShopView } from "../views/shopView.js";
 import { createPaymentView } from "../views/paymentView.js";
 import { createReturnsView } from "./returnsView.js";
 import { createPolicyView } from "../views/policyView.js";
+import { createCartView } from "../views/cart/cartView.js";
 
 export const views = {
   home: createHomeView(),
@@ -14,4 +15,5 @@ export const views = {
   payment: createPaymentView(),
   returns: createReturnsView(),
   policy: createPolicyView(),
+  cart: createCartView(),
 };

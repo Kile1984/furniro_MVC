@@ -12,6 +12,7 @@ export const controlRoutes = function () {
     "/payment": "payment",
     "/returns": "returns",
     "/policy": "policy",
+    "/cart": "cart",
   };
 
   const view = routesMap[hash] || "home";

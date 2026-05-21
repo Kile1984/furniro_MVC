@@ -88,6 +88,7 @@
   &__btn {
     // background-color: var(--color-white);
     text-transform: capitalize;
+    margin-bottom: 0;
 
     @media (hover: hover) {
       &:hover {

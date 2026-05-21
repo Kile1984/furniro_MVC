@@ -1,18 +1,22 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
 import { state } from "../../state/state.js";
+import { getPrice } from "../../utils/getPrice.js";
 
-export const createCartView = function () {
+export const createMiniCartView = function () {
   return {
     generateDiscount(price) {
-      const { original, discountPercent } = price;
-      const hasDiscount = discountPercent > 0;
-      const discountPrice = original - (original * discountPercent) / 100;
+      const priceData = getPrice(price);
 
       const markup = ` 
         <div class="product-card__price">
-            <span class="product-card__price-current">${hasDiscount ? `${formatPrice(discountPrice)}` : `${formatPrice(original)}`}</span>
-            <span class="product-card__price-old">${hasDiscount ? `${formatPrice(original)}` : ""}</span>
+          <span class="product-card__price-current">
+            ${formatPrice(priceData.finalPrice)}
+          </span>
+
+          <span class="product-card__price-old">
+            ${priceData.hasDiscount ? formatPrice(priceData.original) : ""}
+          </span>
         </div>`;
 
       return markup;
@@ -143,4 +147,4 @@ export const createCartView = function () {
   };
 };
 
-export const cartView = createCartView();
+export const cartView = createMiniCartView();
