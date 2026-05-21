@@ -18,7 +18,9 @@ export const controlDecrement = function ({ dataset }) {
   cartView.updateCartButton(state.cart, dataset.id);
 };
 
+// Ovo ne ulazi ovde
 export const controlRemoveFromCart = function (id) {
+  console.log("Removing...");
   const product = state.cart.find((p) => p.id === dataset.id);
   storeActions.removeFromCart(product.id);
 };

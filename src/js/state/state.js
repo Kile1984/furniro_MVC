@@ -1,6 +1,6 @@
 export const state = {
   currentRoute: "home",
   products: [],
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart")) || [],
   wishlist: [],
 };

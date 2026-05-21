@@ -65,25 +65,31 @@ export const createCartView = function () {
       quantityEl.textContent = quantity;
     },
 
-    removeProductFromCart() {},
-
     generateMarkup(products) {
       return `
           ${products
             .map((p) => {
+              const cartItem = state.cart.find((item) => item.id === p.id);
+
               return `
             <article class="product-card">
               <a href="product.html" class="product-card__stretched-link"></a>
               <div class="product-card__overlay">
               <div class="product-card__cart-state" data-id=${p.id}>
-                <button
-                  type="button"
-                  class="btn btn--secondary product-card__btn"
-                  data-id=${p.id}
-                  data-action="add-to-cart"
-                >
-                  Add to cart
-                </button>
+              ${
+                cartItem?.quantity > 0
+                  ? `
+                  <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${cartItem.id}>-</button>
+                    <span class="product-card__quantity">${cartItem.quantity}</span>
+                  <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${cartItem.id}>+</button>`
+                  : `
+                  <button
+                    type="button"
+                    class="btn btn--secondary product-card__btn"
+                    data-id=${p.id}
+                    data-action="add-to-cart"
+                >Add to cart</button>`
+              }
               </div>
               
                 <a href="product.html" class="btn  product-card__view">
