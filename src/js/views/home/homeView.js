@@ -7,10 +7,10 @@ const heroView = createHeroView();
 
 export const createHomeView = function (appEl) {
   return {
-    generateMarkup() {
+    generateMarkup(products) {
       return `
          ${heroView.generateMarkup()}
-         ${mainView.generateMarkup()}
+         ${mainView.generateMarkup(products)}
     `;
     },
   };

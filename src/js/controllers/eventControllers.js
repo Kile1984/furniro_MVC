@@ -1,10 +1,10 @@
 // import { storeActions } from "../state/storeActions.js";
 import {
+  controlIncrement,
   controlAddToCart,
   controlDecrement,
   controlRemoveFromCart,
-} from "./cartController.js";
-import { controlIncrement } from "./cartController.js";
+} from "./homeController.js";
 
 export const eventActions = {
   "add-to-cart": controlAddToCart,

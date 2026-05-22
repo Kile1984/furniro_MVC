@@ -1,10 +1,12 @@
 import { state } from "../state/state.js";
 import { views } from "../views/views.js";
 import { preparedCartProducts } from "../controllers/cartController.js";
+import { preparedHomeProducts } from "../controllers/homeController.js";
 
 const appEl = document.querySelector("#app");
 
 const routeControllers = {
+  home: preparedHomeProducts,
   cart: preparedCartProducts,
 };
 

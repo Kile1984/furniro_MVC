@@ -5,26 +5,25 @@ import { getPrice } from "../../utils/getPrice.js";
 
 export const createProductCardsView = function () {
   return {
-    generateDiscount(price) {
-      const priceData = getPrice(price);
-
+    generateDiscount(finalPrice, original, hasDiscount) {
       const markup = ` 
         <div class="product-card__price">
           <span class="product-card__price-current">
-            ${formatPrice(priceData.finalPrice)}
+            ${formatPrice(finalPrice)}
           </span>
 
           <span class="product-card__price-old">
-            ${priceData.hasDiscount ? formatPrice(priceData.original) : ""}
+            ${hasDiscount ? formatPrice(original) : ""}
           </span>
         </div>`;
 
       return markup;
     },
 
-    generateBadge(price, badges) {
-      if (price.discountPercent > 0) {
-        return `  <span class="product-card__badge  product-card__badge--discount">-${price.discountPercent}%</span>`;
+    generateBadge(discountPercent, badges) {
+      console.log(discountPercent, badges);
+      if (discountPercent > 0) {
+        return `  <span class="product-card__badge  product-card__badge--discount">-${discountPercent}%</span>`;
       }
 
       if (badges.isNew) {
@@ -32,9 +31,7 @@ export const createProductCardsView = function () {
       }
     },
 
-    updateCartButton(cartState, id) {
-      const product = cartState.find((p) => p.id === id);
-      const quantity = product?.quantity;
+    updateCartButton({ id, quantity }) {
       const cart = document
         .querySelector(`[data-id="${id}"]`)
         .closest(".product-card__cart-state");
@@ -70,22 +67,22 @@ export const createProductCardsView = function () {
     // },
 
     generateMarkup(products) {
+      console.log(products);
       return `
           ${products
-            .map((p) => {
-              const cartItem = state.cart.find((item) => item.id === p.id);
 
+            .map((p) => {
               return `
             <article class="product-card">
               <a href="product.html" class="product-card__stretched-link"></a>
               <div class="product-card__overlay">
               <div class="product-card__cart-state" data-id=${p.id}>
               ${
-                cartItem?.quantity > 0
+                p?.quantity > 0
                   ? `
-                  <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${cartItem.id}>-</button>
-                    <span class="product-card__quantity">${cartItem.quantity}</span>
-                  <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${cartItem.id}>+</button>`
+                  <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${p.id}>-</button>
+                    <span class="product-card__quantity">${p.quantity}</span>
+                  <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${p.id}>+</button>`
                   : `
                   <button
                     type="button"
@@ -126,18 +123,22 @@ export const createProductCardsView = function () {
 
               <div class="product-card__image-wrapper">
                 <img
-                  src="${p.images.main}"
-                  alt="${p.images.title}"
+                  src="${p.image}"
+                  alt="${p.title}"
                   class="product-card__image"
                 />
-                ${this.generateBadge(p.price, p.badges) ? this.generateBadge(p.price, p.badges) : ""}
+                ${this.generateBadge(p.discountPercent, p.badges) ? this.generateBadge(p.discountPercent, p.badges) : ""}
                   
               </div>
 
               <div class="product-card__content">
                 <h3 class="product-card__title">${p.title}</h3>
-                <p class="product-card__description">Stylish cafe chair</p>
-                ${this.generateDiscount(p.price)}
+                <p class="product-card__description">${p.shortDescription}</p>
+                ${this.generateDiscount(
+                  p.finalPrice,
+                  p.original,
+                  p.hasDiscount,
+                )}
               </div>
             </article>`;
             })

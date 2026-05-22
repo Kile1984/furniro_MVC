@@ -1,4 +1,5 @@
 import { eventActions } from "../controllers/eventControllers.js";
+import { state } from "../state/state.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
@@ -11,7 +12,8 @@ export const initEventManager = function () {
     if (!target) return;
 
     const action = target.dataset.action;
-    console.log(action);
-    eventActions[action]?.({ target: target, dataset: target.dataset });
+    const source = state.currentRoute;
+
+    eventActions[action]?.({ target: target, dataset: target.dataset, source });
   }
 };

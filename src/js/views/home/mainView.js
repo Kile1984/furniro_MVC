@@ -11,11 +11,11 @@ const roomsView = createRoomsView();
 
 export const createMainView = function () {
   return {
-    generateMarkup() {
+    generateMarkup(products) {
       return `
       <main class="page">
         ${rangeView.generateMarkup()}
-        ${productView.generateMarkup(state.products)}
+        ${productView.generateMarkup(products)}
         ${shareView.generateMarkup()}
         ${roomsView.generateMarkup()}
       </main>
