@@ -1,28 +1,13 @@
-import { state } from "./state.js";
+import { state } from "../state.js";
+import { persistActions } from "./persistActions.js";
 
-export const storeActions = {
-  setRoute(route) {
-    state.currentRoute = route;
-  },
-
-  setProducts(products) {
-    state.products = products;
-  },
-
+export const cartActions = {
   getCart() {
     return state.cart;
   },
 
-  getProductItemById(id) {
-    state.products.find((p) => p.id === id);
-  },
-
   getCartItemById(id) {
     return state.cart.find((p) => p.id === id);
-  },
-
-  save(key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
   },
 
   addToCart(product) {
@@ -36,13 +21,13 @@ export const storeActions = {
       state.cart.push({ ...product, quantity: 1 });
     }
 
-    this.save("cart", state.cart);
+    persistActions.save("cart", state.cart);
   },
 
   removeFromCart(id) {
     state.cart = state.cart.filter((p) => p.id !== id);
 
-    this.save("cart", state.cart);
+    persistActions.save("cart", state.cart);
   },
 
   incrementQuantity(id) {
@@ -50,7 +35,7 @@ export const storeActions = {
 
     product.quantity++;
 
-    this.save("cart", state.cart);
+    persistActions.save("cart", state.cart);
   },
 
   decrementQuantity(id) {
@@ -64,8 +49,6 @@ export const storeActions = {
       this.removeFromCart(id);
     }
 
-    this.save("cart", state.cart);
+    persistActions.save("cart", state.cart);
   },
-
-  toggleWishlist() {},
 };

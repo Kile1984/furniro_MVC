@@ -1,5 +1,5 @@
-import { images } from "../../assets/images.js";
-import { sprite, icons } from "../../assets/icons/icons.js";
+import { images } from "../../../assets/images.js";
+import { sprite, icons } from "../../../assets/icons/icons.js";
 
 export const createReturnsView = function (appEl) {
   return {

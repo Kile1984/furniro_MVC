@@ -1,36 +1,45 @@
-import { images } from "../../assets/images.js";
-import { sprite, icons } from "../../assets/icons/icons.js";
+import { images } from "../../../assets/images.js";
+import { sprite, icons } from "../../../assets/icons/icons.js";
 
-export const createPaymentView = function (appEl) {
+export const createPolicyView = function (appEl) {
   return {
     generateMarkup() {
       return `
       <main class="page page--legal">
-        <!-- PAYMENT OPTIONS -->
+        <!-- RETURNS -->
         <div class="container">
-          <h1 class="section-title">Payment Options</h1>
+          <h1>Return Policy</h1>
 
           <p>
-            We offer several convenient payment methods to make your shopping
-            experience simple and secure.
+            We want you to be completely satisfied with your purchase. If you
+            are not happy with your order, you may request a return within 14
+            days of receiving the product.
           </p>
 
-          <h2 class="ui-title">Bank Transfer</h2>
+          <h2>Return Conditions</h2>
           <p>
-            You can complete your purchase via bank transfer. After placing your
-            order, you will receive the necessary payment details. Once the
-            payment is confirmed, your order will be processed and shipped.
+            To be eligible for a return, the item must be unused, in its
+            original condition, and returned in the original packaging. Items
+            that are damaged or show signs of use may not be eligible for a
+            refund.
           </p>
 
-          <h2 class="ui-title">Cash on Delivery</h2>
+          <h2>Refund Process</h2>
           <p>
-            You can also pay for your order when it is delivered. Payment is
-            made directly to the courier at the time of delivery.
+            Once we receive and inspect the returned item, we will notify you
+            about the status of your refund. If the return is approved, the
+            refund will be processed using the original payment method.
+          </p>
+
+          <h2>Shipping Costs</h2>
+          <p>
+            Shipping costs are generally non-refundable unless the product was
+            damaged or incorrect when delivered.
           </p>
 
           <p>
-            If you have any questions regarding payment methods, please contact
-            our customer support team.
+            For any questions regarding returns or refunds, please contact our
+            customer support team.
           </p>
         </div>
         <!-- FEATURES -->

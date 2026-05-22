@@ -1,4 +1,4 @@
-import { storeActions } from "../state/storeActions.js";
+import { routerActions } from "../state/actions/routerActions.js";
 import { renderApp } from "../core/render.js";
 
 export const controlRoutes = function () {
@@ -17,7 +17,7 @@ export const controlRoutes = function () {
 
   const view = routesMap[hash] || "home";
 
-  storeActions.setRoute(view);
+  routerActions.setRoute(view);
 
   renderApp();
 };

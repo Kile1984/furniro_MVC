@@ -1,4 +1,4 @@
-import { storeActions } from "../state/storeActions.js";
+// import { storeActions } from "../state/storeActions.js";
 import {
   controlAddToCart,
   controlDecrement,
@@ -6,7 +6,7 @@ import {
 } from "./cartController.js";
 import { controlIncrement } from "./cartController.js";
 
-export const actions = {
+export const eventActions = {
   "add-to-cart": controlAddToCart,
   "remove-from-cart": controlRemoveFromCart,
   "qt-increment": controlIncrement,

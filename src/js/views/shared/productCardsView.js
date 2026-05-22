@@ -3,7 +3,7 @@ import { formatPrice } from "../../utils/format.js";
 import { state } from "../../state/state.js";
 import { getPrice } from "../../utils/getPrice.js";
 
-export const createMiniCartView = function () {
+export const createProductCardsView = function () {
   return {
     generateDiscount(price) {
       const priceData = getPrice(price);
@@ -147,4 +147,4 @@ export const createMiniCartView = function () {
   };
 };
 
-export const miniCartView = createMiniCartView();
+export const productCardsView = createProductCardsView();

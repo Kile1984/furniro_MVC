@@ -1,4 +1,4 @@
-import { images } from "../../assets/images.js";
+import { images } from "../../../assets/images.js";
 
 export const createAboutView = function () {
   return {

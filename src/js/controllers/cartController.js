@@ -1,25 +1,25 @@
-import { storeActions } from "../state/storeActions.js";
+import { cartActions } from "../state/actions/cartActions.js";
 import { state } from "../state/state.js";
-import { miniCartView } from "../views/shared/miniCartView.js";
+import { productCardsView } from "../views/shared/productCardsView.js";
 import { getPrice } from "../utils/getPrice.js";
 
 export const controlAddToCart = function ({ dataset }) {
   const product = state.products.find((p) => p.id === dataset.id);
-  storeActions.addToCart(product);
-  miniCartView.updateCartButton(state.cart, product.id);
+  cartActions.addToCart(product);
+  productCardsView.updateCartButton(state.cart, product.id);
 };
 
 export const controlIncrement = function ({ dataset }) {
-  storeActions.incrementQuantity(dataset.id);
-  miniCartView.updateCartButton(state.cart, dataset.id);
+  cartActions.incrementQuantity(dataset.id);
+  productCardsView.updateCartButton(state.cart, dataset.id);
 };
 
 export const controlDecrement = function ({ dataset }) {
-  storeActions.decrementQuantity(dataset.id);
-  miniCartView.updateCartButton(state.cart, dataset.id);
+  cartActions.decrementQuantity(dataset.id);
+  productCardsView.updateCartButton(state.cart, dataset.id);
 };
 
-export const controlCartPage = function () {
+export const preparedCartProducts = function () {
   return state.cart.map((product) => {
     const price = getPrice(product.price);
 

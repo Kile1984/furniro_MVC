@@ -1,20 +1,20 @@
 import { state } from "../state/state.js";
 import { views } from "../views/views.js";
-import { controlCartPage } from "../controllers/cartController.js";
+import { preparedCartProducts } from "../controllers/cartController.js";
 
 const appEl = document.querySelector("#app");
+
+const routeControllers = {
+  cart: preparedCartProducts,
+};
 
 export const renderApp = function () {
   const currentView = views[state.currentRoute];
 
-  let data = null;
-
-  if (state.currentRoute === "cart") {
-    data = controlCartPage();
-  }
+  const controller = routeControllers[state.currentRoute];
+  const data = controller ? controller() : null;
 
   const markup = currentView.generateMarkup(data);
-  console.log(state.currentRoute);
-  console.log(data);
+
   appEl.innerHTML = markup;
 };

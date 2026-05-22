@@ -1,10 +1,8 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
-import { createMiniCartView } from "../shared/miniCartView.js";
+import { productCardsView } from "../shared/productCardsView.js";
 import { state } from "../../state/state.js";
-
-const miniCartView = createMiniCartView();
 
 export const createProductView = function () {
   return {
@@ -17,7 +15,7 @@ export const createProductView = function () {
                 Our Product
               </h2>
               <div class="products__grid">
-               ${miniCartView.generateMarkup(products)}
+               ${productCardsView.generateMarkup(products)}
               </div>
             </div>
           </section>

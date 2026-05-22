@@ -1,4 +1,4 @@
-import { actions } from "../controllers/actions.js";
+import { eventActions } from "../controllers/eventControllers.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
@@ -12,6 +12,6 @@ export const initEventManager = function () {
 
     const action = target.dataset.action;
     console.log(action);
-    actions[action]?.({ target: target, dataset: target.dataset });
+    eventActions[action]?.({ target: target, dataset: target.dataset });
   }
 };

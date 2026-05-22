@@ -1,45 +1,36 @@
-import { images } from "../../assets/images.js";
-import { sprite, icons } from "../../assets/icons/icons.js";
+import { images } from "../../../assets/images.js";
+import { sprite, icons } from "../../../assets/icons/icons.js";
 
-export const createPolicyView = function (appEl) {
+export const createPaymentView = function (appEl) {
   return {
     generateMarkup() {
       return `
       <main class="page page--legal">
-        <!-- RETURNS -->
+        <!-- PAYMENT OPTIONS -->
         <div class="container">
-          <h1>Return Policy</h1>
+          <h1 class="section-title">Payment Options</h1>
 
           <p>
-            We want you to be completely satisfied with your purchase. If you
-            are not happy with your order, you may request a return within 14
-            days of receiving the product.
+            We offer several convenient payment methods to make your shopping
+            experience simple and secure.
           </p>
 
-          <h2>Return Conditions</h2>
+          <h2 class="ui-title">Bank Transfer</h2>
           <p>
-            To be eligible for a return, the item must be unused, in its
-            original condition, and returned in the original packaging. Items
-            that are damaged or show signs of use may not be eligible for a
-            refund.
+            You can complete your purchase via bank transfer. After placing your
+            order, you will receive the necessary payment details. Once the
+            payment is confirmed, your order will be processed and shipped.
           </p>
 
-          <h2>Refund Process</h2>
+          <h2 class="ui-title">Cash on Delivery</h2>
           <p>
-            Once we receive and inspect the returned item, we will notify you
-            about the status of your refund. If the return is approved, the
-            refund will be processed using the original payment method.
-          </p>
-
-          <h2>Shipping Costs</h2>
-          <p>
-            Shipping costs are generally non-refundable unless the product was
-            damaged or incorrect when delivered.
+            You can also pay for your order when it is delivered. Payment is
+            made directly to the courier at the time of delivery.
           </p>
 
           <p>
-            For any questions regarding returns or refunds, please contact our
-            customer support team.
+            If you have any questions regarding payment methods, please contact
+            our customer support team.
           </p>
         </div>
         <!-- FEATURES -->

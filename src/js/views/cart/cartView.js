@@ -3,7 +3,7 @@ import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons";
 import { formatPrice } from "../../utils/format.js";
 import { getPrice } from "../../utils/getPrice.js";
-import { miniCartView } from "../shared/miniCartView.js";
+import { productCardsView } from "../shared/productCardsView.js";
 
 export const createCartView = function () {
   return {
