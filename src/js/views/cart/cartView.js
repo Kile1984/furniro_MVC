@@ -7,6 +7,21 @@ import { productCardsView } from "../shared/productCardsView.js";
 
 export const createCartView = function () {
   return {
+    updateQuantityValue({ id, quantity }) {
+      const inputEl = document.querySelector(
+        `.cart-page__quantity-input[data-id="${id}"]`,
+      );
+
+      inputEl.value = quantity;
+    },
+
+    removeCartItem(id) {
+      const cartItemEl = document.querySelector(
+        `.cart-page__item[data-id="${id}"]`,
+      );
+      cartItemEl.remove();
+    },
+
     generateMarkup(data) {
       return ` 
      <!-- PAGE HEADING SHOP -->
@@ -47,7 +62,7 @@ export const createCartView = function () {
                   ${data
                     .map((p) => {
                       return `
-                     <div class="cart-page__item" data-id="P.ID">
+                     <div class="cart-page__item" data-id="${p.id}">
                       <div class="cart-page__product">
                         <a href="#" class="cart-page__link">
                             <img
@@ -97,7 +112,7 @@ export const createCartView = function () {
                         <span class="cart-page__subtotal-value">${formatPrice(p.subtotal)}</span>
                       </div>
 
-                      <button class="cart-page__remove-btn" data-id=1>
+                      <button class="cart-page__remove-btn" data-id="${p.id}" data-action="remove-from-cart">
                         <svg class="icon">
                             <use href="${sprite}#${icons.bin}"></use>
                         </svg>
@@ -216,3 +231,5 @@ export const createCartView = function () {
     },
   };
 };
+
+export const cartView = createCartView();

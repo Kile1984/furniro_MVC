@@ -21,7 +21,6 @@ export const createProductCardsView = function () {
     },
 
     generateBadge(discountPercent, badges) {
-      console.log(discountPercent, badges);
       if (discountPercent > 0) {
         return `  <span class="product-card__badge  product-card__badge--discount">-${discountPercent}%</span>`;
       }
@@ -55,19 +54,7 @@ export const createProductCardsView = function () {
                 </button>`;
     },
 
-    // updateQuantity(cartState, id) {
-    //   const product = cartState.find((p) => p.id === id);
-    //   const quantity = product?.quantity || 0;
-
-    //   const quantityEl = document.querySelector(
-    //     `[data-id="${id}"] .product-card__quantity`,
-    //   );
-
-    //   quantityEl.textContent = quantity;
-    // },
-
     generateMarkup(products) {
-      console.log(products);
       return `
           ${products
 

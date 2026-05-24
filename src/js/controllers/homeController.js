@@ -2,8 +2,9 @@ import { state } from "../state/state.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
 import { getProducts } from "../services/productsServices.js";
 import { productsActions } from "../state/actions/productsActions.js";
-import { cartActions } from "../state/actions/cartActions.js";
+
 import { getPrice } from "../utils/getPrice.js";
+import * as model from "../model/model.js";
 
 const updateProductCartUI = function (id) {
   const cartItem = state.cart.find((item) => item.id === id);
@@ -20,31 +21,18 @@ export const loadProducts = async function () {
 };
 
 export const controlAddToCart = function ({ dataset }) {
-  const product = state.products.find((p) => p.id === dataset.id);
-  cartActions.addToCart(product);
+  model.addToCartItem(dataset.id);
   updateProductCartUI(dataset.id);
 };
 
 export const controlIncrement = function ({ dataset }) {
-  cartActions.incrementQuantity(dataset.id);
-
-  const updateStrategies = {
-    home: () => updateProductCartUI(dataset.id),
-    cart: () => console.log("cart "),
-  };
-
-  updateStrategies[state.currentRoute]?.();
+  model.incrementCartItem(dataset.id);
+  updateProductCartUI(dataset.id);
 };
 
 export const controlDecrement = function ({ dataset }) {
-  cartActions.decrementQuantity(dataset.id);
-
-  const updateStrategies = {
-    home: () => updateProductCartUI(dataset.id),
-    cart: () => console.log("cart "),
-  };
-
-  updateStrategies[state.currentRoute]?.();
+  model.decrementCartItem(dataset.id);
+  updateProductCartUI(dataset.id);
 };
 
 export const preparedHomeProducts = function () {
