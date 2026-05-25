@@ -4,7 +4,6 @@ import * as cartController from "./cartController.js";
 
 export const homeEventActions = {
   "add-to-cart": homeController.controlAddToCart,
-  "remove-from-cart": homeController.controlRemoveFromCart,
   "qt-increment": homeController.controlIncrement,
   "qt-decrement": homeController.controlDecrement,
 };

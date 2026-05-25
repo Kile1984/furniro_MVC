@@ -22,6 +22,43 @@ export const createCartView = function () {
       cartItemEl.remove();
     },
 
+    updateCartSubtotal(id, subtotal) {
+      const subtotalEl = document.querySelector(
+        `.cart-page__subtotal-value[data-id="${id}"]`,
+      );
+
+      if (!subtotalEl) return;
+
+      subtotalEl.textContent = subtotal;
+    },
+
+    updateTotals(summary) {
+      const subtotalEl = document.querySelector(
+        ".cart-page__summary-price--subtotal",
+      );
+      const taxEl = document.querySelector(".cart-page__summary-price--tax");
+      const shippingEl = document.querySelector(
+        ".cart-page__summary-price--shipping",
+      );
+      const totalEl = document.querySelector(
+        ".cart-page__summary-price--total",
+      );
+
+      subtotalEl.textContent = summary.subtotal;
+      taxEl.textContent = summary.tax;
+      shippingEl.textContent = summary.shipping;
+      totalEl.textContent = summary.total;
+
+      console.log(subtotal.textContent, tax, shipping, total);
+
+      return {
+        subtotal: subtotal.textContent,
+        tax: tax.textContent,
+        shipping: shipping.textContent,
+        total: total.textContent,
+      };
+    },
+
     generateMarkup(data) {
       return ` 
      <!-- PAGE HEADING SHOP -->
@@ -109,7 +146,7 @@ export const createCartView = function () {
 
                       <div class="cart-page__subtotal">
                         <span class="cart-page__price-label">Subtotal</span>
-                        <span class="cart-page__subtotal-value">${formatPrice(p.subtotal)}</span>
+                        <span class="cart-page__subtotal-value" data-id="${p.id}">${formatPrice(p.subtotal)}</span>
                       </div>
 
                       <button class="cart-page__remove-btn" data-id="${p.id}" data-action="remove-from-cart">
@@ -135,7 +172,7 @@ export const createCartView = function () {
                   <span
                     class="cart-page__summary-price cart-page__summary-price--subtotal cart-page__summary-price--gray"
                   >
-                    0
+                    
                   </span>
                 </div>
 

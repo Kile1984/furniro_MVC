@@ -57,10 +57,3 @@ export const preparedHomeProducts = function () {
     };
   });
 };
-
-// Ovo ne ulazi ovde
-export const controlRemoveFromCart = function (id) {
-  console.log("Removing...");
-  const product = state.cart.find((p) => p.id === id);
-  storeActions.removeFromCart(product.id);
-};
