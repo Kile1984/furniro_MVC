@@ -4,6 +4,7 @@ import { sprite, icons } from "../../../assets/icons/icons";
 import { formatPrice } from "../../utils/format.js";
 import { getPrice } from "../../utils/getPrice.js";
 import { productCardsView } from "../shared/productCardsView.js";
+import { getCartTotal } from "../../model/model.js";
 
 export const createCartView = function () {
   return {
@@ -11,8 +12,20 @@ export const createCartView = function () {
       const inputEl = document.querySelector(
         `.cart-page__quantity-input[data-id="${id}"]`,
       );
+      inputEl.addEventListener("onchange", function () {
+        console.log(inputEl.value);
+      });
 
       inputEl.value = quantity;
+    },
+
+    updateInputValue(id, value) {
+      console.log(id, value);
+      const inputEl = document.querySelector(
+        `.cart-page__quantity-input[data-id="${id}"]`,
+      );
+
+      inputEl.value = value;
     },
 
     removeCartItem(id) {
@@ -48,15 +61,6 @@ export const createCartView = function () {
       taxEl.textContent = summary.tax;
       shippingEl.textContent = summary.shipping;
       totalEl.textContent = summary.total;
-
-      console.log(subtotal.textContent, tax, shipping, total);
-
-      return {
-        subtotal: subtotal.textContent,
-        tax: tax.textContent,
-        shipping: shipping.textContent,
-        total: total.textContent,
-      };
     },
 
     generateMarkup(data) {
@@ -96,7 +100,7 @@ export const createCartView = function () {
 
                 <div class="cart-page__item-wrapp">
                   <!-- JS -->
-                  ${data
+                  ${data.products
                     .map((p) => {
                       return `
                      <div class="cart-page__item" data-id="${p.id}">
@@ -172,7 +176,7 @@ export const createCartView = function () {
                   <span
                     class="cart-page__summary-price cart-page__summary-price--subtotal cart-page__summary-price--gray"
                   >
-                    
+                    ${data.summary.subtotal}
                   </span>
                 </div>
 
@@ -181,8 +185,9 @@ export const createCartView = function () {
                   <span
                     class="cart-page__summary-price cart-page__summary-price--tax cart-page__summary-price--gray"
                   >
-                    1 0
+                   ${data.summary.tax}
                   </span>
+                 
                 </div>
 
                 <div
@@ -192,7 +197,7 @@ export const createCartView = function () {
                   <span
                     class="cart-page__summary-price cart-page__summary-price--shipping cart-page__summary-price--gray"
                   >
-                    2 0
+                     ${data.summary.shipping}
                   </span>
                 </div>
 
@@ -201,7 +206,7 @@ export const createCartView = function () {
                   <span
                     class="cart-page__summary-price--total cart-page__summary-price--accent"
                   >
-                    0
+                     ${data.summary.total}
                   </span>
                 </div>
               </div>

@@ -51,4 +51,21 @@ export const cartActions = {
 
     persistActions.save("cart", state.cart);
   },
+
+  getQuantity(id) {
+    const product = state.cart.find((p) => p.id === id);
+    if (!product) return;
+
+    return product.quantity;
+  },
+
+  changeQuantity(id, quantity) {
+    const product = state.cart.find((p) => p.id === id);
+
+    if (!product) return;
+
+    product.quantity = quantity;
+
+    persistActions.save("cart", state.cart);
+  },
 };

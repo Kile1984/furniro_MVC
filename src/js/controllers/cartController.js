@@ -12,7 +12,7 @@ const updateCartSummary = function () {
 };
 
 export const preparedCartProducts = function () {
-  return state.cart.map((product) => {
+  const products = state.cart.map((product) => {
     const price = getPrice(product.price);
 
     return {
@@ -24,6 +24,10 @@ export const preparedCartProducts = function () {
       subtotal: price.finalPrice * product.quantity,
     };
   });
+
+  const summary = model.getSummary();
+
+  return { products, summary };
 };
 
 export const controlIncrement = function ({ dataset }) {
@@ -69,5 +73,39 @@ export const controlRemoveFromCart = function ({ dataset }) {
     dataset.id,
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
+
+  updateCartSummary();
+};
+
+export const controlUpdateInputField = function (id, value) {
+  if (value === "") return;
+
+  // permits number
+  const isValidTyping = /^\d+$/.test(value);
+  if (!isValidTyping) return;
+
+  // converting to number
+  const quantity = Number(value);
+
+  // safty validation
+  if (Number.isNaN(quantity)) return;
+
+  // business validation
+  if (quantity < 1 || quantity > 5) {
+    const currentQuantity = cartActions.getQuantity(id);
+    cartView.updateQuantityValue({ id, quantity: currentQuantity });
+    return;
+  }
+
+  // integer
+  if (!Number.isInteger(quantity)) return;
+
+  // optional max limit
+  if (quantity > 5) return;
+
+  cartActions.changeQuantity(id, quantity);
+
+  cartView.updateInputValue(id, quantity);
+
   updateCartSummary();
 };
