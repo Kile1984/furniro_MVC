@@ -20,7 +20,6 @@ export const createCartView = function () {
     },
 
     updateInputValue(id, value) {
-      console.log(id, value);
       const inputEl = document.querySelector(
         `.cart-page__quantity-input[data-id="${id}"]`,
       );
@@ -63,7 +62,20 @@ export const createCartView = function () {
       totalEl.textContent = summary.total;
     },
 
+    getStockWarning(stock) {
+      if (stock <= 2) {
+        return `<span class="cart-page__quantity-warning cart-page__quantity-warning--red">Only ${stock} left</span>`;
+      }
+
+      if (stock <= 5) {
+        return `<span class="cart-page__quantity-warning cart-page__quantity-warning--orange">Only ${stock} left</span>`;
+      }
+
+      return "";
+    },
+
     generateMarkup(data) {
+      console.log(data);
       return ` 
      <!-- PAGE HEADING SHOP -->
       <main class="page page--cart">
@@ -101,6 +113,7 @@ export const createCartView = function () {
                 <div class="cart-page__item-wrapp">
                   <!-- JS -->
                   ${data.products
+
                     .map((p) => {
                       return `
                      <div class="cart-page__item" data-id="${p.id}">
@@ -118,8 +131,10 @@ export const createCartView = function () {
                         <span class="cart-page__price-label">Price</span>
                         <span>${formatPrice(p.finalPrice)}</span>
                       </div>
-
+                      
                       <div class="cart-page__quantity">
+                    ${this.getStockWarning(p.stock)}
+                      
                         <button
                             type="button"
                             class="btn cart-page__quantity-btn cart-page__quantity-btn--decrement"

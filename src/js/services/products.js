@@ -267,6 +267,7 @@ export const products = [
       },
 
       warrantySummary: "1 Year Warranty",
+      stock: 10,
     },
   },
 
@@ -316,6 +317,7 @@ export const products = [
       },
 
       warrantySummary: "2 Year Warranty",
+      stock: 12,
     },
   },
 
@@ -365,6 +367,7 @@ export const products = [
       },
 
       warrantySummary: "2 Year Warranty",
+      stock: 6,
     },
   },
 
@@ -414,6 +417,7 @@ export const products = [
       },
 
       warrantySummary: "2 Year Warranty",
+      stock: 8,
     },
   },
 
@@ -463,6 +467,7 @@ export const products = [
       },
 
       warrantySummary: "1 Year Warranty",
+      stock: 10,
     },
   },
 
@@ -516,6 +521,7 @@ export const products = [
       },
 
       warrantySummary: "3 Year Warranty",
+      stock: 4,
     },
   },
 
@@ -565,6 +571,7 @@ export const products = [
       },
 
       warrantySummary: "3 Year Warranty",
+      stock: 2,
     },
   },
 
@@ -619,6 +626,7 @@ export const products = [
       },
 
       warrantySummary: "5 Year Warranty",
+      stock: 3,
     },
   },
 
@@ -669,6 +677,7 @@ export const products = [
       },
 
       warrantySummary: "5 Year Warranty",
+      stock: 1,
     },
   },
 ];

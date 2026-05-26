@@ -22,6 +22,7 @@ export const preparedCartProducts = function () {
       quantity: product.quantity,
       finalPrice: price.finalPrice,
       subtotal: price.finalPrice * product.quantity,
+      stock: product.properties.stock,
     };
   });
 
