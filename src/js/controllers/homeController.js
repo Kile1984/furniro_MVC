@@ -8,10 +8,12 @@ import * as model from "../model/model.js";
 
 const updateProductCartUI = function (id) {
   const cartItem = state.cart.find((item) => item.id === id);
+  console.log(cartItem);
 
   productCardsView.updateCartButton({
     id,
     quantity: cartItem?.quantity || 0,
+    stock: cartItem.properties.stock,
   });
 };
 
@@ -54,6 +56,7 @@ export const preparedHomeProducts = function () {
       discountPercent: product.price.discountPercent,
       hasDiscount: price.hasDiscount,
       quantity: cartItem?.quantity || 0,
+      stock: product.properties.stock,
     };
   });
 };

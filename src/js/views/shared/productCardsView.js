@@ -30,7 +30,8 @@ export const createProductCardsView = function () {
       }
     },
 
-    updateCartButton({ id, quantity }) {
+    updateCartButton({ id, quantity, stock, isDisabled }) {
+      console.log(id, quantity, stock, isDisabled);
       const cart = document
         .querySelector(`[data-id="${id}"]`)
         .closest(".product-card__cart-state");
@@ -39,7 +40,7 @@ export const createProductCardsView = function () {
 
       cart.innerHTML =
         quantity > 0
-          ? ` <button class="btn product-card__btn--decrement"        data-action="qt-decrement" data-id=${id}>-
+          ? ` <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${id}>-
               </button>
                 <span class="product-card__quantity">${quantity}</span>
               <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${id}>+
@@ -55,6 +56,7 @@ export const createProductCardsView = function () {
     },
 
     generateMarkup(products) {
+      console.log(products);
       return `
           ${products
 
@@ -67,9 +69,9 @@ export const createProductCardsView = function () {
               ${
                 p?.quantity > 0
                   ? `
-                  <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${p.id}>-</button>
+                  <button class="btn product-card__btn--decrement " data-action="qt-decrement" data-id=${p.id}>-</button>
                     <span class="product-card__quantity">${p.quantity}</span>
-                  <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${p.id}>+</button>`
+                  <button class="btn product-card__btn--icrement ${p.quantity >= p.stock ? "cart-page__quantity-btn--disabled" : ""}" data-action="qt-increment" data-id=${p.id}>+</button>`
                   : `
                   <button
                     type="button"

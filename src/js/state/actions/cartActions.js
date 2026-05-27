@@ -33,6 +33,8 @@ export const cartActions = {
   incrementQuantity(id) {
     const product = state.cart.find((p) => p.id === id);
 
+    if (product.quantity >= product.properties.stock) return;
+
     product.quantity++;
 
     persistActions.save("cart", state.cart);

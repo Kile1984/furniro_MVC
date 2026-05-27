@@ -74,6 +74,14 @@ export const createCartView = function () {
       return "";
     },
 
+    updateIncrementButtonState({ id, isDisabled }) {
+      const btn = document.querySelector(
+        `.cart-page__quantity-btn--increment[data-id="${id}"]`,
+      );
+      console.log(isDisabled);
+      btn.classList.toggle("cart-page__quantity-btn--disabled", isDisabled);
+    },
+
     generateMarkup(data) {
       console.log(data);
       return ` 
@@ -155,7 +163,7 @@ export const createCartView = function () {
 
                         <button
                             type="button"
-                            class="btn cart-page__quantity-btn cart-page__quantity-btn--increment"
+                            class="btn cart-page__quantity-btn cart-page__quantity-btn--increment ${p.quantity >= p.stock ? "cart-page__quantity-btn--disabled" : ""}"
                             data-id=${p.id}
                             data-action="qt-increment"
                         >

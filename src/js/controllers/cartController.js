@@ -37,6 +37,11 @@ export const controlIncrement = function ({ dataset }) {
   const product = state.cart.find((p) => p.id === dataset.id);
   if (!product) return;
 
+  cartView.updateIncrementButtonState({
+    id: dataset.id,
+    isDisabled: product.quantity >= product.properties.stock,
+  });
+
   cartView.updateQuantityValue({ id: dataset.id, quantity: product.quantity });
   cartView.updateCartSubtotal(
     dataset.id,
@@ -56,6 +61,11 @@ export const controlDecrement = function ({ dataset }) {
     updateCartSummary();
     return;
   }
+
+  cartView.updateIncrementButtonState({
+    id: dataset.id,
+    isDisabled: product.quantity >= product.properties.stock,
+  });
 
   cartView.updateQuantityValue({ id: dataset.id, quantity: product.quantity });
   cartView.updateCartSubtotal(
@@ -79,6 +89,8 @@ export const controlRemoveFromCart = function ({ dataset }) {
 };
 
 export const controlUpdateInputField = function (id, value) {
+  const product = state.cart.find((p) => p.id === id);
+
   if (value === "") return;
 
   // permits number
@@ -92,7 +104,7 @@ export const controlUpdateInputField = function (id, value) {
   if (Number.isNaN(quantity)) return;
 
   // business validation
-  if (quantity < 1 || quantity > 5) {
+  if (quantity < 1 || quantity > product.properties.stock) {
     const currentQuantity = cartActions.getQuantity(id);
     cartView.updateQuantityValue({ id, quantity: currentQuantity });
     return;
@@ -102,7 +114,7 @@ export const controlUpdateInputField = function (id, value) {
   if (!Number.isInteger(quantity)) return;
 
   // optional max limit
-  if (quantity > 5) return;
+  if (quantity > product.properties.stock) return;
 
   cartActions.changeQuantity(id, quantity);
 
