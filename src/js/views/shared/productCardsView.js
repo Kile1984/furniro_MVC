@@ -1,6 +1,5 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
-import { state } from "../../state/state.js";
 import { getPrice } from "../../utils/getPrice.js";
 
 export const createProductCardsView = function () {
@@ -32,9 +31,9 @@ export const createProductCardsView = function () {
 
     updateCartButton({ id, quantity, stock, isDisabled }) {
       console.log(id, quantity, stock, isDisabled);
-      const cart = document
-        .querySelector(`[data-id="${id}"]`)
-        .closest(".product-card__cart-state");
+      const cart = document.querySelector(
+        `.product-card__cart-state[data-id="${id}"]`,
+      );
 
       if (!cart) return;
 
@@ -43,7 +42,7 @@ export const createProductCardsView = function () {
           ? ` <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${id}>-
               </button>
                 <span class="product-card__quantity">${quantity}</span>
-              <button class="btn product-card__btn--icrement" data-action="qt-increment" data-id=${id}>+
+              <button class="btn product-card__btn--icrement ${isDisabled ? "cart-page__quantity-btn--disabled" : ""}" data-action="qt-increment" data-id=${id}>+
               </button> `
           : ` <button
                   type="button"

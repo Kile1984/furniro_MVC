@@ -13,7 +13,8 @@ const updateProductCartUI = function (id) {
   productCardsView.updateCartButton({
     id,
     quantity: cartItem?.quantity || 0,
-    stock: cartItem.properties.stock,
+    stock: cartItem?.properties.stock,
+    isDisabled: cartItem?.quantity >= cartItem?.properties.stock,
   });
 };
 
