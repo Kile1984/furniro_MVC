@@ -1,8 +1,4 @@
-import { images } from "../../../assets/images.js";
-import { sprite, icons } from "../../../assets/icons/icons.js";
-import { formatPrice } from "../../utils/format.js";
 import { productCardsView } from "../shared/productCardsView.js";
-import { state } from "../../state/state.js";
 
 export const createProductView = function () {
   return {

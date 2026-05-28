@@ -1,14 +1,14 @@
-import { state } from "../state/state.js";
-import { productCardsView } from "../views/shared/productCardsView.js";
-import { getProducts } from "../services/productsServices.js";
-import { productsActions } from "../state/actions/productsActions.js";
-
-import { getPrice } from "../utils/getPrice.js";
 import * as model from "../model/model.js";
+import { state } from "../state/state.js";
+import { getProducts } from "../services/productsServices.js";
+import { cartActions } from "../state/actions/cartActions.js";
+import { productsActions } from "../state/actions/productsActions.js";
+import { productCardsView } from "../views/shared/productCardsView.js";
+import { syncHeaderCartCount } from "./headerController.js";
+import { getPrice } from "../utils/getPrice.js";
 
 const updateProductCartUI = function (id) {
-  const cartItem = state.cart.find((item) => item.id === id);
-  console.log(cartItem);
+  const cartItem = cartActions.getCartItemById(id);
 
   productCardsView.updateCartButton({
     id,
@@ -16,6 +16,7 @@ const updateProductCartUI = function (id) {
     stock: cartItem?.properties.stock,
     isDisabled: cartItem?.quantity >= cartItem?.properties.stock,
   });
+  syncHeaderCartCount();
 };
 
 export const loadProducts = async function () {
@@ -26,26 +27,27 @@ export const loadProducts = async function () {
 export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
   updateProductCartUI(dataset.id);
+
+  syncHeaderCartCount();
 };
 
 export const controlIncrement = function ({ dataset }) {
   model.incrementCartItem(dataset.id);
   updateProductCartUI(dataset.id);
+  syncHeaderCartCount();
 };
 
 export const controlDecrement = function ({ dataset }) {
   model.decrementCartItem(dataset.id);
   updateProductCartUI(dataset.id);
+  syncHeaderCartCount();
 };
 
 export const preparedHomeProducts = function () {
   return state.products.map((product) => {
     const price = getPrice(product.price);
 
-    const cartItem = state.cart.find((item) => {
-      return item.id === product.id;
-    });
-
+    const cartItem = cartActions.getCartItemById(product.id);
     return {
       id: product.id,
       title: product.title,

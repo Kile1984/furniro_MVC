@@ -1,9 +1,9 @@
+import * as model from "../model/model.js";
 import { state } from "../state/state.js";
+import { cartActions } from "../state/actions/cartActions.js";
+import { cartView } from "../views/cart/cartView.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
-import * as model from "../model/model.js";
-import { cartView } from "../views/cart/cartView.js";
-import { cartActions } from "../state/actions/cartActions.js";
 
 const updateCartSummary = function () {
   const summary = model.getSummary();
@@ -34,7 +34,7 @@ export const preparedCartProducts = function () {
 export const controlIncrement = function ({ dataset }) {
   model.incrementCartItem(dataset.id);
 
-  const product = state.cart.find((p) => p.id === dataset.id);
+  const product = cartActions.getCartItemById(dataset.id);
   if (!product) return;
 
   cartView.updateIncrementButtonState({
@@ -54,7 +54,7 @@ export const controlIncrement = function ({ dataset }) {
 export const controlDecrement = function ({ dataset }) {
   model.decrementCartItem(dataset.id);
 
-  const product = state.cart.find((p) => p.id === dataset.id);
+  const product = cartActions.getCartItemById(dataset.id);
 
   if (!product) {
     cartView.removeCartItem(dataset.id);
@@ -89,7 +89,7 @@ export const controlRemoveFromCart = function ({ dataset }) {
 };
 
 export const controlUpdateInputField = function (id, value) {
-  const product = state.cart.find((p) => p.id === id);
+  const product = cartActions.getCartItemById(id);
 
   if (value === "") return;
 

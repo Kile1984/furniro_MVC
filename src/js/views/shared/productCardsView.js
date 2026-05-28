@@ -1,6 +1,5 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
-import { getPrice } from "../../utils/getPrice.js";
 
 export const createProductCardsView = function () {
   return {
@@ -55,7 +54,6 @@ export const createProductCardsView = function () {
     },
 
     generateMarkup(products) {
-      console.log(products);
       return `
           ${products
 

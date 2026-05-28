@@ -1,7 +1,7 @@
+import { state } from "../state/state.js";
 import { homeEventActions } from "../controllers/eventControllers.js";
 import { cartEventActions } from "../controllers/eventControllers.js";
 import { controlUpdateInputField } from "../controllers/cartController.js";
-import { state } from "../state/state.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");

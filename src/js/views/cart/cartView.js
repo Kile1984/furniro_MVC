@@ -1,10 +1,6 @@
-import { state } from "../../state/state.js";
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons";
 import { formatPrice } from "../../utils/format.js";
-import { getPrice } from "../../utils/getPrice.js";
-import { productCardsView } from "../shared/productCardsView.js";
-import { getCartTotal } from "../../model/model.js";
 
 export const createCartView = function () {
   return {
@@ -83,7 +79,6 @@ export const createCartView = function () {
     },
 
     generateMarkup(data) {
-      console.log(data);
       return ` 
      <!-- PAGE HEADING SHOP -->
       <main class="page page--cart">

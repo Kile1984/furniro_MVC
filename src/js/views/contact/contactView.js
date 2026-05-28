@@ -5,7 +5,6 @@ export const createContactView = function (appEl) {
   return {
     generateMarkup() {
       return `
-      
       <main class="page page--contact">
         <header class="page-hero">
           <div class="container page-hero__inner">

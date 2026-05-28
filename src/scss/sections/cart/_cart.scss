@@ -150,6 +150,8 @@
 
   &__quantity-btn {
     padding: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 
     &:hover {
       transform: scale(1.3);

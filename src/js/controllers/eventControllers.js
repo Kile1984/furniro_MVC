@@ -1,4 +1,3 @@
-// import { storeActions } from "../state/storeActions.js";
 import * as homeController from "./homeController.js";
 import * as cartController from "./cartController.js";
 
