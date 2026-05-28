@@ -1,6 +1,7 @@
 import * as model from "../model/model.js";
 import { state } from "../state/state.js";
 import { cartActions } from "../state/actions/cartActions.js";
+import { syncHeaderCartCount } from "./headerController.js";
 import { cartView } from "../views/cart/cartView.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
@@ -48,6 +49,8 @@ export const controlIncrement = function ({ dataset }) {
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
 
+  syncHeaderCartCount();
+
   updateCartSummary();
 };
 
@@ -58,6 +61,7 @@ export const controlDecrement = function ({ dataset }) {
 
   if (!product) {
     cartView.removeCartItem(dataset.id);
+    syncHeaderCartCount();
     updateCartSummary();
     return;
   }
@@ -73,6 +77,8 @@ export const controlDecrement = function ({ dataset }) {
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
 
+  syncHeaderCartCount();
+
   updateCartSummary();
 };
 
@@ -84,6 +90,8 @@ export const controlRemoveFromCart = function ({ dataset }) {
     dataset.id,
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
+
+  syncHeaderCartCount();
 
   updateCartSummary();
 };
@@ -119,6 +127,8 @@ export const controlUpdateInputField = function (id, value) {
   cartActions.changeQuantity(id, quantity);
 
   cartView.updateInputValue(id, quantity);
+
+  syncHeaderCartCount();
 
   updateCartSummary();
 };

@@ -46,7 +46,9 @@ export const getCarTax = function () {
 export const getShippingCost = function () {
   const subtotal = getCartSubtotal();
 
-  return subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+  return subtotal > FREE_SHIPPING_THRESHOLD || subtotal === 0
+    ? 0
+    : SHIPPING_COST;
 };
 
 export const getCartTotal = function () {
