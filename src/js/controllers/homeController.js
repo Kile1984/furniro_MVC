@@ -4,7 +4,7 @@ import { getProducts } from "../services/productsServices.js";
 import { cartActions } from "../state/actions/cartActions.js";
 import { productsActions } from "../state/actions/productsActions.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
-import { syncHeaderCartCount } from "./headerController.js";
+import { syncHeaderCounts } from "./headerController.js";
 import { getPrice } from "../utils/getPrice.js";
 
 const updateProductCartUI = function (id) {
@@ -16,7 +16,7 @@ const updateProductCartUI = function (id) {
     stock: cartItem?.properties.stock,
     isDisabled: cartItem?.quantity >= cartItem?.properties.stock,
   });
-  syncHeaderCartCount();
+  syncHeaderCounts();
 };
 
 export const loadProducts = async function () {
@@ -28,19 +28,19 @@ export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
   updateProductCartUI(dataset.id);
 
-  syncHeaderCartCount();
+  syncHeaderCounts();
 };
 
 export const controlIncrement = function ({ dataset }) {
   model.incrementCartItem(dataset.id);
   updateProductCartUI(dataset.id);
-  syncHeaderCartCount();
+  syncHeaderCounts();
 };
 
 export const controlDecrement = function ({ dataset }) {
   model.decrementCartItem(dataset.id);
   updateProductCartUI(dataset.id);
-  syncHeaderCartCount();
+  syncHeaderCounts();
 };
 
 export const preparedHomeProducts = function () {
@@ -60,6 +60,7 @@ export const preparedHomeProducts = function () {
       hasDiscount: price.hasDiscount,
       quantity: cartItem?.quantity || 0,
       stock: product.properties.stock,
+      isInWishlist: state.wishlist.some((p) => p.id === product.id),
     };
   });
 };

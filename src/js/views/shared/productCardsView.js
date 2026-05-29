@@ -53,11 +53,30 @@ export const createProductCardsView = function () {
                 </button>`;
     },
 
+    updateWishlistButton(id, isInWishlist) {
+      const btn = document.querySelector(
+        `.product-card__action--wishlist[data-id=${id}]`,
+      );
+
+      if (!btn) return;
+
+      btn.innerHTML = `
+                <svg class="icon">
+                      <use href="${sprite}#${isInWishlist ? icons.heart_1 : icons.heart}"></use>
+                </svg>
+                 <span>Like</span>
+      `;
+
+      btn.dataset.action = isInWishlist
+        ? "remove-from-wishlist"
+        : "add-to-wishlist";
+    },
+
     generateMarkup(products) {
       return `
           ${products
-
             .map((p) => {
+              console.log(p.isInWishlist);
               return `
             <article class="product-card">
               <a href="product.html" class="product-card__stretched-link"></a>
@@ -66,9 +85,13 @@ export const createProductCardsView = function () {
               ${
                 p?.quantity > 0
                   ? `
-                  <button class="btn product-card__btn--decrement " data-action="qt-decrement" data-id=${p.id}>-</button>
+                  <button class="btn product-card__btn--decrement" data-action="qt-decrement" 
+                  data-id=${p.id}>-
+                  </button>
                     <span class="product-card__quantity">${p.quantity}</span>
-                  <button class="btn product-card__btn--icrement ${p.quantity >= p.stock ? "cart-page__quantity-btn--disabled" : ""}" data-action="qt-increment" data-id=${p.id}>+</button>`
+                  <button class="btn product-card__btn--icrement
+                   ${p.quantity >= p.stock ? "cart-page__quantity-btn--disabled" : ""}" data-action="qt-increment"
+                  data-id=${p.id}>+</button>`
                   : `
                   <button
                     type="button"
@@ -86,21 +109,23 @@ export const createProductCardsView = function () {
                 </a>
 
                 <div class="product-card__actions">
-                  <button type="button" class="product-card__action">
+                  <button type="button" class="product-card__action" >
                     <svg class="icon">
                       <use href="${sprite}#${icons.share}"></use>
                     </svg>
                     <span>Share</span>
                   </button>
-                  <button type="button" class="product-card__action">
+                  <button type="button" class="product-card__action" >
                     <svg class="icon">
                       <use href="${sprite}#${icons.tab}"></use>
                     </svg>
                     <span>Compare</span>
                   </button>
-                  <button type="button" class="product-card__action">
+                  <button type="button" class="product-card__action product-card__action--wishlist" data-action="${p.isInWishlist ? "remove-from-wishlist" : "add-to-wishlist"}" 
+                  data-id=${p.id}>
                     <svg class="icon">
-                        <use href="${sprite}#${icons.heart}"></use>
+                        <use href="${sprite}#${p.isInWishlist ? icons.heart_1 : icons.heart}">
+                        </use>
                     </svg>
                     <span>Like</span>
                   </button>

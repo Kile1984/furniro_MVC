@@ -17,6 +17,8 @@ export const initEventManager = function () {
     const action = target.dataset.action;
     const source = state.currentRoute;
 
+    console.log(action);
+
     if (source === "home") {
       homeEventActions[action]?.({
         target: target,

@@ -1,7 +1,7 @@
 import * as model from "../model/model.js";
 import { state } from "../state/state.js";
 import { cartActions } from "../state/actions/cartActions.js";
-import { syncHeaderCartCount } from "./headerController.js";
+import { syncHeaderCounts } from "./headerController.js";
 import { cartView } from "../views/cart/cartView.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
@@ -49,7 +49,7 @@ export const controlIncrement = function ({ dataset }) {
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
 
-  syncHeaderCartCount();
+  syncHeaderCounts();
 
   updateCartSummary();
 };
@@ -61,7 +61,7 @@ export const controlDecrement = function ({ dataset }) {
 
   if (!product) {
     cartView.removeCartItem(dataset.id);
-    syncHeaderCartCount();
+    syncHeaderCounts();
     updateCartSummary();
     return;
   }
@@ -77,7 +77,7 @@ export const controlDecrement = function ({ dataset }) {
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
 
-  syncHeaderCartCount();
+  syncHeaderCounts();
 
   updateCartSummary();
 };
@@ -91,7 +91,7 @@ export const controlRemoveFromCart = function ({ dataset }) {
     formatPrice(model.getCartProductSubtotal(dataset.id)),
   );
 
-  syncHeaderCartCount();
+  syncHeaderCounts();
 
   updateCartSummary();
 };
@@ -128,7 +128,7 @@ export const controlUpdateInputField = function (id, value) {
 
   cartView.updateInputValue(id, quantity);
 
-  syncHeaderCartCount();
+  syncHeaderCounts();
 
   updateCartSummary();
 };
