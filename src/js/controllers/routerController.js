@@ -13,6 +13,7 @@ export const controlRoutes = function () {
     "/returns": "returns",
     "/policy": "policy",
     "/cart": "cart",
+    "/wishlist": "wishlist",
   };
 
   const view = routesMap[hash] || "home";

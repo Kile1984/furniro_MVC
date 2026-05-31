@@ -15,3 +15,8 @@ export const cartEventActions = {
   "qt-increment": cartController.controlIncrement,
   "qt-decrement": cartController.controlDecrement,
 };
+
+export const wishlistEventActions = {
+  "add-to-cart": wishlistController.controlAddToCartFromWishlist,
+  "remove-from-wishlist": wishlistController.controlRemoveFromWishlist,
+};

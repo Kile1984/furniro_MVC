@@ -1,6 +1,7 @@
 import { state } from "../state/state.js";
 import { homeEventActions } from "../controllers/eventControllers.js";
 import { cartEventActions } from "../controllers/eventControllers.js";
+import { wishlistEventActions } from "../controllers/eventControllers.js";
 import { controlUpdateInputField } from "../controllers/cartController.js";
 
 export const initEventManager = function () {
@@ -17,8 +18,6 @@ export const initEventManager = function () {
     const action = target.dataset.action;
     const source = state.currentRoute;
 
-    console.log(action);
-
     if (source === "home") {
       homeEventActions[action]?.({
         target: target,
@@ -32,6 +31,13 @@ export const initEventManager = function () {
         target: target,
         dataset: target.dataset,
         source,
+      });
+    }
+
+    if (source === "wishlist") {
+      wishlistEventActions[action]?.({
+        target,
+        dataset: target.dataset,
       });
     }
   }
