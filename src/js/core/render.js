@@ -10,6 +10,7 @@ const routeControllers = {
   home: preparedHomeProducts,
   cart: preparedCartProducts,
   wishlist: preparaWishlistProduct,
+  shop: preparedHomeProducts,
 };
 
 export const renderApp = function () {

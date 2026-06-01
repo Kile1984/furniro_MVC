@@ -29,7 +29,6 @@ export const createProductCardsView = function () {
     },
 
     updateCartButton({ id, quantity, stock, isDisabled }) {
-      console.log(id, quantity, stock, isDisabled);
       const cart = document.querySelector(
         `.product-card__cart-state[data-id="${id}"]`,
       );
@@ -76,7 +75,6 @@ export const createProductCardsView = function () {
       return `
           ${products
             .map((p) => {
-              console.log(p.isInWishlist);
               return `
             <article class="product-card">
               <a href="product.html" class="product-card__stretched-link"></a>

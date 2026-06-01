@@ -50,7 +50,6 @@ export const controlIncrement = function ({ dataset }) {
   );
 
   syncHeaderCounts();
-
   updateCartSummary();
 };
 
@@ -78,7 +77,6 @@ export const controlDecrement = function ({ dataset }) {
   );
 
   syncHeaderCounts();
-
   updateCartSummary();
 };
 
@@ -92,7 +90,6 @@ export const controlRemoveFromCart = function ({ dataset }) {
   );
 
   syncHeaderCounts();
-
   updateCartSummary();
 };
 
@@ -129,6 +126,5 @@ export const controlUpdateInputField = function (id, value) {
   cartView.updateInputValue(id, quantity);
 
   syncHeaderCounts();
-
   updateCartSummary();
 };

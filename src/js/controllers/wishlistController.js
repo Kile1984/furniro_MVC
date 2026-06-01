@@ -14,6 +14,7 @@ export const preparaWishlistProduct = function () {
       image: p.images.main,
       title: p.title,
       price: formatPrice(getPrice(p.price).finalPrice),
+      stock: p.properties.stock,
     };
   });
 };
@@ -32,7 +33,6 @@ export const controlRemoveFromWishlist = function ({ dataset }) {
 };
 
 export const controlAddToCartFromWishlist = function ({ dataset }) {
-  console.log(dataset);
   model.addToCartItem(dataset.id);
   wishlistActions.removeFromWishlist(dataset.id);
   wishListView.removeWishlistItem(dataset.id);

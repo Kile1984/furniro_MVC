@@ -4,19 +4,28 @@ import { sprite, icons } from "../../../assets/icons/icons.js";
 export const createWishlistView = function () {
   return {
     removeWishlistItem(id) {
-      console.log(id);
       const wishlistItemEl = document.querySelector(
         `.wishlist-page__item[data-id="${id}"]`,
       );
-
-      console.log(wishlistItemEl);
 
       if (!wishlistItemEl) return;
 
       wishlistItemEl.remove();
     },
+
+    getStockWarning(stock) {
+      if (stock <= 2) {
+        return `<span class="wishlist-page__quantity-warning wishlist-page__quantity-warning--red">Only ${stock} left</span>`;
+      }
+
+      if (stock <= 5) {
+        return `<span class="wishlist-page__quantity-warning wishlist-page__quantity-warning--orange">Only ${stock} left</span>`;
+      }
+
+      return "";
+    },
+
     generateMarkup(data) {
-      console.log(data);
       return `
       <main class="page page--cart">
         <header class="page-hero mb-0">
@@ -62,8 +71,10 @@ export const createWishlistView = function () {
                       </div>
 
                       <div class="wishlist-page__price">
-                          <span class="wishlist-page__price-label">Price</span>
+                       
+                          ${this.getStockWarning(p.stock)}
                           <span> ${p.price}</span>
+                          
                       </div>
 
                       

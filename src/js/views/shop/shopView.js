@@ -1,9 +1,10 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
+import { productCardsView } from "../shared/productCardsView.js";
 
 export const createShopView = function (appEl) {
   return {
-    generateMarkup() {
+    generateMarkup(products) {
       return `
       <!-- PAGE HEADING SHOP -->
       <main class="page page--shop">
@@ -79,7 +80,7 @@ export const createShopView = function (appEl) {
             </h2>
             
               <div class="products__grid">
-                Java script render products
+                 ${productCardsView.generateMarkup(products)}
                  <button class="btn btn--secondary products__btn-load-more">
                   Show More
                   </button>

@@ -3,21 +3,8 @@ import { state } from "../state/state.js";
 import { getProducts } from "../services/productsServices.js";
 import { cartActions } from "../state/actions/cartActions.js";
 import { productsActions } from "../state/actions/productsActions.js";
-import { productCardsView } from "../views/shared/productCardsView.js";
-import { syncHeaderCounts } from "./headerController.js";
+import { updateProductCartUI } from "../shared/productCardsUI.js";
 import { getPrice } from "../utils/getPrice.js";
-
-const updateProductCartUI = function (id) {
-  const cartItem = cartActions.getCartItemById(id);
-
-  productCardsView.updateCartButton({
-    id,
-    quantity: cartItem?.quantity || 0,
-    stock: cartItem?.properties.stock,
-    isDisabled: cartItem?.quantity >= cartItem?.properties.stock,
-  });
-  syncHeaderCounts();
-};
 
 export const loadProducts = async function () {
   const products = await getProducts();
@@ -26,21 +13,20 @@ export const loadProducts = async function () {
 
 export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
-  updateProductCartUI(dataset.id);
 
-  syncHeaderCounts();
+  updateProductCartUI(dataset.id);
 };
 
 export const controlIncrement = function ({ dataset }) {
   model.incrementCartItem(dataset.id);
+
   updateProductCartUI(dataset.id);
-  syncHeaderCounts();
 };
 
 export const controlDecrement = function ({ dataset }) {
   model.decrementCartItem(dataset.id);
+
   updateProductCartUI(dataset.id);
-  syncHeaderCounts();
 };
 
 export const preparedHomeProducts = function () {
