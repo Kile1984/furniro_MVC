@@ -1,32 +1,12 @@
-import * as model from "../model/model.js";
 import { state } from "../state/state.js";
 import { getProducts } from "../services/productsServices.js";
 import { cartActions } from "../state/actions/cartActions.js";
 import { productsActions } from "../state/actions/productsActions.js";
-import { updateProductCartUI } from "../shared/productCardsUI.js";
 import { getPrice } from "../utils/getPrice.js";
 
 export const loadProducts = async function () {
   const products = await getProducts();
   productsActions.setProducts(products);
-};
-
-export const controlAddToCart = function ({ dataset }) {
-  model.addToCartItem(dataset.id);
-
-  updateProductCartUI(dataset.id);
-};
-
-export const controlIncrement = function ({ dataset }) {
-  model.incrementCartItem(dataset.id);
-
-  updateProductCartUI(dataset.id);
-};
-
-export const controlDecrement = function ({ dataset }) {
-  model.decrementCartItem(dataset.id);
-
-  updateProductCartUI(dataset.id);
 };
 
 export const preparedHomeProducts = function () {

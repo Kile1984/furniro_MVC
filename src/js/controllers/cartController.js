@@ -12,6 +12,24 @@ const updateCartSummary = function () {
   cartView.updateTotals(summary);
 };
 
+const updateCartItemUI = function (id) {
+  const product = cartActions.getCartItemById(id);
+
+  cartView.updateIncrementButtonState({
+    id,
+    isDisabled: product.quantity >= product.properties.stock,
+  });
+
+  cartView.updateQuantityValue({ id, quantity: product.quantity });
+  cartView.updateCartSubtotal(
+    id,
+    formatPrice(model.getCartProductSubtotal(id)),
+  );
+
+  syncHeaderCounts();
+  updateCartSummary();
+};
+
 export const preparedCartProducts = function () {
   const products = state.cart.map((product) => {
     const price = getPrice(product.price);
@@ -35,22 +53,7 @@ export const preparedCartProducts = function () {
 export const controlIncrement = function ({ dataset }) {
   model.incrementCartItem(dataset.id);
 
-  const product = cartActions.getCartItemById(dataset.id);
-  if (!product) return;
-
-  cartView.updateIncrementButtonState({
-    id: dataset.id,
-    isDisabled: product.quantity >= product.properties.stock,
-  });
-
-  cartView.updateQuantityValue({ id: dataset.id, quantity: product.quantity });
-  cartView.updateCartSubtotal(
-    dataset.id,
-    formatPrice(model.getCartProductSubtotal(dataset.id)),
-  );
-
-  syncHeaderCounts();
-  updateCartSummary();
+  updateCartItemUI(dataset.id);
 };
 
 export const controlDecrement = function ({ dataset }) {
@@ -65,19 +68,7 @@ export const controlDecrement = function ({ dataset }) {
     return;
   }
 
-  cartView.updateIncrementButtonState({
-    id: dataset.id,
-    isDisabled: product.quantity >= product.properties.stock,
-  });
-
-  cartView.updateQuantityValue({ id: dataset.id, quantity: product.quantity });
-  cartView.updateCartSubtotal(
-    dataset.id,
-    formatPrice(model.getCartProductSubtotal(dataset.id)),
-  );
-
-  syncHeaderCounts();
-  updateCartSummary();
+  updateCartItemUI(dataset.id);
 };
 
 export const controlRemoveFromCart = function ({ dataset }) {

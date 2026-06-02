@@ -1,11 +1,11 @@
-import * as homeController from "./homeController.js";
 import * as cartController from "./cartController.js";
 import * as wishlistController from "./wishlistController.js";
+import * as productController from "./productController.js";
 
-export const homeEventActions = {
-  "add-to-cart": homeController.controlAddToCart,
-  "qt-increment": homeController.controlIncrement,
-  "qt-decrement": homeController.controlDecrement,
+export const productEventActions = {
+  "add-to-cart": productController.controlAddToCart,
+  "qt-increment": productController.controlIncrement,
+  "qt-decrement": productController.controlDecrement,
   "add-to-wishlist": wishlistController.controlAddToWishlist,
   "remove-from-wishlist": wishlistController.controlRemoveFromWishlist,
 };

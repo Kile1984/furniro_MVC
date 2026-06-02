@@ -74,7 +74,6 @@ export const createCartView = function () {
       const btn = document.querySelector(
         `.cart-page__quantity-btn--increment[data-id="${id}"]`,
       );
-      console.log(isDisabled);
       btn.classList.toggle("cart-page__quantity-btn--disabled", isDisabled);
     },
 

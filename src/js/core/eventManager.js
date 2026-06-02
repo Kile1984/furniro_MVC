@@ -1,5 +1,5 @@
 import { state } from "../state/state.js";
-import { homeEventActions } from "../controllers/eventControllers.js";
+import { productEventActions } from "../controllers/eventControllers.js";
 import { cartEventActions } from "../controllers/eventControllers.js";
 import { wishlistEventActions } from "../controllers/eventControllers.js";
 import { controlUpdateInputField } from "../controllers/cartController.js";
@@ -18,28 +18,18 @@ export const initEventManager = function () {
     const action = target.dataset.action;
     const source = state.currentRoute;
 
-    if (source === "home") {
-      homeEventActions[action]?.({
-        target: target,
-        dataset: target.dataset,
-        source,
-      });
-    }
+    const eventMap = {
+      home: productEventActions,
+      shop: productEventActions,
+      cart: cartEventActions,
+      wishlist: wishlistEventActions,
+    };
 
-    if (source === "cart") {
-      cartEventActions[action]?.({
-        target: target,
-        dataset: target.dataset,
-        source,
-      });
-    }
-
-    if (source === "wishlist") {
-      wishlistEventActions[action]?.({
-        target,
-        dataset: target.dataset,
-      });
-    }
+    eventMap[source]?.[action]?.({
+      target: target,
+      dataset: target.dataset,
+      source,
+    });
   }
 
   function handleInput(e) {
