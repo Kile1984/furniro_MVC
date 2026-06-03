@@ -33,6 +33,8 @@ export const cartActions = {
   incrementQuantity(id) {
     const product = state.cart.find((p) => p.id === id);
 
+    if (!product) return;
+
     if (product.quantity >= product.properties.stock) return;
 
     product.quantity++;
@@ -42,6 +44,8 @@ export const cartActions = {
 
   decrementQuantity(id) {
     const product = state.cart.find((p) => p.id === id);
+
+    if (!product) return;
 
     if (product.quantity !== 0) {
       product.quantity--;

@@ -10,10 +10,14 @@ export const loadProducts = async function () {
 };
 
 export const preparedHomeProducts = function () {
+  const cartMap = new Map(state.cart.map((item) => [item.id, item]));
+  const wishlistIds = new Set(state.wishlist.map((item) => item.id));
+
   return state.products.map((product) => {
     const price = getPrice(product.price);
 
-    const cartItem = cartActions.getCartItemById(product.id);
+    const cartItem = cartMap.get(product.id);
+
     return {
       id: product.id,
       title: product.title,
@@ -26,7 +30,7 @@ export const preparedHomeProducts = function () {
       hasDiscount: price.hasDiscount,
       quantity: cartItem?.quantity || 0,
       stock: product.properties.stock,
-      isInWishlist: state.wishlist.some((p) => p.id === product.id),
+      isInWishlist: wishlistIds.has(product.id),
     };
   });
 };

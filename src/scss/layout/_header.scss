@@ -124,10 +124,13 @@
   &__actions-list {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 2.8rem;
+    position: relative;
 
     a {
       display: flex;
+      align-items: center;
     }
 
     @include respond(desktop) {
@@ -143,6 +146,31 @@
   &__wishlist-item,
   &__cart-item {
     position: relative;
+  }
+
+  &__search-item {
+    display: flex;
+  }
+
+  &__search-input {
+    border-radius: 5px;
+    border: 1px solid var(--color-accent);
+    margin-right: 0.5rem;
+    padding-inline-start: 0.5rem;
+
+    position: absolute;
+    // opacity: 0;
+    // left: 0;
+    transition: all 0.5s;
+    // z-index: -1;
+
+    left: -150px;
+
+    &--open {
+      opacity: 1;
+      left: -150px;
+      z-index: 1;
+    }
   }
 
   &__count,

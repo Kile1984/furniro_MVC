@@ -84,7 +84,7 @@ export const controlRemoveFromCart = function ({ dataset }) {
   updateCartSummary();
 };
 
-export const controlUpdateInputField = function (id, value) {
+export const controlUpdateInputField = function ({ id, value }) {
   const product = cartActions.getCartItemById(id);
 
   if (value === "") return;

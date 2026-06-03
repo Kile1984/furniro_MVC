@@ -83,6 +83,8 @@
     color: var(--color-accent);
     background-color: var(--color-white);
     margin-bottom: 1.8rem;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   &__btn {

@@ -153,6 +153,7 @@ export const createCartView = function () {
                             value=${p.quantity}
                             class="cart-page__quantity-input"
                             data-id=${p.id}
+                             data-input="quantity"
                         />
 
                         <button
