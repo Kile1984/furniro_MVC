@@ -100,7 +100,7 @@ export const createProductCardsView = function () {
               }
               </div>
               
-                <a href="product.html" class="btn  product-card__view">
+                <a href="#/product/${p.id}" class="btn  product-card__view">
                   <svg class="icon">
                       <use href="${sprite}#${icons.eye}"></use>
                   </svg>

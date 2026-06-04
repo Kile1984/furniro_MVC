@@ -7,6 +7,7 @@ import { createReturnsView } from "./returns/returnsView.js";
 import { createPolicyView } from "./policy/policyView.js";
 import { createCartView } from "./cart/cartView.js";
 import { createWishlistView } from "./wishlist/wishlistView.js";
+import { createSingleProductView } from "./singleProductView.js";
 
 export const views = {
   home: createHomeView(),
@@ -18,4 +19,5 @@ export const views = {
   policy: createPolicyView(),
   cart: createCartView(),
   wishlist: createWishlistView(),
+  product: createSingleProductView(),
 };
