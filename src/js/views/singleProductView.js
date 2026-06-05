@@ -26,14 +26,16 @@ export const createSingleProductView = function () {
             <!-- GALLERY -->
             <section class="product__gallery">
               <div class="product__gallery-thumbnails">
-              ${product.images.gallery.map((img) => {
-                return `
+              ${product.images.gallery
+                .map((img) => {
+                  return `
                  <img
                   src="${img}"
                   alt="${product.title}"
                 />
                 `;
-              })}
+                })
+                .join("")}
                
               </div>
 
@@ -73,38 +75,19 @@ export const createSingleProductView = function () {
                 </div>
 
                 <div class="product__review-text">
-                  <span class="product__review-count">5</span>
-                  <span class="product__review-label">Customer Reviews</span>
+                  <span class="product__review-count">${product.reviews.length}</span>
+                  <span class="product__review-label">${product.reviews.length < 2 ? "Customer Review" : "Customer Reviews"}</span>
                 </div>
               </div>
 
               <!-- description -->
+               <p class="product__description-short text-xs">
+                ${product.longDescription.introduction}
+              </p>
               <p class="product__description-short text-xs">
-                ${product.shortDescription}
+                ${product.longDescription.paragraphs}
               </p>
 
-              <!-- size -->
-              <div class="product__size">
-                <p class="product__label">Size</p>
-                <div class="product__size-options">
-                  <label class="product__size-option product__size-option--s">
-                    <input type="radio" name="size" value="s" />
-                    <span class="product__size-label">S</span>
-                  </label>
-
-                  <label class="product__size-option product__size-option--l">
-                    <input type="radio" name="size" value="l" />
-
-                    <span class="product__size-label">L</span>
-                  </label>
-
-                  <label class="product__size-option product__size-option--xl">
-                    <input type="radio" name="size" value="xl" />
-
-                    <span class="product__size-label">XL</span>
-                  </label>
-                </div>
-              </div>
               <!-- quantity -->
               <div class="product__actions">
                 <div class="product__quantity">
@@ -147,7 +130,7 @@ export const createSingleProductView = function () {
               <div class="product__meta-item">
                 <dt class="product__meta-label">SKU</dt>
                 <dd>:</dd>
-                <dd class="product__meta-value">SS001</dd>
+                <dd class="product__meta-value">${product.properties.modelNumber}</dd>
               </div>
 
               <div class="product__meta-item">
@@ -162,8 +145,14 @@ export const createSingleProductView = function () {
                 <dt class="product__meta-label">Tags</dt>
                 <dd>:</dd>
                 <dd>
-                  <a href="#" class="product__meta-link">${product.category}</a>
-                 
+                ${product.tags
+                  .map((tag) => {
+                    return `<a href="#" class="product__meta-link">
+                        ${tag},
+                      </a>`;
+                  })
+                  .join("")}
+                                  
                 </dd>
               </div>
 
@@ -171,19 +160,19 @@ export const createSingleProductView = function () {
                 <dt class="product__meta-label">Share</dt>
                 <dd>:</dd>
                 <dd class="product__meta-icons">
-                  <a href="#" class="product__meta-link">
+                  <a href="https://www.facebook.com/ilija.zikic.1?locale=sr_RS" class="product__meta-link">
                     <svg class="icon product__icon">
-                      <use href="/assets/icons/sprite.svg#icon-facebook2"></use>
+                      <use href="${sprite}#${icons.facebook}"></use>
                     </svg>
                   </a>
-                  <a href="#" class="product__meta-link">
+                  <a href="https://x.com/ilija_zikic" class="product__meta-link">
                     <svg class="icon product__icon">
-                      <use href="/assets/icons/sprite.svg#icon-twitter"></use>
+                      <use href="${sprite}#${icons.twitter}"></use>
                     </svg>
                   </a>
-                  <a href="#" class="product__meta-link">
+                  <a href="https://www.linkedin.com/in/ilija-zikic-640902167/" class="product__meta-link">
                     <svg class="icon product__icon">
-                      <use href="/assets/icons/sprite.svg#icon-linkedin"></use>
+                      <use href="${sprite}#${icons.linkedin}"></use>
                     </svg>
                   </a>
                 </dd>
@@ -214,57 +203,98 @@ export const createSingleProductView = function () {
                 type="button"
                 class="product-tabs__btn ui-title ui-title--light"
               >
-                Reviews [<span class="prodict-tab__count">5</span>]
+                Reviews [<span class="prodict-tab__count">${product.reviews.length}</span>]
               </button>
             </div>
 
             <div class="product-tabs__content">
-              <div class="product-tabs__panel product-tabs__panel--active">
+              <div class="product-tabs__panel product-tabs__panel--description product-tabs__panel--active">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Delectus molestias, quibusdam ea dicta ducimus repudiandae
-                  eaque obcaecati quis illum inventore autem, accusantium neque
-                  laborum adipisci.
-                </p>
-                <p>
-                  Quibusdam autem unde iure dignissimos! Ab facilis praesentium
-                  sed dolor error cupiditate iure voluptatum eaque dolorem,
-                  maxime natus unde eveniet reiciendis, voluptates quibusdam
-                  blanditiis autem doloribus quam assumenda nam rem
-                  necessitatibus. Libero deleniti aliquam vel?
+                 ${product.longDescription.paragraphs}
                 </p>
               </div>
 
-              <div class="product-tabs__panel">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Delectus molestias, quibusdam ea dicta ducimus repudiandae
-                  eaque obcaecati quis illum inventore autem, accusantium neque
-                  laborum adipisci.
-                </p>
-                <p>
-                  Quibusdam autem unde iure dignissimos! Ab facilis praesentium
-                  sed dolor error cupiditate iure voluptatum eaque dolorem,
-                  maxime natus unde eveniet reiciendis, voluptates quibusdam
-                  blanditiis autem doloribus quam assumenda nam rem
-                  necessitatibus. Libero deleniti aliquam vel?
-                </p>
+              <div class="product-tabs__panel product-tabs__panel--additional ">
+               
+                <table>
+                  <tr>
+                    <td>Sales Package:</td>
+                    <td>${product.properties.salesPackage}</td>
+                  </tr>
+
+                  ${
+                    product.properties.primaryMaterial
+                      ? `<tr>
+                      <td>Primary Material:</td>
+                      <td>${product.properties.primaryMaterial}</td>
+                    </tr>`
+                      : ""
+                  }
+
+                   ${
+                     product.properties.maximumLoadCapacity
+                       ? `<tr>
+                      <td>Maximum load capacity:</td>
+                      <td>${product.properties.maximumLoadCapacity}</td>
+                    </tr>`
+                       : ""
+                   }
+
+
+                    ${
+                      product.properties.dimensions
+                        ? `<tr>
+                      <td>Width:</td>
+                      <td>
+                        ${product.properties.dimensions.width}
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                    <td>Height</td>
+                      <td>
+                        ${product.properties.dimensions.height}
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td>Depth</td>
+                      <td>
+                      ${product.properties.dimensions.depth}
+                      </td>
+                    </tr>
+
+                      <tr>
+                      <td>Weight</td>
+                      <td>
+                      ${product.properties.dimensions.weight}
+                      </td>
+                    </tr>
+                    `
+                        : ""
+                    }
+                 
+                </table>
               </div>
 
-              <div class="product-tabs__panel">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Delectus molestias, quibusdam ea dicta ducimus repudiandae
-                  eaque obcaecati quis illum inventore autem, accusantium neque
-                  laborum adipisci.
-                </p>
-                <p>
-                  Quibusdam autem unde iure dignissimos! Ab facilis praesentium
-                  sed dolor error cupiditate iure voluptatum eaque dolorem,
-                  maxime natus unde eveniet reiciendis, voluptates quibusdam
-                  blanditiis autem doloribus quam assumenda nam rem
-                  necessitatibus. Libero deleniti aliquam vel?
-                </p>
+              <div class="product-tabs__panel product-tabs__panel--reviews ">
+              ${product.reviews
+                .map((r) => {
+                  return `
+                  <div class="review">
+                    <div class="review__header">
+                      <h4 class="review__author">[${r.rating}] ${r.author} </h4>
+                    </div>
+
+                    <div class="review__date">${r.date}</div>
+
+                    <div class="review__comment">
+                      <i>${r.comment}</i>
+                    </div>
+                </div>
+                `;
+                })
+                .join("")}
               </div>
             </div>
           </div>

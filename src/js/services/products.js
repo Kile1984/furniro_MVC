@@ -251,6 +251,38 @@ export const products = [
 
     shortDescription: "Soft comfort",
 
+    longDescription: {
+      introduction:
+        "Aurelia chair combines modern design with everyday comfort.",
+
+      paragraphs: [
+        "Crafted from premium fabric and solid wood for durability and style.",
+        "The ergonomic seat provides excellent comfort for daily use.",
+        "Perfect for dining rooms, home offices, and contemporary interiors.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Modern", "Wood", "Fabric"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "John D.",
+        rating: 5,
+        date: "2026-01-12",
+        comment: "Very comfortable and looks amazing in my dining room.",
+      },
+      {
+        id: "r2",
+        author: "Emma R.",
+        rating: 4,
+        date: "2026-02-03",
+        comment: "Good quality chair. Assembly was quick and easy.",
+      },
+    ],
+
     properties: {
       salesPackage: "1 Chair",
       modelNumber: "CHR-AUR-01",
@@ -300,6 +332,37 @@ export const products = [
     },
 
     shortDescription: "Minimal form",
+    longDescription: {
+      introduction:
+        "Nordic chair blends Scandinavian simplicity with practical comfort.",
+
+      paragraphs: [
+        "Its clean lines and oak frame fit perfectly into modern interiors.",
+        "Soft upholstery provides support during long sitting sessions.",
+        "Designed to bring elegance and functionality to everyday living.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Scandinavian", "Oak", "Minimal"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Michael T.",
+        rating: 5,
+        date: "2026-02-15",
+        comment: "Excellent quality and beautiful design.",
+      },
+      {
+        id: "r2",
+        author: "Sarah W.",
+        rating: 4,
+        date: "2026-03-01",
+        comment: "Comfortable and easy to match with other furniture.",
+      },
+    ],
 
     properties: {
       salesPackage: "1 Chair",
@@ -350,6 +413,30 @@ export const products = [
     },
 
     shortDescription: "Curved design",
+    longDescription: {
+      introduction:
+        "Lunara chair features elegant curves and exceptional comfort.",
+
+      paragraphs: [
+        "Designed with attention to detail and premium materials.",
+        "The curved silhouette creates a unique visual identity.",
+        "Suitable for both modern homes and commercial spaces.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Curved", "Elegant", "Fabric"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Daniel P.",
+        rating: 5,
+        date: "2026-01-28",
+        comment: "Stylish and surprisingly comfortable.",
+      },
+    ],
 
     properties: {
       salesPackage: "1 Chair",
@@ -401,6 +488,31 @@ export const products = [
 
     shortDescription: "Modern elegance",
 
+    longDescription: {
+      introduction:
+        "Velora brings luxury aesthetics and premium seating comfort.",
+
+      paragraphs: [
+        "Soft velvet upholstery creates a sophisticated appearance.",
+        "Built with durable materials for long-term performance.",
+        "An ideal centerpiece for elegant dining areas.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Velvet", "Luxury", "Modern"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Jessica M.",
+        rating: 5,
+        date: "2026-04-11",
+        comment: "Absolutely beautiful and very comfortable.",
+      },
+    ],
+
     properties: {
       salesPackage: "1 Chair",
       modelNumber: "CHR-VEL-04",
@@ -450,6 +562,31 @@ export const products = [
     },
 
     shortDescription: "Clean lines",
+
+    longDescription: {
+      introduction:
+        "Arden chair offers timeless simplicity and reliable comfort.",
+
+      paragraphs: [
+        "Clean lines make it suitable for various interior styles.",
+        "Built from durable materials and easy to maintain.",
+        "A practical choice for everyday dining use.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Minimal", "Oak", "Dining"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Chris L.",
+        rating: 4,
+        date: "2026-02-10",
+        comment: "Simple, practical, and comfortable.",
+      },
+    ],
 
     properties: {
       salesPackage: "1 Chair",
@@ -504,6 +641,30 @@ export const products = [
     },
 
     shortDescription: "Solid wood",
+    longDescription: {
+      introduction:
+        "Valen dining table is crafted from solid oak for lasting durability.",
+
+      paragraphs: [
+        "The spacious tabletop comfortably seats family and guests.",
+        "Its timeless design complements both modern and classic interiors.",
+        "Built to withstand everyday dining and entertaining.",
+      ],
+    },
+
+    sizes: ["140 cm", "160 cm", "180 cm"],
+
+    tags: ["Table", "Dining", "Oak", "Family"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Anna K.",
+        rating: 5,
+        date: "2026-01-18",
+        comment: "Beautiful craftsmanship and very sturdy.",
+      },
+    ],
 
     properties: {
       salesPackage: "1 Table",
@@ -554,6 +715,31 @@ export const products = [
     },
 
     shortDescription: "Nordic dining",
+
+    longDescription: {
+      introduction:
+        "Norvik offers Scandinavian dining style with practical dimensions.",
+
+      paragraphs: [
+        "Perfect for smaller dining rooms and apartments.",
+        "Oak veneer finish adds warmth and elegance.",
+        "Easy to integrate into modern interior designs.",
+      ],
+    },
+
+    sizes: ["120 cm", "140 cm", "160 cm"],
+
+    tags: ["Table", "Scandinavian", "Dining", "Oak"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "David R.",
+        rating: 5,
+        date: "2026-03-05",
+        comment: "Perfect size for our apartment.",
+      },
+    ],
 
     properties: {
       salesPackage: "1 Table",
@@ -609,6 +795,31 @@ export const products = [
 
     shortDescription: "Luxury sofa",
 
+    longDescription: {
+      introduction:
+        "Lioro sofa combines luxurious comfort with contemporary design.",
+
+      paragraphs: [
+        "Generous seating and premium upholstery create a relaxing experience.",
+        "The solid wood frame ensures long-lasting durability.",
+        "Ideal for modern living rooms and family spaces.",
+      ],
+    },
+
+    sizes: ["2 Seater", "3 Seater", "4 Seater"],
+
+    tags: ["Sofa", "Luxury", "Comfort", "Living Room"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Mark H.",
+        rating: 5,
+        date: "2026-01-25",
+        comment: "Extremely comfortable and looks fantastic.",
+      },
+    ],
+
     properties: {
       salesPackage: "1 Sofa",
       modelNumber: "SFA-LIO-01",
@@ -659,6 +870,30 @@ export const products = [
     },
 
     shortDescription: "Deep comfort",
+
+    longDescription: {
+      introduction: "Velmont sofa delivers deep comfort and modern aesthetics.",
+
+      paragraphs: [
+        "Designed for everyday relaxation and family gatherings.",
+        "Soft upholstery and supportive cushions enhance comfort.",
+        "A versatile piece that fits a wide range of interiors.",
+      ],
+    },
+
+    sizes: ["2 Seater", "3 Seater", "4 Seater"],
+
+    tags: ["Sofa", "Comfort", "Modern", "Family"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Olivia B.",
+        rating: 5,
+        date: "2026-04-08",
+        comment: "Very comfortable and excellent value.",
+      },
+    ],
 
     properties: {
       salesPackage: "1 Sofa",

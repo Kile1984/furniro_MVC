@@ -10,6 +10,10 @@ export const prepareSinglProduct = function () {
 
   const product = productsActions.getProductById(id);
 
+  const reviewsCount = product.reviews.length;
+  const averageRating = product.review.ratings;
+  console.log(averageRating);
+
   return {
     ...product,
     finalPrice: formatPrice(getPrice(product.price).finalPrice),
