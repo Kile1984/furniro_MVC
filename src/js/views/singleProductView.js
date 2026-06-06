@@ -2,8 +2,30 @@ import { sprite, icons } from "../../assets/icons/icons.js";
 
 export const createSingleProductView = function () {
   return {
+    generateStars(stars) {
+      const fullStars = Math.round(stars);
+      const emptyStars = 5 - fullStars;
+
+      const fullStarSvg = `
+                  <svg class="icon product__icon-star">
+                    <use href="${sprite}#${icons.star_full}"></use>
+                  </svg>`;
+      const emptyStarSvg = `
+                  <svg class="icon product__icon-star">
+                    <use href="${sprite}#${icons.star_empty}"></use>
+                  </svg>
+      `;
+
+      return fullStarSvg.repeat(fullStars) + emptyStarSvg.repeat(emptyStars);
+    },
+
+    generateQuantity(quantity) {
+      console.log(quantity);
+    },
+
     generateMarkup(product) {
       console.log(product);
+
       return `
     
       <main class="page page--product">
@@ -57,21 +79,7 @@ export const createSingleProductView = function () {
               <!-- rating -->
               <div class="product__rating" aria-label="Rated 4 out of 5 stars">
                 <div class="product__stars" aria-hidden="true">
-                  <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_full}"></use>
-                  </svg>
-                   <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_full}"></use>
-                  </svg>
-                   <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_full}"></use>
-                  </svg>
-                   <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_full}"></use>
-                  </svg>
-                   <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_empty}"></use>
-                  </svg>
+                  ${this.generateStars(product.averageRating)}
                 </div>
 
                 <div class="product__review-text">
@@ -95,6 +103,7 @@ export const createSingleProductView = function () {
                     type="button"
                     class="btn product__quantity-btn product__quantity-btn--decrement"
                     data-action="decrement"
+                    data-id=${product.id}
                   >
                     -
                   </button>
@@ -102,24 +111,26 @@ export const createSingleProductView = function () {
                   <input
                     type="number"
                     min="1"
-                    value="1"
+                    value=${product.quantity}
                     id="quantity"
                     class="product__quantity-input"
+                     data-input="quantity"
+                     data-id=${product.id}
                   />
 
                   <button
                     type="button"
                     class="btn product__quantity-btn product__quantity-btn--increment"
                     data-action="increment"
-                    data-input="quantity"
+                    data-id=${product.id}
                   >
                     +
                   </button>
                 </div>
-                <button type="button" class="btn product__add-to-cart" data-action="add-to-cart">
+                <button type="button" class="btn product__add-to-cart" data-action="add-to-cart" data-id=${product.id}>
                   Add To Cart
                 </button>
-                <button type="button" class="btn product__compare" data-action="compare">
+                <button type="button" class="btn product__compare" data-action="compare" data-id=${product.id}>
                   <span>+</span> Compare
                 </button>
               </div>

@@ -34,6 +34,8 @@ export const initEventManager = function () {
     const action = target.dataset.action;
     const source = state.currentRoute;
 
+    console.log(action);
+
     eventMap[source]?.[action]?.({
       target: target,
       dataset: target.dataset,

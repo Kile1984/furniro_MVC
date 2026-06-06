@@ -270,7 +270,7 @@ export const products = [
       {
         id: "r1",
         author: "John D.",
-        rating: 5,
+        rating: 3,
         date: "2026-01-12",
         comment: "Very comfortable and looks amazing in my dining room.",
       },
@@ -432,7 +432,7 @@ export const products = [
       {
         id: "r1",
         author: "Daniel P.",
-        rating: 5,
+        rating: 2,
         date: "2026-01-28",
         comment: "Stylish and surprisingly comfortable.",
       },
@@ -507,7 +507,7 @@ export const products = [
       {
         id: "r1",
         author: "Jessica M.",
-        rating: 5,
+        rating: 3,
         date: "2026-04-11",
         comment: "Absolutely beautiful and very comfortable.",
       },
@@ -889,7 +889,7 @@ export const products = [
       {
         id: "r1",
         author: "Olivia B.",
-        rating: 5,
+        rating: 2,
         date: "2026-04-08",
         comment: "Very comfortable and excellent value.",
       },

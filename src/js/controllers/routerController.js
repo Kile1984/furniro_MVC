@@ -3,6 +3,10 @@ import { renderApp } from "../core/render.js";
 import { state } from "../state/state.js";
 
 export const controlRoutes = function () {
+  document.documentElement.style.scrollBehavior = "auto";
+  document.documentElement.scrollTop = 0;
+  document.documentElement.style.scrollBehavior = "";
+
   const hash = window.location.hash.slice(1) || "/";
   const route = hash === "/" ? "/" : "/" + hash.split("/")[1];
 
