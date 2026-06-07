@@ -184,9 +184,16 @@
 
   &__quantity-btn {
     padding: 0.5rem;
+    opacity: 1;
+    pointer-events: auto;
 
     &:hover {
       transform: scale(1.3);
+    }
+
+    &.disabled {
+      opacity: 0.3;
+      pointer-events: none;
     }
   }
 

@@ -3,8 +3,8 @@ import { productsActions } from "../state/actions/productsActions";
 import { cartActions } from "../state/actions/cartActions.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
-
-export const controlSingleProduct = function () {};
+import { singleProductActions } from "../state/actions/singleProductActions.js";
+import { singleProductView } from "../views/singleProductView.js";
 
 export const prepareSinglProduct = function () {
   const [, , id] = window.location.hash.split("/");
@@ -38,14 +38,31 @@ export const prepareSinglProduct = function () {
   };
 };
 
-const controlIncrement = function (id) {
-  console.log(id);
+const controlUpdateQuantity = function (target, id, action) {
+  const input = target
+    .closest(".product__quantity")
+    .querySelector(".product__quantity-input");
+
+  const value = Number(input.value);
+
+  const quantityData = action(id, value);
+
+  singleProductView.updateQuantity(input, quantityData);
+  singleProductView.updateProductQuantityButtons(quantityData, target, id);
 };
 
-const controlDecrement = function (id) {
-  console.log(id);
+export const controlIncrement = function ({ target, dataset }) {
+  controlUpdateQuantity(
+    target,
+    dataset.id,
+    singleProductActions.incrementQuantity,
+  );
 };
 
-const controlCompare = function (id) {
-  console.log(id);
+export const controlDecrement = function ({ target, dataset }) {
+  controlUpdateQuantity(
+    target,
+    dataset.id,
+    singleProductActions.decrementQuantity,
+  );
 };

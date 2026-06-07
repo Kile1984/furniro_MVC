@@ -1,6 +1,7 @@
 import * as cartController from "./cartController.js";
 import * as wishlistController from "./wishlistController.js";
 import * as productController from "./productController.js";
+import * as singleProductController from "./singleProductController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -19,4 +20,9 @@ export const cartEventActions = {
 export const wishlistEventActions = {
   "add-to-cart": wishlistController.controlAddToCartFromWishlist,
   "remove-from-wishlist": wishlistController.controlRemoveFromWishlist,
+};
+
+export const singleProductEventActions = {
+  "qt-increment": singleProductController.controlIncrement,
+  "qt-decrement": singleProductController.controlDecrement,
 };

@@ -19,8 +19,32 @@ export const createSingleProductView = function () {
       return fullStarSvg.repeat(fullStars) + emptyStarSvg.repeat(emptyStars);
     },
 
-    generateQuantity(quantity) {
-      console.log(quantity);
+    updateQuantity(input, { newValue, stock }) {
+      input.value = newValue;
+    },
+
+    updateProductQuantityButtons({ newValue, stock }, btn, id) {
+      const quantityEl = btn.closest(".product__quantity");
+      const incrementBtn = quantityEl.querySelector(
+        `[data-action="qt-increment"]`,
+      );
+      const decrementBtn = quantityEl.querySelector(
+        `[data-action="qt-decrement"]`,
+      );
+
+      if (newValue === 1) {
+        incrementBtn.classList.remove("disabled");
+        decrementBtn.classList.add("disabled");
+        return;
+      }
+
+      if (newValue === stock) {
+        incrementBtn.classList.add("disabled");
+        decrementBtn.classList.remove("disabled");
+        return;
+      }
+      incrementBtn.classList.remove("disabled");
+      decrementBtn.classList.remove("disabled");
     },
 
     generateMarkup(product) {
@@ -101,8 +125,8 @@ export const createSingleProductView = function () {
                 <div class="product__quantity">
                   <button
                     type="button"
-                    class="btn product__quantity-btn product__quantity-btn--decrement"
-                    data-action="decrement"
+                    class="btn product__quantity-btn product__quantity-btn--decrement ${product.quantity === 1 ? "disabled" : ""}"
+                    data-action="qt-decrement"
                     data-id=${product.id}
                   >
                     -
@@ -120,8 +144,8 @@ export const createSingleProductView = function () {
 
                   <button
                     type="button"
-                    class="btn product__quantity-btn product__quantity-btn--increment"
-                    data-action="increment"
+                    class="btn product__quantity-btn product__quantity-btn--increment ${product.quantity === product.properties.stock ? "disabled" : ""}"
+                    data-action="qt-increment"
                     data-id=${product.id}
                   >
                     +
@@ -567,3 +591,5 @@ export const createSingleProductView = function () {
     },
   };
 };
+
+export const singleProductView = createSingleProductView();

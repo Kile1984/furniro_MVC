@@ -3,6 +3,7 @@ import { productEventActions } from "../controllers/eventControllers.js";
 import { cartEventActions } from "../controllers/eventControllers.js";
 import { wishlistEventActions } from "../controllers/eventControllers.js";
 import { controlUpdateInputField } from "../controllers/cartController.js";
+import { singleProductEventActions } from "../controllers/eventControllers.js";
 import { constrolSearchInput } from "../controllers/searchController.js";
 
 export const initEventManager = function () {
@@ -18,11 +19,11 @@ export const initEventManager = function () {
     shop: productEventActions,
     cart: cartEventActions,
     wishlist: wishlistEventActions,
+    product: singleProductEventActions,
   };
 
   const inputMap = {
     quantity: controlUpdateInputField,
-
     search: constrolSearchInput,
   };
 
@@ -33,8 +34,6 @@ export const initEventManager = function () {
 
     const action = target.dataset.action;
     const source = state.currentRoute;
-
-    console.log(action);
 
     eventMap[source]?.[action]?.({
       target: target,
