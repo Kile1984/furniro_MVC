@@ -66,3 +66,7 @@ export const controlDecrement = function ({ target, dataset }) {
     singleProductActions.decrementQuantity,
   );
 };
+
+export const controlUpdateInputField = function ({ target, id, value }) {
+  console.log(target, id, value);
+};

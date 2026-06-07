@@ -8,9 +8,6 @@ export const createCartView = function () {
       const inputEl = document.querySelector(
         `.cart-page__quantity-input[data-id="${id}"]`,
       );
-      inputEl.addEventListener("onchange", function () {
-        console.log(inputEl.value);
-      });
 
       inputEl.value = quantity;
     },
@@ -153,7 +150,7 @@ export const createCartView = function () {
                             value=${p.quantity}
                             class="cart-page__quantity-input"
                             data-id=${p.id}
-                             data-input="quantity"
+                             data-action="quantity"
                         />
 
                         <button

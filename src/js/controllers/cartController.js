@@ -113,9 +113,9 @@ export const controlUpdateInputField = function ({ id, value }) {
   if (quantity > product.properties.stock) return;
 
   cartActions.changeQuantity(id, quantity);
-
   cartView.updateInputValue(id, quantity);
 
+  updateCartItemUI(id);
   syncHeaderCounts();
   updateCartSummary();
 };

@@ -2,7 +2,7 @@ import { state } from "../state/state.js";
 import { productEventActions } from "../controllers/eventControllers.js";
 import { cartEventActions } from "../controllers/eventControllers.js";
 import { wishlistEventActions } from "../controllers/eventControllers.js";
-import { controlUpdateInputField } from "../controllers/cartController.js";
+
 import { singleProductEventActions } from "../controllers/eventControllers.js";
 import { constrolSearchInput } from "../controllers/searchController.js";
 
@@ -23,8 +23,8 @@ export const initEventManager = function () {
   };
 
   const inputMap = {
-    quantity: controlUpdateInputField,
-    search: constrolSearchInput,
+    cart: cartEventActions,
+    product: singleProductEventActions,
   };
 
   function handleClick(e) {
@@ -47,9 +47,14 @@ export const initEventManager = function () {
 
     if (!target) return;
 
-    const inputType = target.dataset.input;
+    const action = target.dataset.action;
+    const source = state.currentRoute;
 
-    inputMap[inputType]?.({
+    console.log(source);
+    console.log(action);
+    console.log(inputMap[source]);
+
+    inputMap[source]?.[action]?.({
       target,
       value: target.value,
       id: target.dataset.id,

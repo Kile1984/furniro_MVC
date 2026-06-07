@@ -19,7 +19,7 @@ export const createSingleProductView = function () {
       return fullStarSvg.repeat(fullStars) + emptyStarSvg.repeat(emptyStars);
     },
 
-    updateQuantity(input, { newValue, stock }) {
+    updateQuantity(input, { newValue }) {
       input.value = newValue;
     },
 
@@ -138,7 +138,7 @@ export const createSingleProductView = function () {
                     value=${product.quantity}
                     id="quantity"
                     class="product__quantity-input"
-                     data-input="quantity"
+                     data-action="quantity"
                      data-id=${product.id}
                   />
 
