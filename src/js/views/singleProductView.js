@@ -138,7 +138,7 @@ export const createSingleProductView = function () {
                     value=${product.quantity}
                     id="quantity"
                     class="product__quantity-input"
-                     data-action="quantity"
+                     data-input="quantity"
                      data-id=${product.id}
                   />
 

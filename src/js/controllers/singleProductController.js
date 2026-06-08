@@ -67,6 +67,39 @@ export const controlDecrement = function ({ target, dataset }) {
   );
 };
 
-export const controlUpdateInputField = function ({ target, id, value }) {
-  console.log(target, id, value);
+export const controlUpdateInputField = function ({ id, value }) {
+  console.log(id, value);
+  const product = productsActions.getCartItemById(id);
+
+  if (value === "") return;
+
+  // permits number
+  const isValidTyping = /^\d+$/.test(value);
+  if (!isValidTyping) return;
+
+  // converting to number
+  const quantity = Number(value);
+
+  // safty validation
+  if (Number.isNaN(quantity)) return;
+
+  // business validation
+  if (quantity < 1 || quantity > product.properties.stock) {
+    const currentQuantity = cartActions.getQuantity(id);
+    cartView.updateQuantityValue({ id, quantity: currentQuantity });
+    return;
+  }
+
+  // integer
+  if (!Number.isInteger(quantity)) return;
+
+  // optional max limit
+  if (quantity > product.properties.stock) return;
+
+  cartActions.changeQuantity(id, quantity);
+  cartView.updateInputValue(id, quantity);
+
+  updateCartItemUI(id);
+  syncHeaderCounts();
+  updateCartSummary();
 };

@@ -1,10 +1,13 @@
 import { state } from "../state/state.js";
-import { productEventActions } from "../controllers/eventControllers.js";
-import { cartEventActions } from "../controllers/eventControllers.js";
-import { wishlistEventActions } from "../controllers/eventControllers.js";
-
-import { singleProductEventActions } from "../controllers/eventControllers.js";
-import { constrolSearchInput } from "../controllers/searchController.js";
+import {
+  productEventActions,
+  cartEventActions,
+  wishlistEventActions,
+  singleProductEventActions,
+  cartInputActions,
+  singleProductInputActions,
+  searchInputActions,
+} from "../controllers/eventControllers.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
@@ -23,8 +26,8 @@ export const initEventManager = function () {
   };
 
   const inputMap = {
-    cart: cartEventActions,
-    product: singleProductEventActions,
+    cart: cartInputActions,
+    product: singleProductInputActions,
   };
 
   function handleClick(e) {
@@ -47,12 +50,8 @@ export const initEventManager = function () {
 
     if (!target) return;
 
-    const action = target.dataset.action;
+    const action = target.dataset.input;
     const source = state.currentRoute;
-
-    console.log(source);
-    console.log(action);
-    console.log(inputMap[source]);
 
     inputMap[source]?.[action]?.({
       target,
