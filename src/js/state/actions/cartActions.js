@@ -74,4 +74,10 @@ export const cartActions = {
 
     persistActions.save("cart", state.cart);
   },
+
+  updateInputQuantity(id, value) {
+    const product = this.getCartItemById(id);
+    const stock = product.properties.stock;
+    let newValue = value;
+  },
 };

@@ -47,8 +47,10 @@ const controlUpdateQuantity = function (target, id, action) {
 
   const quantityData = action(id, value);
 
+  console.log(input, value, quantityData);
+
   singleProductView.updateQuantity(input, quantityData);
-  singleProductView.updateProductQuantityButtons(quantityData, target, id);
+  singleProductView.updateProductQuantityButtons(quantityData, target);
 };
 
 export const controlIncrement = function ({ target, dataset }) {
@@ -67,39 +69,6 @@ export const controlDecrement = function ({ target, dataset }) {
   );
 };
 
-export const controlUpdateInputField = function ({ id, value }) {
-  console.log(id, value);
-  const product = productsActions.getCartItemById(id);
-
-  if (value === "") return;
-
-  // permits number
-  const isValidTyping = /^\d+$/.test(value);
-  if (!isValidTyping) return;
-
-  // converting to number
-  const quantity = Number(value);
-
-  // safty validation
-  if (Number.isNaN(quantity)) return;
-
-  // business validation
-  if (quantity < 1 || quantity > product.properties.stock) {
-    const currentQuantity = cartActions.getQuantity(id);
-    cartView.updateQuantityValue({ id, quantity: currentQuantity });
-    return;
-  }
-
-  // integer
-  if (!Number.isInteger(quantity)) return;
-
-  // optional max limit
-  if (quantity > product.properties.stock) return;
-
-  cartActions.changeQuantity(id, quantity);
-  cartView.updateInputValue(id, quantity);
-
-  updateCartItemUI(id);
-  syncHeaderCounts();
-  updateCartSummary();
+export const controlUpdateInputField = function ({ id, value, target }) {
+  controlUpdateQuantity(target, id, singleProductActions.updateInputQuantity);
 };

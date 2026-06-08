@@ -23,8 +23,8 @@ export const createSingleProductView = function () {
       input.value = newValue;
     },
 
-    updateProductQuantityButtons({ newValue, stock }, btn, id) {
-      const quantityEl = btn.closest(".product__quantity");
+    updateProductQuantityButtons({ newValue, stock }, element) {
+      const quantityEl = element.closest(".product__quantity");
       const incrementBtn = quantityEl.querySelector(
         `[data-action="qt-increment"]`,
       );
@@ -45,6 +45,14 @@ export const createSingleProductView = function () {
       }
       incrementBtn.classList.remove("disabled");
       decrementBtn.classList.remove("disabled");
+    },
+
+    updateQuantityValue({ id, quantity }) {
+      console.log(id, quantity);
+      const productInput = document.querySelector(
+        `.product__quantity-input[data-id=${id}]`,
+      );
+      productInput.value = quantity;
     },
 
     generateMarkup(product) {

@@ -97,21 +97,12 @@ export const controlUpdateInputField = function ({ id, value }) {
   // converting to number
   const quantity = Number(value);
 
-  // safty validation
-  if (Number.isNaN(quantity)) return;
-
   // business validation
   if (quantity < 1 || quantity > product.properties.stock) {
     const currentQuantity = cartActions.getQuantity(id);
     cartView.updateQuantityValue({ id, quantity: currentQuantity });
     return;
   }
-
-  // integer
-  if (!Number.isInteger(quantity)) return;
-
-  // optional max limit
-  if (quantity > product.properties.stock) return;
 
   cartActions.changeQuantity(id, quantity);
   cartView.updateInputValue(id, quantity);
