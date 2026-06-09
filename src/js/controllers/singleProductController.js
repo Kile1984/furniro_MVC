@@ -80,6 +80,7 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 
   singleProductView.updateQuantity(input, quantityData);
   singleProductView.updateProductQuantityButtons(quantityData, input);
+  singleProductView.showAddedToCart();
 
   syncHeaderCounts();
 };

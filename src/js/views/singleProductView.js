@@ -54,11 +54,35 @@ export const createSingleProductView = function () {
     },
 
     updateQuantityValue({ id, quantity }) {
-      console.log(id, quantity);
       const productInput = document.querySelector(
         `.product__quantity-input[data-id=${id}]`,
       );
       productInput.value = quantity;
+    },
+
+    addToCartTimeout: null,
+    isAdding: false,
+
+    showAddedToCart() {
+      if (this.isAdding) return;
+
+      const btn = document.querySelector(".product__add-to-cart");
+
+      if (!btn) return;
+
+      this.isAdding = true;
+
+      btn.textContent = "✓ Added";
+      btn.classList.add("added");
+
+      this.addToCartTimeout = setTimeout(() => {
+        btn.textContent = "Add to cart";
+        btn.classList.remove("added");
+
+        this.isAdding = false;
+      }, 2000);
+
+      console.log("Clikc");
     },
 
     generateMarkup(product) {

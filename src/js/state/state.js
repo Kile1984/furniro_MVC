@@ -7,6 +7,7 @@ export const state = {
     query: "",
     results: [],
   },
+  compare: [],
 
   singleProduct: {
     quantity: 1,
