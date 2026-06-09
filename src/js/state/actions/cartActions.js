@@ -10,13 +10,13 @@ export const cartActions = {
     return state.cart.find((p) => p.id === id);
   },
 
-  addToCart(product) {
+  addToCart(product, quantity = 1) {
     if (!product) return;
 
     const existingProduct = state.cart.find((item) => item.id === product.id);
 
     if (existingProduct) {
-      existingProduct.quantity++;
+      existingProduct.quantity = quantity;
     } else {
       state.cart.push({ ...product, quantity: 1 });
     }

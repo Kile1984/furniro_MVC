@@ -23,6 +23,12 @@ export const createSingleProductView = function () {
       input.value = newValue;
     },
 
+    getQuantityInputById(id) {
+      return document.querySelector(
+        `.product__quantity[data-id="${id}"] .product__quantity-input`,
+      );
+    },
+
     updateProductQuantityButtons({ newValue, stock }, element) {
       const quantityEl = element.closest(".product__quantity");
       const incrementBtn = quantityEl.querySelector(
@@ -56,8 +62,6 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
-      console.log(product);
-
       return `
     
       <main class="page page--product">
@@ -130,7 +134,7 @@ export const createSingleProductView = function () {
 
               <!-- quantity -->
               <div class="product__actions">
-                <div class="product__quantity">
+                <div class="product__quantity" data-id=${product.id}>
                   <button
                     type="button"
                     class="btn product__quantity-btn product__quantity-btn--decrement ${product.quantity === 1 ? "disabled" : ""}"

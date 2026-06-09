@@ -117,7 +117,7 @@ export const createCartView = function () {
                       return `
                      <div class="cart-page__item" data-id="${p.id}">
                       <div class="cart-page__product">
-                        <a href="#" class="cart-page__link">
+                        <a href="#/product/${p.id}" class="cart-page__link">
                             <img
                             src="${p.image}"
                             alt="${p.title}"

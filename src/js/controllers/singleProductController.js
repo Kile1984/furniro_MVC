@@ -1,10 +1,12 @@
-import { state } from "../state/state";
+import { state } from "../state/state.js";
 import { productsActions } from "../state/actions/productsActions";
+import * as model from "../model/model.js";
 import { cartActions } from "../state/actions/cartActions.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
 import { singleProductActions } from "../state/actions/singleProductActions.js";
 import { singleProductView } from "../views/singleProductView.js";
+import { syncHeaderCounts } from "./headerController.js";
 
 export const prepareSinglProduct = function () {
   const [, , id] = window.location.hash.split("/");
@@ -39,18 +41,14 @@ export const prepareSinglProduct = function () {
 };
 
 const controlUpdateQuantity = function (target, id, action) {
-  const input = target
-    .closest(".product__quantity")
-    .querySelector(".product__quantity-input");
+  const input = singleProductView.getQuantityInputById(id);
 
   const value = Number(input.value);
 
   const quantityData = action(id, value);
 
-  console.log(input, value, quantityData);
-
   singleProductView.updateQuantity(input, quantityData);
-  singleProductView.updateProductQuantityButtons(quantityData, target);
+  singleProductView.updateProductQuantityButtons(quantityData, input);
 };
 
 export const controlIncrement = function ({ target, dataset }) {
@@ -71,4 +69,17 @@ export const controlDecrement = function ({ target, dataset }) {
 
 export const controlUpdateInputField = function ({ id, value, target }) {
   controlUpdateQuantity(target, id, singleProductActions.updateInputQuantity);
+};
+
+export const controlAddToCart = function ({ target, dataset, source }) {
+  model.addToCartItem(dataset.id, state.singleProduct.quantity);
+
+  const quantityData = singleProductActions.resetQuantity(dataset.id);
+
+  const input = singleProductView.getQuantityInputById(dataset.id);
+
+  singleProductView.updateQuantity(input, quantityData);
+  singleProductView.updateProductQuantityButtons(quantityData, input);
+
+  syncHeaderCounts();
 };

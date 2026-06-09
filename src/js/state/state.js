@@ -7,4 +7,8 @@ export const state = {
     query: "",
     results: [],
   },
+
+  singleProduct: {
+    quantity: 1,
+  },
 };

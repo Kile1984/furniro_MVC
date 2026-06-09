@@ -3,9 +3,10 @@ import { state } from "../state/state.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
 
-export const addToCartItem = function (id) {
+export const addToCartItem = function (id, singleProductQuantity) {
   const product = state.products.find((p) => p.id === id);
-  cartActions.addToCart(product);
+
+  cartActions.addToCart(product, singleProductQuantity);
 };
 
 export const removeFromCart = function (id) {
