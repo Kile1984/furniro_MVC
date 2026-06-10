@@ -1,6 +1,7 @@
+import * as model from "../model/model.js";
 import { state } from "../state/state.js";
 import { productsActions } from "../state/actions/productsActions";
-import * as model from "../model/model.js";
+import { comparisonActions } from "../state/actions/comparisonActions.js";
 import { cartActions } from "../state/actions/cartActions.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
@@ -80,7 +81,17 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 
   singleProductView.updateQuantity(input, quantityData);
   singleProductView.updateProductQuantityButtons(quantityData, input);
+  const proba = singleProductView.showAddedToCart();
+
   singleProductView.showAddedToCart();
 
   syncHeaderCounts();
+};
+
+export const controlAddToCompare = function ({ target, dataset }) {
+  console.log("Adding to compare", target, dataset.id);
+};
+
+export const removeFromCompare = function () {
+  console.log("Remove from compare");
 };

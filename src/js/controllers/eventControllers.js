@@ -26,6 +26,7 @@ export const singleProductEventActions = {
   "qt-increment": singleProductController.controlIncrement,
   "qt-decrement": singleProductController.controlDecrement,
   "add-to-cart": singleProductController.controlAddToCart,
+  "add-to-compare": singleProductController.controlAddToCompare,
 };
 
 export const cartInputActions = {

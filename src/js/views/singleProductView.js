@@ -2,6 +2,9 @@ import { sprite, icons } from "../../assets/icons/icons.js";
 
 export const createSingleProductView = function () {
   return {
+    addToCartTimeout: null,
+    isAdding: false,
+
     generateStars(stars) {
       const fullStars = Math.round(stars);
       const emptyStars = 5 - fullStars;
@@ -60,9 +63,6 @@ export const createSingleProductView = function () {
       productInput.value = quantity;
     },
 
-    addToCartTimeout: null,
-    isAdding: false,
-
     showAddedToCart() {
       if (this.isAdding) return;
 
@@ -81,8 +81,6 @@ export const createSingleProductView = function () {
 
         this.isAdding = false;
       }, 2000);
-
-      console.log("Clikc");
     },
 
     generateMarkup(product) {
@@ -190,7 +188,7 @@ export const createSingleProductView = function () {
                 <button type="button" class="btn product__add-to-cart" data-action="add-to-cart" data-id=${product.id}>
                   Add To Cart
                 </button>
-                <button type="button" class="btn product__compare" data-action="compare" data-id=${product.id}>
+                <button type="button" class="btn product__compare" data-action="add-to-compare" data-id=${product.id}>
                   <span>+</span> Compare
                 </button>
               </div>
