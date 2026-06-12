@@ -76,7 +76,7 @@ export const createProductCardsView = function () {
             .map((p) => {
               return `
             <article class="product-card">
-              <a href="product.html" class="product-card__stretched-link"></a>
+              <a href="#/product/${p.id}" class="product-card__stretched-link"></a>
               <div class="product-card__overlay">
               <div class="product-card__cart-state" data-id=${p.id}>
               ${
