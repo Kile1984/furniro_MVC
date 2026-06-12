@@ -38,6 +38,7 @@ export const prepareSinglProduct = function () {
     reviewsCount: product.reviews.length,
     averageRating: getAverageRating(product.reviews),
     quantity: getCartProductQuantity(),
+    isInCompare: comparisonActions.isInComparison(product.id),
   };
 };
 
@@ -81,7 +82,6 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 
   singleProductView.updateQuantity(input, quantityData);
   singleProductView.updateProductQuantityButtons(quantityData, input);
-  const proba = singleProductView.showAddedToCart();
 
   singleProductView.showAddedToCart();
 
@@ -89,9 +89,13 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 };
 
 export const controlAddToCompare = function ({ target, dataset }) {
-  console.log("Adding to compare", target, dataset.id);
+  comparisonActions.addToCampare(dataset.id);
+  const isInCompare = comparisonActions.isInComparison(dataset.id);
+  singleProductView.updateCompareButton(isInCompare);
 };
 
-export const removeFromCompare = function () {
-  console.log("Remove from compare");
+export const controlRemoveFromCompare = function ({ target, dataset }) {
+  comparisonActions.removeFromCompare(dataset.id);
+  const isInCompare = comparisonActions.isInComparison(dataset.id);
+  singleProductView.updateCompareButton(isInCompare);
 };

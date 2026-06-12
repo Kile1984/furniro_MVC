@@ -34,7 +34,6 @@ export const createProductCardsView = function () {
       );
 
       if (!cart) return;
-
       cart.innerHTML =
         quantity > 0
           ? ` <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${id}>-

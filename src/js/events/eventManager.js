@@ -7,7 +7,7 @@ import {
   cartInputActions,
   singleProductInputActions,
   searchInputActions,
-} from "../controllers/eventControllers.js";
+} from "./eventHandlers.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");

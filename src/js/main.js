@@ -1,5 +1,5 @@
 import { initRouter } from "./core/router.js";
-import { initEventManager } from "./core/eventManager.js";
+import { initEventManager } from "./events/eventManager.js";
 import { loadProducts } from "./controllers/homeController.js";
 import { syncHeaderCounts } from "./controllers/headerController.js";
 

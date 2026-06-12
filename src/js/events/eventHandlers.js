@@ -1,7 +1,7 @@
-import * as cartController from "./cartController.js";
-import * as wishlistController from "./wishlistController.js";
-import * as productController from "./productController.js";
-import * as singleProductController from "./singleProductController.js";
+import * as cartController from "../controllers/cartController.js";
+import * as wishlistController from "../controllers/wishlistController.js";
+import * as productController from "../controllers/productController.js";
+import * as singleProductController from "../controllers/singleProductController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -27,6 +27,7 @@ export const singleProductEventActions = {
   "qt-decrement": singleProductController.controlDecrement,
   "add-to-cart": singleProductController.controlAddToCart,
   "add-to-compare": singleProductController.controlAddToCompare,
+  "remove-from-compare": singleProductController.controlRemoveFromCompare,
 };
 
 export const cartInputActions = {

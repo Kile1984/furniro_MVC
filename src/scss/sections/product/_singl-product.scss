@@ -227,8 +227,13 @@
     }
 
     &.added {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      // color: var(--color-accent);
+
+      span.product__btn-icon {
+        margin-right: 0.3rem;
+        color: var(--color-green);
+      }
     }
 
     @include respond(desktop) {
@@ -247,6 +252,13 @@
     display: inline-flex;
     gap: 0.5rem;
     transition: border 0.3s ease;
+
+    &.in-comparison {
+      border: 1px solid var(--color-accent);
+      span {
+        color: var(--color-green);
+      }
+    }
 
     @include respond(desktop) {
       padding: 0.5rem;

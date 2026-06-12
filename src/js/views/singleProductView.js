@@ -63,6 +63,39 @@ export const createSingleProductView = function () {
       productInput.value = quantity;
     },
 
+    generateCompareButton(isInCompare, id) {
+      return isInCompare
+        ? `
+      <button type="button" class="btn product__compare in-comparison" data-action="remove-from-compare" data-id=${id}>
+                  <span>✓</span>  Compared
+                </button>
+      `
+        : `
+        <button type="button" class="btn product__compare" data-action="add-to-compare" data-id=${id}>
+                  <span class="product__btn-icon">+</span>
+                  <span class="product__btn-label">Compare</span>
+                   
+       </button>
+        `;
+    },
+
+    updateCompareButton(isInCompare) {
+      const compareBtnEl = document.querySelector(".product__compare");
+
+      if (!compareBtnEl) return;
+
+      if (isInCompare) {
+        compareBtnEl.dataset.action = "remove-from-compare";
+        compareBtnEl.innerHTML = ` <span>✓</span> Compared`;
+        compareBtnEl.classList.add("in-comparison");
+        return;
+      }
+
+      compareBtnEl.dataset.action = "add-to-compare";
+      compareBtnEl.innerHTML = ` <span>+</span> Compare`;
+      compareBtnEl.classList.remove("in-comparison");
+    },
+
     showAddedToCart() {
       if (this.isAdding) return;
 
@@ -70,13 +103,17 @@ export const createSingleProductView = function () {
 
       if (!btn) return;
 
-      this.isAdding = true;
+      const btnIcon = btn.querySelector(".product__btn-icon");
+      const btnTLabel = btn.querySelector(".product__btn-label");
 
-      btn.textContent = "✓ Added";
+      this.isAdding = true;
+      btnIcon.textContent = "✓";
+      btnTLabel.textContent = "Added";
       btn.classList.add("added");
 
       this.addToCartTimeout = setTimeout(() => {
-        btn.textContent = "Add to cart";
+        btnIcon.textContent = "";
+        btnTLabel.textContent = "Add to cart";
         btn.classList.remove("added");
 
         this.isAdding = false;
@@ -185,12 +222,11 @@ export const createSingleProductView = function () {
                     +
                   </button>
                 </div>
-                <button type="button" class="btn product__add-to-cart" data-action="add-to-cart" data-id=${product.id}>
-                  Add To Cart
+                <button type="button" class="btn product__add-to-cart"  data-action="add-to-cart" data-id=${product.id}>
+                <span class="product__btn-icon"></span>
+                <span class="product__btn-label">Add To Cart</span>
                 </button>
-                <button type="button" class="btn product__compare" data-action="add-to-compare" data-id=${product.id}>
-                  <span>+</span> Compare
-                </button>
+                ${this.generateCompareButton(product.isInCompare, product.id)}
               </div>
             </section>
 

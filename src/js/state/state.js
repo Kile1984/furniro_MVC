@@ -7,7 +7,7 @@ export const state = {
     query: "",
     results: [],
   },
-  compare: [],
+  compare: JSON.parse(localStorage.getItem("compare")) || [],
 
   singleProduct: {
     quantity: 1,
