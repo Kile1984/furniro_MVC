@@ -9,6 +9,7 @@ import { createCartView } from "./cart/cartView.js";
 import { createWishlistView } from "./wishlist/wishlistView.js";
 import { createSingleProductView } from "./singleProductView.js";
 import { createComparisonView } from "./comparison/comparisonView.js";
+import { categoryView } from "./category/categoryView.js";
 
 export const views = {
   home: createHomeView(),
@@ -22,4 +23,5 @@ export const views = {
   wishlist: createWishlistView(),
   product: createSingleProductView(),
   comparison: createComparisonView(),
+  category: categoryView(),
 };

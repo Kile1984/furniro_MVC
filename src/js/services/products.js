@@ -225,6 +225,7 @@ export const products = [
     id: "p1",
     title: "Aurelia",
     category: "chair",
+    categorySlug: "chairs",
     price: { original: 120, discountPercent: 0 },
     badges: { isNew: true },
 
@@ -307,6 +308,7 @@ export const products = [
     id: "p2",
     title: "Nordic",
     category: "chair",
+    categorySlug: "chairs",
     price: { original: 160, discountPercent: 10 },
     badges: { isNew: true },
 
@@ -388,6 +390,7 @@ export const products = [
     id: "p3",
     title: "Lunara",
     category: "chair",
+    categorySlug: "chairs",
     price: { original: 180, discountPercent: 20 },
     badges: { isNew: false },
 
@@ -462,6 +465,7 @@ export const products = [
     id: "p4",
     title: "Velora",
     category: "chair",
+    categorySlug: "chairs",
     price: { original: 240, discountPercent: 25 },
     badges: { isNew: true },
 
@@ -537,6 +541,7 @@ export const products = [
     id: "p5",
     title: "Arden",
     category: "chair",
+    categorySlug: "chairs",
     price: { original: 150, discountPercent: 5 },
     badges: { isNew: false },
 
@@ -616,6 +621,7 @@ export const products = [
     id: "p11",
     title: "Valen",
     category: "table",
+    categorySlug: "tables",
     price: { original: 420, discountPercent: 15 },
     badges: { isNew: true },
 
@@ -690,6 +696,7 @@ export const products = [
     id: "p12",
     title: "Norvik",
     category: "table",
+    categorySlug: "tables",
     price: { original: 390, discountPercent: 0 },
     badges: { isNew: false },
 
@@ -769,6 +776,7 @@ export const products = [
     id: "p21",
     title: "Lioro",
     category: "sofa",
+    categorySlug: "sofas",
     price: { original: 850, discountPercent: 25 },
     badges: { isNew: true },
 
@@ -845,6 +853,7 @@ export const products = [
     id: "p22",
     title: "Velmont",
     category: "sofa",
+    categorySlug: "sofas",
     price: { original: 920, discountPercent: 30 },
     badges: { isNew: false },
 

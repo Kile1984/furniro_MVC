@@ -9,6 +9,8 @@ export const productEventActions = {
   "qt-decrement": productController.controlDecrement,
   "add-to-wishlist": wishlistController.controlAddToWishlist,
   "remove-from-wishlist": wishlistController.controlRemoveFromWishlist,
+  "add-to-compare": productController.controlAddToCompare,
+  "remove-from-compare": productController.controlRemoveFromCompare,
 };
 
 export const cartEventActions = {

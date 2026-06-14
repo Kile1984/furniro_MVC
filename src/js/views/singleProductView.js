@@ -121,6 +121,7 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
+      console.log(product.category);
       return `
     
       <main class="page page--product">
@@ -242,7 +243,7 @@ export const createSingleProductView = function () {
                 <dt class="product__meta-label">Category</dt>
                 <dd>:</dd>
                 <dd>
-                  <a href="#" class="product__meta-link">${product.category}</a>
+                  <a href="#/category/${product.categorySlug}" class="product__meta-link">${product.category}</a>
                 </dd>
               </div>
 
@@ -252,9 +253,9 @@ export const createSingleProductView = function () {
                 <dd>
                 ${product.tags
                   .map((tag) => {
-                    return `<a href="#" class="product__meta-link">
+                    return `<span class="product__meta-link">
                         ${tag},
-                      </a>`;
+                      </span>`;
                   })
                   .join("")}
                                   

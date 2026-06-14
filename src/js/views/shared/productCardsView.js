@@ -70,6 +70,24 @@ export const createProductCardsView = function () {
         : "add-to-wishlist";
     },
 
+    updateCompareButton(id, isInComparison) {
+      const compareBtnEl = document.querySelector(
+        `.product-card__action[data-id=${id}]`,
+      );
+
+      if (!compareBtnEl) return;
+
+      const compareSvg = compareBtnEl.querySelector("svg");
+      const compareSpan = compareBtnEl.querySelector("span");
+
+      compareBtnEl.classList.toggle("active", isInComparison);
+      compareBtnEl.dataset.action = isInComparison
+        ? "remove-from-compare"
+        : "add-to-compare";
+
+      compareSpan.textContent = isInComparison ? "In Compare" : "Compare";
+    },
+
     generateMarkup(products) {
       return `
           ${products
@@ -112,11 +130,11 @@ export const createProductCardsView = function () {
                     </svg>
                     <span>Share</span>
                   </button>
-                  <button type="button" class="product-card__action" >
+                  <button type="button" class="product-card__action ${p.isInCompare ? "active" : "not-active"}" data-action="${p.isInCompare ? "remove-from-compare" : "add-to-compare"}" data-id=${p.id}>
                     <svg class="icon">
                       <use href="${sprite}#${icons.tab}"></use>
                     </svg>
-                    <span>Compare</span>
+                    <span>${p.isInCompare ? "In Compare" : " Compare"}</span>
                   </button>
                   <button type="button" class="product-card__action product-card__action--wishlist" data-action="${p.isInWishlist ? "remove-from-wishlist" : "add-to-wishlist"}" 
                   data-id=${p.id}>

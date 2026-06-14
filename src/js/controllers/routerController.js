@@ -21,6 +21,7 @@ export const controlRoutes = function () {
     "/cart": "cart",
     "/wishlist": "wishlist",
     "/product": "product",
+    "/category": "category",
   };
 
   const view = routesMap[route] || "home";

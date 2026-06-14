@@ -139,6 +139,12 @@
     //   background-color: var(--color-accent);
     // }
 
+    &.active {
+      .icon {
+        color: var(--color-green);
+      }
+    }
+
     .icon {
       margin-right: 0.3rem;
     }

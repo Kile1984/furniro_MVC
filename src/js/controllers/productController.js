@@ -1,5 +1,7 @@
 import * as model from "../model/model.js";
 import { updateProductCartUI } from "../shared/productCardsUI";
+import { comparisonActions } from "../state/actions/comparisonActions.js";
+import { productCardsView } from "../views/shared/productCardsView.js";
 
 export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
@@ -17,4 +19,20 @@ export const controlDecrement = function ({ dataset }) {
   model.decrementCartItem(dataset.id);
 
   updateProductCartUI(dataset.id);
+};
+
+export const controlAddToCompare = function ({ dataset }) {
+  model.addToCompare(dataset.id);
+  productCardsView.updateCompareButton(
+    dataset.id,
+    comparisonActions.isInComparison(dataset.id),
+  );
+};
+
+export const controlRemoveFromCompare = function ({ dataset }) {
+  model.removeFromCompare(dataset.id);
+  productCardsView.updateCompareButton(
+    dataset.id,
+    comparisonActions.isInComparison(dataset.id),
+  );
 };

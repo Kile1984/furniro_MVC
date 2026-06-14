@@ -89,13 +89,13 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 };
 
 export const controlAddToCompare = function ({ target, dataset }) {
-  comparisonActions.addToCampare(dataset.id);
+  model.addToCompare(dataset.id);
   const isInCompare = comparisonActions.isInComparison(dataset.id);
   singleProductView.updateCompareButton(isInCompare);
 };
 
 export const controlRemoveFromCompare = function ({ target, dataset }) {
-  comparisonActions.removeFromCompare(dataset.id);
+  model.removeFromCompare(dataset.id);
   const isInCompare = comparisonActions.isInComparison(dataset.id);
   singleProductView.updateCompareButton(isInCompare);
 };

@@ -18,7 +18,7 @@ export const cartActions = {
     if (existingProduct) {
       existingProduct.quantity = quantity;
     } else {
-      state.cart.push({ ...product, quantity: 1 });
+      state.cart.push({ ...product, quantity: quantity });
     }
 
     persistActions.save("cart", state.cart);

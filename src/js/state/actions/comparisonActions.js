@@ -7,10 +7,8 @@ export const comparisonActions = {
     return state.compare.some((p) => p.id === id);
   },
 
-  addToCampare(id) {
-    const product = productsActions.getProductById(id);
-
-    if (!product || this.isProductInCompare(id)) return;
+  addToCampare(product) {
+    if (!product || this.isProductInCompare(product.id)) return;
 
     state.compare.push(product);
 
