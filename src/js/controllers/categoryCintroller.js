@@ -5,9 +5,12 @@ import { getPrice } from "../utils/getPrice.js";
 export const preparedCategoryProduct = function () {
   const category = window.location.hash.split("/")[2];
 
-  const productsCategory = state.products.filter((p) => {
-    return p.categorySlug.toLowerCase() === category.toLowerCase();
-  });
+  const products = state.products
+    .filter((p) => p.categorySlug.toLowerCase() === category.toLowerCase())
+    .map((product) => preparedProduct(product));
 
-  return productsCategory.map((product) => preparedProduct(product));
+  return {
+    category,
+    products,
+  };
 };

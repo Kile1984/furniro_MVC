@@ -3,12 +3,16 @@ import { productsActions } from "./productsActions.js";
 import { persistActions } from "./persistActions.js";
 
 export const comparisonActions = {
+  MAX_COMPARE_ITEMS: 3,
+
   isProductInCompare(id) {
     return state.compare.some((p) => p.id === id);
   },
 
   addToCampare(product) {
     if (!product || this.isProductInCompare(product.id)) return;
+
+    if (state.compare.length >= this.MAX_COMPARE_ITEMS) return;
 
     state.compare.push(product);
 

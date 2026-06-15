@@ -23,6 +23,7 @@ export const initEventManager = function () {
     cart: cartEventActions,
     wishlist: wishlistEventActions,
     product: singleProductEventActions,
+    category: productEventActions,
   };
 
   const inputMap = {

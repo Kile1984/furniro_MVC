@@ -1,0 +1,50 @@
+.compare-tray {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  background-color: var(--bg-neutral-500);
+  padding: 1rem;
+
+  // transform: translateY(100%);
+  transition: transform 0.3s;
+
+  &.active {
+    transform: translateY(0);
+  }
+
+  &__slots {
+    grid-column: 2 / span 3;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100px;
+      margin-right: 1rem;
+    }
+  }
+
+  &__remove {
+    margin-left: 1rem;
+  }
+
+  &__actions {
+    grid-column: 5 / -1;
+    text-align: center;
+  }
+
+  &__clear {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}

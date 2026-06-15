@@ -1,8 +1,7 @@
 import { state } from "../state/state.js";
 import { getPrice } from "../utils/getPrice.js";
 
-export const preparedProduct = function (product) {
-  console.log(product);
+export const preparedProduct = function (product, category = null) {
   const cartMap = new Map(state.cart.map((item) => [item.id, item]));
   const wishlistIds = new Set(state.wishlist.map((item) => item.id));
   const compareIds = new Set(state.compare.map((item) => item.id));
