@@ -2,6 +2,7 @@ import * as cartController from "../controllers/cartController.js";
 import * as wishlistController from "../controllers/wishlistController.js";
 import * as productController from "../controllers/productController.js";
 import * as singleProductController from "../controllers/singleProductController.js";
+import * as compareTrayController from "../controllers/compareTrayController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -38,4 +39,9 @@ export const cartInputActions = {
 
 export const singleProductInputActions = {
   quantity: singleProductController.controlUpdateInputField,
+};
+
+export const compareTrayActions = {
+  "close-compare-tray": compareTrayController.controlCloseCompareTray,
+  "remove-from-compare-tray": productController.controlRemoveFromCompare,
 };

@@ -4,7 +4,6 @@ import { images } from "../../../assets/images";
 export const categoryView = function () {
   return {
     generateMarkup({ products, category }) {
-      console.log(products);
       return `
 
        <!-- BREADCRUMB -->
@@ -38,7 +37,7 @@ export const categoryView = function () {
           </div>
         </section>
 
-               <!-- FEATURES -->
+       <!-- FEATURES -->
         <section class="section features">
           <div class="container container--wide features__inner">
             <div class="features__box features__quality">

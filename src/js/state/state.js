@@ -8,6 +8,7 @@ export const state = {
     results: [],
   },
   compare: JSON.parse(localStorage.getItem("compare")) || [],
+  isCompareTrayOpen: false,
 
   singleProduct: {
     quantity: 1,

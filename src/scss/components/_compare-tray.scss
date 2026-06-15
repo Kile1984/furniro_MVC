@@ -8,11 +8,13 @@
   align-items: center;
   background-color: var(--bg-neutral-500);
   padding: 1rem;
+  z-index: 999;
+  box-shadow: 0 4px 12px 4px var(--color-gray);
 
-  // transform: translateY(100%);
+  transform: translateY(100%);
   transition: transform 0.3s;
 
-  &.active {
+  &.open {
     transform: translateY(0);
   }
 
@@ -28,7 +30,7 @@
     align-items: center;
 
     img {
-      width: 100px;
+      width: 65px;
       margin-right: 1rem;
     }
   }
@@ -42,7 +44,7 @@
     text-align: center;
   }
 
-  &__clear {
+  &__close {
     position: absolute;
     right: 1rem;
     top: 1rem;

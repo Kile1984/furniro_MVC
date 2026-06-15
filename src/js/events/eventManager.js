@@ -7,15 +7,18 @@ import {
   cartInputActions,
   singleProductInputActions,
   searchInputActions,
+  compareTrayActions,
 } from "./eventHandlers.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
   const searchInput = document.querySelector(".header__search-input");
+  const compareTrayEl = document.querySelector(".compare-tray");
 
   appEl.addEventListener("click", handleClick);
   appEl.addEventListener("input", handleInput);
   searchInput.addEventListener("input", handleInput);
+  compareTrayEl.addEventListener("click", handleClick);
 
   const eventMap = {
     home: productEventActions,
@@ -24,6 +27,7 @@ export const initEventManager = function () {
     wishlist: wishlistEventActions,
     product: singleProductEventActions,
     category: productEventActions,
+    compareTray: compareTrayActions,
   };
 
   const inputMap = {
@@ -37,7 +41,9 @@ export const initEventManager = function () {
     if (!target) return;
 
     const action = target.dataset.action;
-    const source = state.currentRoute;
+    const source = target.closest(".compare-tray")
+      ? "compareTray"
+      : state.currentRoute;
 
     console.log("ACTION: " + action, "SOURCE: " + source);
 
