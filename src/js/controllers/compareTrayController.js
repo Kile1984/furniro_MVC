@@ -5,6 +5,7 @@ import { compareTrayView } from "../views/compareTrayView.js";
 import { compareTrayActions } from "../state/actions/compareTrayActions.js";
 import { comparisonActions } from "../state/actions/comparisonActions.js";
 
+// Shape for compare tray product'S
 export const prepareCompareTrayProducts = function () {
   return state.compare.map((product) => ({
     id: product.id,
@@ -19,11 +20,6 @@ export const renderCompareTray = function () {
   compareTrayView.render({ products, isOpen: state.isCompareTrayOpen });
 };
 
-export const updateCompareTray = function (id) {
-  compareTrayView.update(id);
-};
-
-export const controlCloseCompareTray = function ({ target }) {
+export const controlCloseCompareTray = function () {
   compareTrayActions.closeCompareTray();
-  renderCompareTray();
 };
