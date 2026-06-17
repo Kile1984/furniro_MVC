@@ -1,21 +1,44 @@
+@use "../abstract/mixins" as *;
+
 .compare-tray {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 0.3rem 1rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr) 0.5fr 0.5fr;
   align-items: center;
   background-color: var(--bg-neutral-500);
-  padding: 1rem;
   z-index: 999;
   box-shadow: 0 4px 12px 4px var(--color-gray);
 
-  transform: translateY(100%);
+  // transform: translateY(110%);
   transition: transform 0.3s;
+
+  @include respond(tablet) {
+    row-gap: 0.3rem;
+  }
+
+  @include respond(tablet) {
+    grid-template-columns: repeat(4, 1fr) 0.1fr 0.2fr;
+  }
+
+  @include respond(mobile) {
+    font-size: 12px;
+    grid-template-columns: repeat(2, 1fr) 0.3fr;
+  }
 
   &.open {
     transform: translateY(0);
+  }
+
+  &__header {
+    @include respond(mobile) {
+      grid-column: 1 / span 1;
+      justify-self: start;
+      margin-bottom: 0;
+    }
   }
 
   &__slots {
@@ -23,30 +46,70 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+
+    @include respond(mobile) {
+      display: none;
+    }
   }
 
   &__product {
     display: flex;
     align-items: center;
+    justify-content: start;
+    gap: 1rem;
+
+    @include respond(tablet) {
+      gap: 0.5rem;
+    }
 
     img {
       width: 65px;
-      margin-right: 1rem;
     }
   }
 
   &__remove {
-    margin-left: 1rem;
+    align-self: flex-start;
+    justify-content: start;
   }
 
   &__actions {
-    grid-column: 5 / -1;
+    grid-column: 5 / span 1;
     text-align: center;
+
+    @include respond(mobile) {
+      grid-column: 2 / span 1;
+      display: flex;
+      gap: 1rem;
+    }
+
+    &-compare,
+    &-remove {
+      padding: 0.1rem 0.3rem;
+
+      @include respond(mobile) {
+        font-size: 12px;
+      }
+    }
+
+    &-remove {
+      display: none;
+
+      @include respond(mobile) {
+        display: inline-block;
+      }
+    }
   }
 
   &__close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+    color: var(--color-accent);
+    grid-column: 6 / span 1;
+    justify-self: end;
+    align-self: start;
+
+    @include respond(mobile) {
+      position: static;
+      grid-column: 3 / span 1;
+      text-align: right;
+    }
   }
 }

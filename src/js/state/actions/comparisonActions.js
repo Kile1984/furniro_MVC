@@ -28,4 +28,10 @@ export const comparisonActions = {
   isInComparison(id) {
     return state.compare.some((p) => p.id === id);
   },
+
+  clearCompare() {
+    state.compare = [];
+
+    persistActions.save("compare", state.compare);
+  },
 };

@@ -2,7 +2,10 @@ import * as model from "../model/model.js";
 import { updateProductCartUI } from "../shared/productCardsUI";
 import { comparisonActions } from "../state/actions/comparisonActions.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
-import { renderCompareTray } from "./compareTrayController.js";
+import {
+  renderCompareTray,
+  updateCompareTray,
+} from "./compareTrayController.js";
 import { controlRemoveFromCompareTray } from "./compareTrayController.js";
 import { syncHeaderCounts } from "./headerController.js";
 import { compareTrayActions } from "../state/actions/compareTrayActions.js";
@@ -33,7 +36,7 @@ export const controlAddToCompare = function ({ dataset }) {
     comparisonActions.isInComparison(dataset.id),
   );
   compareTrayActions.openCompareTray();
-  renderCompareTray();
+  updateCompareTray(dataset.id);
   syncHeaderCounts();
 };
 

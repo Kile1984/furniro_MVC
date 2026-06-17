@@ -11,12 +11,16 @@ export const createCompareTrayView = function () {
       parentEl.classList.toggle("open", isOpen);
     },
 
+    update(id) {
+      console.log("Updating ......", id);
+    },
+
     generateMarkup({ products }) {
       return `
         <div class="compare-tray__header">
         <h3 class="compare-tray__title">
-          Products for comparison
-          <span class="compare-tray__counter"> 1/3 </span>
+          Comparison product
+          <span class="compare-tray__counter"> ${products.length}/3 </span>
         </h3>
       </div>
 
@@ -26,21 +30,21 @@ export const createCompareTrayView = function () {
 
           return `
        <article class="compare-tray__product">
-          <img
+         <img
             src="${p.image}"
-            alt="Syltherine"
+            alt="${p.title}"
             class="compare-tray__image"
           />
 
           <div class="compare-tray__content">
-            <h4 class="compare-tray__name">Syltherine</h4>
+            <h4 class="compare-tray__name">${p.title}</h4>
 
-            <span class="compare-tray__price"> Rp 2.500.000 </span>
+            <span class="compare-tray__price"> ${p.price} </span>
           </div>
 
           <button
             class="compare-tray__remove"
-            data-action="remove-from-compare-tray"
+            data-action="remove-from-compare"
             data-id=${p.id}
           >
             ✕
@@ -52,8 +56,11 @@ export const createCompareTrayView = function () {
       </div>
 
       <div class="compare-tray__actions">
-        <a href="#/compare" class="btn btn--primary"> Compare </a>
+        <a href="#/compare" class="btn btn--primary compare-tray__actions-compare"> Compare </a>
+        <button class="btn btn--secondary compare-tray__actions-remove" data-action="remove-all-from-compare-tray"> Remove </button>
       </div>
+
+    
 
       <button class="compare-tray__close" data-action="close-compare-tray">
         ✕
