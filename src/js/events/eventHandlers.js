@@ -45,7 +45,7 @@ export const singleProductInputActions = {
 export const compareTrayActions = {
   "close-compare-tray": compareTrayController.controlCloseCompareTray,
   "remove-all-from-compare-tray": comparisonController.controlClearCompare,
-  "remove-from-compare": productController.controlRemoveFromCompare,
+  "remove-from-compare": compareTrayController.controlRemoveFromCompare,
 };
 
 export const headerEventActions = {

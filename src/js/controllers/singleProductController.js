@@ -8,6 +8,9 @@ import { formatPrice } from "../utils/format.js";
 import { singleProductActions } from "../state/actions/singleProductActions.js";
 import { singleProductView } from "../views/singleProductView.js";
 import { syncHeaderCounts } from "./headerController.js";
+import { compareTrayView } from "../views/compareTrayView.js";
+import { compareTrayActions } from "../state/actions/compareTrayActions.js";
+import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js";
 
 export const prepareSinglProduct = function () {
   const [, , id] = window.location.hash.split("/");
@@ -89,13 +92,33 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 };
 
 export const controlAddToCompare = function ({ target, dataset }) {
+  // ADD
   model.addToCompare(dataset.id);
+  // IS ADD
   const isInCompare = comparisonActions.isInComparison(dataset.id);
+  // UPDATE BUTTON
   singleProductView.updateCompareButton(isInCompare);
+  // PREPARE AND UPDATE TRAY
+  const compareProduct = compareTrayActions.getCompareTrayProduct(dataset.id);
+  compareTrayView.addProduct(prepareCompareTrayProduct(compareProduct));
+  // OPEN TRAY
+  compareTrayView.openCompareTray();
+  // UPDATE COUNTS
+  syncHeaderCounts();
 };
 
 export const controlRemoveFromCompare = function ({ target, dataset }) {
+  // REMOVE
   model.removeFromCompare(dataset.id);
+  // IS REMOVED
   const isInCompare = comparisonActions.isInComparison(dataset.id);
+  // UPDATE BUTTON
   singleProductView.updateCompareButton(isInCompare);
+  // UPDATE TRAY
+
+  compareTrayView.removeProduct(dataset.id);
+  // CLOSE TRAY
+  compareTrayView.closeCompareTray();
+  // UPDATE COUNTS
+  syncHeaderCounts();
 };
