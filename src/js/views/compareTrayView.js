@@ -20,13 +20,21 @@ export const createCompareTrayView = function () {
     },
 
     removeProduct(id) {
-      const productEl = document.querySelector(
+      const productEl = parentEl.querySelector(
         `.compare-tray__product[data-id="${id}"]`,
       );
 
       if (!productEl) return;
 
       productEl.remove();
+    },
+
+    closeCompareTray() {
+      parentEl.classList.remove("open");
+    },
+
+    openCompareTray() {
+      parentEl.classList.add("open");
     },
 
     generateProductMarkup(product) {
@@ -55,7 +63,24 @@ export const createCompareTrayView = function () {
       `;
     },
 
+    updateCounter(count) {
+      const counterEl = parentEl.querySelector(".compare-tray__counter");
+
+      counterEl.textContent = `${count}/3`;
+    },
+
+    compareTrayFull() {
+      const counterEl = parentEl.querySelector(".compare-tray__counter");
+
+      counterEl.classList.remove("full");
+
+      void counterEl.offsetWidth;
+
+      counterEl.classList.add("full");
+    },
+
     generateMarkup({ products }) {
+      console.log(products);
       return `
         <div class="compare-tray__header">
         <h3 class="compare-tray__title">
@@ -64,35 +89,7 @@ export const createCompareTrayView = function () {
         </h3>
       </div>
 
-      <div class="compare-tray__slots">${products
-        .map((p) => {
-          products;
-
-          return `
-       <article class="compare-tray__product" data-id=${p.id}>
-         <img
-            src="${p.image}"
-            alt="${p.title}"
-            class="compare-tray__image"
-          />
-
-          <div class="compare-tray__content">
-            <h4 class="compare-tray__name">${p.title}</h4>
-
-            <span class="compare-tray__price"> ${p.price} </span>
-          </div>
-
-          <button
-            class="compare-tray__remove"
-            data-action="remove-from-compare"
-            data-id=${p.id}
-          >
-            ✕
-          </button>
-        </article>
-      `;
-        })
-        .join("")}
+      <div class="compare-tray__slots">${products.map((p) => this.generateProductMarkup(p)).join("")}
       </div>
 
       <div class="compare-tray__actions">

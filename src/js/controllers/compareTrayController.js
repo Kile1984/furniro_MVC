@@ -22,4 +22,12 @@ export const renderCompareTray = function () {
 
 export const controlCloseCompareTray = function () {
   compareTrayActions.closeCompareTray();
+  compareTrayView.closeCompareTray();
+};
+
+export const controlOpenCompareTray = function () {
+  if (state.compare.length === 0) return;
+
+  compareTrayActions.openCompareTray();
+  compareTrayView.openCompareTray();
 };

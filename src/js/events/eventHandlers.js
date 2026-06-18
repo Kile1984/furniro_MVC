@@ -47,3 +47,7 @@ export const compareTrayActions = {
   "remove-all-from-compare-tray": comparisonController.controlClearCompare,
   "remove-from-compare": productController.controlRemoveFromCompare,
 };
+
+export const headerEventActions = {
+  "open-compare-tray": compareTrayController.controlOpenCompareTray,
+};

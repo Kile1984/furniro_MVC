@@ -121,7 +121,6 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
-      console.log(product.category);
       return `
     
       <main class="page page--product">

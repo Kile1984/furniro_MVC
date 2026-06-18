@@ -8,16 +8,7 @@ import { syncHeaderCounts } from "./headerController.js";
 import { compareTrayActions } from "../state/actions/compareTrayActions.js";
 import { state } from "../state/state.js";
 import { compareTrayView } from "../views/compareTrayView.js";
-
-// Shape compare tray product
-export const prepareCompareTrayProduct = function (product) {
-  return {
-    id: product.id,
-    title: product.title,
-    image: product.images.main,
-    price: formatPrice(getPrice(product.price).finalPrice),
-  };
-};
+import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js";
 
 export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
@@ -38,6 +29,15 @@ export const controlDecrement = function ({ dataset }) {
 };
 
 export const controlAddToCompare = function ({ dataset }) {
+  if (
+    state.compare.length === 3 &&
+    !compareTrayActions.getCompareTrayProduct(dataset.id)
+  ) {
+    compareTrayView.openCompareTray();
+    compareTrayView.compareTrayFull();
+
+    return;
+  }
   model.addToCompare(dataset.id);
   productCardsView.updateCompareButton(
     dataset.id,
@@ -45,6 +45,7 @@ export const controlAddToCompare = function ({ dataset }) {
   );
 
   compareTrayActions.openCompareTray();
+  compareTrayView.openCompareTray();
 
   const compareProduct = compareTrayActions.getCompareTrayProduct(dataset.id);
 
@@ -53,6 +54,7 @@ export const controlAddToCompare = function ({ dataset }) {
   const product = prepareCompareTrayProduct(compareProduct);
 
   compareTrayView.addProduct(product);
+  compareTrayView.updateCounter(state.compare.length);
 
   syncHeaderCounts();
 };
@@ -66,9 +68,11 @@ export const controlRemoveFromCompare = function ({ dataset }) {
 
   if (state.compare.length === 0) {
     compareTrayActions.closeCompareTray();
+    compareTrayView.closeCompareTray();
   }
 
   compareTrayView.removeProduct(dataset.id);
+  compareTrayView.updateCounter(state.compare.length);
 
   syncHeaderCounts();
 };

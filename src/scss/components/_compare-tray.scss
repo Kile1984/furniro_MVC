@@ -13,7 +13,7 @@
   z-index: 999;
   box-shadow: 0 4px 12px 4px var(--color-gray);
 
-  // transform: translateY(110%);
+  transform: translateY(110%);
   transition: transform 0.3s;
 
   @include respond(tablet) {
@@ -38,6 +38,50 @@
       grid-column: 1 / span 1;
       justify-self: start;
       margin-bottom: 0;
+    }
+  }
+
+  &__counter {
+    display: inline-block;
+    &.full {
+      animation: shake 2.5s ease;
+    }
+  }
+
+  @keyframes shake {
+    0% {
+      color: var(--color-pink);
+      transform: rotate(0deg);
+    }
+
+    15% {
+      transform: rotate(-10deg);
+    }
+
+    30% {
+      transform: rotate(10deg);
+    }
+
+    45% {
+      transform: rotate(-8deg);
+    }
+
+    60% {
+      transform: rotate(8deg);
+    }
+
+    75% {
+      color: var(--color-pink);
+      transform: rotate(-4deg);
+    }
+
+    90% {
+      transform: rotate(4deg);
+    }
+
+    100% {
+      color: var(--color-black);
+      transform: rotate(0deg);
     }
   }
 
