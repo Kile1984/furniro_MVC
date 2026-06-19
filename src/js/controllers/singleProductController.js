@@ -96,15 +96,28 @@ export const controlAddToCompare = function ({ target, dataset }) {
   model.addToCompare(dataset.id);
   // IS ADD
   const isInCompare = comparisonActions.isInComparison(dataset.id);
+  if (
+    state.compare.length === 3 &&
+    !compareTrayActions.getCompareTrayProduct(dataset.id)
+  ) {
+    compareTrayView.openCompareTray();
+    compareTrayView.compareTrayFull();
+  }
   // UPDATE BUTTON
-  singleProductView.updateCompareButton(isInCompare);
+  singleProductView.updateCompareButton(dataset.id, isInCompare);
+
   // PREPARE AND UPDATE TRAY
   const compareProduct = compareTrayActions.getCompareTrayProduct(dataset.id);
-  compareTrayView.addProduct(prepareCompareTrayProduct(compareProduct));
+  if (!compareProduct) return;
+
+  const prepareedProduct = prepareCompareTrayProduct(compareProduct);
+
+  compareTrayView.addProduct(prepareedProduct);
   // OPEN TRAY
   compareTrayActions.openCompareTray();
   compareTrayView.openCompareTray();
   // UPDATE COUNTS
+  compareTrayView.updateCounter(state.compare.length);
   syncHeaderCounts();
 };
 
@@ -114,11 +127,14 @@ export const controlRemoveFromCompare = function ({ target, dataset }) {
   // IS REMOVED
   const isInCompare = comparisonActions.isInComparison(dataset.id);
   // UPDATE BUTTON
-  singleProductView.updateCompareButton(isInCompare);
+  singleProductView.updateCompareButton(dataset.id, isInCompare);
+  // IS EMPTY
+  if (state.compare.length === 0) {
+    compareTrayActions.closeCompareTray();
+    compareTrayView.closeCompareTray();
+  }
   // UPDATE TRAY
-
   compareTrayView.removeProduct(dataset.id);
-
   // UPDATE COUNTS
   syncHeaderCounts();
 };

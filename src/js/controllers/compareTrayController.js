@@ -43,6 +43,7 @@ export const controlRemoveFromCompare = function ({ dataset }) {
   compareTrayView.updateCounter(state.compare.length);
 
   singleProductView.updateCompareButton?.(
+    dataset.id,
     comparisonActions.isInComparison(dataset.id),
   );
 
@@ -56,6 +57,5 @@ export const controlRemoveFromCompare = function ({ dataset }) {
     comparisonActions.isInComparison(dataset.id),
   );
 
-  console.log(comparisonActions.isInComparison(dataset.id));
   syncHeaderCounts();
 };

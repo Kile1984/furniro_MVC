@@ -71,7 +71,6 @@ export const createProductCardsView = function () {
     },
 
     updateCompareButton(id, isInComparison) {
-      console.log("UPDATEEEEE");
       const compareBtnEl = document.querySelector(
         `.product-card__action[data-id=${id}]`,
       );

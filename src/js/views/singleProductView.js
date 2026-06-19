@@ -79,10 +79,14 @@ export const createSingleProductView = function () {
         `;
     },
 
-    updateCompareButton(isInCompare) {
+    updateCompareButton(id, isInCompare) {
       const compareBtnEl = document.querySelector(".product__compare");
 
       if (!compareBtnEl) return;
+
+      const [, , currentId] = window.location.hash.split("/");
+
+      if (currentId !== id) return;
 
       if (isInCompare) {
         compareBtnEl.dataset.action = "remove-from-compare";

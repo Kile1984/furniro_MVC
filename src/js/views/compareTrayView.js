@@ -71,17 +71,21 @@ export const createCompareTrayView = function () {
 
     compareTrayFull() {
       const counterEl = parentEl.querySelector(".compare-tray__counter");
+      const messageEl = document.querySelector(".compare-tray__message");
 
       counterEl.classList.remove("full");
+      messageEl.classList.remove("show");
 
       void counterEl.offsetWidth;
+      void messageEl.offsetWidth;
 
       counterEl.classList.add("full");
+      messageEl.classList.add("show");
     },
 
     generateMarkup({ products }) {
-      console.log(products);
       return `
+      <div class="compare-tray__message"><p>Maximum 3 products allowed</p></div>
         <div class="compare-tray__header">
         <h3 class="compare-tray__title">
           Comparison product
