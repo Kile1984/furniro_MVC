@@ -102,6 +102,7 @@ export const controlAddToCompare = function ({ target, dataset }) {
   const compareProduct = compareTrayActions.getCompareTrayProduct(dataset.id);
   compareTrayView.addProduct(prepareCompareTrayProduct(compareProduct));
   // OPEN TRAY
+  compareTrayActions.openCompareTray();
   compareTrayView.openCompareTray();
   // UPDATE COUNTS
   syncHeaderCounts();
@@ -117,8 +118,7 @@ export const controlRemoveFromCompare = function ({ target, dataset }) {
   // UPDATE TRAY
 
   compareTrayView.removeProduct(dataset.id);
-  // CLOSE TRAY
-  compareTrayView.closeCompareTray();
+
   // UPDATE COUNTS
   syncHeaderCounts();
 };
