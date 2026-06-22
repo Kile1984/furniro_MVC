@@ -6,6 +6,26 @@ import { cartView } from "../views/cart/cartView.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
 
+export const preparedCartProducts = function () {
+  const products = state.cart.map((product) => {
+    const price = getPrice(product.price);
+
+    return {
+      id: product.id,
+      title: product.title,
+      image: product.images.main,
+      quantity: product.quantity,
+      finalPrice: price.finalPrice,
+      subtotal: price.finalPrice * product.quantity,
+      stock: product.properties.stock,
+    };
+  });
+
+  const summary = model.getSummary();
+
+  return { products, summary };
+};
+
 const updateCartSummary = function () {
   const summary = model.getSummary();
 
@@ -28,26 +48,6 @@ const updateCartItemUI = function (id) {
 
   syncHeaderCounts();
   updateCartSummary();
-};
-
-export const preparedCartProducts = function () {
-  const products = state.cart.map((product) => {
-    const price = getPrice(product.price);
-
-    return {
-      id: product.id,
-      title: product.title,
-      image: product.images.main,
-      quantity: product.quantity,
-      finalPrice: price.finalPrice,
-      subtotal: price.finalPrice * product.quantity,
-      stock: product.properties.stock,
-    };
-  });
-
-  const summary = model.getSummary();
-
-  return { products, summary };
 };
 
 export const controlIncrement = function ({ dataset }) {
@@ -107,6 +107,4 @@ export const controlUpdateInputField = function ({ id, value }) {
   cartView.updateInputValue(id, quantity);
 
   updateCartItemUI(id);
-  syncHeaderCounts();
-  updateCartSummary();
 };

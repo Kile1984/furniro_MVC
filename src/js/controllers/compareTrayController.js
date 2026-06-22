@@ -9,6 +9,12 @@ import { singleProductView } from "../views/singleProductView.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
 import { syncHeaderCounts } from "./headerController.js";
 
+import {
+  openCompareTray,
+  closeCompareTray,
+  updateCompareButtons,
+} from "../shared/compareUI.js";
+
 // Shape for compare tray product'S
 export const prepareCompareTrayProducts = function () {
   return state.compare.map((product) => ({
@@ -25,15 +31,13 @@ export const renderCompareTray = function () {
 };
 
 export const controlCloseCompareTray = function () {
-  compareTrayActions.closeCompareTray();
-  compareTrayView.closeCompareTray();
+  closeCompareTray();
 };
 
 export const controlOpenCompareTray = function () {
   if (state.compare.length === 0) return;
 
-  compareTrayActions.openCompareTray();
-  compareTrayView.openCompareTray();
+  openCompareTray();
 };
 
 export const controlRemoveFromCompare = function ({ dataset }) {
@@ -42,17 +46,16 @@ export const controlRemoveFromCompare = function ({ dataset }) {
   compareTrayView.removeProduct(dataset.id);
   compareTrayView.updateCounter(state.compare.length);
 
-  singleProductView.updateCompareButton?.(
+  updateCompareButtons?.(
     dataset.id,
     comparisonActions.isInComparison(dataset.id),
   );
 
   if (state.compare.length === 0) {
-    compareTrayActions.closeCompareTray();
-    compareTrayView.closeCompareTray();
+    closeCompareTray();
   }
 
-  productCardsView.updateCompareButton(
+  updateCompareButtons(
     dataset.id,
     comparisonActions.isInComparison(dataset.id),
   );

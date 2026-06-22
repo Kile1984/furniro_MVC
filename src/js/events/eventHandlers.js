@@ -27,9 +27,9 @@ export const wishlistEventActions = {
 };
 
 export const singleProductEventActions = {
-  "qt-increment": singleProductController.controlIncrement,
-  "qt-decrement": singleProductController.controlDecrement,
-  "add-to-cart": singleProductController.controlAddToCart,
+  "qt-increment-single": singleProductController.controlIncrement,
+  "qt-decrement-single": singleProductController.controlDecrement,
+  "add-to-cart-single": singleProductController.controlAddToCart,
   "add-to-compare-single": singleProductController.controlAddToCompare,
   "remove-from-compare-single":
     singleProductController.controlRemoveFromCompare,

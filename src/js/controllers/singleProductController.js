@@ -14,6 +14,12 @@ import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js
 import { preparedProduct } from "../utils/prepareProduct.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
 
+import {
+  openCompareTray,
+  closeCompareTray,
+  updateCompareButtons,
+} from "../shared/compareUI.js";
+
 export const prepareSinglProduct = function () {
   const [, , id] = window.location.hash.split("/");
 
@@ -38,7 +44,9 @@ export const prepareSinglProduct = function () {
   };
 
   const relatedProducts = state.products
-    .filter((p) => p.categorySlug === product.categorySlug)
+    .filter(
+      (p) => p.categorySlug === product.categorySlug && p.id !== product.id,
+    )
     .slice(0, 4)
     .map(preparedProduct);
 
@@ -102,29 +110,31 @@ export const controlAddToCart = function ({ target, dataset, source }) {
 export const controlAddToCompare = function ({ target, dataset }) {
   // ADD
   model.addToCompare(dataset.id);
+
   // IS ADD
   const isInCompare = comparisonActions.isInComparison(dataset.id);
   if (
     state.compare.length === 3 &&
     !compareTrayActions.getCompareTrayProduct(dataset.id)
   ) {
-    compareTrayView.openCompareTray();
+    openCompareTray();
     compareTrayView.compareTrayFull();
+
+    return;
   }
+
   // UPDATE BUTTON
-  singleProductView.updateCompareButton(dataset.id, isInCompare);
-  productCardsView.updateCompareButton(dataset.id, isInCompare);
+  updateCompareButtons(dataset.id, isInCompare);
 
   // PREPARE AND UPDATE TRAY
   const compareProduct = compareTrayActions.getCompareTrayProduct(dataset.id);
   if (!compareProduct) return;
-
   const prepareedProduct = prepareCompareTrayProduct(compareProduct);
-
   compareTrayView.addProduct(prepareedProduct);
+
   // OPEN TRAY
-  compareTrayActions.openCompareTray();
-  compareTrayView.openCompareTray();
+  openCompareTray();
+
   // UPDATE COUNTS
   compareTrayView.updateCounter(state.compare.length);
   syncHeaderCounts();
@@ -133,18 +143,19 @@ export const controlAddToCompare = function ({ target, dataset }) {
 export const controlRemoveFromCompare = function ({ target, dataset }) {
   // REMOVE
   model.removeFromCompare(dataset.id);
+
   // IS REMOVED
   const isInCompare = comparisonActions.isInComparison(dataset.id);
+
   // UPDATE BUTTON
-  singleProductView.updateCompareButton(dataset.id, isInCompare);
-  productCardsView.updateCompareButton(dataset.id, isInCompare);
+  updateCompareButtons(dataset.id, isInCompare);
+
   // IS EMPTY
-  if (state.compare.length === 0) {
-    compareTrayActions.closeCompareTray();
-    compareTrayView.closeCompareTray();
-  }
+  if (state.compare.length === 0) closeCompareTray();
+
   // UPDATE TRAY
   compareTrayView.removeProduct(dataset.id);
+
   // UPDATE COUNTS
   syncHeaderCounts();
 };

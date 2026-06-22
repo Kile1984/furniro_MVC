@@ -34,12 +34,13 @@ export const createSingleProductView = function () {
     },
 
     updateProductQuantityButtons({ newValue, stock }, element) {
+      console.log(newValue);
       const quantityEl = element.closest(".product__quantity");
       const incrementBtn = quantityEl.querySelector(
-        `[data-action="qt-increment"]`,
+        `[data-action="qt-increment-single"]`,
       );
       const decrementBtn = quantityEl.querySelector(
-        `[data-action="qt-decrement"]`,
+        `[data-action="qt-decrement-single"]`,
       );
 
       if (newValue === 1) {
@@ -203,7 +204,7 @@ export const createSingleProductView = function () {
                   <button
                     type="button"
                     class="btn product__quantity-btn product__quantity-btn--decrement ${product.quantity === 1 ? "disabled" : ""}"
-                    data-action="qt-decrement"
+                    data-action="qt-decrement-single"
                     data-id=${product.id}
                   >
                     -
@@ -222,13 +223,13 @@ export const createSingleProductView = function () {
                   <button
                     type="button"
                     class="btn product__quantity-btn product__quantity-btn--increment ${product.quantity === product.properties.stock ? "disabled" : ""}"
-                    data-action="qt-increment"
+                    data-action="qt-increment-single"
                     data-id=${product.id}
                   >
                     +
                   </button>
                 </div>
-                <button type="button" class="btn product__add-to-cart"  data-action="add-to-cart" data-id=${product.id}>
+                <button type="button" class="btn product__add-to-cart"  data-action="add-to-cart-single" data-id=${product.id}>
                 <span class="product__btn-icon"></span>
                 <span class="product__btn-label">Add To Cart</span>
                 </button>

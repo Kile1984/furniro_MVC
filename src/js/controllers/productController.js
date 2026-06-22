@@ -11,6 +11,12 @@ import { compareTrayView } from "../views/compareTrayView.js";
 import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js";
 import { singleProductView } from "../views/singleProductView.js";
 
+import {
+  openCompareTray,
+  closeCompareTray,
+  updateCompareButtons,
+} from "../shared/compareUI.js";
+
 export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
 
@@ -34,30 +40,26 @@ export const controlAddToCompare = function ({ dataset }) {
     state.compare.length === 3 &&
     !compareTrayActions.getCompareTrayProduct(dataset.id)
   ) {
-    compareTrayView.openCompareTray();
+    openCompareTray();
     compareTrayView.compareTrayFull();
 
     return;
   }
+
   model.addToCompare(dataset.id);
-  productCardsView.updateCompareButton(
+
+  updateCompareButtons(
     dataset.id,
     comparisonActions.isInComparison(dataset.id),
   );
 
-  compareTrayActions.openCompareTray();
-  compareTrayView.openCompareTray();
+  openCompareTray();
 
   const compareProduct = compareTrayActions.getCompareTrayProduct(dataset.id);
 
   if (!compareProduct) return;
 
   const product = prepareCompareTrayProduct(compareProduct);
-
-  singleProductView.updateCompareButton(
-    product.id,
-    comparisonActions.isInComparison(product.id),
-  );
 
   compareTrayView.addProduct(product);
   compareTrayView.updateCounter(state.compare.length);
@@ -67,23 +69,18 @@ export const controlAddToCompare = function ({ dataset }) {
 
 export const controlRemoveFromCompare = function ({ dataset }) {
   model.removeFromCompare(dataset.id);
-  productCardsView.updateCompareButton(
+
+  updateCompareButtons(
     dataset.id,
     comparisonActions.isInComparison(dataset.id),
   );
 
   if (state.compare.length === 0) {
-    compareTrayActions.closeCompareTray();
-    compareTrayView.closeCompareTray();
+    closeCompareTray();
   }
 
   compareTrayView.removeProduct(dataset.id);
   compareTrayView.updateCounter(state.compare.length);
-
-  singleProductView.updateCompareButton(
-    dataset.id,
-    comparisonActions.isInComparison(dataset.id),
-  );
 
   syncHeaderCounts();
 };
