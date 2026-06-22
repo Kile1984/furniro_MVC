@@ -1,4 +1,5 @@
 import { sprite, icons } from "../../assets/icons/icons.js";
+import { productCardsView } from "./shared/productCardsView.js";
 
 export const createSingleProductView = function () {
   return {
@@ -66,12 +67,12 @@ export const createSingleProductView = function () {
     generateCompareButton(isInCompare, id) {
       return isInCompare
         ? `
-      <button type="button" class="btn product__compare in-comparison" data-action="remove-from-compare" data-id=${id}>
+      <button type="button" class="btn product__compare in-comparison" data-action="remove-from-compare-single" data-id=${id}>
                   <span>✓</span>  Compared
                 </button>
       `
         : `
-        <button type="button" class="btn product__compare" data-action="add-to-compare" data-id=${id}>
+        <button type="button" class="btn product__compare" data-action="add-to-compare-single" data-id=${id}>
                   <span class="product__btn-icon">+</span>
                   <span class="product__btn-label">Compare</span>
                    
@@ -89,13 +90,13 @@ export const createSingleProductView = function () {
       if (currentId !== id) return;
 
       if (isInCompare) {
-        compareBtnEl.dataset.action = "remove-from-compare";
+        compareBtnEl.dataset.action = "remove-from-compare-single";
         compareBtnEl.innerHTML = ` <span>✓</span> Compared`;
         compareBtnEl.classList.add("in-comparison");
         return;
       }
 
-      compareBtnEl.dataset.action = "add-to-compare";
+      compareBtnEl.dataset.action = "add-to-compare-single";
       compareBtnEl.innerHTML = ` <span>+</span> Compare`;
       compareBtnEl.classList.remove("in-comparison");
     },
@@ -125,6 +126,7 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
+      console.log(product.relatedProducts);
       return `
     
       <main class="page page--product">
@@ -417,241 +419,8 @@ export const createSingleProductView = function () {
             </h2>
 
             <div class="products__grid">
-              <!-- 1 -->
-              <article class="product-card">
-                <a href="product.html" class="product-card__stretched-link"></a>
-                <div class="product-card__overlay">
-                  <button
-                    type="button"
-                    class="btn btn--secondary product-card__btn"
-                  >
-                    Add to cart
-                  </button>
-
-                  <a
-                    href="product.html"
-                    class="btn btn--outline product-card__view"
-                  >
-                    View details
-                  </a>
-
-                  <div class="product-card__actions">
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-share2"></use>
-                      </svg>
-                      <span>Share</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-tab"></use>
-                      </svg>
-                      <span>Compare</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-heart"></use>
-                      </svg>
-                      <span>Like</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="product-card__image-wrapper">
-                  <img
-                    src="./assets/images/product-syltherine.png"
-                    alt="Syltherine"
-                    class="product-card__image"
-                  />
-                  <span class="product-card__badge product-card__badge--red"
-                    >-30%</span
-                  >
-                </div>
-
-                <div class="product-card__content">
-                  <h3 class="product-card__title">Syltherine</h3>
-                  <p class="product-card__description">Stylish cafe chair</p>
-                  <div class="product-card__price">
-                    <span class="product-card__price-current"
-                      >Rp 2.500.000</span
-                    >
-                    <span class="product-card__price-old">Rp 3.500.000</span>
-                  </div>
-                </div>
-              </article>
-
-              <!-- 2 -->
-              <article class="product-card">
-                <a href="product.html" class="product-card__stretched-link"></a>
-                <div class="product-card__overlay">
-                  <button
-                    type="button"
-                    class="btn btn--secondary product-card__btn"
-                  >
-                    Add to cart
-                  </button>
-                  <a
-                    href="product.html"
-                    class="btn btn--outline product-card__view"
-                    >View details</a
-                  >
-                  <div class="product-card__actions">
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-share2"></use>
-                      </svg>
-                      <span>Share</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-tab"></use>
-                      </svg>
-                      <span>Compare</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-heart"></use>
-                      </svg>
-                      <span>Like</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="product-card__image-wrapper">
-                  <img
-                    src="./assets/images/product-leviosa.png"
-                    alt="Leviosa"
-                    class="product-card__image"
-                  />
-                </div>
-
-                <div class="product-card__content">
-                  <h3 class="product-card__title">Leviosa</h3>
-                  <p class="product-card__description">Stylish cafe chair</p>
-                  <div class="product-card__price">
-                    <span class="product-card__price-current"
-                      >Rp 2.500.000</span
-                    >
-                  </div>
-                </div>
-              </article>
-
-              <!-- 3 -->
-              <article class="product-card">
-                <a href="product.html" class="product-card__stretched-link"></a>
-                <div class="product-card__overlay">
-                  <button
-                    type="button"
-                    class="btn btn--secondary product-card__btn"
-                  >
-                    Add to cart
-                  </button>
-                  <a
-                    href="product.html"
-                    class="btn btn--outline product-card__view"
-                    >View details</a
-                  >
-                  <div class="product-card__actions">
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="./assets/icons/sprite.svg#icon-share2"></use>
-                      </svg>
-                      <span>Share</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-tab"></use>
-                      </svg>
-                      <span>Compare</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-heart"></use>
-                      </svg>
-                      <span>Like</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="product-card__image-wrapper">
-                  <img
-                    src="./assets/images/product-lolito.png"
-                    alt="Lolito"
-                    class="product-card__image"
-                  />
-                  <span class="product-card__badge product-card__badge--red"
-                    >-50%</span
-                  >
-                </div>
-
-                <div class="product-card__content">
-                  <h3 class="product-card__title">Lolito</h3>
-                  <p class="product-card__description">Luxury big sofa</p>
-                  <div class="product-card__price">
-                    <span class="product-card__price-current"
-                      >Rp 7.000.000</span
-                    >
-                    <span class="product-card__price-old">Rp 14.000.000</span>
-                  </div>
-                </div>
-              </article>
-
-              <!-- 4 -->
-              <article class="product-card">
-                <a href="product.html" class="product-card__stretched-link"></a>
-                <div class="product-card__overlay">
-                  <button
-                    type="button"
-                    class="btn btn--secondary product-card__btn"
-                  >
-                    Add to cart
-                  </button>
-                  <a
-                    href="product.html"
-                    class="btn btn--outline product-card__view"
-                    >View details</a
-                  >
-                  <div class="product-card__actions">
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="./assets/icons/sprite.svg#icon-share2"></use>
-                      </svg>
-                      <span>Share</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-tab"></use>
-                      </svg>
-                      <span>Compare</span>
-                    </button>
-                    <button type="button" class="product-card__action">
-                      <svg class="icon">
-                        <use href="/assets/icons/sprite.svg#icon-heart"></use>
-                      </svg>
-                      <span>Like</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="product-card__image-wrapper">
-                  <img
-                    src="./assets/images/product-respira.png"
-                    alt="Respira"
-                    class="product-card__image"
-                  />
-                  <span class="product-card__badge product-card__badge--green"
-                    >New</span
-                  >
-                </div>
-
-                <div class="product-card__content">
-                  <h3 class="product-card__title">Respira</h3>
-                  <p class="product-card__description">Outdoor bar table</p>
-                  <div class="product-card__price">
-                    <span class="product-card__price-current">Rp 500.000</span>
-                  </div>
-                </div>
-              </article>
+          
+            ${productCardsView.generateMarkup(product.relatedProducts)}
 
               <button class="btn btn--secondary products__btn-load-more">
                 Show More

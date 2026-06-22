@@ -4,6 +4,7 @@ import { images } from "../../../assets/images";
 export const categoryView = function () {
   return {
     generateMarkup({ products, category }) {
+      console.log(products);
       return `
 
        <!-- BREADCRUMB -->

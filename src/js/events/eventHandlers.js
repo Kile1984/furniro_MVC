@@ -30,8 +30,16 @@ export const singleProductEventActions = {
   "qt-increment": singleProductController.controlIncrement,
   "qt-decrement": singleProductController.controlDecrement,
   "add-to-cart": singleProductController.controlAddToCart,
-  "add-to-compare": singleProductController.controlAddToCompare,
-  "remove-from-compare": singleProductController.controlRemoveFromCompare,
+  "add-to-compare-single": singleProductController.controlAddToCompare,
+  "remove-from-compare-single":
+    singleProductController.controlRemoveFromCompare,
+  "add-to-compare": productController.controlAddToCompare,
+  "remove-from-compare": productController.controlRemoveFromCompare,
+  "add-to-wishlist": wishlistController.controlAddToWishlist,
+  "remove-from-wishlist": wishlistController.controlRemoveFromWishlist,
+  "add-to-cart": productController.controlAddToCart,
+  "qt-increment": productController.controlIncrement,
+  "qt-decrement": productController.controlDecrement,
 };
 
 export const cartInputActions = {

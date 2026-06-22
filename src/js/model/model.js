@@ -38,7 +38,7 @@ const FREE_SHIPPING_THRESHOLD = 1500;
 const TAX_RATE = 0.2;
 
 export const getCartProductSubtotal = function (id) {
-  const product = productsActions.getProductById(id);
+  const product = cartActions.getCartItemById(id);
   if (!product) return 0;
 
   const price = getPrice(product.price);

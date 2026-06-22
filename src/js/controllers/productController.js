@@ -9,6 +9,7 @@ import { compareTrayActions } from "../state/actions/compareTrayActions.js";
 import { state } from "../state/state.js";
 import { compareTrayView } from "../views/compareTrayView.js";
 import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js";
+import { singleProductView } from "../views/singleProductView.js";
 
 export const controlAddToCart = function ({ dataset }) {
   model.addToCartItem(dataset.id);
@@ -53,6 +54,11 @@ export const controlAddToCompare = function ({ dataset }) {
 
   const product = prepareCompareTrayProduct(compareProduct);
 
+  singleProductView.updateCompareButton(
+    product.id,
+    comparisonActions.isInComparison(product.id),
+  );
+
   compareTrayView.addProduct(product);
   compareTrayView.updateCounter(state.compare.length);
 
@@ -73,6 +79,11 @@ export const controlRemoveFromCompare = function ({ dataset }) {
 
   compareTrayView.removeProduct(dataset.id);
   compareTrayView.updateCounter(state.compare.length);
+
+  singleProductView.updateCompareButton(
+    dataset.id,
+    comparisonActions.isInComparison(dataset.id),
+  );
 
   syncHeaderCounts();
 };
