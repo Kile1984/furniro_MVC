@@ -152,6 +152,10 @@
     align-items: center;
     justify-content: start;
     gap: 1rem;
+    a {
+      display: flex;
+      gap: 1rem;
+    }
 
     @include respond(tablet) {
       gap: 0.5rem;

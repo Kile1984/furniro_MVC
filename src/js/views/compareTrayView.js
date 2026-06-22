@@ -40,6 +40,7 @@ export const createCompareTrayView = function () {
     generateProductMarkup(product) {
       return `
        <article class="compare-tray__product" data-id=${product.id}>
+         <a href="/#/product/${product.id}">
          <img
             src="${product.image}"
             alt="${product.title}"
@@ -51,7 +52,7 @@ export const createCompareTrayView = function () {
 
             <span class="compare-tray__price"> ${product.price} </span>
           </div>
-
+          </a>
           <button
             class="compare-tray__remove"
             data-action="remove-from-compare"
