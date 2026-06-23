@@ -46,62 +46,68 @@
               <a href="#/contact" class="header__nav-link nav-link">Contact</a>
             </li>
           </ul>
-
-          <div class="header__actions">
-            <ul class="header__actions-list">
-              <li>
-                <a href="#" aria-label="Account">
-                  <svg class="icon">
-                    <use href="./assets/icons/sprite.svg#icon-user"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="header__search-item">
-                <a href="#" aria-label="Search" class="header-actions-link">
-                  <input
-                    type="text"
-                    class="header__search-input"
-                    data-input="search"
-                  />
-                  <svg class="icon">
-                    <use href="./assets/icons/sprite.svg#icon-search"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li class="header__compare-item">
-                <button
-                  aria-label="Compare"
-                  class="header__compare-button header__compare-item"
-                  data-action="open-compare-tray"
-                >
-                  <svg class="icon">
-                    <use href="./assets/icons/sprite.svg#icon-tab"></use>
-                  </svg>
-                  <span class="header__count-compare"></span>
-                </button>
-              </li>
-
-              <li class="header__wishlist-item">
-                <a href="#/wishlist" aria-label="Wishlist">
-                  <svg class="icon">
-                    <use href="./assets/icons/sprite.svg#icon-heart"></use>
-                  </svg>
-                  <span class="header__count-wishlist"></span>
-                </a>
-              </li>
-
-              <li class="header__cart-item">
-                <a href="#/cart" aria-label="Cart">
-                  <svg class="icon icon-search">
-                    <use href="./assets/icons/sprite.svg#icon-cart"></use>
-                  </svg>
-                  <span class="header__count-cart"></span>
-                </a>
-              </li>
-            </ul>
-          </div>
         </nav>
+
+        <div class="header__actions">
+          <ul class="header__actions-list">
+            <li>
+              <a href="#" aria-label="Account">
+                <svg class="icon">
+                  <use href="./assets/icons/sprite.svg#icon-user"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="header__search-item">
+              <div class="header__search-wrapper">
+                <input
+                  type="text"
+                  class="header__search-input"
+                  data-input="search"
+                  placeholder="Search..."
+                  aria-label="Search products"
+                />
+                <svg class="icon">
+                  <use href="./assets/icons/sprite.svg#icon-search"></use>
+                </svg>
+
+                <div class="header__search-results">
+                  <ul class="header__search-list"></ul>
+                </div>
+              </div>
+            </li>
+
+            <li class="header__compare-item">
+              <button
+                aria-label="Compare"
+                class="header__compare-button header__compare-item"
+                data-action="open-compare-tray"
+              >
+                <svg class="icon">
+                  <use href="./assets/icons/sprite.svg#icon-tab"></use>
+                </svg>
+                <span class="header__count-compare"></span>
+              </button>
+            </li>
+
+            <li class="header__wishlist-item">
+              <a href="#/wishlist" aria-label="Wishlist">
+                <svg class="icon">
+                  <use href="./assets/icons/sprite.svg#icon-heart"></use>
+                </svg>
+                <span class="header__count-wishlist"></span>
+              </a>
+            </li>
+
+            <li class="header__cart-item">
+              <a href="#/cart" aria-label="Cart">
+                <svg class="icon icon-search">
+                  <use href="./assets/icons/sprite.svg#icon-cart"></use>
+                </svg>
+                <span class="header__count-cart"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
 

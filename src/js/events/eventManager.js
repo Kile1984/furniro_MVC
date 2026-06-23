@@ -37,6 +37,7 @@ export const initEventManager = function () {
   const inputMap = {
     cart: cartInputActions,
     product: singleProductInputActions,
+    header: searchInputActions,
   };
 
   function handleClick(e) {
@@ -66,7 +67,9 @@ export const initEventManager = function () {
     if (!target) return;
 
     const action = target.dataset.input;
-    const source = state.currentRoute;
+    const source = target.closest(".header") ? "header" : state.currentRoute;
+
+    console.log("ACTION: " + action, "SOURCE: " + source);
 
     inputMap[source]?.[action]?.({
       target,

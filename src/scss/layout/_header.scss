@@ -11,7 +11,7 @@
 
   &__inner {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     padding-block: 1.87rem;
   }
@@ -36,6 +36,7 @@
     display: none;
 
     @include respond(tablet) {
+      grid-column: 3 / span 1;
       width: 2rem;
       height: 1.5rem;
 
@@ -115,7 +116,8 @@
   }
 
   &__actions {
-    @include respond(small) {
+    @include respond(tablet) {
+      grid-row: 1 / span 1;
       grid-column: 2 / span 1;
       justify-self: end;
     }
@@ -134,9 +136,15 @@
       align-items: center;
     }
 
+    .icon {
+      @include respond(mobile) {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
     @include respond(desktop) {
       gap: 1.5rem;
-      color: var(--color-accent);
     }
 
     @include respond(mobile) {
@@ -150,8 +158,46 @@
     position: relative;
   }
 
-  &__search-item {
-    display: flex;
+  &__search-wrapper {
+    position: relative;
+  }
+
+  &__search-results {
+  }
+
+  &__search-list {
+    background-color: var(--bg-neutral-200);
+    width: 195px;
+    padding: 0.5rem;
+    border-radius: 3px;
+    position: absolute;
+    left: -200px;
+    right: 0;
+    top: calc(100% + 1rem);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__search-result {
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    img {
+      width: 45px;
+      border-radius: 5px;
+    }
   }
 
   &__search-input {
@@ -161,17 +207,24 @@
     padding-inline-start: 0.5rem;
 
     position: absolute;
-    // opacity: 0;
-    // left: 0;
-    transition: all 0.5s;
-    // z-index: -1;
 
-    left: -150px;
+    transition:
+      transform 0.5s,
+      opacity 0.5s;
+    // transform: translateX(-150px);
+    // opacity: 0;
+    transform: translateX(-200px);
+    opacity: 1;
+
+    &:focus {
+      outline: none;
+      border-color: #b88e2f;
+      box-shadow: 0 0 0 2px rgba(184, 142, 47, 0.2);
+    }
 
     &--open {
+      transform: translateX(0);
       opacity: 1;
-      left: -150px;
-      z-index: 1;
     }
   }
 
@@ -196,6 +249,16 @@
 
     opacity: 0;
     visibility: hidden;
+
+    @include respond(mobile) {
+      bottom: 8px;
+      right: -8px;
+
+      font-size: 11px;
+      font-weight: 400;
+      width: 18px;
+      height: 18px;
+    }
 
     &.visible {
       opacity: 1;

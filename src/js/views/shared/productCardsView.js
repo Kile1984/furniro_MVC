@@ -89,7 +89,6 @@ export const createProductCardsView = function () {
     },
 
     generateMarkup(products) {
-      console.log(products);
       return `
           ${products
             .map((p) => {

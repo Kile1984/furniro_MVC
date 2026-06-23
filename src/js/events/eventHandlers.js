@@ -4,6 +4,7 @@ import * as productController from "../controllers/productController.js";
 import * as singleProductController from "../controllers/singleProductController.js";
 import * as comparisonController from "../controllers/comparisonController.js";
 import * as compareTrayController from "../controllers/compareTrayController.js";
+import * as searchController from "../controllers/searchController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -58,4 +59,8 @@ export const compareTrayActions = {
 
 export const headerEventActions = {
   "open-compare-tray": compareTrayController.controlOpenCompareTray,
+};
+
+export const searchInputActions = {
+  search: searchController.constrolSearchInput,
 };
