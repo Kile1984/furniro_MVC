@@ -125,6 +125,14 @@
       grid-column: 2 / span 1;
       justify-self: center;
     }
+    a,
+    button,
+    svg {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
   }
 
   &__actions-list {
@@ -140,10 +148,6 @@
     }
 
     .icon {
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
       @include respond(mobile) {
         width: 12px;
         height: 12px;
