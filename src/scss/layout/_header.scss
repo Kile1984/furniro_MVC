@@ -140,6 +140,10 @@
     }
 
     .icon {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
       @include respond(mobile) {
         width: 12px;
         height: 12px;
@@ -158,7 +162,6 @@
   &__wishlist-item,
   &__cart-item,
   &__compare-item {
-    -webkit-tap-highlight-color: transparent;
     position: relative;
   }
 
