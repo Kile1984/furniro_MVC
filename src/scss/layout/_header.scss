@@ -149,8 +149,6 @@
 
     .icon {
       @include respond(mobile) {
-        width: 12px;
-        height: 12px;
       }
     }
 
@@ -181,15 +179,13 @@
     right: 0;
     transform: translateX(-50%);
     top: 7rem;
-    width: 300px;
+    max-width: 250px;
+    width: 100%;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s;
 
     @include respond(small) {
-      width: 100%;
-      left: 0;
-      transform: translateX(0);
     }
 
     &.show {
