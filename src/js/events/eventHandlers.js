@@ -59,6 +59,7 @@ export const compareTrayActions = {
 
 export const headerEventActions = {
   "open-compare-tray": compareTrayController.controlOpenCompareTray,
+  "toggle-search": searchController.controlToggleSearch,
 };
 
 export const searchInputActions = {

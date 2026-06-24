@@ -5,7 +5,7 @@ import { searchView } from "../views/searchView.js";
 import { formatPrice } from "../utils/format.js";
 import { getPrice } from "../utils/getPrice.js";
 
-export const prepareSearchProduct = function (product) {
+export const prepareSearchResult = function (product) {
   const price = getPrice(product.price).finalPrice;
 
   return {
@@ -22,7 +22,13 @@ export const constrolSearchInput = function ({ value }) {
   const result = searchProducts(value);
 
   serachActions.setResults(result);
-  const products = result.map((res) => prepareSearchProduct(res));
+
+  const products = result.map((res) => prepareSearchResult(res));
 
   searchView.render(products);
+};
+
+export const controlToggleSearch = function () {
+  searchView.toggle();
+  searchView.clear();
 };
