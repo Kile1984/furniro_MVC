@@ -1,4 +1,4 @@
-import { serachActions } from "../state/actions/searchActions.js";
+import { searchActions } from "../state/actions/searchActions.js";
 import { state } from "../state/state.js";
 import { searchProducts } from "../services/searchService.js";
 import { searchView } from "../views/searchView.js";
@@ -16,14 +16,19 @@ export const prepareSearchResult = function (product) {
   };
 };
 
-export const constrolSearchInput = function ({ value }) {
-  serachActions.setQuery(value);
+export const controlSearchInput = function ({ value }) {
+  searchActions.setQuery(value);
 
   const result = searchProducts(value);
 
-  serachActions.setResults(result);
+  searchActions.setResults(result);
 
   const products = result.map((res) => prepareSearchResult(res));
+  console.log(products);
+  if (!products.length && state.search.query !== "") {
+    searchView.renderEmpty();
+    return;
+  }
 
   searchView.render(products);
 };
@@ -31,4 +36,8 @@ export const constrolSearchInput = function ({ value }) {
 export const controlToggleSearch = function () {
   searchView.toggle();
   searchView.clear();
+};
+
+export const controlCloseSearch = function () {
+  searchView.close();
 };

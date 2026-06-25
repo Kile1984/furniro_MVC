@@ -1,4 +1,5 @@
 import { state } from "../state/state.js";
+import { controlCloseSearch } from "../controllers/searchController.js";
 import {
   productEventActions,
   cartEventActions,
@@ -22,6 +23,12 @@ export const initEventManager = function () {
   searchInput.addEventListener("input", handleInput);
   compareTrayEl.addEventListener("click", handleClick);
   headerEl.addEventListener("click", handleClick);
+  document.addEventListener("click", handleOutsideSearchClick);
+
+  function handleOutsideSearchClick(e) {
+    if (e.target.closest(".header__search-wrapper")) return;
+    controlCloseSearch();
+  }
 
   const eventMap = {
     home: productEventActions,

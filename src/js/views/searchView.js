@@ -6,6 +6,9 @@ export const createSearchView = function () {
   return {
     toggle() {
       searchInput.classList.toggle("open");
+      if (searchInput.classList.contains("open")) {
+        searchInput.focus();
+      }
     },
 
     clear() {
@@ -14,13 +17,24 @@ export const createSearchView = function () {
       searchInput.value = "";
     },
 
+    close() {
+      this.clear();
+      searchInput.classList.remove("open");
+    },
+
     render(products) {
       if (!products.length) {
         searchResultEl.innerHTML = "";
         searchResultEl.classList.remove("show");
         return;
       }
+
       searchResultEl.innerHTML = this.generateMarkup(products);
+      searchResultEl.classList.add("show");
+    },
+
+    renderEmpty() {
+      searchResultEl.innerHTML = "No products found.";
       searchResultEl.classList.add("show");
     },
 

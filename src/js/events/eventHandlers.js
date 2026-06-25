@@ -63,5 +63,5 @@ export const headerEventActions = {
 };
 
 export const searchInputActions = {
-  search: searchController.constrolSearchInput,
+  search: searchController.controlSearchInput,
 };
