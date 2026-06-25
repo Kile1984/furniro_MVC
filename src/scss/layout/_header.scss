@@ -218,6 +218,7 @@
   }
 
   &__search-input {
+    font-size: 18px;
     border-radius: 5px;
     border: 1px solid var(--color-accent);
     margin-right: 0.5rem;
@@ -233,7 +234,7 @@
       opacity 0.5s;
 
     @include respond(mobile) {
-      top: 50px;
+      top: 100%;
       left: 50%;
       // transform: translateX(-50%);
       width: 80%;
