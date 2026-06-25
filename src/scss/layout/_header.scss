@@ -147,11 +147,6 @@
       align-items: center;
     }
 
-    .icon {
-      @include respond(mobile) {
-      }
-    }
-
     @include respond(desktop) {
       gap: 1.5rem;
     }
@@ -184,9 +179,6 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s;
-
-    @include respond(small) {
-    }
 
     &.show {
       opacity: 1;
@@ -232,18 +224,21 @@
     transition:
       transform 0.5s,
       opacity 0.5s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 
-    @include respond(mobile) {
+    @include respond(tablet) {
       top: 100%;
       left: 50%;
-      // transform: translateX(-50%);
+      width: 50%;
+    }
+
+    @include respond(mobile) {
       width: 80%;
     }
 
     &:focus {
       outline: none;
       border-color: #b88e2f;
-      box-shadow: 0 0 0 2px rgba(184, 142, 47, 0.2);
     }
 
     &.open {
@@ -251,7 +246,7 @@
       transform: translate(-200px, -5px);
       pointer-events: auto;
 
-      @include respond(mobile) {
+      @include respond(tablet) {
         transform: translate(-50%);
       }
     }
