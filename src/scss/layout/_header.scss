@@ -224,7 +224,6 @@
     padding-inline-start: 0.5rem;
 
     position: absolute;
-    // left: -200px;
     opacity: 0;
     transform: translate(-200px, -100px);
     pointer-events: none;
@@ -234,7 +233,10 @@
       opacity 0.5s;
 
     @include respond(mobile) {
-      font-size: 12px;
+      top: 50px;
+      left: 50%;
+      // transform: translateX(-50%);
+      width: 80%;
     }
 
     &:focus {
@@ -249,7 +251,7 @@
       pointer-events: auto;
 
       @include respond(mobile) {
-        transform: translate(-45px, 22px);
+        transform: translate(-50%);
       }
     }
   }
