@@ -159,3 +159,11 @@ export const controlRemoveFromCompare = function ({ target, dataset }) {
   // UPDATE COUNTS
   syncHeaderCounts();
 };
+
+export const controlSelectImage = function ({ target }) {
+  singleProductView.showMainImage(target.src);
+};
+
+export const controlActivateTab = function ({ target }) {
+  singleProductView.switchActiveTab(target);
+};

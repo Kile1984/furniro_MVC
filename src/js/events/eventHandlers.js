@@ -5,6 +5,7 @@ import * as singleProductController from "../controllers/singleProductController
 import * as comparisonController from "../controllers/comparisonController.js";
 import * as compareTrayController from "../controllers/compareTrayController.js";
 import * as searchController from "../controllers/searchController.js";
+import * as shopController from "../controllers/shopController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -41,6 +42,8 @@ export const singleProductEventActions = {
   "add-to-cart": productController.controlAddToCart,
   "qt-increment": productController.controlIncrement,
   "qt-decrement": productController.controlDecrement,
+  "select-image": singleProductController.controlSelectImage,
+  "change-tab": singleProductController.controlActivateTab,
 };
 
 export const cartInputActions = {
@@ -64,4 +67,14 @@ export const headerEventActions = {
 
 export const searchInputActions = {
   search: searchController.controlSearchInput,
+};
+
+export const filterEventActions = {
+  "open-filter": shopController.controlOpenFilterDrawer,
+  "close-filter": shopController.controlCloseFilterDrawer,
+};
+
+export const shopEventActions = {
+  ...productEventActions,
+  ...filterEventActions,
 };

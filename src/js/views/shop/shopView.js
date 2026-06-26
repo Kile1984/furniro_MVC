@@ -1,6 +1,7 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { productCardsView } from "../shared/productCardsView.js";
+import { filterDrawerView } from "./filterDrawerView.js";
 
 export const createShopView = function (appEl) {
   return {
@@ -31,7 +32,7 @@ export const createShopView = function (appEl) {
         <div class="toolbar">
           <div class="container toolbar__inner">
             <div class="toolbar__group toolbar__group--start">
-              <button class="toolbar__btn toolbar__btn--filter">
+              <button class="toolbar__btn toolbar__btn--filter" data-action="open-filter">
                 <svg class="icon">
                   <use href="${sprite}#${icons.equalizer}"></use>
                 </svg>
@@ -156,7 +157,7 @@ export const createShopView = function (appEl) {
         >
           <div class="filter-drawer__header">
             <h3 class="filter-drawer__title">Filter</h3>
-            <button type="button" class="filter-drawer__close">&times;</button>
+            <button type="button" class="filter-drawer__close" data-action="close-filter">&times;</button>
           </div>
 
           <form class="filter-form">
@@ -292,7 +293,8 @@ export const createShopView = function (appEl) {
           </form>
         </aside>
       </div>
-    
+
+      ${filterDrawerView.generateMArkup()}
       `;
     },
   };

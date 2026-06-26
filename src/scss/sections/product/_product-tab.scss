@@ -61,5 +61,11 @@
   }
 
   &__content {
+    justify-self: center;
+    background-color: var(--bg-neutral-500);
+    padding: 1rem;
+    max-width: 600px;
+    border-radius: 10px;
+    border: 1px solid var(--color-gray-light);
   }
 }

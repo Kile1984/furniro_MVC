@@ -126,8 +126,31 @@ export const createSingleProductView = function () {
       }, 2000);
     },
 
+    showMainImage(src) {
+      const mainImgEl = document.querySelector(".product__gallery-main img");
+      mainImgEl.src = src;
+    },
+
+    switchActiveTab(tab) {
+      document
+        .querySelector(".product-tabs__btn--active")
+        ?.classList.remove("product-tabs__btn--active");
+
+      document
+        .querySelector(".product-tabs__panel--active")
+        ?.classList.remove("product-tabs__panel--active");
+
+      const panel = document.querySelector(
+        `.product-tabs__panel--${tab.dataset.tab}`,
+      );
+
+      if (!panel) return;
+
+      panel.classList.add("product-tabs__panel--active");
+      tab.classList.add("product-tabs__btn--active");
+    },
+
     generateMarkup(product) {
-      console.log(product.relatedProducts);
       return `
     
       <main class="page page--product">
@@ -156,6 +179,7 @@ export const createSingleProductView = function () {
                  <img
                   src="${img}"
                   alt="${product.title}"
+                  data-action="select-image"
                 />
                 `;
                 })
@@ -300,6 +324,8 @@ export const createSingleProductView = function () {
               <button
                 type="button"
                 class="product-tabs__btn product-tabs__btn--active ui-title ui-title--light"
+                data-tab="description"
+                data-action="change-tab"
               >
                 Description
               </button>
@@ -307,6 +333,8 @@ export const createSingleProductView = function () {
               <button
                 type="button"
                 class="product-tabs__btn ui-title ui-title--light"
+                 data-tab="additional"
+                data-action="change-tab"
               >
                 Additional Information
               </button>
@@ -314,19 +342,21 @@ export const createSingleProductView = function () {
               <button
                 type="button"
                 class="product-tabs__btn ui-title ui-title--light"
+                 data-tab="reviews"
+                data-action="change-tab"
               >
                 Reviews [<span class="prodict-tab__count">${product.reviews.length}</span>]
               </button>
             </div>
 
-            <div class="product-tabs__content">
+            <div class="product-tabs__content" data-panel="description">
               <div class="product-tabs__panel product-tabs__panel--description product-tabs__panel--active">
                 <p>
                  ${product.longDescription.paragraphs}
                 </p>
               </div>
 
-              <div class="product-tabs__panel product-tabs__panel--additional ">
+              <div class="product-tabs__panel product-tabs__panel--additional" data-panel="additional">
                
                 <table>
                   <tr>
@@ -389,7 +419,7 @@ export const createSingleProductView = function () {
                 </table>
               </div>
 
-              <div class="product-tabs__panel product-tabs__panel--reviews ">
+              <div class="product-tabs__panel product-tabs__panel--reviews" data-panel="reviews">
               ${product.reviews
                 .map((r) => {
                   return `

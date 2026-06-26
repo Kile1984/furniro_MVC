@@ -14,6 +14,7 @@
 
     @include respond(small) {
       grid-template-columns: 1fr;
+      gap: 0;
     }
   }
 
@@ -24,13 +25,16 @@
     gap: 2rem;
 
     @include respond(tablet) {
-      // align-items: center;
       gap: 1rem;
     }
 
     @include respond(mobile) {
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 0.3fr;
+      grid-template-rows: 1fr 0.2fr;
+    }
+
+    @include respond(small) {
+      grid-template-rows: 1fr 0.25fr;
     }
   }
 

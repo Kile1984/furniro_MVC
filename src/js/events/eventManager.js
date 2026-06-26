@@ -10,6 +10,7 @@ import {
   searchInputActions,
   compareTrayActions,
   headerEventActions,
+  shopEventActions,
 } from "./eventHandlers.js";
 
 export const initEventManager = function () {
@@ -32,7 +33,7 @@ export const initEventManager = function () {
 
   const eventMap = {
     home: productEventActions,
-    shop: productEventActions,
+    shop: shopEventActions,
     cart: cartEventActions,
     wishlist: wishlistEventActions,
     product: singleProductEventActions,
