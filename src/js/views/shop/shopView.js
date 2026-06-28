@@ -5,6 +5,12 @@ import { filterDrawerView } from "./filterDrawerView.js";
 
 export const createShopView = function (appEl) {
   return {
+    setGrid(columns) {
+      const grid = document.querySelector(".products__grid");
+
+      grid.classList.toggle("products__grid--2", columns === 2);
+    },
+
     generateMarkup(products) {
       return `
       <!-- PAGE HEADING SHOP -->
@@ -36,14 +42,14 @@ export const createShopView = function (appEl) {
                 <svg class="icon">
                   <use href="${sprite}#${icons.equalizer}"></use>
                 </svg>
-                <span>Filter</span>
+                <span class="toolbar__btn--text">Filter</span>
               </button>
-              <button class="toolbar__btn toolbar__btn--grid-4">
+              <button class="toolbar__btn toolbar__btn--grid-4" data-action="grid-4">
                 <svg class="icon">
                      <use href="${sprite}#${icons.grid1}"></use>
                 </svg>
               </button>
-              <button class="toolbar__btn toolbar__btn--grid-2">
+              <button class="toolbar__btn toolbar__btn--grid-2" data-action="grid-2">
                 <svg class="icon">
                   <use href="${sprite}#${icons.grid}"></use>
                 </svg>
@@ -299,3 +305,5 @@ export const createShopView = function (appEl) {
     },
   };
 };
+
+export const shopView = createShopView();

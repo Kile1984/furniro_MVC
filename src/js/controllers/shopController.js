@@ -1,11 +1,18 @@
 import * as model from "../model/model.js";
 import { filterDrawerView } from "../views/shop/filterDrawerView.js";
-
-export const controlOpenFilterDrawer = function () {
-  filterDrawerView.open();
-};
+import { shopView } from "../views/shop/shopView.js";
 
 export const controlCloseFilterDrawer = function () {
   filterDrawerView.close();
-  console.log("Open...");
+};
+
+export const controlToggleFilterDrawer = function ({ dataset }) {
+  const { action } = dataset;
+
+  filterDrawerView.toggleFilterDrawer(action === "open-filter");
+};
+
+export const controlChangeGrid = function ({ dataset }) {
+  const columns = dataset.action === "grid-2" ? 2 : 4;
+  shopView.setGrid(columns);
 };

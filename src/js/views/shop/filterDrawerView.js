@@ -1,13 +1,25 @@
 export const creteFilterDrawer = function () {
+  const body = document.querySelector("body");
+
   return {
-    open() {
-      const drawerEl = document.querySelector(".filter");
-      drawerEl.classList.add("active");
-    },
+    // open() {
+    //   const drawerEl = document.querySelector(".filter");
+
+    //   drawerEl.classList.add("active");
+    //   body.classList.add("drawer-open");
+    // },
 
     close() {
       const drawerEl = document.querySelector(".filter");
+
       drawerEl.classList.remove("active");
+      body.classList.remove("drawer-open");
+    },
+
+    toggleFilterDrawer(isOpen) {
+      const drawerEl = document.querySelector(".filter");
+      drawerEl.classList.toggle("active", isOpen);
+      body.classList.toggle("drawer-open", isOpen);
     },
 
     generateMArkup() {

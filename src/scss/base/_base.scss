@@ -25,6 +25,10 @@ body {
   line-height: 1.5;
   color: var(--color-black);
   background-color: var(--color-white);
+
+  &.drawer-open {
+    overflow: hidden;
+  }
 }
 
 /* ======================================

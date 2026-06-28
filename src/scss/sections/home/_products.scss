@@ -19,9 +19,11 @@
       gap: var(--gap-xs);
     }
 
-    // @include respond(small) {
-    //   grid-template-columns: 1fr;
-    // }
+    &--2 {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 600px;
+      margin-inline: auto;
+    }
   }
 
   &__btn-load-more {

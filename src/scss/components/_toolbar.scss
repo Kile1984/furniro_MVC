@@ -86,7 +86,13 @@
       width: 26px;
       height: 26px;
 
-      @include respond(mobile) {
+      @include respond(tablet) {
+        display: none;
+      }
+    }
+
+    &--text {
+      @include respond(tablet) {
         display: none;
       }
     }

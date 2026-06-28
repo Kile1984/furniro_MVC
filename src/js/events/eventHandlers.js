@@ -70,11 +70,13 @@ export const searchInputActions = {
 };
 
 export const filterEventActions = {
-  "open-filter": shopController.controlOpenFilterDrawer,
-  "close-filter": shopController.controlCloseFilterDrawer,
+  "open-filter": shopController.controlToggleFilterDrawer,
+  "close-filter": shopController.controlToggleFilterDrawer,
 };
 
 export const shopEventActions = {
   ...productEventActions,
   ...filterEventActions,
+  "grid-2": shopController.controlChangeGrid,
+  "grid-4": shopController.controlChangeGrid,
 };
