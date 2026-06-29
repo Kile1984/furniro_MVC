@@ -13,4 +13,13 @@ export const state = {
   singleProduct: {
     quantity: 1,
   },
+
+  filter: {
+    category: [],
+    minPrice: null,
+    maxPrice: null,
+    inStock: false,
+    discount: false,
+    rating: null,
+  },
 };

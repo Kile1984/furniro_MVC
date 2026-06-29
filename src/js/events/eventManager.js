@@ -12,6 +12,7 @@ import {
   compareTrayActions,
   headerEventActions,
   shopEventActions,
+  filterInputActions,
 } from "./eventHandlers.js";
 
 export const initEventManager = function () {
@@ -54,6 +55,7 @@ export const initEventManager = function () {
     cart: cartInputActions,
     product: singleProductInputActions,
     header: searchInputActions,
+    shop: filterInputActions,
   };
 
   function handleClick(e) {

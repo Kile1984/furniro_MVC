@@ -2,13 +2,6 @@ export const creteFilterDrawer = function () {
   const body = document.querySelector("body");
 
   return {
-    // open() {
-    //   const drawerEl = document.querySelector(".filter");
-
-    //   drawerEl.classList.add("active");
-    //   body.classList.add("drawer-open");
-    // },
-
     close() {
       const drawerEl = document.querySelector(".filter");
 
@@ -22,7 +15,7 @@ export const creteFilterDrawer = function () {
       body.classList.toggle("drawer-open", isOpen);
     },
 
-    generateMArkup() {
+    generateMarkup() {
       return `
       <!-- FILTER DRAWER -->
       <div class="filter">
@@ -31,33 +24,33 @@ export const creteFilterDrawer = function () {
         <aside
           class="filter-drawer"
           role="dialog"
-          arial-modal="true"
+          aria-modal="true"
           aria-labelledby="filter-title"
         >
           <div class="filter-drawer__header">
-            <h3 class="filter-drawer__title">Filter</h3>
-            <button type="button" class="filter-drawer__close">&times;</button>
+            <h3 class="filter-drawer__title" id="filter-title">Filter</h3>
+            <button type="button" class="filter-drawer__close" data-action="close-filter">&times;</button>
           </div>
 
-          <form class="filter-form">
+          <form class="filter-form" autocomplete="off">
             <div class="filter-form__body">
               <!-- Category -->
               <div class="filter-form__group">
                 <h4 class="filter-form__title">Category</h4>
                 <label class="filter-form__option">
-                  <input type="checkbox" name="category" value="chairs" />
+                  <input type="checkbox" name="category" value="chair" data-input="filter"/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Chairs</span>
                 </label>
 
                 <label class="filter-form__option">
-                  <input type="checkbox" name="category" value="sofa" />
+                  <input type="checkbox" name="category" value="sofa" data-input="filter"/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Sofa</span>
                 </label>
 
                 <label class="filter-form__option">
-                  <input type="checkbox" name="category" value="tables" />
+                  <input type="checkbox" name="category" value="table" data-input="filter"/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Tables</span>
                 </label>
@@ -69,40 +62,37 @@ export const creteFilterDrawer = function () {
                 <div class="filter-form__price">
                   <input
                     type="number"
-                    name="price-min"
+                    name="minPrice"
                     placeholder="Min"
                     min="0"
+                    data-input="filter"
                   />
                   <span> - </span>
                   <input
                     type="number"
-                    name="price-max"
+                    name="maxPrice"
                     placeholder="Max"
                     min="0"
+                    data-input="filter"
                   />
                 </div>
               </div>
 
-              <!-- Size -->
+               <!-- In stock and Discount -->
               <div class="filter-form__group">
-                <h4 class="filter-form__title">Size</h4>
                 <label class="filter-form__option">
-                  <input type="checkbox" name="size" value="small" />
+                  <input type="checkbox" name="inStock" data-input="filter"/>
                   <span class="filter-form__box"></span>
-                  <span class="filter-form__label">Small</span>
+                  <span class="filter-form__label">In stock</span>
                 </label>
 
-                <label class="filter-form__option">
-                  <input type="checkbox" name="size" value="medium" />
-                  <span class="filter-form__box"></span>
-                  <span class="filter-form__label">Medium</span>
-                </label>
 
                 <label class="filter-form__option">
-                  <input type="checkbox" name="size" value="large" />
+                  <input type="checkbox" name="discount" value="discount" data-input="filter"/>
                   <span class="filter-form__box"></span>
-                  <span class="filter-form__label">Large</span>
+                  <span class="filter-form__label">Discount</span>
                 </label>
+
               </div>
 
               <!-- Rating -->
@@ -110,64 +100,22 @@ export const creteFilterDrawer = function () {
                 <h4 class="filter-form__title">Rating</h4>
 
                 <label class="filter-form__option">
-                  <input type="radio" name="rating" value="4" />
+                  <input type="radio" name="rating" value="4" data-input="filter"/>
                   <span class="filter-form__radio"></span>
                   <span class="filter-form__label"> 4★ & up</span>
                 </label>
 
                 <label class="filter-form__option">
-                  <input type="radio" name="rating" value="3" />
+                  <input type="radio" name="rating" value="3" data-input="filter"/>
                   <span class="filter-form__radio"></span>
                   <span class="filter-form__label">3★ & up</span>
                 </label>
               </div>
-
-              <!-- Color -->
-              <div class="filter-form__group">
-                <h4 class="filter-form__title">Color</h4>
-                <div class="filter-form__colors">
-                  <label class="filter-form__color">
-                    <input
-                      type="checkbox"
-                      name="color"
-                      value="black"
-                      class="filter-form__color-input"
-                    />
-                    <span
-                      class="filter-form__dot filter-form__dot--black"
-                    ></span>
-                  </label>
-
-                  <label class="filter-form__color">
-                    <input
-                      type="checkbox"
-                      name="color"
-                      value="gray"
-                      class="filter-form__color-input"
-                    />
-                    <span
-                      class="filter-form__dot filter-form__dot--gray"
-                    ></span>
-                  </label>
-
-                  <label class="filter-form__color">
-                    <input
-                      type="checkbox"
-                      name="color"
-                      value="beige"
-                      class="filter-form__color-input"
-                    />
-                    <span
-                      class="filter-form__dot filter-form__dot--beige"
-                    ></span>
-                  </label>
-                </div>
-              </div>
             </div>
 
             <div class="filter-drawer__footer">
-              <button class="btn btn--secondary">Reset</button>
-              <button class="btn btn--primary">Apply</button>
+              <button class="btn btn--secondary" type="button" data-action="reset-filters">Reset</button>
+              <button class="btn btn--primary" type="button" data-action="apply-filters">Apply</button>
             </div>
           </form>
         </aside>
