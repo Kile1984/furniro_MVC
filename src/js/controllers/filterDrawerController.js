@@ -2,6 +2,7 @@ import { state } from "../state/state.js";
 import { filterDrawerView } from "../views/shop/filterDrawerView";
 import { filterDrawerActions } from "../state/actions/filterDrawerActions.js";
 import { getPrice } from "../utils/getPrice.js";
+import { filterProducts } from "../services/filterService.js";
 
 export const controlFilter = function ({ target }) {
   const { name, checked } = target;
@@ -35,5 +36,10 @@ export const controlFilter = function ({ target }) {
   if (name === "rating") {
     filterDrawerActions.setFilters(name, value);
   }
-  filterDrawerActions.consoleState();
+};
+
+export const controlApplayFilters = function () {
+  const filteredProducts = filterProducts(state.products, state.filter);
+
+  console.log(filteredProducts);
 };

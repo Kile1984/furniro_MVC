@@ -16,8 +16,4 @@ export const filterDrawerActions = {
       }
     }
   },
-
-  consoleState() {
-    console.log(state.filter);
-  },
 };
