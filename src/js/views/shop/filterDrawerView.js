@@ -9,6 +9,12 @@ export const creteFilterDrawer = function () {
       body.classList.remove("drawer-open");
     },
 
+    reset() {
+      const formEl = document.querySelector(".filter-form");
+
+      formEl.reset();
+    },
+
     toggleFilterDrawer(isOpen) {
       const drawerEl = document.querySelector(".filter");
       drawerEl.classList.toggle("active", isOpen);

@@ -34,14 +34,26 @@ export const createProductCardsView = function () {
       );
 
       if (!cart) return;
-      cart.innerHTML =
-        quantity > 0
-          ? ` <button class="btn product-card__btn--decrement" data-action="qt-decrement" data-id=${id}>-
+      console.log(quantity, stock);
+      if (quantity > 0) {
+        cart.innerHTML = `
+               <button class="btn product-card__btn--decrement"         data-action="qt-decrement" data-id=${id}>-
               </button>
                 <span class="product-card__quantity">${quantity}</span>
               <button class="btn product-card__btn--icrement ${isDisabled ? "cart-page__quantity-btn--disabled" : ""}" data-action="qt-increment" data-id=${id}>+
-              </button> `
-          : ` <button
+              </button> `;
+      } else if (stock === 0) {
+        cart.innerHTML = `
+               <button
+                  type="button"
+                  class="btn btn--secondary product-card__btn"
+                  disabled
+                 
+                >
+                  Out of stock
+                </button>`;
+      } else {
+        cart.innerHTML = ` <button
                   type="button"
                   class="btn btn--secondary product-card__btn"
                   data-id=${id}
@@ -49,6 +61,7 @@ export const createProductCardsView = function () {
                 >
                   Add to cart
                 </button>`;
+      }
     },
 
     updateWishlistButton(id, isInWishlist) {
@@ -88,7 +101,14 @@ export const createProductCardsView = function () {
       compareSpan.textContent = isInComparison ? "In Compare" : "Compare";
     },
 
+    render(products) {
+      const parentEl = document.querySelector(".products__grid");
+
+      parentEl.innerHTML = this.generateMarkup(products);
+    },
+
     generateMarkup(products) {
+      console.log(products);
       return `
           ${products
             .map((p) => {

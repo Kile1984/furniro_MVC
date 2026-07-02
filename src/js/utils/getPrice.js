@@ -10,3 +10,11 @@ export const getPrice = function (price) {
       : original,
   };
 };
+
+export const getMaxPrice = function (products) {
+  return Math.max(
+    ...products.map((p) => {
+      return getPrice(p.price).finalPrice;
+    }),
+  );
+};

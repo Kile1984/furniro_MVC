@@ -1,7 +1,8 @@
 import { state } from "../state.js";
+import { initialFilters } from "../state.js";
 
 export const filterDrawerActions = {
-  setFilters(name, value, checked) {
+  setFilters(name, value) {
     state.filter[name] = value;
   },
 
@@ -15,5 +16,9 @@ export const filterDrawerActions = {
         state.filter.category.splice(index, 1);
       }
     }
+  },
+
+  resetFilters() {
+    state.filter = structuredClone(initialFilters);
   },
 };

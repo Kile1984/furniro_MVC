@@ -12,6 +12,7 @@ export const createShopView = function (appEl) {
     },
 
     generateMarkup(products) {
+      console.log(products);
       return `
       <!-- PAGE HEADING SHOP -->
       <main class="page page--shop">

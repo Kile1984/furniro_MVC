@@ -18,7 +18,12 @@ import {
 } from "../shared/compareUI.js";
 
 export const controlAddToCart = function ({ dataset }) {
-  model.addToCartItem(dataset.id);
+  const added = model.addToCartItem(dataset.id);
+
+  if (!added) {
+    console.log("Stock 0", added);
+    // updateCompareButtons()
+  }
 
   updateProductCartUI(dataset.id);
 };

@@ -8,7 +8,10 @@ import { formatPrice } from "../utils/format.js";
 export const addToCartItem = function (id, singleProductQuantity) {
   const product = productsActions.getProductById(id);
 
+  if (product.properties.stock === 0) return false;
+
   cartActions.addToCart(product, singleProductQuantity);
+  return true;
 };
 
 export const removeFromCart = function (id) {

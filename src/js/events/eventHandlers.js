@@ -73,7 +73,8 @@ export const searchInputActions = {
 export const filterEventActions = {
   "open-filter": shopController.controlToggleFilterDrawer,
   "close-filter": shopController.controlToggleFilterDrawer,
-  "apply-filters": filterDrawerController.controlApplayFilters,
+  "apply-filters": filterDrawerController.controlApplyFilters,
+  "reset-filters": filterDrawerController.controlResetFilters,
 };
 
 export const filterInputActions = {

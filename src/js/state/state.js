@@ -1,3 +1,12 @@
+export const initialFilters = {
+  category: [],
+  minPrice: null,
+  maxPrice: null,
+  inStock: false,
+  discount: false,
+  rating: null,
+};
+
 export const state = {
   currentRoute: "home",
   products: [],
@@ -14,12 +23,8 @@ export const state = {
     quantity: 1,
   },
 
-  filter: {
-    category: [],
-    minPrice: null,
-    maxPrice: null,
-    inStock: false,
-    discount: false,
-    rating: null,
-  },
+  filter: structuredClone(initialFilters),
+
+  minFilterPrice: 0,
+  maxFilterPrice: 0,
 };
