@@ -4,8 +4,6 @@ export const filterProducts = function (products, filters) {
   let filteredProducts = [...products];
   const categories = new Set(filters.category);
 
-  console.log(filteredProducts, filters);
-
   // category
   if (filters.category.length) {
     filteredProducts = filteredProducts.filter((product) => {

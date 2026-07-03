@@ -34,7 +34,7 @@ export const createProductCardsView = function () {
       );
 
       if (!cart) return;
-      console.log(quantity, stock);
+
       if (quantity > 0) {
         cart.innerHTML = `
                <button class="btn product-card__btn--decrement"         data-action="qt-decrement" data-id=${id}>-
@@ -108,7 +108,6 @@ export const createProductCardsView = function () {
     },
 
     generateMarkup(products) {
-      console.log(products);
       return `
           ${products
             .map((p) => {
