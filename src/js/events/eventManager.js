@@ -14,6 +14,7 @@ import {
   shopEventActions,
   filterInputActions,
 } from "./eventHandlers.js";
+import { controlCloseMenu } from "../controllers/headerController.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
@@ -37,6 +38,15 @@ export const initEventManager = function () {
     // filter drawer
     if (e.target.closest(".filter-overlay")) {
       controlCloseFilterDrawer();
+    }
+
+    // menu
+    if (
+      state.isMobileMenuOpen &&
+      !e.target.closest(".header__nav") &&
+      !e.target.closest("[data-action='open-menu']")
+    ) {
+      controlCloseMenu();
     }
   }
 

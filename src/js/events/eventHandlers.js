@@ -7,6 +7,7 @@ import * as compareTrayController from "../controllers/compareTrayController.js"
 import * as searchController from "../controllers/searchController.js";
 import * as shopController from "../controllers/shopController.js";
 import * as filterDrawerController from "../controllers/filterDrawerController.js";
+import * as headerController from "../controllers/headerController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -64,6 +65,7 @@ export const compareTrayActions = {
 export const headerEventActions = {
   "open-compare-tray": compareTrayController.controlOpenCompareTray,
   "toggle-search": searchController.controlToggleSearch,
+  "open-menu": headerController.controlToggleMenu,
 };
 
 export const searchInputActions = {

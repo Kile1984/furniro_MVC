@@ -27,4 +27,6 @@ export const state = {
 
   minFilterPrice: 0,
   maxFilterPrice: 0,
+
+  isMobileMenuOpen: false,
 };

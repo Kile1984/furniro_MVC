@@ -2,6 +2,8 @@ const cartCountEl = document.querySelector(".header__count-cart");
 const wishlistCountEl = document.querySelector(".header__count-wishlist");
 const compareCountEl = document.querySelector(".header__count-compare");
 
+const header = document.querySelector(".header");
+
 export const updateHeaderCartCount = function (count) {
   if (!cartCountEl) return;
 
@@ -24,4 +26,12 @@ export const updateHeaderCompareCount = function (count) {
   compareCountEl.textContent = count;
 
   compareCountEl.classList.toggle("visible", count !== 0);
+};
+
+export const closeMenu = function () {
+  header.classList.remove("header--open");
+};
+
+export const toggleMenu = function (isOpen) {
+  header.classList.toggle("header--open", isOpen);
 };

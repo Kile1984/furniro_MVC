@@ -23,7 +23,11 @@
         </a>
 
         <!-- HAMBURGER -->
-        <button class="header__toggle" aria-label="Open menu">
+        <button
+          class="header__toggle"
+          aria-label="Open menu"
+          data-action="open-menu"
+        >
           <span class="header__toggle-line"></span>
           <span class="header__toggle-line"></span>
           <span class="header__toggle-line"></span>
@@ -32,18 +36,33 @@
         <nav class="header__nav" aria-label="Main navigation">
           <ul class="header__nav-list">
             <li class="nav__item">
-              <a href="#/" class="header__nav-link nav-link active-link"
+              <a href="#/" class="header__nav-link nav-link" data-route="home"
                 >Home</a
               >
             </li>
             <li class="header__nav-item">
-              <a href="#/shop" class="header__nav-link nav-link">Shop</a>
+              <a
+                href="#/shop"
+                class="header__nav-link nav-link"
+                data-route="shop"
+                >Shop</a
+              >
             </li>
             <li class="header__nav-item">
-              <a href="#/about" class="header__nav-link nav-link">About</a>
+              <a
+                href="#/about"
+                class="header__nav-link nav-link"
+                data-route="about"
+                >About</a
+              >
             </li>
             <li class="header__nav-item">
-              <a href="#/contact" class="header__nav-link nav-link">Contact</a>
+              <a
+                href="#/contact"
+                class="header__nav-link nav-link"
+                data-route="contact"
+                >Contact</a
+              >
             </li>
           </ul>
         </nav>
@@ -130,29 +149,37 @@
         <ul class="footer__links">
           <li class="footer__heading">Links</li>
           <li class="footer__item">
-            <a href="#/" class="footer__link active-link">Home</a>
+            <a href="#/" class="footer__link" data-route="home">Home</a>
           </li>
           <li class="footer__item">
-            <a href="#/shop" class="footer__link">Shop</a>
+            <a href="#/shop" class="footer__link" data-route="shop">Shop</a>
           </li>
           <li class="footer__item">
-            <a href="#/about" class="footer__link">About</a>
+            <a href="#/about" class="footer__link" data-route="about">About</a>
           </li>
           <li class="footer__item">
-            <a href="#/contact" class="footer__link">Contact</a>
+            <a href="#/contact" class="footer__link" data-route="contact"
+              >Contact</a
+            >
           </li>
         </ul>
 
         <ul class="footer__links">
           <li class="footer__heading">Help</li>
           <li class="footer__item">
-            <a href="#/payment" class="footer__link">Payment Options</a>
+            <a href="#/payment" class="footer__link" data-route="payment"
+              >Payment Options</a
+            >
           </li>
           <li class="footer__item">
-            <a href="#/returns" class="footer__link">Returns</a>
+            <a href="#/returns" class="footer__link" data-route="returns"
+              >Returns</a
+            >
           </li>
           <li class="footer__item">
-            <a href="#/policy" class="footer__link">Privacy Policy</a>
+            <a href="#/policy" class="footer__link" data-route="policy"
+              >Privacy Policy</a
+            >
           </li>
         </ul>
 
