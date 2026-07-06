@@ -1,10 +1,12 @@
 import { cartActions } from "../state/actions/cartActions.js";
 import { productsActions } from "../state/actions/productsActions.js";
 import { comparisonActions } from "../state/actions/comparisonActions.js";
+import { wishlistActions } from "../state/actions/wishlistActions.js";
 import { state } from "../state/state.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
 
+// CART
 export const addToCartItem = function (id, singleProductQuantity) {
   const product = productsActions.getProductById(id);
 
@@ -26,10 +28,20 @@ export const decrementCartItem = function (id) {
   cartActions.decrementQuantity(id);
 };
 
+// WISHLIST
+export const addToWishlist = function (id) {
+  wishlistActions.addToWishlist(id);
+};
+
+export const removeFromWishlist = function (id) {
+  wishlistActions.removeFromWishlist(id);
+};
+
+// COMPARE
 export const addToCompare = function (id) {
   const product = productsActions.getProductById(id);
 
-  comparisonActions.addToCampare(product);
+  comparisonActions.addToCompare(product);
 };
 
 export const removeFromCompare = function (id) {

@@ -1,4 +1,3 @@
-import { wishlistActions } from "../state/actions/wishlistActions.js";
 import { state } from "../state/state.js";
 import * as model from "../model/model.js";
 import { getPrice } from "../utils/getPrice.js";
@@ -20,21 +19,24 @@ export const preparaWishlistProduct = function () {
 };
 
 export const controlAddToWishlist = function ({ dataset }) {
-  wishlistActions.addToWishlist(dataset.id);
+  model.addToWishlist(dataset.id);
   productCardsView.updateWishlistButton(dataset.id, true);
   syncHeaderCounts();
 };
 
 export const controlRemoveFromWishlist = function ({ dataset }) {
-  wishlistActions.removeFromWishlist(dataset.id);
+  model.removeFromWishlist(dataset.id);
   productCardsView.updateWishlistButton(dataset.id, false);
   wishListView.removeWishlistItem(dataset.id);
   syncHeaderCounts();
 };
 
 export const controlAddToCartFromWishlist = function ({ dataset }) {
-  model.addToCartItem(dataset.id);
-  wishlistActions.removeFromWishlist(dataset.id);
+  const added = model.addToCartItem(dataset.id);
+
+  if (!added) return;
+
+  model.removeFromWishlist(dataset.id);
   wishListView.removeWishlistItem(dataset.id);
   syncHeaderCounts();
 };

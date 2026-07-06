@@ -9,7 +9,7 @@ export const comparisonActions = {
     return state.compare.some((p) => p.id === id);
   },
 
-  addToCampare(product) {
+  addToCompare(product) {
     if (!product || this.isProductInCompare(product.id)) return;
 
     if (state.compare.length >= this.MAX_COMPARE_ITEMS) return;
