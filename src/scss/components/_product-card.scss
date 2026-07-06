@@ -92,6 +92,12 @@
     text-transform: capitalize;
     margin-bottom: 0;
 
+    &.disabled {
+      opacity: 0.8;
+      color: var(--color-pink);
+      border-color: var(--color-pink);
+    }
+
     @media (hover: hover) {
       &:hover {
         background-color: var(--color-white);

@@ -261,6 +261,15 @@
       }
     }
 
+    &.disabled {
+      opacity: 0.5;
+      cursor: auto;
+
+      &:hover {
+        border-color: var(--color-black);
+      }
+    }
+
     @include respond(desktop) {
       padding: 0.2rem 0.5rem;
     }

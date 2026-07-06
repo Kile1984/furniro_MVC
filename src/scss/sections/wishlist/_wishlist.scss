@@ -69,6 +69,16 @@
     }
   }
 
+  &__add-btn.disabled {
+    opacity: 0.5;
+    cursor: auto;
+
+    &:hover {
+      background-color: transparent;
+      color: var(--color-accent);
+    }
+  }
+
   &__remove-btn {
     color: var(--color-accent);
   }

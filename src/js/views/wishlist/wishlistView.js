@@ -14,6 +14,9 @@ export const createWishlistView = function () {
     },
 
     getStockWarning(stock) {
+      if (stock === 0) {
+        return `<span class="wishlist-page__quantity-warning wishlist-page__quantity-warning--red">Out of stock</span>`;
+      }
       if (stock <= 2) {
         return `<span class="wishlist-page__quantity-warning wishlist-page__quantity-warning--red">Only ${stock} left</span>`;
       }
@@ -64,7 +67,7 @@ export const createWishlistView = function () {
                       return `
                     <li class="wishlist-page__item" data-id=${p.id}>
                       <div class="wishlist-page__product">
-                        <a href="#" class="wishlist-page__link">
+                        <a href="/#/product/${p.id}" class="wishlist-page__link">
                             <img src=${p.image} alt="Aurelia Chair">
                             <span>${p.title}</span>
                         </a>
@@ -78,7 +81,10 @@ export const createWishlistView = function () {
                       </div>
 
                       
-                    <button class="btn btn--secondary wishlist-page__add-btn" data-id="${p.id}" data-action="add-to-cart">Add to cart</button>
+                    <button class="btn btn--secondary wishlist-page__add-btn ${p.stock === 0 ? "disabled" : ""}"
+                    ${p.stock === 0 ? "disabled" : ""}
+                    data-id="${p.id}" 
+                    data-action="add-to-cart">${p.stock > 0 ? "Add to cart" : "Out of stock"}</button>
 
                     <button class="wishlist-page__remove-btn" data-id="${p.id}" data-action="remove-from-wishlist">
                         <svg class="icon">

@@ -42,16 +42,6 @@ export const createProductCardsView = function () {
                 <span class="product-card__quantity">${quantity}</span>
               <button class="btn product-card__btn--icrement ${isDisabled ? "cart-page__quantity-btn--disabled" : ""}" data-action="qt-increment" data-id=${id}>+
               </button> `;
-      } else if (stock === 0) {
-        cart.innerHTML = `
-               <button
-                  type="button"
-                  class="btn btn--secondary product-card__btn"
-                  disabled
-                 
-                >
-                  Out of stock
-                </button>`;
       } else {
         cart.innerHTML = ` <button
                   type="button"
@@ -129,10 +119,11 @@ export const createProductCardsView = function () {
                   : `
                   <button
                     type="button"
-                    class="btn btn--secondary product-card__btn"
+                    class="btn btn--secondary product-card__btn ${p.stock === 0 ? "disabled" : ""}"
                     data-id=${p.id}
                     data-action="add-to-cart"
-                >Add to cart</button>`
+                    ${p.stock === 0 ? "disabled" : ""}
+                >${p.stock > 0 ? "Add to cart" : "Out of stock"}</button>`
               }
               </div>
               
