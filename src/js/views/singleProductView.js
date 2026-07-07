@@ -43,6 +43,7 @@ export const createSingleProductView = function () {
       );
 
       if (newValue === 1) {
+        console.log("AAA");
         incrementBtn.classList.remove("disabled");
         decrementBtn.classList.add("disabled");
         return;
@@ -150,7 +151,6 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
-      console.log(product.properties.stock);
       return `
     
       <main class="page page--product">
@@ -173,6 +173,11 @@ export const createSingleProductView = function () {
             <!-- GALLERY -->
             <section class="product__gallery">
               <div class="product__gallery-thumbnails">
+               <img
+                  src="${product.images.main}"
+                  alt="${product.title}"
+                  data-action="select-image"
+                />
               ${product.images.gallery
                 .map((img) => {
                   return `
@@ -227,7 +232,8 @@ export const createSingleProductView = function () {
                 <div class="product__quantity" data-id=${product.id}>
                   <button
                     type="button"
-                    class="btn product__quantity-btn product__quantity-btn--decrement ${product.quantity === 1 ? "disabled" : ""} ${product.properties.stock === 0 ? "disabled" : ""}"
+                    class="btn product__quantity-btn product__quantity-btn--decrement"
+                    ${product.properties.stock === 0 ? "disabled" : ""}
                     data-action="qt-decrement-single"
                     data-id=${product.id}
                   >
@@ -240,8 +246,9 @@ export const createSingleProductView = function () {
                     value=${product.properties.stock === 0 ? 0 : product.quantity}
                     id="quantity"
                     class="product__quantity-input"
-                     data-input="quantity"
-                     data-id=${product.id}
+                    data-input="quantity"
+                    data-id=${product.id}
+                    ${product.properties.stock === 0 ? "disabled" : ""}
                   />
 
                   <button
@@ -249,6 +256,7 @@ export const createSingleProductView = function () {
                     class="btn product__quantity-btn product__quantity-btn--increment ${product.quantity === product.properties.stock ? "disabled" : ""} ${product.properties.stock === 0 ? "disabled" : ""}"
                     data-action="qt-increment-single"
                     data-id=${product.id}
+                     ${product.properties.stock === 0 ? "disabled" : ""}
                   >
                     +
                   </button>
@@ -352,10 +360,14 @@ export const createSingleProductView = function () {
             </div>
 
             <div class="product-tabs__content" data-panel="description">
-              <div class="product-tabs__panel product-tabs__panel--description product-tabs__panel--active">
-                <p>
-                 ${product.longDescription.paragraphs}
-                </p>
+              <div class="product-tabs__panel product-tabs__panel--description product-tabs__panel--active d-flex flex-column text-left">
+               
+                 ${product.longDescription.paragraphs
+                   .map((p) => {
+                     return `<p> - ${p}</p>`;
+                   })
+                   .join("")}
+               
               </div>
 
               <div class="product-tabs__panel product-tabs__panel--additional" data-panel="additional">

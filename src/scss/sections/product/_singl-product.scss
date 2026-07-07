@@ -218,6 +218,10 @@
 
     &.disabled {
       opacity: 0.3;
+    }
+
+    &:disabled {
+      opacity: 0.3;
       pointer-events: none;
     }
   }
@@ -234,6 +238,12 @@
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      opacity: 0.5;
+      cursor: no-drop;
     }
 
     &:focus {
@@ -263,7 +273,7 @@
 
     &.disabled {
       opacity: 0.5;
-      cursor: auto;
+      cursor: no-drop;
 
       &:hover {
         border-color: var(--color-black);

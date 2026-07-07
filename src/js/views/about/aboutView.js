@@ -40,16 +40,10 @@ export const createAboutView = function () {
                 Founded with the idea of blending functionality and aesthetics
               </h2>
               <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Provident accusamus voluptatum eum inventore nulla esse sed
-                dolor exercitationem tempore? Perspiciatis repellat nisi odio,
-                explicabo omnis magnam! Optio voluptatibus dicta architecto.
+                Furniture is more than just decoration—it shapes the way we live, work, and connect. At Furniro, we believe every piece should combine timeless design, exceptional craftsmanship, and everyday comfort to create spaces that truly feel like home.
               </p>
               <p>
-                Laudantium, voluptatum et facilis repellendus dolorem officiis
-                eius quaerat consequatur dolore asperiores molestias quia
-                doloremque harum cum sunt quidem nobis. Ut aperiam mollitia quod
-                ad esse suscipit dolores obcaecati quaerat!
+               From cozy living rooms to inspiring workspaces, our carefully curated collections are designed to fit modern lifestyles while maintaining the warmth and character of natural materials. Every product reflects our commitment to quality, durability, and thoughtful design that lasts for years to come.
               </p>
             </div>
           </div>

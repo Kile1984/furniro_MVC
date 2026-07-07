@@ -12,10 +12,9 @@ export const createHeroView = function () {
                   Discover Our New Collection
                 </h1>
                 <p class="hero__text text-body-lg">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                  tellus, luctus nec ullamcorper mattis.
+                 Discover thoughtfully crafted furniture that blends comfort, style, and functionality for every room in your home.
                 </p>
-                <a href="#" class="btn btn--primary">Buy now</a>
+                <a href="#/shop" class="btn btn--primary">Buy now</a>
               </div>
             </div>
           </div>

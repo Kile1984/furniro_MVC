@@ -15,7 +15,7 @@ export const createRoomsView = function () {
                 Our designer already made a lot of beautiful prototipe of rooms
                 that inspire you
               </p>
-              <a href="#" class="btn btn--primary">Explore More</a>
+              <a href="#/shop" class="btn btn--primary">Explore More</a>
             </div>
 
             <div class="rooms__main">

@@ -71,7 +71,7 @@
       right: 0;
 
       background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-      backdrop-filter: blur(4px);
+      // backdrop-filter: blur(4px);
     }
 
     @include respond(mobile) {
@@ -92,10 +92,15 @@
     text-transform: capitalize;
     margin-bottom: 0;
 
-    &.disabled {
+    &:disabled {
       opacity: 0.8;
       color: var(--color-pink);
       border-color: var(--color-pink);
+      cursor: no-drop;
+
+      &:hover {
+        color: var(--color-pink);
+      }
     }
 
     @media (hover: hover) {
