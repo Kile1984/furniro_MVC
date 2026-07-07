@@ -229,7 +229,7 @@ export const createSingleProductView = function () {
 
               <!-- quantity -->
               <div class="product__actions">
-                <div class="product__quantity" data-id=${product.id}>
+                <div class="product__quantity ${product.properties.stock === 0 ? "disabled" : ""}"  data-id=${product.id}>
                   <button
                     type="button"
                     class="btn product__quantity-btn product__quantity-btn--decrement"

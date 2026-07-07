@@ -140,6 +140,7 @@
 
   &__size-option {
     cursor: pointer;
+
     input {
       position: absolute;
       opacity: 0;
@@ -204,6 +205,10 @@
     &:focus-within,
     &:hover {
       border: 1px solid var(--color-accent);
+    }
+
+    &.disabled {
+      border-color: var(--color-gray-light);
     }
   }
 
