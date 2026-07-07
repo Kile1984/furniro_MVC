@@ -19,7 +19,8 @@
 @use "./components/cart" as componentCart;
 @use "./components/features-box";
 @use "./components/comparison";
-@use "./components//compare-tray";
+@use "./components/compare-tray";
+@use "components/spiner";
 
 @use "./sections/features";
 
