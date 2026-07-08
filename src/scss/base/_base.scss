@@ -88,3 +88,12 @@ ol {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
+
+#app {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+
+  &.fade-out {
+    opacity: 0;
+  }
+}

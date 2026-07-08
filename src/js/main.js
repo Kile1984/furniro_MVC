@@ -3,7 +3,7 @@ import { initEventManager } from "./events/eventManager.js";
 import { loadProducts } from "./controllers/homeController.js";
 import { syncHeaderCounts } from "./controllers/headerController.js";
 import { renderCompareTray } from "./controllers/compareTrayController.js";
-import { hideLoader } from "./views/loaderView.js";
+import { hideLoader } from "./views/pageTransitionView.js";
 
 const init = async function () {
   await loadProducts();

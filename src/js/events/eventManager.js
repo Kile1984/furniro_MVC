@@ -21,12 +21,14 @@ export const initEventManager = function () {
   const searchInput = document.querySelector(".header__search-input");
   const compareTrayEl = document.querySelector(".compare-tray");
   const headerEl = document.querySelector(".header");
+  const footerEl = document.querySelector(".footer");
 
   appEl.addEventListener("click", handleClick);
   appEl.addEventListener("input", handleInput);
   searchInput.addEventListener("input", handleInput);
   compareTrayEl.addEventListener("click", handleClick);
   headerEl.addEventListener("click", handleClick);
+  footerEl.addEventListener("click", handleClick);
   document.addEventListener("click", handleOutsideClick);
 
   function handleOutsideClick(e) {
