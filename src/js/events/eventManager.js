@@ -15,6 +15,7 @@ import {
   filterInputActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
+import { navigationManager } from "../navigation/navigationManager.js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
@@ -71,6 +72,17 @@ export const initEventManager = function () {
   };
 
   function handleClick(e) {
+    const link = e.target.closest("[data-route]");
+
+    if (link) {
+      e.preventDefault();
+
+      const route = link.getAttribute("href");
+      navigationManager.navigate(route);
+
+      return;
+    }
+
     const target = e.target.closest("[data-action]");
 
     if (!target) return;
