@@ -6,6 +6,14 @@ const NavigationState = {
   ENTERING: "entering",
 };
 
+const validTransitions = {
+  [NavigationState.IDLE]: [NavigationState.LEAVING],
+  [NavigationState.LEAVING]: [NavigationState.LOADING],
+  [NavigationState.LOADING]: [NavigationState.RENDERING],
+  [NavigationState.RENDERING]: [NavigationState.ENTERING],
+  [NavigationState.ENTERING]: [NavigationState.IDLE],
+};
+
 class NavigationManager {
   #state;
   #pendingRoute;
