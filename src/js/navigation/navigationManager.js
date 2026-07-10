@@ -23,29 +23,42 @@ class NavigationManager {
     this.#pendingRoute = null;
   }
 
-  navigate(route) {
-    console.log(navigationManager);
+  async #leave() {
+    this.#transitionTo(NavigationState.LEAVING);
+  }
+
+  async #load(route) {
+    this.#transitionTo(NavigationState.LOADING);
+  }
+
+  async #render() {
+    this.#transitionTo(NavigationState.RENDERING);
+  }
+
+  async #enter() {
+    this.#transitionTo(NavigationState.ENTERING);
+  }
+
+  #finishNavigation() {
+    this.#transitionTo(NavigationState.IDLE);
+  }
+
+  async navigate(route) {
     // pending navigation
-    if (this.#state !== "idle") {
+    if (this.#state !== NavigationState.IDLE) {
       this.#pendingRoute = route;
-      console.log(this.#pendingRoute);
       return;
     }
 
-    // navigation begine
-    this.#transitionTo(NavigationState.LEAVING);
-    // uradi leaving posao
+    await this.#leave();
 
-    this.#transitionTo(NavigationState.LOADING);
-    // uradi loading posao
+    await this.#load(route);
 
-    this.#transitionTo(NavigationState.RENDERING);
-    // uradi rendering posao
+    await this.#render();
 
-    this.#transitionTo(NavigationState.ENTERING);
-    // uradi entering posao
+    await this.#enter();
 
-    this.#transitionTo(NavigationState.IDLE);
+    this.#finishNavigation();
   }
 
   #transitionTo(nextState) {
