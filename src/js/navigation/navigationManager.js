@@ -24,7 +24,28 @@ class NavigationManager {
   }
 
   navigate(route) {
-    console.log(route);
+    console.log(navigationManager);
+    // pending navigation
+    if (this.#state !== "idle") {
+      this.#pendingRoute = route;
+      console.log(this.#pendingRoute);
+      return;
+    }
+
+    // navigation begine
+    this.#transitionTo(NavigationState.LEAVING);
+    // uradi leaving posao
+
+    this.#transitionTo(NavigationState.LOADING);
+    // uradi loading posao
+
+    this.#transitionTo(NavigationState.RENDERING);
+    // uradi rendering posao
+
+    this.#transitionTo(NavigationState.ENTERING);
+    // uradi entering posao
+
+    this.#transitionTo(NavigationState.IDLE);
   }
 
   #transitionTo(nextState) {
