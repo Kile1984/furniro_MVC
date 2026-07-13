@@ -4,12 +4,13 @@ const NavigationState = {
   LOADING: "loading",
   RENDERING: "rendering",
   ENTERING: "entering",
+  ERROR: "error",
 };
 
 const validTransitions = {
   [NavigationState.IDLE]: [NavigationState.LEAVING],
   [NavigationState.LEAVING]: [NavigationState.LOADING],
-  [NavigationState.LOADING]: [NavigationState.RENDERING],
+  [NavigationState.LOADING]: [NavigationState.RENDERING, NavigationState.ERROR],
   [NavigationState.RENDERING]: [NavigationState.ENTERING],
   [NavigationState.ENTERING]: [NavigationState.IDLE],
 };
@@ -62,6 +63,14 @@ class NavigationManager {
   }
 
   #transitionTo(nextState) {
+    const allowedTransitions = validTransitions[this.#state];
+
+    if (!allowedTransitions.includes(nextState)) {
+      throw new Error(
+        `Invalid transition from "${this.#state}" to "${nextState}"`,
+      );
+    }
+    console.log(allowedTransitions, nextState);
     this.#state = nextState;
   }
 }
