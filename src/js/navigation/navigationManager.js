@@ -1,3 +1,5 @@
+import * as pageTransition from "../views/pageTransitionView.js";
+
 const NavigationState = {
   IDLE: "idle",
   LEAVING: "leaving",
@@ -26,6 +28,8 @@ class NavigationManager {
 
   async #leave() {
     this.#transitionTo(NavigationState.LEAVING);
+
+    pageTransition.leave();
   }
 
   async #load(route) {
@@ -70,7 +74,8 @@ class NavigationManager {
         `Invalid transition from "${this.#state}" to "${nextState}"`,
       );
     }
-    console.log(allowedTransitions, nextState);
+    console.log(validTransitions);
+
     this.#state = nextState;
   }
 }
