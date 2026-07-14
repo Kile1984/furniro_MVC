@@ -24,4 +24,5 @@ export const views = {
   product: createSingleProductView(),
   comparison: createComparisonView(),
   category: categoryView(),
+  compare: createComparisonView(),
 };

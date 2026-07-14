@@ -1,27 +1,11 @@
 import { sprite, icons } from "../../assets/icons/icons.js";
 import { productCardsView } from "./shared/productCardsView.js";
+import { generateStars } from "../views/shared/ratingView.js";
 
 export const createSingleProductView = function () {
   return {
     addToCartTimeout: null,
     isAdding: false,
-
-    generateStars(stars) {
-      const fullStars = Math.round(stars);
-      const emptyStars = 5 - fullStars;
-
-      const fullStarSvg = `
-                  <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_full}"></use>
-                  </svg>`;
-      const emptyStarSvg = `
-                  <svg class="icon product__icon-star">
-                    <use href="${sprite}#${icons.star_empty}"></use>
-                  </svg>
-      `;
-
-      return fullStarSvg.repeat(fullStars) + emptyStarSvg.repeat(emptyStars);
-    },
 
     updateQuantity(input, { newValue }) {
       input.value = newValue;
@@ -210,7 +194,7 @@ export const createSingleProductView = function () {
               <!-- rating -->
               <div class="product__rating" aria-label="Rated 4 out of 5 stars">
                 <div class="product__stars" aria-hidden="true">
-                  ${this.generateStars(product.averageRating)}
+                  ${generateStars(product.averageRating)}
                 </div>
 
                 <div class="product__review-text">

@@ -10,6 +10,8 @@ import {
   closeCompareTray,
   updateCompareButtons,
 } from "../shared/compareUI.js";
+import { getPrice } from "../utils/getPrice.js";
+import { formatPrice } from "../utils/format.js";
 
 export const controlClearCompare = function ({ dataset, target, source }) {
   comparisonActions.clearCompare();
@@ -19,6 +21,17 @@ export const controlClearCompare = function ({ dataset, target, source }) {
     updateCompareButtons(product.id, false);
     updateCompareButtons(product.id, false);
   });
+
   compareTrayView.updateCounter(0);
   syncHeaderCounts();
+};
+
+export const prepareCompareProducts = function () {
+  return state.compare.map((product) => {
+    return {
+      ...product,
+      finalPrice: formatPrice(getPrice(product.price).finalPrice),
+      reviews: product.reviews,
+    };
+  });
 };

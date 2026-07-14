@@ -27,6 +27,7 @@ function renderCurrentRoute() {
     "/wishlist": "wishlist",
     "/product": "product",
     "/category": "category",
+    "/compare": "compare",
   };
 
   const view = routesMap[route] || "home";
