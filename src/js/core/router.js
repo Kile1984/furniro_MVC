@@ -1,5 +1,5 @@
 import { routerActions } from "../state/actions/routerActions.js";
-import { renderApp } from "../core/render.js";
+import { navigationManager } from "../navigation/navigationManager.js";
 
 export const initRouter = function () {
   window.addEventListener("hashchange", renderCurrentRoute);
@@ -31,7 +31,5 @@ function renderCurrentRoute() {
 
   const view = routesMap[route] || "home";
 
-  routerActions.setRoute(view);
-
-  renderApp();
+  navigationManager.navigate(view);
 }

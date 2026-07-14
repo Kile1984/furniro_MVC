@@ -1,4 +1,7 @@
 import * as pageTransition from "../views/pageTransitionView.js";
+import { routerActions } from "../state/actions/routerActions.js";
+import { renderApp } from "../core/render.js";
+import * as navigationUI from "../shared/navigationUI.js";
 
 const NavigationState = {
   IDLE: "idle",
@@ -6,13 +9,12 @@ const NavigationState = {
   LOADING: "loading",
   RENDERING: "rendering",
   ENTERING: "entering",
-  ERROR: "error",
 };
 
 const validTransitions = {
   [NavigationState.IDLE]: [NavigationState.LEAVING],
   [NavigationState.LEAVING]: [NavigationState.LOADING],
-  [NavigationState.LOADING]: [NavigationState.RENDERING, NavigationState.ERROR],
+  [NavigationState.LOADING]: [NavigationState.RENDERING],
   [NavigationState.RENDERING]: [NavigationState.ENTERING],
   [NavigationState.ENTERING]: [NavigationState.IDLE],
 };
@@ -29,23 +31,38 @@ class NavigationManager {
   async #leave() {
     this.#transitionTo(NavigationState.LEAVING);
 
-    pageTransition.leave();
+    navigationUI.close();
+
+    await pageTransition.startExitAnimation();
   }
 
   async #load(route) {
     this.#transitionTo(NavigationState.LOADING);
+
+    routerActions.setRoute(route);
   }
 
   async #render() {
     this.#transitionTo(NavigationState.RENDERING);
+
+    renderApp();
   }
 
   async #enter() {
     this.#transitionTo(NavigationState.ENTERING);
+
+    navigationUI.initialize();
+
+    await pageTransition.startEnterAnimation();
   }
 
   #finishNavigation() {
     this.#transitionTo(NavigationState.IDLE);
+
+    const pending = this.#pendingRoute;
+    this.#pendingRoute = null;
+
+    if (pending) this.navigate(pending);
   }
 
   async navigate(route) {
@@ -74,7 +91,6 @@ class NavigationManager {
         `Invalid transition from "${this.#state}" to "${nextState}"`,
       );
     }
-    console.log(validTransitions);
 
     this.#state = nextState;
   }
