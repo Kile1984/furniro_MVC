@@ -13,6 +13,7 @@ import { compareTrayActions } from "../state/actions/compareTrayActions.js";
 import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js";
 import { preparedProduct } from "../utils/prepareProduct.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
+import { getAverageRating } from "../utils/getAverageRating.js";
 
 import {
   openCompareTray,
@@ -24,16 +25,6 @@ export const prepareSinglProduct = function () {
   const [, , id] = window.location.hash.split("/");
 
   const product = productsActions.getProductById(id);
-
-  const getAverageRating = function (reviews) {
-    const sum = reviews.reduce((acc, curr) => {
-      return acc + curr.rating;
-    }, 0);
-
-    if (reviews.length === 0) return 0;
-
-    return sum / reviews.length;
-  };
 
   const getCartProductQuantity = function () {
     const cartProduct = cartActions.getCartItemById(id);

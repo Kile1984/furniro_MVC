@@ -1,3 +1,5 @@
+import { generateStars } from "../../views/shared/ratingView.js";
+
 export const createComparisonView = function () {
   return {
     generateMarkup(products) {
@@ -33,60 +35,32 @@ export const createComparisonView = function () {
               >
               <p class="comparison__price">${p.finalPrice}</p>
               <div class="comparison__rating">
-                <span class="comparison__rating-value">4.7</span>
-                <span class="comparison__rating-stars">
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                </span>
+                <span class="comparison__rating-value">${p.rating}</span>
+                <div>${generateStars(p.rating)}</div>
+               
                 <span class="comparison__rating-review"> 204 Reviews </span>
               </div>
             </div>
 
-            <div class="comparison__product">
+             <div class="comparison__product">
               <img
-                src="./assets/images/products/chairs/chair-01/chair-01-1.png"
-                alt="Chair"
+                src="${p.images.main}"
+                alt="${p.title}"
                 class="comparison__product-image"
               />
-              <a href="product.html" class="ui-title comparison__product-title"
-                >Chair Asgaard
-              </a>
-              <p class="comparison__price">250,000.00</p>
+              <a href="#/product/${p.id}" class="ui-title comparison__product-title"
+                >${p.title}</a
+              >
+              <p class="comparison__price">${p.finalPrice}</p>
               <div class="comparison__rating">
-                <span class="comparison__rating-value">4.7</span>
-                <span class="comparison__rating-stars">
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                  <svg class="icon">
-                    <use href="/assets/icons/sprite.svg#icon-star-full"></use>
-                  </svg>
-                </span>
+                <span class="comparison__rating-value">${p.rating}</span>
+                <div>${generateStars(p.rating)}</div>
+               
                 <span class="comparison__rating-review"> 204 Reviews </span>
               </div>
             </div>
+
+      
 
             <div class="comparison__add">
               <label
@@ -125,11 +99,11 @@ export const createComparisonView = function () {
             <div class="comparison__label">Sales<wbr />Package</div>
 
             <div class="comparison__spec" data-label="Sales Package">
-              1 sectional sofa
+              ${p.properties.salesPackage}
             </div>
 
             <div class="comparison__spec" data-label="Sales Package">
-              1 three seater
+             -
             </div>
 
             <div class="comparison__spec" data-label="Sales Package">-</div>
@@ -140,11 +114,11 @@ export const createComparisonView = function () {
             <div class="comparison__label">Model<wbr /> Number</div>
 
             <div class="comparison__spec" data-label="Model Number">
-              TFCBLIGRBL6SRHS
+             ${p.properties.modelNumber}
             </div>
 
             <div class="comparison__spec" data-label="Model Number">
-              DTUBLIGRBL568
+             -
             </div>
 
             <div class="comparison__spec" data-label="Model Number">-</div>
@@ -155,11 +129,11 @@ export const createComparisonView = function () {
             <div class="comparison__label">Secondary<wbr /> Material</div>
 
             <div class="comparison__spec" data-label="Secondary Material">
-              Solid Wood
+              ${p.properties.secondaryMaterial}
             </div>
 
             <div class="comparison__spec" data-label="Secondary Material">
-              Solid Wood
+             -
             </div>
 
             <div class="comparison__spec" data-label="Secondary Material">
@@ -167,20 +141,7 @@ export const createComparisonView = function () {
             </div>
           </div>
 
-          <!-- SPEC -->
-          <div class="comparison__row">
-            <div class="comparison__label">Configur<wbr /><wbr />ation</div>
-
-            <div class="comparison__spec" data-label="Configuration">
-              L-shaped
-            </div>
-
-            <div class="comparison__spec" data-label="Configuration">
-              L-shaped
-            </div>
-
-            <div class="comparison__spec" data-label="Configuration">-</div>
-          </div>
+         
 
           <!-- SECTION -->
           <div class="comparison__row">
@@ -190,20 +151,7 @@ export const createComparisonView = function () {
             <div class="comparison__section-empty"></div>
           </div>
 
-          <!-- SPEC -->
-          <div class="comparison__row">
-            <div class="comparison__label">Filling<wbr /> Material</div>
-
-            <div class="comparison__spec" data-label="Filling Material">
-              Foam
-            </div>
-
-            <div class="comparison__spec" data-label="Filling Material">
-              Matte
-            </div>
-
-            <div class="comparison__spec" data-label="Filling Material">-</div>
-          </div>
+        
 
           <!-- SPEC -->
           <div class="comparison__row">
@@ -212,11 +160,11 @@ export const createComparisonView = function () {
             </div>
 
             <div class="comparison__spec" data-label="Maximum Load Capacity">
-              280 KG
+            ${p.properties.maximumLoadCapacity}
             </div>
 
             <div class="comparison__spec" data-label="Maximum Load Capacity">
-              300 KG
+             -
             </div>
 
             <div class="comparison__spec" data-label="Maximum Load Capacity">
@@ -224,24 +172,6 @@ export const createComparisonView = function () {
             </div>
           </div>
 
-          <!-- SPEC -->
-          <div class="comparison__row">
-            <div class="comparison__label">
-              Origin of<wbr /> Manufac<wbr />ture
-            </div>
-
-            <div class="comparison__spec" data-label="Origin of Manufacture">
-              India
-            </div>
-
-            <div class="comparison__spec" data-label="Origin of Manufacture">
-              India
-            </div>
-
-            <div class="comparison__spec" data-label="Origin of Manufacture">
-              -
-            </div>
-          </div>
 
           <!-- SECTION -->
           <div class="comparison__row">
@@ -255,9 +185,9 @@ export const createComparisonView = function () {
           <div class="comparison__row">
             <div class="comparison__label">Width</div>
 
-            <div class="comparison__spec" data-label="Width">265.32 cm</div>
+            <div class="comparison__spec" data-label="Width">  ${p.properties.dimensions.width}</div>
 
-            <div class="comparison__spec" data-label="Width">265.32 cm</div>
+            <div class="comparison__spec" data-label="Width">-</div>
 
             <div class="comparison__spec" data-label="Width">-</div>
           </div>
@@ -266,9 +196,9 @@ export const createComparisonView = function () {
           <div class="comparison__row">
             <div class="comparison__label">Height</div>
 
-            <div class="comparison__spec" data-label="Height">76 cm</div>
+            <div class="comparison__spec" data-label="Height">${p.properties.dimensions.height}</div>
 
-            <div class="comparison__spec" data-label="Height">76 cm</div>
+            <div class="comparison__spec" data-label="Height">-</div>
 
             <div class="comparison__spec" data-label="Height">-</div>
           </div>
@@ -277,9 +207,9 @@ export const createComparisonView = function () {
           <div class="comparison__row">
             <div class="comparison__label">Depth</div>
 
-            <div class="comparison__spec" data-label="Depth">167.76 cm</div>
+            <div class="comparison__spec" data-label="Depth">${p.properties.dimensions.depth}</div>
 
-            <div class="comparison__spec" data-label="Depth">167.76 cm</div>
+            <div class="comparison__spec" data-label="Depth">-</div>
 
             <div class="comparison__spec" data-label="Depth">-</div>
           </div>
@@ -288,9 +218,9 @@ export const createComparisonView = function () {
           <div class="comparison__row">
             <div class="comparison__label">Weight</div>
 
-            <div class="comparison__spec" data-label="Weight">45 KG</div>
+            <div class="comparison__spec" data-label="Weight">${p.properties.dimensions.weight}</div>
 
-            <div class="comparison__spec" data-label="Weight">65 KG</div>
+            <div class="comparison__spec" data-label="Weight">-</div>
 
             <div class="comparison__spec" data-label="Weight">-</div>
           </div>
@@ -308,11 +238,11 @@ export const createComparisonView = function () {
             <div class="comparison__label">Warranty<wbr /> Summary</div>
 
             <div class="comparison__spec" data-label="Warranty Summar">
-              1 Year Manufacturing Warranty
+             ${p.properties.warrantySummary}
             </div>
 
             <div class="comparison__spec" data-label="Warranty Summar">
-              1.2 Year Manufacturing Warranty
+             -
             </div>
 
             <div class="comparison__spec" data-label="Warranty Summar">-</div>

@@ -12,6 +12,7 @@ import {
 } from "../shared/compareUI.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
+import { getAverageRating } from "../utils/getAverageRating.js";
 
 export const controlClearCompare = function ({ dataset, target, source }) {
   comparisonActions.clearCompare();
@@ -32,6 +33,7 @@ export const prepareCompareProducts = function () {
       ...product,
       finalPrice: formatPrice(getPrice(product.price).finalPrice),
       reviews: product.reviews,
+      rating: getAverageRating(product.reviews),
     };
   });
 };
