@@ -1,3 +1,4 @@
+import { sprite, icons } from "../../../assets/icons/icons.js";
 import { generateStars } from "../../views/shared/ratingView.js";
 
 export const createComparisonView = function () {
@@ -73,9 +74,7 @@ export const createComparisonView = function () {
               <a class="btn comparison__info-btn" href="#/shop">View More</a>
               <div class="comparison__scroll-hint">
                 <svg class="icon comparison__icon-swipe">
-                  <use
-                    href="/assets/icons/sprite.svg#icon-one-finger-swipe-horizontally"
-                  ></use>
+                   <use href="${sprite}#${icons.one_finger}"></use>
                 </svg>
               </div>
             </div>

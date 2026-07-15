@@ -12,10 +12,9 @@
 
     @include respond(mobile) {
       display: block;
-      animation:
-        hintMove 1s ease-in-out 3,
-        fadeOut 0.5s ease forwards;
-      animation-delay: 0s, 3s;
+      animation: hintMove 1s ease-in-out infinite;
+
+      animation-delay: 0s;
 
       @keyframes hintMove {
         0% {
@@ -28,7 +27,7 @@
         }
         100% {
           transform: translateX(0);
-          opacity: 6;
+          opacity: 0.6;
         }
       }
 
