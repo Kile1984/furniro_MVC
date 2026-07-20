@@ -1,4 +1,6 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
+import { images } from "../../../assets/images.js";
+import { products } from "../../services/products.js";
 import { generateStars } from "../../views/shared/ratingView.js";
 
 export const createComparisonView = function () {
@@ -58,6 +60,40 @@ export const createComparisonView = function () {
         .join("");
     },
 
+    generateSection(title) {
+      return `
+
+        <!-- SECTION -->
+          <div class="comparison__row">
+            <div class="comparison__section">${title}</div>
+            <div class="comparison__section-empty"></div>
+            <div class="comparison__section-empty"></div>
+            <div class="comparison__section-empty"></div>
+          </div>
+      `;
+    },
+
+    generateRow(label, propertie, products) {
+      console.log(label, propertie, products);
+
+      return `
+       <!-- SPEC -->
+          <div class="comparison__row">
+            <div class="comparison__label">${label}</div>
+
+            ${products
+              .map((p) => {
+                return `
+            <div class="comparison__spec" >
+              ${p.properties[propertie]}
+            </div>
+              `;
+              })
+              .join("")}
+           </div>
+      `;
+    },
+
     generateMarkup(products) {
       const emptySlots = 3 - products.length;
 
@@ -82,9 +118,14 @@ export const createComparisonView = function () {
             ${Array.from({ length: emptySlots })
               .map(() => this.generateAddProducts())
               .join("")}
-
+            
             
           </div>
+
+            ${this.generateSection("General")}
+            ${this.generateRow("Sales Package", "salesPackage", products)}
+            ${this.generateRow("Model Number", "modelNumber", products)}
+            
         </div>
       </div>    
       <!-- FEATURES -->
@@ -92,7 +133,7 @@ export const createComparisonView = function () {
         <div class="container container--wide features__inner">
           <div class="features__box features__quality">
             <img
-              src="./assets/images/trophy.png"
+              src="${images.trophy}"
               alt=""
               class="features__img"
             />
@@ -105,7 +146,7 @@ export const createComparisonView = function () {
           </div>
           <div class="features__box features__warranty">
             <img
-              src="./assets/images/guarantee.png"
+               src="${images.guarantee}"
               alt=""
               class="features__img"
             />
@@ -116,7 +157,7 @@ export const createComparisonView = function () {
           </div>
           <div class="features__box features__shipping">
             <img
-              src="./assets/images/shipping.png"
+             src="${images.shipping}"
               alt=""
               class="features__img"
             />
@@ -127,7 +168,7 @@ export const createComparisonView = function () {
           </div>
           <div class="features__box features__support">
             <img
-              src="./assets/images/customer-support.png"
+             src="${images.customer_supp}"
               alt=""
               class="features__img"
             />
