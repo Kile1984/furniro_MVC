@@ -125,6 +125,12 @@ export const createComparisonView = function () {
             ${this.generateSection("General")}
             ${this.generateRow("Sales Package", "salesPackage", products)}
             ${this.generateRow("Model Number", "modelNumber", products)}
+            ${this.generateSection("Product")}
+            ${this.generateRow("Primary Material ", "primaryMaterial", products)}
+            ${this.generateRow("Secondary Material ", "secondaryMaterial", products)}
+            ${this.generateRow("Maximum Load Capacity ", "maximumLoadCapacity", products)}
+            ${this.generateSection("Dimensions")}
+            ${this.generateRow("Width ", "dimensions.width", products)}
             
         </div>
       </div>    

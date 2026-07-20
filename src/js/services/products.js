@@ -72,7 +72,6 @@ export const products = [
       secondaryMaterial: "Solid Wood",
       maximumLoadCapacity: "120 kg",
       seatHeight: "45 cm",
-
       dimensions: {
         width: "55 cm",
         height: "78 cm",
