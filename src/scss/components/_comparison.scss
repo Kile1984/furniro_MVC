@@ -6,6 +6,21 @@
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 
+  &__product {
+    position: relative;
+
+    &-remove {
+      width: 25px;
+      height: 25px;
+      color: var(--color-white);
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
   &__scroll-hint {
     display: none;
     opacity: 0.4;

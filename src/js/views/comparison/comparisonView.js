@@ -32,18 +32,29 @@ export const createComparisonView = function () {
   `;
     },
 
+    generateEmptyRow() {
+      return `
+     
+           <div class="comparison__spec">
+             -
+           </div>
+
+          `;
+    },
+
     generateHeader(products) {
       return products
         .map(
           (p) =>
             `
             <div class="comparison__product">
+            <button class="comparison__product-remove">&cross;</button>  
               <img
                 src="${p.images.main}"
                 alt="${p.title}"
                 class="comparison__product-image"
               />
-              <a href="product.html" class="ui-title comparison__product-title"
+              <a href="#/product/${p.id}" class="ui-title comparison__product-title"
                 >${p.title}</a
               >
               <p class="comparison__price">${p.finalPrice}</p>
@@ -73,8 +84,9 @@ export const createComparisonView = function () {
       `;
     },
 
-    generateRow(label, propertie, products) {
-      console.log(label, propertie, products);
+    generateRow(label, property, products) {
+      const emptySlots = 3 - products.length;
+      const keys = property.split(".");
 
       return `
        <!-- SPEC -->
@@ -83,13 +95,24 @@ export const createComparisonView = function () {
 
             ${products
               .map((p) => {
+                let value = p.properties;
+
+                for (const key of keys) {
+                  value = value[key];
+                }
+
                 return `
             <div class="comparison__spec" >
-              ${p.properties[propertie]}
+              ${value}
+              
             </div>
               `;
               })
               .join("")}
+
+               ${Array.from({ length: emptySlots })
+                 .map(() => this.generateEmptyRow())
+                 .join("")}
            </div>
       `;
     },
@@ -124,6 +147,7 @@ export const createComparisonView = function () {
 
             ${this.generateSection("General")}
             ${this.generateRow("Sales Package", "salesPackage", products)}
+            
             ${this.generateRow("Model Number", "modelNumber", products)}
             ${this.generateSection("Product")}
             ${this.generateRow("Primary Material ", "primaryMaterial", products)}
@@ -131,6 +155,11 @@ export const createComparisonView = function () {
             ${this.generateRow("Maximum Load Capacity ", "maximumLoadCapacity", products)}
             ${this.generateSection("Dimensions")}
             ${this.generateRow("Width ", "dimensions.width", products)}
+            ${this.generateRow("Height ", "dimensions.height", products)}
+            ${this.generateRow("Depth ", "dimensions.depth", products)}
+            ${this.generateRow("Weight ", "dimensions.weight", products)}
+            ${this.generateSection("Warranty")}
+            ${this.generateRow("Warranty Summary ", "warrantySummary", products)}
             
         </div>
       </div>    
