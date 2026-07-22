@@ -13,6 +13,9 @@ import {
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
 import { getAverageRating } from "../utils/getAverageRating.js";
+import * as model from "../model/model.js";
+import { comparisonView } from "../views/comparison/comparisonView.js";
+import { renderApp } from "../core/render.js";
 
 export const controlClearCompare = function ({ dataset, target, source }) {
   comparisonActions.clearCompare();
@@ -28,7 +31,7 @@ export const controlClearCompare = function ({ dataset, target, source }) {
 };
 
 export const prepareCompareProducts = function () {
-  return state.compare.map((product) => {
+  const compareProducts = state.compare.map((product) => {
     return {
       ...product,
       finalPrice: formatPrice(getPrice(product.price).finalPrice),
@@ -36,4 +39,47 @@ export const prepareCompareProducts = function () {
       rating: getAverageRating(product.reviews),
     };
   });
+
+  const compareIDs = new Set(state.compare.map((product) => product.id));
+
+  const allProducts = state.products
+    .filter((product) => !compareIDs.has(product.id))
+    .map((product) => {
+      return {
+        id: product.id,
+        image: product.images.main,
+        title: product.title,
+        finalPrice: formatPrice(getPrice(product.price).finalPrice),
+      };
+    });
+
+  return {
+    compareProducts,
+    allProducts,
+  };
+};
+
+export const controlRemoveFromCompare = function ({ dataset }) {
+  model.removeFromCompare(dataset.id);
+
+  compareTrayView.removeProduct(dataset.id);
+  compareTrayView.updateCounter(state.compare.length);
+
+  updateCompareButtons?.(
+    dataset.id,
+    comparisonActions.isInComparison(dataset.id),
+  );
+
+  if (state.compare.length === 0) {
+    closeCompareTray();
+  }
+
+  updateCompareButtons(
+    dataset.id,
+    comparisonActions.isInComparison(dataset.id),
+  );
+
+  renderApp();
+
+  syncHeaderCounts();
 };

@@ -1,11 +1,9 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { images } from "../../../assets/images.js";
-import { products } from "../../services/products.js";
 import { generateStars } from "../../views/shared/ratingView.js";
-
 export const createComparisonView = function () {
   return {
-    generateAddProducts() {
+    generateAddProducts(allProducts) {
       return `
         <div class="comparison__add">
           <label
@@ -22,10 +20,18 @@ export const createComparisonView = function () {
               
             >
               <option value="" selected disabled>Choose a product</option>
-              <option value="asgaard-sofa">Asgaard Sofa</option>
-              <option value="asgaard-sofa">Asgaard Sofa</option>
-              <option value="asgaard-sofa">Asgaard Sofa</option>
-              <option value="asgaard-sofa">Asgaard Sofa</option>
+              ${allProducts
+                .map((product) => {
+                  return `
+                <option value="${product.title}" data-id="${product.id}"> 
+                <span>${product.title}</span> - 
+                <span>${product.finalPrice}</span>
+
+                </option>
+                `;
+                })
+                .join("")}
+             
             </select>
           </div>
         </div>
@@ -48,7 +54,7 @@ export const createComparisonView = function () {
           (p) =>
             `
             <div class="comparison__product">
-            <button class="comparison__product-remove">&cross;</button>  
+            <button class="comparison__product-remove" data-id="${p.id}" data-action="remove-from-compare">&cross;</button>  
               <img
                 src="${p.images.main}"
                 alt="${p.title}"
@@ -117,8 +123,8 @@ export const createComparisonView = function () {
       `;
     },
 
-    generateMarkup(products) {
-      const emptySlots = 3 - products.length;
+    generateMarkup({ compareProducts, allProducts }) {
+      const emptySlots = 3 - compareProducts.length;
 
       return `
       <!-- COMPARISON  -->
@@ -137,29 +143,29 @@ export const createComparisonView = function () {
                 </svg>
               </div>
             </div>
-            ${this.generateHeader(products)}
+            ${this.generateHeader(compareProducts)}
             ${Array.from({ length: emptySlots })
-              .map(() => this.generateAddProducts())
+              .map(() => this.generateAddProducts(allProducts))
               .join("")}
             
             
           </div>
 
             ${this.generateSection("General")}
-            ${this.generateRow("Sales Package", "salesPackage", products)}
+            ${this.generateRow("Sales Package", "salesPackage", compareProducts)}
             
-            ${this.generateRow("Model Number", "modelNumber", products)}
+            ${this.generateRow("Model Number", "modelNumber", compareProducts)}
             ${this.generateSection("Product")}
-            ${this.generateRow("Primary Material ", "primaryMaterial", products)}
-            ${this.generateRow("Secondary Material ", "secondaryMaterial", products)}
-            ${this.generateRow("Maximum Load Capacity ", "maximumLoadCapacity", products)}
+            ${this.generateRow("Primary Material ", "primaryMaterial", compareProducts)}
+            ${this.generateRow("Secondary Material ", "secondaryMaterial", compareProducts)}
+            ${this.generateRow("Maximum Load Capacity ", "maximumLoadCapacity", compareProducts)}
             ${this.generateSection("Dimensions")}
-            ${this.generateRow("Width ", "dimensions.width", products)}
-            ${this.generateRow("Height ", "dimensions.height", products)}
-            ${this.generateRow("Depth ", "dimensions.depth", products)}
-            ${this.generateRow("Weight ", "dimensions.weight", products)}
+            ${this.generateRow("Width ", "dimensions.width", compareProducts)}
+            ${this.generateRow("Height ", "dimensions.height", compareProducts)}
+            ${this.generateRow("Depth ", "dimensions.depth", compareProducts)}
+            ${this.generateRow("Weight ", "dimensions.weight", compareProducts)}
             ${this.generateSection("Warranty")}
-            ${this.generateRow("Warranty Summary ", "warrantySummary", products)}
+            ${this.generateRow("Warranty Summary ", "warrantySummary", compareProducts)}
             
         </div>
       </div>    
@@ -217,3 +223,5 @@ export const createComparisonView = function () {
     },
   };
 };
+
+export const comparisonView = createComparisonView();

@@ -39,26 +39,3 @@ export const controlOpenCompareTray = function () {
 
   openCompareTray();
 };
-
-export const controlRemoveFromCompare = function ({ dataset }) {
-  model.removeFromCompare(dataset.id);
-
-  compareTrayView.removeProduct(dataset.id);
-  compareTrayView.updateCounter(state.compare.length);
-
-  updateCompareButtons?.(
-    dataset.id,
-    comparisonActions.isInComparison(dataset.id),
-  );
-
-  if (state.compare.length === 0) {
-    closeCompareTray();
-  }
-
-  updateCompareButtons(
-    dataset.id,
-    comparisonActions.isInComparison(dataset.id),
-  );
-
-  syncHeaderCounts();
-};

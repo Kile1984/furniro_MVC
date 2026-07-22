@@ -13,6 +13,7 @@ import {
   headerEventActions,
   shopEventActions,
   filterInputActions,
+  comparisonActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 
@@ -61,6 +62,7 @@ export const initEventManager = function () {
     category: productEventActions,
     compareTray: compareTrayActions,
     header: headerEventActions,
+    compare: comparisonActions,
   };
 
   const inputMap = {
