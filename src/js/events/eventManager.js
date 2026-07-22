@@ -14,6 +14,7 @@ import {
   shopEventActions,
   filterInputActions,
   comparisonActions,
+  comparisonChangeActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 
@@ -26,6 +27,7 @@ export const initEventManager = function () {
 
   appEl.addEventListener("click", handleClick);
   appEl.addEventListener("input", handleInput);
+  appEl.addEventListener("change", handleChange);
   searchInput.addEventListener("input", handleInput);
   compareTrayEl.addEventListener("click", handleClick);
   headerEl.addEventListener("click", handleClick);
@@ -72,6 +74,10 @@ export const initEventManager = function () {
     shop: filterInputActions,
   };
 
+  const changeMap = {
+    compare: comparisonChangeActions,
+  };
+
   function handleClick(e) {
     const target = e.target.closest("[data-action]");
 
@@ -95,10 +101,10 @@ export const initEventManager = function () {
 
   function handleInput(e) {
     const target = e.target;
-
-    if (!target) return;
-
     const action = target.dataset.input;
+
+    if (!action) return;
+
     const source = target.closest(".header") ? "header" : state.currentRoute;
 
     console.log("ACTION: " + action, "SOURCE: " + source);
@@ -107,6 +113,22 @@ export const initEventManager = function () {
       target,
       value: target.value,
       id: target.dataset.id,
+    });
+  }
+
+  function handleChange(e) {
+    const target = e.target;
+    const action = target.dataset.change;
+
+    if (!action) return;
+
+    const source = state.currentRoute;
+
+    console.log("ACTION: " + action, "SOURCE: " + source);
+
+    changeMap[source]?.[action]?.({
+      target,
+      id: target.value,
     });
   }
 };

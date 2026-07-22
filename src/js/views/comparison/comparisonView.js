@@ -17,13 +17,14 @@ export const createComparisonView = function () {
               name="add-product"
               id="add-product"
               class="comparison__select"
+              data-change="add-to-compare"
               
             >
-              <option value="" selected disabled>Choose a product</option>
+              <option value="" selected disabled >Choose a product</option>
               ${allProducts
                 .map((product) => {
                   return `
-                <option value="${product.title}" data-id="${product.id}"> 
+                <option value="${product.id}" > 
                 <span>${product.title}</span> - 
                 <span>${product.finalPrice}</span>
 

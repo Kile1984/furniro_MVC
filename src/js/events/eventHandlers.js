@@ -66,6 +66,10 @@ export const comparisonActions = {
   "remove-from-compare": comparisonController.controlRemoveFromCompare,
 };
 
+export const comparisonChangeActions = {
+  "add-to-compare": comparisonController.controlAddToCompare,
+};
+
 export const headerEventActions = {
   "open-compare-tray": compareTrayController.controlOpenCompareTray,
   "toggle-search": searchController.controlToggleSearch,

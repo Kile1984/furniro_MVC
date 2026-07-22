@@ -16,13 +16,13 @@ import { getAverageRating } from "../utils/getAverageRating.js";
 import * as model from "../model/model.js";
 import { comparisonView } from "../views/comparison/comparisonView.js";
 import { renderApp } from "../core/render.js";
+import { productsActions } from "../state/actions/productsActions.js";
 
 export const controlClearCompare = function ({ dataset, target, source }) {
   comparisonActions.clearCompare();
   compareTrayActions.closeCompareTray();
   compareTrayView.render({ products: [], isOpen: false });
   state.products.forEach((product) => {
-    updateCompareButtons(product.id, false);
     updateCompareButtons(product.id, false);
   });
 
@@ -81,5 +81,16 @@ export const controlRemoveFromCompare = function ({ dataset }) {
 
   renderApp();
 
+  syncHeaderCounts();
+};
+
+export const controlAddToCompare = function ({ target, id }) {
+  if (comparisonActions.isInComparison(id)) return;
+
+  const product = productsActions.getProductById(id);
+
+  comparisonActions.addToCompare(product);
+
+  renderApp();
   syncHeaderCounts();
 };
