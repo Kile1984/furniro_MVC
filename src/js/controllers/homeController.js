@@ -13,5 +13,7 @@ export const loadProducts = async function () {
 };
 
 export const preparedProducts = function () {
-  return state.products.map((product) => preparedProduct(product));
+  return state.products
+    .filter((product) => product.featured)
+    .map((product) => preparedProduct(product));
 };

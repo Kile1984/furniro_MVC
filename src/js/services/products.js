@@ -91,6 +91,7 @@ export const products = [
     categorySlug: "chairs",
     price: { original: 160, discountPercent: 10 },
     badges: { isNew: true },
+    featured: true,
 
     images: {
       main: new URL(
@@ -248,6 +249,7 @@ export const products = [
     categorySlug: "chairs",
     price: { original: 240, discountPercent: 25 },
     badges: { isNew: true },
+    featured: true,
 
     images: {
       main: new URL(
@@ -324,6 +326,7 @@ export const products = [
     categorySlug: "chairs",
     price: { original: 150, discountPercent: 5 },
     badges: { isNew: false },
+    featured: true,
 
     images: {
       main: new URL(
@@ -400,6 +403,7 @@ export const products = [
     categorySlug: "chairs",
     price: { original: 210, discountPercent: 15 },
     badges: { isNew: true },
+    featured: true,
 
     images: {
       main: new URL(
@@ -721,6 +725,7 @@ export const products = [
     categorySlug: "tables",
     price: { original: 460, discountPercent: 10 },
     badges: { isNew: false },
+    featured: true,
 
     images: {
       main: new URL(
@@ -867,6 +872,7 @@ export const products = [
     categorySlug: "tables",
     price: { original: 610, discountPercent: 15 },
     badges: { isNew: false },
+    featured: true,
 
     images: {
       main: new URL(
@@ -1327,6 +1333,7 @@ export const products = [
     categorySlug: "tables",
     price: { original: 390, discountPercent: 0 },
     badges: { isNew: false },
+    featured: true,
 
     images: {
       main: new URL(
@@ -1484,6 +1491,7 @@ export const products = [
     categorySlug: "sofas",
     price: { original: 920, discountPercent: 30 },
     badges: { isNew: false },
+    featured: true,
 
     images: {
       main: new URL(

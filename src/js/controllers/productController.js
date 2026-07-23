@@ -20,11 +20,6 @@ import {
 export const controlAddToCart = function ({ dataset }) {
   const added = model.addToCartItem(dataset.id);
 
-  if (!added) {
-    console.log("Stock 0", added);
-    // updateCompareButtons()
-  }
-
   updateProductCartUI(dataset.id);
 };
 
