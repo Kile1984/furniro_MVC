@@ -76,6 +76,8 @@
 
     @include respond(mobile) {
       bottom: 160px;
+      opacity: 0.85;
+      padding: 0.5rem 0.5rem 0.7rem;
     }
   }
 
@@ -85,12 +87,29 @@
     margin-bottom: 1.8rem;
     -webkit-user-select: none;
     user-select: none;
+
+    @include respond(mobile) {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
   }
 
   &__btn {
+    font-size: 14px;
     // background-color: var(--color-white);
     text-transform: capitalize;
     margin-bottom: 0;
+
+    @include respond(mobile) {
+      padding: 0.2rem 0.4rem;
+    }
+
+    &--decrement,
+    &--icrement {
+      @include respond(mobile) {
+        padding: 0.2rem 1rem;
+      }
+    }
 
     &:disabled {
       opacity: 0.8;
@@ -134,6 +153,10 @@
 
     .icon {
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 1));
+
+      @include respond(mobile) {
+        width: 12px;
+      }
     }
   }
 

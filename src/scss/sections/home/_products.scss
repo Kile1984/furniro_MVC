@@ -15,7 +15,6 @@
     }
 
     @include respond(small) {
-      grid-template-columns: 1fr;
       gap: var(--gap-xs);
     }
 
