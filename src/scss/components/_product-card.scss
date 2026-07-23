@@ -250,6 +250,10 @@
     color: var(--color-gray-dark);
     font-weight: 500;
     margin-bottom: 0.8rem;
+
+    @include respond(mobile) {
+      max-height: 28px;
+    }
   }
 
   &__price {

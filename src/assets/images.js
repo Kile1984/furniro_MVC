@@ -7,6 +7,8 @@ export const images = {
   sliderImg_02: new URL("./images/slider-img-02.png", import.meta.url).href,
   sliderImg_03: new URL("./images/slider-img-03.png", import.meta.url).href,
   arrowLeft: new URL("./images/left.png", import.meta.url).href,
+  arrowRight: new URL("./images/right.png", import.meta.url).href,
+  arrowLeft_small: new URL("./images/left-small.png", import.meta.url).href,
 
   gallery_01: new URL("./images/gallery-img-01.png", import.meta.url).href,
   gallery_02: new URL("./images/gallery-img-02.png", import.meta.url).href,
