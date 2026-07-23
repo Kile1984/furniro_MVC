@@ -3,6 +3,7 @@ import { getPrice } from "./getPrice.js";
 
 // Shape compare tray product
 export const prepareCompareTrayProduct = function (product) {
+  console.log(product);
   return {
     id: product.id,
     title: product.title,

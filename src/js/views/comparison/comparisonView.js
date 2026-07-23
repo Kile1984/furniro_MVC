@@ -1,6 +1,7 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { images } from "../../../assets/images.js";
 import { generateStars } from "../../views/shared/ratingView.js";
+
 export const createComparisonView = function () {
   return {
     generateAddProducts(allProducts) {
@@ -105,8 +106,10 @@ export const createComparisonView = function () {
                 let value = p.properties;
 
                 for (const key of keys) {
-                  value = value[key];
+                  value = value?.[key];
                 }
+
+                value ??= "-";
 
                 return `
             <div class="comparison__spec" >

@@ -17,6 +17,7 @@ import * as model from "../model/model.js";
 import { comparisonView } from "../views/comparison/comparisonView.js";
 import { renderApp } from "../core/render.js";
 import { productsActions } from "../state/actions/productsActions.js";
+import { renderCompareTray } from "../shared/compareTrayUI.js";
 
 export const controlClearCompare = function ({ dataset, target, source }) {
   comparisonActions.clearCompare();
@@ -92,5 +93,6 @@ export const controlAddToCompare = function ({ target, id }) {
   comparisonActions.addToCompare(product);
 
   renderApp();
+  renderCompareTray();
   syncHeaderCounts();
 };
