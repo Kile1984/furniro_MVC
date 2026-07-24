@@ -85,393 +85,6 @@ export const products = [
   },
 
   {
-    id: "p2",
-    title: "Nordic",
-    category: "chair",
-    categorySlug: "chairs",
-    price: { original: 160, discountPercent: 10 },
-    badges: { isNew: true },
-    featured: true,
-
-    images: {
-      main: new URL(
-        "../../assets/images/products/chairs/chair-02/chair-02-1.png",
-        import.meta.url,
-      ).href,
-      gallery: [
-        new URL(
-          "../../assets/images/products/chairs/chair-02/chair-02-2.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-02/chair-02-3.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-02/chair-02-4.png",
-          import.meta.url,
-        ).href,
-      ],
-    },
-
-    shortDescription: "Minimal form",
-    longDescription: {
-      introduction:
-        "Nordic chair blends Scandinavian simplicity with practical comfort.",
-
-      paragraphs: [
-        "Its clean lines and oak frame fit perfectly into modern interiors.",
-        "Soft upholstery provides support during long sitting sessions.",
-        "Designed to bring elegance and functionality to everyday living.",
-      ],
-    },
-
-    sizes: ["S", "M", "L"],
-
-    tags: ["Chair", "Scandinavian", "Oak", "Minimal"],
-
-    reviews: [
-      {
-        id: "r1",
-        author: "Michael T.",
-        rating: 5,
-        date: "2026-02-15",
-        comment: "Excellent quality and beautiful design.",
-      },
-      {
-        id: "r2",
-        author: "Sarah W.",
-        rating: 4,
-        date: "2026-03-01",
-        comment: "Comfortable and easy to match with other furniture.",
-      },
-    ],
-
-    properties: {
-      salesPackage: "1 Chair",
-      modelNumber: "CHR-NOR-02",
-      primaryMaterial: "Polyester Fabric",
-      secondaryMaterial: "Oak",
-      maximumLoadCapacity: "120 kg",
-      seatHeight: "46 cm",
-
-      dimensions: {
-        width: "50 cm",
-        height: "80 cm",
-        depth: "54 cm",
-        weight: "5.8 kg",
-      },
-
-      warrantySummary: "2 Year Warranty",
-      stock: 12,
-    },
-  },
-
-  {
-    id: "p3",
-    title: "Lunara",
-    category: "chair",
-    categorySlug: "chairs",
-    price: { original: 180, discountPercent: 20 },
-    badges: { isNew: false },
-
-    images: {
-      main: new URL(
-        "../../assets/images/products/chairs/chair-03/chair-03-1.png",
-        import.meta.url,
-      ).href,
-      gallery: [
-        new URL(
-          "../../assets/images/products/chairs/chair-03/chair-03-2.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-03/chair-03-3.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-03/chair-03-4.png",
-          import.meta.url,
-        ).href,
-      ],
-    },
-
-    shortDescription: "Curved design",
-    longDescription: {
-      introduction:
-        "Lunara chair features elegant curves and exceptional comfort.",
-
-      paragraphs: [
-        "Designed with attention to detail and premium materials.",
-        "The curved silhouette creates a unique visual identity.",
-        "Suitable for both modern homes and commercial spaces.",
-      ],
-    },
-
-    sizes: ["S", "M", "L"],
-
-    tags: ["Chair", "Curved", "Elegant", "Fabric"],
-
-    reviews: [
-      {
-        id: "r1",
-        author: "Daniel P.",
-        rating: 2,
-        date: "2026-01-28",
-        comment: "Stylish and surprisingly comfortable.",
-      },
-    ],
-
-    properties: {
-      salesPackage: "1 Chair",
-      modelNumber: "CHR-LUN-03",
-      primaryMaterial: "Textured Fabric",
-      secondaryMaterial: "Beech Wood",
-      maximumLoadCapacity: "130 kg",
-      seatHeight: "45 cm",
-
-      dimensions: {
-        width: "56 cm",
-        height: "79 cm",
-        depth: "53 cm",
-        weight: "6.2 kg",
-      },
-
-      warrantySummary: "2 Year Warranty",
-      stock: 6,
-    },
-  },
-
-  {
-    id: "p4",
-    title: "Velora",
-    category: "chair",
-    categorySlug: "chairs",
-    price: { original: 240, discountPercent: 25 },
-    badges: { isNew: true },
-    featured: true,
-
-    images: {
-      main: new URL(
-        "../../assets/images/products/chairs/chair-04/chair-04-1.png",
-        import.meta.url,
-      ).href,
-      gallery: [
-        new URL(
-          "../../assets/images/products/chairs/chair-04/chair-04-2.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-04/chair-04-3.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-04/chair-04-4.png",
-          import.meta.url,
-        ).href,
-      ],
-    },
-
-    shortDescription: "Modern elegance",
-
-    longDescription: {
-      introduction:
-        "Velora brings luxury aesthetics and premium seating comfort.",
-
-      paragraphs: [
-        "Soft velvet upholstery creates a sophisticated appearance.",
-        "Built with durable materials for long-term performance.",
-        "An ideal centerpiece for elegant dining areas.",
-      ],
-    },
-
-    sizes: ["S", "M", "L"],
-
-    tags: ["Chair", "Velvet", "Luxury", "Modern"],
-
-    reviews: [
-      {
-        id: "r1",
-        author: "Jessica M.",
-        rating: 3,
-        date: "2026-04-11",
-        comment: "Absolutely beautiful and very comfortable.",
-      },
-    ],
-
-    properties: {
-      salesPackage: "1 Chair",
-      modelNumber: "CHR-VEL-04",
-      primaryMaterial: "Velvet",
-      secondaryMaterial: "Wood",
-      maximumLoadCapacity: "130 kg",
-      seatHeight: "47 cm",
-
-      dimensions: {
-        width: "58 cm",
-        height: "82 cm",
-        depth: "55 cm",
-        weight: "6.5 kg",
-      },
-
-      warrantySummary: "2 Year Warranty",
-      stock: 4,
-    },
-  },
-
-  {
-    id: "p5",
-    title: "Arden",
-    category: "chair",
-    categorySlug: "chairs",
-    price: { original: 150, discountPercent: 5 },
-    badges: { isNew: false },
-    featured: true,
-
-    images: {
-      main: new URL(
-        "../../assets/images/products/chairs/chair-05/chair-05-1.png",
-        import.meta.url,
-      ).href,
-      gallery: [
-        new URL(
-          "../../assets/images/products/chairs/chair-05/chair-05-2.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-05/chair-05-3.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-05/chair-05-4.png",
-          import.meta.url,
-        ).href,
-      ],
-    },
-
-    shortDescription: "Clean lines",
-
-    longDescription: {
-      introduction:
-        "Arden chair offers timeless simplicity and reliable comfort.",
-
-      paragraphs: [
-        "Clean lines make it suitable for various interior styles.",
-        "Built from durable materials and easy to maintain.",
-        "A practical choice for everyday dining use.",
-      ],
-    },
-
-    sizes: ["S", "M", "L"],
-
-    tags: ["Chair", "Minimal", "Oak", "Dining"],
-
-    reviews: [
-      {
-        id: "r1",
-        author: "Chris L.",
-        rating: 4,
-        date: "2026-02-10",
-        comment: "Simple, practical, and comfortable.",
-      },
-    ],
-
-    properties: {
-      salesPackage: "1 Chair",
-      modelNumber: "CHR-ARD-05",
-      primaryMaterial: "Fabric",
-      secondaryMaterial: "Solid Oak",
-      maximumLoadCapacity: "120 kg",
-      seatHeight: "45 cm",
-
-      dimensions: {
-        width: "52 cm",
-        height: "77 cm",
-        depth: "50 cm",
-        weight: "5.5 kg",
-      },
-
-      warrantySummary: "1 Year Warranty",
-      stock: 0,
-    },
-  },
-
-  {
-    id: "p6",
-    title: "Savona",
-    category: "chair",
-    categorySlug: "chairs",
-    price: { original: 210, discountPercent: 15 },
-    badges: { isNew: true },
-    featured: true,
-
-    images: {
-      main: new URL(
-        "../../assets/images/products/chairs/chair-06/chair-06-1.png",
-        import.meta.url,
-      ).href,
-      gallery: [
-        new URL(
-          "../../assets/images/products/chairs/chair-06/chair-06-2.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-06/chair-06-3.png",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../../assets/images/products/chairs/chair-06/chair-06-4.png",
-          import.meta.url,
-        ).href,
-      ],
-    },
-
-    shortDescription: "Elegant support",
-
-    longDescription: {
-      introduction:
-        "Savona chair combines soft seating with contemporary styling.",
-      paragraphs: [
-        "High-density foam provides lasting comfort.",
-        "Powder-coated steel legs increase durability.",
-        "Perfect for dining rooms and meeting spaces.",
-      ],
-    },
-
-    sizes: ["M", "L"],
-
-    tags: ["Chair", "Steel", "Modern", "Foam"],
-
-    reviews: [
-      {
-        id: "r1",
-        author: "Olivia H.",
-        rating: 5,
-        date: "2026-03-17",
-        comment: "Very comfortable even after long dinners.",
-      },
-    ],
-
-    properties: {
-      salesPackage: "1 Chair",
-      modelNumber: "CHR-SAV-06",
-      primaryMaterial: "Linen Fabric",
-      secondaryMaterial: "Steel",
-      maximumLoadCapacity: "140 kg",
-      seatHeight: "48 cm",
-
-      dimensions: {
-        width: "57 cm",
-        height: "84 cm",
-        depth: "56 cm",
-        weight: "6.9 kg",
-      },
-
-      warrantySummary: "3 Year Warranty",
-      stock: 7,
-    },
-  },
-  {
     id: "p8",
     title: "Calvero",
     category: "chair",
@@ -625,6 +238,88 @@ export const products = [
   // TABLES (11–20)
   // =========================
   {
+    id: "p2",
+    title: "Nordic",
+    category: "chair",
+    categorySlug: "chairs",
+    price: { original: 160, discountPercent: 10 },
+    badges: { isNew: true },
+    featured: true,
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/chairs/chair-02/chair-02-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/chairs/chair-02/chair-02-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-02/chair-02-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-02/chair-02-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Minimal form",
+    longDescription: {
+      introduction:
+        "Nordic chair blends Scandinavian simplicity with practical comfort.",
+
+      paragraphs: [
+        "Its clean lines and oak frame fit perfectly into modern interiors.",
+        "Soft upholstery provides support during long sitting sessions.",
+        "Designed to bring elegance and functionality to everyday living.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Scandinavian", "Oak", "Minimal"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Michael T.",
+        rating: 5,
+        date: "2026-02-15",
+        comment: "Excellent quality and beautiful design.",
+      },
+      {
+        id: "r2",
+        author: "Sarah W.",
+        rating: 4,
+        date: "2026-03-01",
+        comment: "Comfortable and easy to match with other furniture.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Chair",
+      modelNumber: "CHR-NOR-02",
+      primaryMaterial: "Polyester Fabric",
+      secondaryMaterial: "Oak",
+      maximumLoadCapacity: "120 kg",
+      seatHeight: "46 cm",
+
+      dimensions: {
+        width: "50 cm",
+        height: "80 cm",
+        depth: "54 cm",
+        weight: "5.8 kg",
+      },
+
+      warrantySummary: "2 Year Warranty",
+      stock: 12,
+    },
+  },
+  {
     id: "p10",
     title: "Valora",
     category: "table",
@@ -719,6 +414,82 @@ export const products = [
     },
   },
   {
+    id: "p4",
+    title: "Velora",
+    category: "chair",
+    categorySlug: "chairs",
+    price: { original: 240, discountPercent: 25 },
+    badges: { isNew: true },
+    featured: true,
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/chairs/chair-04/chair-04-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/chairs/chair-04/chair-04-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-04/chair-04-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-04/chair-04-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Modern elegance",
+
+    longDescription: {
+      introduction:
+        "Velora brings luxury aesthetics and premium seating comfort.",
+
+      paragraphs: [
+        "Soft velvet upholstery creates a sophisticated appearance.",
+        "Built with durable materials for long-term performance.",
+        "An ideal centerpiece for elegant dining areas.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Velvet", "Luxury", "Modern"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Jessica M.",
+        rating: 3,
+        date: "2026-04-11",
+        comment: "Absolutely beautiful and very comfortable.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Chair",
+      modelNumber: "CHR-VEL-04",
+      primaryMaterial: "Velvet",
+      secondaryMaterial: "Wood",
+      maximumLoadCapacity: "130 kg",
+      seatHeight: "47 cm",
+
+      dimensions: {
+        width: "58 cm",
+        height: "82 cm",
+        depth: "55 cm",
+        weight: "6.5 kg",
+      },
+
+      warrantySummary: "2 Year Warranty",
+      stock: 4,
+    },
+  },
+  {
     id: "p14",
     title: "Oakridge",
     category: "table",
@@ -791,7 +562,89 @@ export const products = [
       stock: 5,
     },
   },
+  {
+    id: "p26",
+    title: "Cavero",
+    category: "sofa",
+    categorySlug: "sofas",
+    price: { original: 990, discountPercent: 30 },
+    badges: { isNew: false },
 
+    images: {
+      main: new URL(
+        "../../assets/images/products/sofas/sofa-06/sofa-06-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/sofas/sofa-06/sofa-06-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-06/sofa-06-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-06/sofa-06-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Contemporary modular sofa",
+
+    longDescription: {
+      introduction:
+        "Cavero modular sofa is designed for flexibility, comfort, and modern living.",
+
+      paragraphs: [
+        "Its modular sections allow you to adapt the layout to your space.",
+        "Premium foam cushions deliver exceptional seating comfort every day.",
+        "A durable frame and elegant upholstery make it a centerpiece in any home.",
+      ],
+    },
+
+    sizes: ["3 Seater", "4 Seater", "Modular"],
+
+    tags: ["Sofa", "Modular", "Modern", "Living Room"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Lucas W.",
+        rating: 5,
+        date: "2026-02-14",
+        comment: "The modular design is brilliant and incredibly comfortable.",
+      },
+      {
+        id: "r2",
+        author: "Grace N.",
+        rating: 4,
+        date: "2026-05-09",
+        comment: "Very stylish and easy to rearrange.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Sofa",
+      modelNumber: "SFA-CAV-05",
+
+      upholsteryMaterial: "Premium Linen",
+      frameMaterial: "Solid Beech Wood",
+      seatingCapacity: "4 People",
+      seatHeight: "44 cm",
+
+      dimensions: {
+        width: "250 cm",
+        height: "86 cm",
+        depth: "96 cm",
+        weight: "74 kg",
+      },
+
+      warrantySummary: "5 Year Warranty",
+      stock: 7,
+    },
+  },
   {
     id: "p16",
     title: "Boreal",
@@ -862,6 +715,81 @@ export const products = [
 
       warrantySummary: "2 Year Warranty",
       stock: 9,
+    },
+  },
+  {
+    id: "p6",
+    title: "Savona",
+    category: "chair",
+    categorySlug: "chairs",
+    price: { original: 210, discountPercent: 15 },
+    badges: { isNew: true },
+    featured: true,
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/chairs/chair-06/chair-06-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/chairs/chair-06/chair-06-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-06/chair-06-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-06/chair-06-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Elegant support",
+
+    longDescription: {
+      introduction:
+        "Savona chair combines soft seating with contemporary styling.",
+      paragraphs: [
+        "High-density foam provides lasting comfort.",
+        "Powder-coated steel legs increase durability.",
+        "Perfect for dining rooms and meeting spaces.",
+      ],
+    },
+
+    sizes: ["M", "L"],
+
+    tags: ["Chair", "Steel", "Modern", "Foam"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Olivia H.",
+        rating: 5,
+        date: "2026-03-17",
+        comment: "Very comfortable even after long dinners.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Chair",
+      modelNumber: "CHR-SAV-06",
+      primaryMaterial: "Linen Fabric",
+      secondaryMaterial: "Steel",
+      maximumLoadCapacity: "140 kg",
+      seatHeight: "48 cm",
+
+      dimensions: {
+        width: "57 cm",
+        height: "84 cm",
+        depth: "56 cm",
+        weight: "6.9 kg",
+      },
+
+      warrantySummary: "3 Year Warranty",
+      stock: 7,
     },
   },
 
@@ -1177,6 +1105,96 @@ export const products = [
       stock: 3,
     },
   },
+  {
+    id: "p25",
+    title: "Arvon",
+    category: "sofa",
+    categorySlug: "sofas",
+    price: { original: 1090, discountPercent: 0 },
+    badges: { isNew: true },
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/sofas/sofa-04/sofa-04-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/sofas/sofa-04/sofa-04-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-04/sofa-04-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-04/sofa-04-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Elegant corner sofa",
+
+    longDescription: {
+      introduction:
+        "Arvon corner sofa offers spacious seating with timeless elegance.",
+
+      paragraphs: [
+        "High-density foam cushions provide outstanding comfort and support.",
+        "Its durable hardwood frame is built for years of everyday use.",
+        "Perfect for large living rooms and family gatherings.",
+      ],
+    },
+
+    sizes: ["3 Seater", "4 Seater", "Corner"],
+
+    tags: ["Sofa", "Corner", "Elegant", "Living Room"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Sophia L.",
+        rating: 5,
+        date: "2026-01-17",
+        comment: "Exactly what we wanted. Spacious and very comfortable.",
+      },
+      {
+        id: "r2",
+        author: "Michael P.",
+        rating: 5,
+        date: "2026-04-06",
+        comment: "Excellent quality and premium materials.",
+      },
+      {
+        id: "r3",
+        author: "Emma C.",
+        rating: 4,
+        date: "2026-06-11",
+        comment: "Looks fantastic and feels sturdy.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Sofa",
+      modelNumber: "SFA-ARV-04",
+
+      upholsteryMaterial: "Velvet Fabric",
+      frameMaterial: "Solid Oak Wood",
+      seatingCapacity: "5 People",
+      seatHeight: "46 cm",
+
+      dimensions: {
+        width: "275 cm",
+        height: "87 cm",
+        depth: "98 cm",
+        weight: "81 kg",
+      },
+
+      warrantySummary: "5 Year Warranty",
+      stock: 4,
+    },
+  },
 
   {
     id: "p15",
@@ -1406,6 +1424,80 @@ export const products = [
   // =========================
   // SOFAS (21–30)
   // =========================
+  {
+    id: "p3",
+    title: "Lunara",
+    category: "chair",
+    categorySlug: "chairs",
+    price: { original: 180, discountPercent: 20 },
+    badges: { isNew: false },
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/chairs/chair-03/chair-03-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/chairs/chair-03/chair-03-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-03/chair-03-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-03/chair-03-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Curved design",
+    longDescription: {
+      introduction:
+        "Lunara chair features elegant curves and exceptional comfort.",
+
+      paragraphs: [
+        "Designed with attention to detail and premium materials.",
+        "The curved silhouette creates a unique visual identity.",
+        "Suitable for both modern homes and commercial spaces.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Curved", "Elegant", "Fabric"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Daniel P.",
+        rating: 2,
+        date: "2026-01-28",
+        comment: "Stylish and surprisingly comfortable.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Chair",
+      modelNumber: "CHR-LUN-03",
+      primaryMaterial: "Textured Fabric",
+      secondaryMaterial: "Beech Wood",
+      maximumLoadCapacity: "130 kg",
+      seatHeight: "45 cm",
+
+      dimensions: {
+        width: "56 cm",
+        height: "79 cm",
+        depth: "53 cm",
+        weight: "6.2 kg",
+      },
+
+      warrantySummary: "2 Year Warranty",
+      stock: 6,
+    },
+  },
 
   {
     id: "p21",
@@ -1558,6 +1650,247 @@ export const products = [
 
       warrantySummary: "5 Year Warranty",
       stock: 10,
+    },
+  },
+  {
+    id: "p5",
+    title: "Arden",
+    category: "chair",
+    categorySlug: "chairs",
+    price: { original: 150, discountPercent: 5 },
+    badges: { isNew: false },
+    featured: true,
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/chairs/chair-05/chair-05-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/chairs/chair-05/chair-05-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-05/chair-05-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/chairs/chair-05/chair-05-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Clean lines",
+
+    longDescription: {
+      introduction:
+        "Arden chair offers timeless simplicity and reliable comfort.",
+
+      paragraphs: [
+        "Clean lines make it suitable for various interior styles.",
+        "Built from durable materials and easy to maintain.",
+        "A practical choice for everyday dining use.",
+      ],
+    },
+
+    sizes: ["S", "M", "L"],
+
+    tags: ["Chair", "Minimal", "Oak", "Dining"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Chris L.",
+        rating: 4,
+        date: "2026-02-10",
+        comment: "Simple, practical, and comfortable.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Chair",
+      modelNumber: "CHR-ARD-05",
+      primaryMaterial: "Fabric",
+      secondaryMaterial: "Solid Oak",
+      maximumLoadCapacity: "120 kg",
+      seatHeight: "45 cm",
+
+      dimensions: {
+        width: "52 cm",
+        height: "77 cm",
+        depth: "50 cm",
+        weight: "5.5 kg",
+      },
+
+      warrantySummary: "1 Year Warranty",
+      stock: 0,
+    },
+  },
+  {
+    id: "p23",
+    title: "Velerna",
+    category: "sofa",
+    categorySlug: "sofas",
+    price: { original: 920, discountPercent: 15 },
+    badges: { isNew: false },
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/sofas/sofa-03/sofa-03-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/sofas/sofa-03/sofa-03-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-03/sofa-03-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-03/sofa-03-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Modern sectional sofa",
+
+    longDescription: {
+      introduction: "Velora sofa blends elegant styling with everyday comfort.",
+
+      paragraphs: [
+        "Soft cushions provide excellent support for long hours of relaxation.",
+        "A reinforced hardwood frame offers outstanding durability.",
+        "Its minimalist design fits perfectly into contemporary interiors.",
+      ],
+    },
+
+    sizes: ["2 Seater", "3 Seater", "Corner"],
+
+    tags: ["Sofa", "Modern", "Living Room", "Sectional"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Emily R.",
+        rating: 5,
+        date: "2026-03-12",
+        comment: "Beautiful design and incredibly comfortable.",
+      },
+      {
+        id: "r2",
+        author: "Daniel K.",
+        rating: 4,
+        date: "2026-04-18",
+        comment: "Very solid build quality and easy to maintain.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Sofa",
+      modelNumber: "SFA-VEL-02",
+
+      upholsteryMaterial: "Linen Fabric",
+      frameMaterial: "Hardwood",
+      seatingCapacity: "4 People",
+      seatHeight: "45 cm",
+
+      dimensions: {
+        width: "245 cm",
+        height: "86 cm",
+        depth: "95 cm",
+        weight: "72 kg",
+      },
+
+      warrantySummary: "5 Year Warranty",
+      stock: 0,
+    },
+  },
+  {
+    id: "p24",
+    title: "Dvornik",
+    category: "sofa",
+    categorySlug: "sofas",
+    price: { original: 780, discountPercent: 10 },
+    badges: { isNew: true },
+
+    images: {
+      main: new URL(
+        "../../assets/images/products/sofas/sofa-05/sofa-05-1.png",
+        import.meta.url,
+      ).href,
+      gallery: [
+        new URL(
+          "../../assets/images/products/sofas/sofa-05/sofa-05-2.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-05/sofa-05-3.png",
+          import.meta.url,
+        ).href,
+        new URL(
+          "../../assets/images/products/sofas/sofa-05/sofa-05-4.png",
+          import.meta.url,
+        ).href,
+      ],
+    },
+
+    shortDescription: "Scandinavian style sofa",
+
+    longDescription: {
+      introduction:
+        "Norvik sofa brings Scandinavian simplicity with exceptional comfort.",
+
+      paragraphs: [
+        "Clean lines and soft cushions make it ideal for everyday living.",
+        "Crafted with a sturdy wooden frame for long-lasting reliability.",
+        "Neutral tones complement both modern and classic interiors.",
+      ],
+    },
+
+    sizes: ["2 Seater", "3 Seater"],
+
+    tags: ["Sofa", "Scandinavian", "Minimalist", "Living Room"],
+
+    reviews: [
+      {
+        id: "r1",
+        author: "Olivia M.",
+        rating: 5,
+        date: "2026-02-08",
+        comment: "Perfect balance of comfort and style.",
+      },
+      {
+        id: "r2",
+        author: "James T.",
+        rating: 4,
+        date: "2026-05-21",
+        comment: "Great quality for the price. Assembly was simple.",
+      },
+    ],
+
+    properties: {
+      salesPackage: "1 Sofa",
+      modelNumber: "SFA-NOR-03",
+
+      upholsteryMaterial: "Polyester Fabric",
+      frameMaterial: "Engineered Wood",
+      seatingCapacity: "3 People",
+      seatHeight: "43 cm",
+
+      dimensions: {
+        width: "210 cm",
+        height: "84 cm",
+        depth: "88 cm",
+        weight: "61 kg",
+      },
+
+      warrantySummary: "3 Year Warranty",
+      stock: 8,
     },
   },
 ];

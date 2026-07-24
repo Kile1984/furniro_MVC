@@ -12,7 +12,7 @@ export const loadProducts = async function () {
   state.maxFilterPrice = getMaxPrice(products);
 };
 
-export const preparedProducts = function () {
+export const preparedHomeProducts = function () {
   return state.products
     .filter((product) => product.featured)
     .map((product) => preparedProduct(product));

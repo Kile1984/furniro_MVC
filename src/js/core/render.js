@@ -1,7 +1,8 @@
 import { state } from "../state/state.js";
 import { views } from "../views/views.js";
 import { preparedCartProducts } from "../controllers/cartController.js";
-import { preparedProducts } from "../controllers/homeController.js";
+import { preparedHomeProducts } from "../controllers/homeController.js";
+import { preparedShopProducts } from "../controllers/shopController.js";
 import { preparaWishlistProduct } from "../controllers/wishlistController.js";
 import { prepareSinglProduct } from "../controllers/singleProductController.js";
 import { preparedCategoryProduct } from "../controllers/categoryCintroller.js";
@@ -10,10 +11,10 @@ import { prepareCompareProducts } from "../controllers/comparisonController.js";
 const appEl = document.querySelector("#app");
 
 const routeControllers = {
-  home: preparedProducts,
+  home: preparedHomeProducts,
   cart: preparedCartProducts,
   wishlist: preparaWishlistProduct,
-  shop: preparedProducts,
+  shop: preparedShopProducts,
   product: prepareSinglProduct,
   category: preparedCategoryProduct,
   compare: prepareCompareProducts,

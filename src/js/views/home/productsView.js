@@ -12,6 +12,9 @@ export const createProductView = function () {
               </h2>
               <div class="products__grid">
                ${productCardsView.generateMarkup(products)}
+              <a href="#/shop" class="btn btn--secondary products__btn-load-more">
+                  Browse All Products
+              </a>
               </div>
             </div>
           </section>

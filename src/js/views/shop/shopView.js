@@ -2,6 +2,7 @@ import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { productCardsView } from "../shared/productCardsView.js";
 import { filterDrawerView } from "./filterDrawerView.js";
+import { paginationView } from "./paginationView.js";
 
 export const createShopView = function (appEl) {
   return {
@@ -11,7 +12,7 @@ export const createShopView = function (appEl) {
       grid.classList.toggle("products__grid--2", columns === 2);
     },
 
-    generateMarkup(products) {
+    generateMarkup({ products, totalPages }) {
       return `
       <!-- PAGE HEADING SHOP -->
       <main class="page page--shop">
@@ -88,9 +89,7 @@ export const createShopView = function (appEl) {
             
               <div class="products__grid">
                  ${productCardsView.generateMarkup(products)}
-                 <button class="btn btn--secondary products__btn-load-more">
-                  Show More
-                  </button>
+                 ${paginationView.generateMarkup(totalPages)}
               </div>
 
              

@@ -29,4 +29,6 @@ export const state = {
   maxFilterPrice: 0,
 
   isMobileMenuOpen: false,
+
+  paginationPage: 1,
 };
