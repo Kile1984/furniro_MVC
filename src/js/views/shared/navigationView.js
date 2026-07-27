@@ -1,4 +1,4 @@
-const links = document.querySelectorAll("[data-route]");
+const links = document.querySelectorAll(".header__nav-link");
 
 export const updateActiveLink = function (currentRoute) {
   links.forEach((link) => {

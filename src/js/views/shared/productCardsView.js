@@ -1,5 +1,6 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
+import { generateBadge } from "../../shared/badgesUI.js";
 
 export const createProductCardsView = function () {
   return {
@@ -16,16 +17,6 @@ export const createProductCardsView = function () {
         </div>`;
 
       return markup;
-    },
-
-    generateBadge(discountPercent, badges) {
-      if (discountPercent > 0) {
-        return `  <span class="product-card__badge  product-card__badge--discount">-${discountPercent}%</span>`;
-      }
-
-      if (badges.isNew) {
-        return `  <span class="product-card__badge  product-card__badge--new">NEW</span>`;
-      }
     },
 
     updateCartButton({ id, quantity, stock, isDisabled }) {
@@ -163,7 +154,7 @@ export const createProductCardsView = function () {
                   alt="${p.title}"
                   class="product-card__image"
                 />
-                ${this.generateBadge(p.discountPercent, p.badges) ? this.generateBadge(p.discountPercent, p.badges) : ""}
+                ${generateBadge(p.discountPercent, p.badges) ? generateBadge(p.discountPercent, p.badges) : ""}
                   
               </div>
 

@@ -1,6 +1,7 @@
 import { sprite, icons } from "../../assets/icons/icons.js";
 import { productCardsView } from "./shared/productCardsView.js";
 import { generateStars } from "../views/shared/ratingView.js";
+import { generateBadge } from "../shared/badgesUI.js";
 
 export const createSingleProductView = function () {
   return {
@@ -181,6 +182,8 @@ export const createSingleProductView = function () {
                   src="${product.images.main}"
                  alt="${product.title}"
                 />
+                 ${generateBadge(product.price.discountPercent, product.badges) ? generateBadge(product.price.discountPercent, product.badges) : ""}
+                  
               </div>
             </section>
 
@@ -188,7 +191,8 @@ export const createSingleProductView = function () {
             <section class="product__info">
               <h1 class="product__name page-title--product">${product.title}</h1>
               <p class="product__price">
-                <span class="product__amount ui-title">${product.finalPrice}0</span>
+                <span class="product__amount ui-title mr-small">${product.finalPrice}0</span>
+                <span class="product-card__price-old ui-title">${product.oldPrice}</span>
               </p>
 
               <!-- rating -->

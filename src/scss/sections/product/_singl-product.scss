@@ -39,8 +39,9 @@
   }
 
   &__gallery-main {
-    border-radius: 8px; /* ako treba */
+    border-radius: 8px;
     background-color: #f9f1e7;
+    position: relative;
 
     @include respond(mobile) {
       grid-row: 1 / span 1;
@@ -48,6 +49,12 @@
 
     img {
       width: 100%;
+    }
+
+    span {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
     }
   }
 

@@ -12,7 +12,7 @@
     padding-block: 1.5rem;
 
     @include respond(mobile) {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 
@@ -21,6 +21,10 @@
     gap: 1.5rem;
     align-items: center;
 
+    @include respond(mobile) {
+      gap: 0.5rem;
+    }
+
     &--start {
       padding-right: 2rem;
       justify-self: self-start;
@@ -28,7 +32,7 @@
 
       @include respond(mobile) {
         border: none;
-        margin-bottom: 1rem;
+
         padding: 0;
         justify-self: start;
         padding-inline: 0.6rem;
@@ -48,7 +52,7 @@
       justify-self: self-end;
 
       @include respond(mobile) {
-        justify-self: center;
+        justify-self: end;
       }
     }
   }
@@ -110,6 +114,10 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+
+    @include respond(desktop) {
+      font-size: 16px;
+    }
 
     &:focus {
       outline: none;

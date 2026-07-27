@@ -43,6 +43,7 @@ export const prepareSinglProduct = function () {
 
   return {
     ...product,
+    oldPrice: formatPrice(getPrice(product.price).original),
     finalPrice: formatPrice(getPrice(product.price).finalPrice),
     reviewsCount: product.reviews.length,
     averageRating: getAverageRating(product.reviews),

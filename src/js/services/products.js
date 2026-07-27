@@ -243,7 +243,7 @@ export const products = [
     category: "chair",
     categorySlug: "chairs",
     price: { original: 160, discountPercent: 10 },
-    badges: { isNew: true },
+    badges: { isNew: false },
     featured: true,
 
     images: {

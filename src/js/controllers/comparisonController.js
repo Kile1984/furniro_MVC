@@ -22,13 +22,16 @@ import { renderCompareTray } from "../shared/compareTrayUI.js";
 export const controlClearCompare = function ({ dataset, target, source }) {
   comparisonActions.clearCompare();
   compareTrayActions.closeCompareTray();
+
   compareTrayView.render({ products: [], isOpen: false });
+
   state.products.forEach((product) => {
     updateCompareButtons(product.id, false);
   });
 
   compareTrayView.updateCounter(0);
   syncHeaderCounts();
+  renderApp();
 };
 
 export const prepareCompareProducts = function () {
@@ -36,6 +39,7 @@ export const prepareCompareProducts = function () {
     return {
       ...product,
       finalPrice: formatPrice(getPrice(product.price).finalPrice),
+      oldPrice: formatPrice(getPrice(product.price).original),
       reviews: product.reviews,
       rating: getAverageRating(product.reviews),
     };

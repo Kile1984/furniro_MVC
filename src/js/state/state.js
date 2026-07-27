@@ -31,4 +31,8 @@ export const state = {
   isMobileMenuOpen: false,
 
   paginationPage: 1,
+
+  navigation: {
+    productScrollY: 0,
+  },
 };

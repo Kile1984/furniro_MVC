@@ -1,6 +1,7 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { images } from "../../../assets/images.js";
 import { generateStars } from "../../views/shared/ratingView.js";
+import { generateBadge } from "../../shared/badgesUI.js";
 
 export const createComparisonView = function () {
   return {
@@ -51,27 +52,33 @@ export const createComparisonView = function () {
     },
 
     generateHeader(products) {
+      console.log(products);
       return products
         .map(
           (p) =>
             `
             <div class="comparison__product">
             <button class="comparison__product-remove" data-id="${p.id}" data-action="remove-from-compare">&cross;</button>  
-              <img
+           
+            ${generateBadge(p.price.discountPercent, p.badges) ? generateBadge(p.price.discountPercent, p.badges) : ""}
+            <img
                 src="${p.images.main}"
                 alt="${p.title}"
                 class="comparison__product-image"
               />
+              
               <a href="#/product/${p.id}" class="ui-title comparison__product-title"
                 >${p.title}</a
               >
+              <p class="comparison__price product-card__price-old ">${p.oldPrice}</p>
               <p class="comparison__price">${p.finalPrice}</p>
               <div class="comparison__rating">
                 <span class="comparison__rating-value">${p.rating}</span>
                 <span class="comparison__rating-stars">
                   ${generateStars(p.rating)}
                 </span>
-                <span class="comparison__rating-review"> 204 Reviews </span>
+                <span class="comparison__rating-review"> ${p.reviews.length === 1 ? `${p.reviews.length} Review` : `${p.reviews.length} Reviews`} </span>
+                
               </div>
             </div>
             `,
@@ -170,6 +177,7 @@ export const createComparisonView = function () {
             ${this.generateRow("Weight ", "dimensions.weight", compareProducts)}
             ${this.generateSection("Warranty")}
             ${this.generateRow("Warranty Summary ", "warrantySummary", compareProducts)}
+            
             
         </div>
       </div>    

@@ -258,11 +258,12 @@
 
   &__price {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
+    padding-right: 1rem;
 
     @include respond(mobile) {
-      display: flex;
-      flex-direction: column-reverse;
+      gap: 0.4rem;
+      padding-right: 0.5rem;
     }
   }
 
