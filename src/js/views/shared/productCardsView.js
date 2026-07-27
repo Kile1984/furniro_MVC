@@ -1,23 +1,24 @@
 import { sprite, icons } from "../../../assets/icons/icons.js";
 import { formatPrice } from "../../utils/format.js";
 import { generateBadge } from "../../shared/badgesUI.js";
+import { generateDiscount } from "../../shared/discountUI.js";
 
 export const createProductCardsView = function () {
   return {
-    generateDiscount(finalPrice, original, hasDiscount) {
-      const markup = ` 
-        <div class="product-card__price">
-          <span class="product-card__price-current">
-            ${formatPrice(finalPrice)}
-          </span>
+    // generateDiscount(finalPrice, original, hasDiscount) {
+    //   const markup = `
+    //     <div class="product-card__price">
+    //       <span class="product-card__price-current">
+    //         ${formatPrice(finalPrice)}
+    //       </span>
 
-          <span class="product-card__price-old">
-            ${hasDiscount ? formatPrice(original) : ""}
-          </span>
-        </div>`;
+    //       <span class="product-card__price-old">
+    //         ${hasDiscount ? formatPrice(original) : ""}
+    //       </span>
+    //     </div>`;
 
-      return markup;
-    },
+    //   return markup;
+    // },
 
     updateCartButton({ id, quantity, stock, isDisabled }) {
       const cart = document.querySelector(
@@ -161,11 +162,7 @@ export const createProductCardsView = function () {
               <div class="product-card__content">
                 <h3 class="product-card__title">${p.title}</h3>
                 <p class="product-card__description">${p.shortDescription}</p>
-                ${this.generateDiscount(
-                  p.finalPrice,
-                  p.original,
-                  p.hasDiscount,
-                )}
+                ${generateDiscount(p.finalPrice, p.original, p.hasDiscount)}
               </div>
             </article>`;
             })

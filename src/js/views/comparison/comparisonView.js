@@ -70,7 +70,7 @@ export const createComparisonView = function () {
               <a href="#/product/${p.id}" class="ui-title comparison__product-title"
                 >${p.title}</a
               >
-              <p class="comparison__price product-card__price-old ">${p.oldPrice}</p>
+              <p class="comparison__price product-card__price-old ">${p.oldPrice === p.finalPrice ? "-" : p.oldPrice}</p>
               <p class="comparison__price">${p.finalPrice}</p>
               <div class="comparison__rating">
                 <span class="comparison__rating-value">${p.rating}</span>

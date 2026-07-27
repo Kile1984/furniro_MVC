@@ -2,6 +2,7 @@ import { sprite, icons } from "../../assets/icons/icons.js";
 import { productCardsView } from "./shared/productCardsView.js";
 import { generateStars } from "../views/shared/ratingView.js";
 import { generateBadge } from "../shared/badgesUI.js";
+import { generateDiscount } from "../shared/discountUI.js";
 
 export const createSingleProductView = function () {
   return {
@@ -28,7 +29,6 @@ export const createSingleProductView = function () {
       );
 
       if (newValue === 1) {
-        console.log("AAA");
         incrementBtn.classList.remove("disabled");
         decrementBtn.classList.add("disabled");
         return;
@@ -136,6 +136,7 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
+      console.log(product);
       return `
     
       <main class="page page--product">
@@ -179,10 +180,11 @@ export const createSingleProductView = function () {
 
               <div class="product__gallery-main">
                 <img
-                  src="${product.images.main}"
+                 src="${product.images.main}"
                  alt="${product.title}"
                 />
                  ${generateBadge(product.price.discountPercent, product.badges) ? generateBadge(product.price.discountPercent, product.badges) : ""}
+                
                   
               </div>
             </section>
@@ -192,7 +194,7 @@ export const createSingleProductView = function () {
               <h1 class="product__name page-title--product">${product.title}</h1>
               <p class="product__price">
                 <span class="product__amount ui-title mr-small">${product.finalPrice}0</span>
-                <span class="product-card__price-old ui-title">${product.oldPrice}</span>
+                <span class="product-card__price-old ui-title">${product.oldPrice ?? ""}</span>
               </p>
 
               <!-- rating -->
