@@ -30,7 +30,10 @@ export const state = {
 
   isMobileMenuOpen: false,
 
-  paginationPage: 1,
+  pagination: {
+    currentPage: 1,
+    productPerPage: 8,
+  },
 
   navigation: {
     productScrollY: 0,

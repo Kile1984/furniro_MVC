@@ -1,11 +1,12 @@
 export const createPaginationView = function () {
   return {
-    generateMarkup(totalPages) {
+    generateMarkup({ products, totalPages, currentPage }) {
+      console.log(products, totalPages, currentPage);
       let buttons = "";
 
       for (let i = 1; i <= totalPages; i++) {
         buttons += `
-          <button class="btn btn--pagination products__btn">
+          <button class="btn btn--pagination products__btn ${currentPage === i ? "products__btn--active" : ""}" data-page=${i} data-action="pagination-btn">
             ${i}
           </button>
         `;

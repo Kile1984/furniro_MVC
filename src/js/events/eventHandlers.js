@@ -96,4 +96,5 @@ export const shopEventActions = {
   ...filterEventActions,
   "grid-2": shopController.controlChangeGrid,
   "grid-4": shopController.controlChangeGrid,
+  "pagination-btn": shopController.controlChangePage,
 };

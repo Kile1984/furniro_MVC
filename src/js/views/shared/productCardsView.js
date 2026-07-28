@@ -5,21 +5,6 @@ import { generateDiscount } from "../../shared/discountUI.js";
 
 export const createProductCardsView = function () {
   return {
-    // generateDiscount(finalPrice, original, hasDiscount) {
-    //   const markup = `
-    //     <div class="product-card__price">
-    //       <span class="product-card__price-current">
-    //         ${formatPrice(finalPrice)}
-    //       </span>
-
-    //       <span class="product-card__price-old">
-    //         ${hasDiscount ? formatPrice(original) : ""}
-    //       </span>
-    //     </div>`;
-
-    //   return markup;
-    // },
-
     updateCartButton({ id, quantity, stock, isDisabled }) {
       const cart = document.querySelector(
         `.product-card__cart-state[data-id="${id}"]`,
@@ -84,6 +69,7 @@ export const createProductCardsView = function () {
     },
 
     render(products) {
+      console.log(products);
       const parentEl = document.querySelector(".products__grid");
 
       parentEl.innerHTML = this.generateMarkup(products);

@@ -194,7 +194,7 @@ export const createSingleProductView = function () {
               <h1 class="product__name page-title--product">${product.title}</h1>
               <p class="product__price">
                 <span class="product__amount ui-title mr-small">${product.finalPrice}0</span>
-                <span class="product-card__price-old ui-title">${product.oldPrice ?? ""}</span>
+                <span class="product-card__price-old ui-title">${product.oldPrice === product.finalPrice ? "" : product.oldPrice}</span>
               </p>
 
               <!-- rating -->

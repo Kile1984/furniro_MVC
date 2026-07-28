@@ -12,7 +12,7 @@ export const createShopView = function (appEl) {
       grid.classList.toggle("products__grid--2", columns === 2);
     },
 
-    generateMarkup({ products, totalPages }) {
+    generateMarkup(data) {
       return `
       <!-- PAGE HEADING SHOP -->
       <main class="page page--shop">
@@ -88,8 +88,8 @@ export const createShopView = function (appEl) {
             </h2>
             
               <div class="products__grid">
-                 ${productCardsView.generateMarkup(products)}
-                 ${paginationView.generateMarkup(totalPages)}
+                 ${productCardsView.generateMarkup(data.products)}
+                 ${paginationView.generateMarkup(data)}
               </div>
 
              
