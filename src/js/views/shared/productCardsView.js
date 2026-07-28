@@ -69,7 +69,6 @@ export const createProductCardsView = function () {
     },
 
     render(products) {
-      console.log(products);
       const parentEl = document.querySelector(".products__grid");
 
       parentEl.innerHTML = this.generateMarkup(products);

@@ -5,6 +5,8 @@ import { shopView } from "../views/shop/shopView.js";
 import { preparedProduct } from "../utils/prepareProduct.js";
 import { paginationActions } from "../state/actions/paginationActions.js";
 import { renderApp } from "../core/render.js";
+import { paginateProducts } from "../services/paginationService.js";
+import { filterProducts } from "../services/filterService.js";
 
 export const controlCloseFilterDrawer = function () {
   filterDrawerView.close();
@@ -22,25 +24,11 @@ export const controlChangeGrid = function ({ dataset }) {
 };
 
 export const preparedShopProducts = function () {
-  const products = state.products.map((product) => preparedProduct(product));
+  const filteredProducts = filterProducts(state.products, state.filter);
 
-  return controlPagination(products);
-};
+  const preparedProducts = filteredProducts.map(preparedProduct);
 
-export const controlPagination = function (products) {
-  const PRODUCTS_PER_PAGE = state.pagination.productPerPage;
-  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
-  const currentPage = state.pagination.currentPage;
-  const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-  const end = start + PRODUCTS_PER_PAGE;
-
-  const paginationData = {
-    products: products.slice(start, end),
-    totalPages,
-    currentPage,
-  };
-
-  return paginationData;
+  return paginateProducts(preparedProducts);
 };
 
 export const controlChangePage = function ({ dataset }) {
