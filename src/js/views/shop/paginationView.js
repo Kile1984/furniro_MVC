@@ -1,7 +1,6 @@
 export const createPaginationView = function () {
   return {
     generateMarkup({ products, totalPages, currentPage }) {
-      console.log(products, totalPages, currentPage);
       let buttons = "";
 
       for (let i = 1; i <= totalPages; i++) {

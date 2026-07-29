@@ -15,6 +15,7 @@ import {
   filterInputActions,
   comparisonActions,
   comparisonChangeActions,
+  shopChangeActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 
@@ -76,6 +77,7 @@ export const initEventManager = function () {
 
   const changeMap = {
     compare: comparisonChangeActions,
+    shop: shopChangeActions,
   };
 
   function handleClick(e) {

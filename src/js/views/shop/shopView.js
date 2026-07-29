@@ -70,19 +70,23 @@ export const createShopView = function (appEl) {
             </div>
             <div class="toolbar__group toolbar__group--end">
               <div class="toolbar__control">
-                <label for="view" class="toolbar__label pr-sm">Show</label>
-                <select class="toolbar__select toolbar__select--show" id="view">
-                  <option value="">16</option>
-                  <option value="">32</option>
+                <label for="product-per-page" class="toolbar__label pr-sm">Show</label>
+                <select class="toolbar__select toolbar__select--show" id="product-per-page" data-change="product-per-page">
+                  <option value="8">8</option>
+                  <option value="16">16</option>
+                  <option value="24">24</option>
+                  <option value="all">All</option>
                 </select>
               </div>
 
               <div class="toolbar__control">
                 <label for="sort" class="toolbar__label pr-sm">Sort by</label>
-                <select class="toolbar__select toolbar__select--sort" id="sort">
-                  <option value="">Default</option>
-                  <option value="">Price: Lower to Hight</option>
-                  <option value="">Price: Hight to Low</option>
+                <select class="toolbar__select toolbar__select--sort" id="sort" data-change="sort">
+                  <option value="default">Default</option>
+                  <option value="price-asc">Price: Lower to Hight</option>
+                  <option value="price-desc">Price: Hight to Low</option>
+                  <option value="name-asc">Name: A–Z</option>
+                  <option value="name-desc">Name: Z–A</option>
                 </select>
               </div>
             </div>

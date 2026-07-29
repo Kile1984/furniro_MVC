@@ -39,3 +39,12 @@ export const controlChangePage = function ({ dataset }) {
 
   shopView.scrollToProducts();
 };
+
+export const controlProductPerPage = function ({ target, id: value }) {
+  const productPerPage = Number(value);
+  console.log(target, productPerPage);
+};
+
+export const controlSortProduct = function ({ target, id }) {
+  console.log(target, id);
+};

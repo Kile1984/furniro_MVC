@@ -98,3 +98,8 @@ export const shopEventActions = {
   "grid-4": shopController.controlChangeGrid,
   "pagination-btn": shopController.controlChangePage,
 };
+
+export const shopChangeActions = {
+  "product-per-page": shopController.controlProductPerPage,
+  sort: shopController.controlSortProduct,
+};
