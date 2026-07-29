@@ -12,6 +12,15 @@ export const createShopView = function (appEl) {
       grid.classList.toggle("products__grid--2", columns === 2);
     },
 
+    scrollToProducts() {
+      const grid = document.querySelector(".products__grid");
+
+      grid.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+
     generateMarkup(data) {
       return `
       <!-- PAGE HEADING SHOP -->

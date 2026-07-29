@@ -4,6 +4,9 @@ import { filterDrawerActions } from "../state/actions/filterDrawerActions.js";
 import { filterProducts } from "../services/filterService.js";
 import { preparedProduct } from "../utils/prepareProduct.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
+import { renderApp } from "../core/render.js";
+import { paginationActions } from "../state/actions/paginationActions.js";
+import { render } from "sass";
 
 const filterMap = {
   category: handleCategory,
@@ -49,23 +52,18 @@ export const controlFilter = function ({ target }) {
 };
 
 export const controlApplyFilters = function () {
-  const filteredProducts = filterProducts(state.products, state.filter);
-
-  const preparedProducts = filteredProducts.map((product) =>
-    preparedProduct(product),
-  );
-
-  productCardsView.render(preparedProducts);
+  paginationActions.setCurrentPage(1);
   filterDrawerView.close();
+  renderApp();
 };
 
 export const controlResetFilters = function () {
   filterDrawerActions.resetFilters();
+
+  paginationActions.setCurrentPage(1);
+
   filterDrawerView.reset();
+  filterDrawerView.close();
 
-  const preparedProducts = state.products.map((product) =>
-    preparedProduct(product),
-  );
-
-  productCardsView.render(preparedProducts);
+  renderApp();
 };

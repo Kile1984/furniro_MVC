@@ -36,4 +36,6 @@ export const controlChangePage = function ({ dataset }) {
   const data = preparedShopProducts();
 
   renderApp();
+
+  shopView.scrollToProducts();
 };
