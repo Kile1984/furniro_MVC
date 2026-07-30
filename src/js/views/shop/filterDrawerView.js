@@ -1,5 +1,6 @@
 export const creteFilterDrawer = function () {
   const body = document.querySelector("body");
+  let filter = null;
 
   return {
     close() {
@@ -19,6 +20,20 @@ export const creteFilterDrawer = function () {
       const drawerEl = document.querySelector(".filter");
       drawerEl.classList.toggle("active", isOpen);
       body.classList.toggle("drawer-open", isOpen);
+    },
+
+    checkInputs(currentFilter) {
+      filter = currentFilter;
+    },
+
+    isChecked(name) {
+      if (!filter) return "";
+
+      return filter.category.includes(name) ? "checked" : "";
+    },
+
+    inputValue(name) {
+      console.log(name);
     },
 
     generateMarkup() {
@@ -44,7 +59,8 @@ export const creteFilterDrawer = function () {
               <div class="filter-form__group">
                 <h4 class="filter-form__title">Category</h4>
                 <label class="filter-form__option">
-                  <input type="checkbox" name="category" value="chair" data-input="filter"/>
+                  <input type="checkbox" name="category" value="chair" data-input="filter"
+                  ${this.isChecked("chair")}/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Chairs</span>
                 </label>

@@ -54,6 +54,9 @@ export const controlFilter = function ({ target }) {
 export const controlApplyFilters = function () {
   paginationActions.setCurrentPage(1);
   filterDrawerView.close();
+
+  filterDrawerView.checkInputs(state.filter);
+
   renderApp();
 };
 

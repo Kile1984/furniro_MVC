@@ -7,6 +7,7 @@ import { paginationActions } from "../state/actions/paginationActions.js";
 import { renderApp } from "../core/render.js";
 import { paginateProducts } from "../services/paginationService.js";
 import { filterProducts } from "../services/filterService.js";
+import { render } from "sass";
 
 export const controlCloseFilterDrawer = function () {
   filterDrawerView.close();
@@ -33,7 +34,6 @@ export const preparedShopProducts = function () {
 
 export const controlChangePage = function ({ dataset }) {
   paginationActions.setCurrentPage(Number(dataset.page));
-  const data = preparedShopProducts();
 
   renderApp();
 
@@ -42,7 +42,9 @@ export const controlChangePage = function ({ dataset }) {
 
 export const controlProductPerPage = function ({ target, id: value }) {
   const productPerPage = Number(value);
-  console.log(target, productPerPage);
+  paginationActions.setProductsPerPage(productPerPage);
+  paginationActions.setCurrentPage(1);
+  renderApp();
 };
 
 export const controlSortProduct = function ({ target, id }) {
