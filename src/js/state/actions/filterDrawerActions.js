@@ -21,4 +21,8 @@ export const filterDrawerActions = {
   resetFilters() {
     state.filter = structuredClone(initialFilters);
   },
+
+  setDrawerState(isOpen) {
+    state.isDrawerOpen = isOpen;
+  },
 };

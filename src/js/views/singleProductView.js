@@ -136,7 +136,6 @@ export const createSingleProductView = function () {
     },
 
     generateMarkup(product) {
-      console.log(product);
       return `
     
       <main class="page page--product">

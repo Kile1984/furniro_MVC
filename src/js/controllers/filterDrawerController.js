@@ -53,7 +53,8 @@ export const controlFilter = function ({ target }) {
 
 export const controlApplyFilters = function () {
   paginationActions.setCurrentPage(1);
-  filterDrawerView.close();
+  filterDrawerActions.setDrawerState(false);
+  filterDrawerView.toggleFilterDrawer(false);
 
   filterDrawerView.checkInputs(state.filter);
 
@@ -62,11 +63,14 @@ export const controlApplyFilters = function () {
 
 export const controlResetFilters = function () {
   filterDrawerActions.resetFilters();
-
+  filterDrawerView.checkInputs(state.filter);
   paginationActions.setCurrentPage(1);
 
   filterDrawerView.reset();
-  filterDrawerView.close();
+
+  filterDrawerView.toggleFilterDrawer(false);
 
   renderApp();
+
+  filterDrawerView.toggleFilterDrawer(state.isDrawerOpen);
 };

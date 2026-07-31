@@ -29,6 +29,7 @@ export const state = {
   maxFilterPrice: 0,
 
   isMobileMenuOpen: false,
+  isDrawerOpen: false,
 
   pagination: {
     currentPage: 1,

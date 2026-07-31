@@ -8,15 +8,22 @@ import { renderApp } from "../core/render.js";
 import { paginateProducts } from "../services/paginationService.js";
 import { filterProducts } from "../services/filterService.js";
 import { render } from "sass";
+import { filterDrawerActions } from "../state/actions/filterDrawerActions.js";
 
 export const controlCloseFilterDrawer = function () {
-  filterDrawerView.close();
+  filterDrawerActions.setDrawerState(false);
+
+  filterDrawerView.toggleFilterDrawer(false);
 };
 
 export const controlToggleFilterDrawer = function ({ dataset }) {
   const { action } = dataset;
 
-  filterDrawerView.toggleFilterDrawer(action === "open-filter");
+  const isOpen = action === "open-filter";
+
+  filterDrawerActions.setDrawerState(isOpen);
+
+  filterDrawerView.toggleFilterDrawer(isOpen);
 };
 
 export const controlChangeGrid = function ({ dataset }) {
@@ -28,8 +35,9 @@ export const preparedShopProducts = function () {
   const filteredProducts = filterProducts(state.products, state.filter);
 
   const preparedProducts = filteredProducts.map(preparedProduct);
+  const paginationData = paginateProducts(preparedProducts);
 
-  return paginateProducts(preparedProducts);
+  return { ...paginationData, isDrawerOpen: state.isDrawerOpen };
 };
 
 export const controlChangePage = function ({ dataset }) {

@@ -165,7 +165,7 @@ export const createShopView = function (appEl) {
 
      >
 
-      ${filterDrawerView.generateMarkup()}
+      ${filterDrawerView.generateMarkup(data.isDrawerOpen)}
       `;
     },
   };

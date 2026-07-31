@@ -26,20 +26,26 @@ export const creteFilterDrawer = function () {
       filter = currentFilter;
     },
 
-    isChecked(name) {
+    isCategoryChecked(name, value) {
       if (!filter) return "";
 
-      return filter.category.includes(name) ? "checked" : "";
+      return filter[name].includes(value) ? "checked" : "";
+    },
+
+    isCheckboxChecked(name) {
+      if (!filter) return "";
+
+      return filter[name] ? "checked" : "";
     },
 
     inputValue(name) {
       console.log(name);
     },
 
-    generateMarkup() {
+    generateMarkup(isDrawerOpen) {
       return `
       <!-- FILTER DRAWER -->
-      <div class="filter">
+      <div class="filter ${isDrawerOpen ? "active" : ""}">
         <div class="filter-overlay"></div>
 
         <aside
@@ -60,19 +66,21 @@ export const creteFilterDrawer = function () {
                 <h4 class="filter-form__title">Category</h4>
                 <label class="filter-form__option">
                   <input type="checkbox" name="category" value="chair" data-input="filter"
-                  ${this.isChecked("chair")}/>
+                  ${this.isCategoryChecked("category", "chair")}/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Chairs</span>
                 </label>
 
                 <label class="filter-form__option">
-                  <input type="checkbox" name="category" value="sofa" data-input="filter"/>
+                  <input type="checkbox" name="category" value="sofa" data-input="filter"
+                  ${this.isCategoryChecked("category", "sofa")}/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Sofa</span>
                 </label>
 
                 <label class="filter-form__option">
-                  <input type="checkbox" name="category" value="table" data-input="filter"/>
+                  <input type="checkbox" name="category" value="table" data-input="filter"
+                   ${this.isCategoryChecked("category", "table")}/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Tables</span>
                 </label>
@@ -103,14 +111,16 @@ export const creteFilterDrawer = function () {
                <!-- In stock and Discount -->
               <div class="filter-form__group">
                 <label class="filter-form__option">
-                  <input type="checkbox" name="inStock" data-input="filter"/>
+                  <input type="checkbox" name="inStock" value="inStock" data-input="filter"
+                   ${this.isCheckboxChecked("inStock")}/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">In stock</span>
                 </label>
 
 
                 <label class="filter-form__option">
-                  <input type="checkbox" name="discount" value="discount" data-input="filter"/>
+                  <input type="checkbox" name="discount" value="discount" data-input="filter"
+                   ${this.isCheckboxChecked("discount")}/>
                   <span class="filter-form__box"></span>
                   <span class="filter-form__label">Discount</span>
                 </label>
