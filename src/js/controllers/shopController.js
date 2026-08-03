@@ -51,7 +51,9 @@ export const controlChangePage = function ({ dataset }) {
 export const controlProductPerPage = function ({ target, id: value }) {
   const productPerPage = Number(value);
   paginationActions.setProductsPerPage(productPerPage);
+
   paginationActions.setCurrentPage(1);
+
   renderApp();
 };
 
