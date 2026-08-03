@@ -22,6 +22,7 @@ export const createShopView = function (appEl) {
     },
 
     generateMarkup(data) {
+      console.log(data.productPerPage);
       return `
       <!-- PAGE HEADING SHOP -->
       <main class="page page--shop">
@@ -72,10 +73,10 @@ export const createShopView = function (appEl) {
               <div class="toolbar__control">
                 <label for="product-per-page" class="toolbar__label pr-sm">Show</label>
                 <select class="toolbar__select toolbar__select--show" id="product-per-page" data-change="product-per-page">
-                  <option value="8">8</option>
-                  <option value="16">16</option>
-                  <option value="24">24</option>
-                  <option value="all">All</option>
+                  <option value="8" ${data.productPerPage === 8 ? "selected" : ""}>8</option>
+                  <option value="16" ${data.productPerPage === 16 ? "selected" : ""}>16</option>
+                  <option value="24" ${data.productPerPage === 24 ? "selected" : ""}>24</option>
+                  <option value="all" ${data.productPerPage === Infinity ? "selected" : ""}>All</option>
                 </select>
               </div>
 

@@ -37,7 +37,11 @@ export const preparedShopProducts = function () {
   const preparedProducts = filteredProducts.map(preparedProduct);
   const paginationData = paginateProducts(preparedProducts);
 
-  return { ...paginationData, isDrawerOpen: state.isDrawerOpen };
+  return {
+    ...paginationData,
+    isDrawerOpen: state.isDrawerOpen,
+    productPerPage: state.pagination.productPerPage,
+  };
 };
 
 export const controlChangePage = function ({ dataset }) {
@@ -49,7 +53,7 @@ export const controlChangePage = function ({ dataset }) {
 };
 
 export const controlProductPerPage = function ({ target, id: value }) {
-  const productPerPage = Number(value);
+  const productPerPage = value === "all" ? Infinity : Number(value);
   paginationActions.setProductsPerPage(productPerPage);
 
   paginationActions.setCurrentPage(1);
