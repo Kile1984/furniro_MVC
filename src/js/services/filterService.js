@@ -29,6 +29,13 @@ export const filterProducts = function (products, filters) {
     );
   }
 
+  // discount
+  if (filters.discount) {
+    filteredProducts = filteredProducts.filter((product) => {
+      return getPrice(product.price).hasDiscount ?? "";
+    });
+  }
+
   // rating
   if (filters.rating) {
     filteredProducts = filteredProducts.filter((product) => {

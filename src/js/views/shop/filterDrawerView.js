@@ -38,8 +38,16 @@ export const creteFilterDrawer = function () {
       return filter[name] ? "checked" : "";
     },
 
-    inputValue(name) {
-      console.log(name);
+    isRadioChecked(property, value) {
+      if (!filter) return "";
+
+      return filter[property] === value ? "checked" : "";
+    },
+
+    inputValue(property) {
+      if (!filter) return "";
+
+      return `value="${filter[property] ?? ""}"`;
     },
 
     generateMarkup(isDrawerOpen) {
@@ -96,6 +104,7 @@ export const creteFilterDrawer = function () {
                     placeholder="Min"
                     min="0"
                     data-input="filter"
+                    ${this.inputValue("minPrice")}
                   />
                   <span> - </span>
                   <input
@@ -104,6 +113,7 @@ export const creteFilterDrawer = function () {
                     placeholder="Max"
                     min="0"
                     data-input="filter"
+                    ${this.inputValue("maxPrice")}
                   />
                 </div>
               </div>
@@ -132,13 +142,17 @@ export const creteFilterDrawer = function () {
                 <h4 class="filter-form__title">Rating</h4>
 
                 <label class="filter-form__option">
-                  <input type="radio" name="rating" value="4" data-input="filter"/>
+                  <input type="radio" name="rating" value="4" data-input="filter"
+                  ${this.isRadioChecked("rating", 4)}
+                  />
                   <span class="filter-form__radio"></span>
                   <span class="filter-form__label"> 4★ & up</span>
                 </label>
 
                 <label class="filter-form__option">
-                  <input type="radio" name="rating" value="3" data-input="filter"/>
+                  <input type="radio" name="rating" value="3" data-input="filter"
+                  ${this.isRadioChecked("rating", 3)}
+                  />
                   <span class="filter-form__radio"></span>
                   <span class="filter-form__label">3★ & up</span>
                 </label>
