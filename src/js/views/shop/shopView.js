@@ -22,7 +22,7 @@ export const createShopView = function (appEl) {
     },
 
     generateMarkup(data) {
-      console.log(data.productPerPage);
+      console.log(data);
       return `
       <!-- PAGE HEADING SHOP -->
       <main class="page page--shop">
@@ -83,11 +83,11 @@ export const createShopView = function (appEl) {
               <div class="toolbar__control">
                 <label for="sort" class="toolbar__label pr-sm">Sort by</label>
                 <select class="toolbar__select toolbar__select--sort" id="sort" data-change="sort">
-                  <option value="default">Default</option>
-                  <option value="price-asc">Price: Lower to Hight</option>
-                  <option value="price-desc">Price: Hight to Low</option>
-                  <option value="name-asc">Name: A–Z</option>
-                  <option value="name-desc">Name: Z–A</option>
+                  <option value="default" ${data.sortBy === "default" ? "selected" : ""}>Default</option>
+                  <option value="price-asc" ${data.sortBy === "price-asc" ? "selected" : ""}>Price: Lower to Hight</option>
+                  <option value="price-desc" ${data.sortBy === "price-desc" ? "selected" : ""}>Price: Hight to Low</option>
+                  <option value="name-asc" ${data.sortBy === "name-asc" ? "selected" : ""}>Name: A–Z</option>
+                  <option value="name-desc" ${data.sortBy === "name-desc" ? "selected" : ""}>Name: Z–A</option>
                 </select>
               </div>
             </div>

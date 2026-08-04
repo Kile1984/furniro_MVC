@@ -8,4 +8,8 @@ export const paginationActions = {
   setProductsPerPage(value) {
     state.pagination.productPerPage = value;
   },
+
+  sortProduct(type) {
+    state.pagination.sortBy = type;
+  },
 };

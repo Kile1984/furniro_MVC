@@ -7,8 +7,8 @@ import { paginationActions } from "../state/actions/paginationActions.js";
 import { renderApp } from "../core/render.js";
 import { paginateProducts } from "../services/paginationService.js";
 import { filterProducts } from "../services/filterService.js";
-import { render } from "sass";
 import { filterDrawerActions } from "../state/actions/filterDrawerActions.js";
+import { sortProducts } from "../services/sortProducts.js";
 
 export const controlCloseFilterDrawer = function () {
   filterDrawerActions.setDrawerState(false);
@@ -32,15 +32,25 @@ export const controlChangeGrid = function ({ dataset }) {
 };
 
 export const preparedShopProducts = function () {
+  // filtered products
   const filteredProducts = filterProducts(state.products, state.filter);
 
-  const preparedProducts = filteredProducts.map(preparedProduct);
+  // sort filtered products
+  const sortedProducts = sortProducts(
+    filteredProducts,
+    state.pagination.sortBy,
+  );
+
+  // prepare filtered and sorted products
+  const preparedProducts = sortedProducts.map(preparedProduct);
+
   const paginationData = paginateProducts(preparedProducts);
 
   return {
     ...paginationData,
     isDrawerOpen: state.isDrawerOpen,
     productPerPage: state.pagination.productPerPage,
+    sortBy: state.pagination.sortBy,
   };
 };
 
@@ -59,8 +69,14 @@ export const controlProductPerPage = function ({ target, id: value }) {
   paginationActions.setCurrentPage(1);
 
   renderApp();
+
+  shopView.scrollToProducts();
 };
 
 export const controlSortProduct = function ({ target, id }) {
-  console.log(target, id);
+  paginationActions.sortProduct(id);
+
+  renderApp();
+
+  shopView.scrollToProducts();
 };

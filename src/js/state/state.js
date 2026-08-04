@@ -34,6 +34,7 @@ export const state = {
   pagination: {
     currentPage: 1,
     productPerPage: 8,
+    sortBy: "default",
   },
 
   navigation: {
