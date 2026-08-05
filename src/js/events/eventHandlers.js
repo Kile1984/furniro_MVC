@@ -8,6 +8,7 @@ import * as searchController from "../controllers/searchController.js";
 import * as shopController from "../controllers/shopController.js";
 import * as filterDrawerController from "../controllers/filterDrawerController.js";
 import * as headerController from "../controllers/headerController.js";
+import * as subscribeController from "../controllers/subscribeController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -102,4 +103,8 @@ export const shopEventActions = {
 export const shopChangeActions = {
   "product-per-page": shopController.controlProductPerPage,
   sort: shopController.controlSortProduct,
+};
+
+export const footerActions = {
+  subscribe: subscribeController.controlSubscribe,
 };

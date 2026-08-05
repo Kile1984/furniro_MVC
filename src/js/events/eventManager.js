@@ -16,6 +16,7 @@ import {
   comparisonActions,
   comparisonChangeActions,
   shopChangeActions,
+  footerActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 
@@ -33,6 +34,7 @@ export const initEventManager = function () {
   compareTrayEl.addEventListener("click", handleClick);
   headerEl.addEventListener("click", handleClick);
   footerEl.addEventListener("click", handleClick);
+  footerEl.addEventListener("submit", handleSubmit);
   document.addEventListener("click", handleOutsideClick);
 
   function handleOutsideClick(e) {
@@ -93,7 +95,7 @@ export const initEventManager = function () {
         : state.currentRoute;
 
     console.log("ACTION: " + action, "SOURCE: " + source);
-
+    console.log(eventMap[source]);
     eventMap[source]?.[action]?.({
       target: target,
       dataset: target.dataset,
@@ -132,5 +134,24 @@ export const initEventManager = function () {
       target,
       id: target.value,
     });
+  }
+
+  const submitMap = {
+    footer: footerActions,
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const target = e.target;
+    const action = target.dataset.submit;
+
+    if (!action) return;
+
+    const source = target.closest(".footer") ? "footer" : state.currentRoute;
+
+    console.log("ACTION: " + action, "SOURCE: " + source);
+
+    submitMap[source]?.[action]?.({ target });
   }
 };

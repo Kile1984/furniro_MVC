@@ -8,7 +8,7 @@ import { renderApp } from "../core/render.js";
 import { paginateProducts } from "../services/paginationService.js";
 import { filterProducts } from "../services/filterService.js";
 import { filterDrawerActions } from "../state/actions/filterDrawerActions.js";
-import { sortProducts } from "../services/sortProducts.js";
+import { sortProducts } from "../services/sortProductsService.js";
 
 export const controlCloseFilterDrawer = function () {
   filterDrawerActions.setDrawerState(false);
