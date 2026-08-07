@@ -16,6 +16,8 @@ import {
   closeCompareTray,
   updateCompareButtons,
 } from "../shared/compareUI.js";
+import { shareActions } from "../state/actions/shareAction.js";
+import { shareView } from "../views/shareView.js";
 
 export const controlAddToCart = function ({ dataset }) {
   const added = model.addToCartItem(dataset.id);
@@ -68,6 +70,7 @@ export const controlAddToCompare = function ({ dataset }) {
 };
 
 export const controlRemoveFromCompare = function ({ dataset }) {
+  console.log(dataset);
   model.removeFromCompare(dataset.id);
 
   updateCompareButtons(
@@ -83,4 +86,9 @@ export const controlRemoveFromCompare = function ({ dataset }) {
   compareTrayView.updateCounter(state.compare.length);
 
   syncHeaderCounts();
+};
+
+export const controlShare = function ({ dataset }) {
+  shareActions.openShareMenu(dataset.id);
+  shareView.render(dataset.id);
 };

@@ -40,4 +40,8 @@ export const state = {
   navigation: {
     productScrollY: 0,
   },
+
+  share: {
+    openedProductId: null,
+  },
 };

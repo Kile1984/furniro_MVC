@@ -1,3 +1,4 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import { initRouter } from "./core/router.js";
 import { initEventManager } from "./events/eventManager.js";
 import { loadProducts } from "./controllers/homeController.js";

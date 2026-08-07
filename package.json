@@ -17,5 +17,8 @@
     "sass": "^1.99.0",
     "stream-browserify": "^3.0.0",
     "util": "^0.12.5"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1"
   }
 }

@@ -79,7 +79,7 @@ export const createProductCardsView = function () {
           ${products
             .map((p) => {
               return `
-            <article class="product-card">
+            <article class="product-card" data-id="${p.id}">
               <a href="#/product/${p.id}" class="product-card__stretched-link"></a>
               <div class="product-card__overlay">
               <div class="product-card__cart-state" data-id=${p.id}>
@@ -111,7 +111,7 @@ export const createProductCardsView = function () {
                 </a>
 
                 <div class="product-card__actions">
-                  <button type="button" class="product-card__action" >
+                  <button type="button" class="product-card__action" data-action="share" data-id="${p.id}">
                     <svg class="icon">
                       <use href="${sprite}#${icons.share}"></use>
                     </svg>

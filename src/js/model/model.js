@@ -5,6 +5,7 @@ import { wishlistActions } from "../state/actions/wishlistActions.js";
 import { state } from "../state/state.js";
 import { getPrice } from "../utils/getPrice.js";
 import { formatPrice } from "../utils/format.js";
+import { shareActions } from "../state/actions/shareAction.js";
 
 // CART
 export const addToCartItem = function (id, singleProductQuantity) {

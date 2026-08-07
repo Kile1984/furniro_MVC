@@ -24,6 +24,7 @@
     visibility: visible;
     opacity: 1;
   }
+
   &.open + &-overlay {
     visibility: visible;
     opacity: 1;
@@ -108,12 +109,6 @@
     font-weight: 500;
   }
 
-  &__item-quantity-price {
-  }
-
-  &__item-quantity {
-  }
-
   &__item-multiplication {
     padding-inline: 1rem;
 
@@ -130,10 +125,6 @@
   &__item-btn-remove {
     color: var(--color-gray);
     padding-right: 0.5rem;
-  }
-
-  &__footer {
-    // padding-top: 1.5rem;
   }
 
   &__subtotal {

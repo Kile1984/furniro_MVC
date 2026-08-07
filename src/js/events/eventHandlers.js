@@ -18,6 +18,7 @@ export const productEventActions = {
   "remove-from-wishlist": wishlistController.controlRemoveFromWishlist,
   "add-to-compare": productController.controlAddToCompare,
   "remove-from-compare": productController.controlRemoveFromCompare,
+  share: productController.controlShare,
 };
 
 export const cartEventActions = {

@@ -95,7 +95,7 @@ export const initEventManager = function () {
         : state.currentRoute;
 
     console.log("ACTION: " + action, "SOURCE: " + source);
-    console.log(eventMap[source]);
+
     eventMap[source]?.[action]?.({
       target: target,
       dataset: target.dataset,
