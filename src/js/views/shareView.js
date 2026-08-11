@@ -50,15 +50,6 @@ const createShareView = function () {
         </a>
 
       
-        <button
-          class="product-card__share-menu__item-close"
-          data-action="close-share"
-          data-id="${id}"
-          type="button"
-        >
-         <i class="fa-regular fa-circle-xmark"></i>
-         
-        </button>
       </div>
       `;
     },

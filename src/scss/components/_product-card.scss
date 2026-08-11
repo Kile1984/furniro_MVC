@@ -28,16 +28,32 @@
 
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: space-around;
     gap: 0.5rem;
+
+    @include respond(tablet) {
+      font-size: 0.6rem;
+    }
 
     span {
       color: var(--color-white);
     }
 
-    &__item-close {
-      position: absolute;
-      right: 0;
+    button,
+    a {
+      color: var(--color-black-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--color-gray-dark);
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+
+      @include respond(tablet) {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 
