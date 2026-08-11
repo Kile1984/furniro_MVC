@@ -10,6 +10,10 @@ export const images = {
   arrowRight: new URL("./images/right.png", import.meta.url).href,
   arrowLeft_small: new URL("./images/left-small.png", import.meta.url).href,
 
+  home_chairs: new URL("./images/home_chairs.png", import.meta.url).href,
+  home_tables: new URL("./images/home_tables.png", import.meta.url).href,
+  home_sofas: new URL("./images/home_sofas.png", import.meta.url).href,
+
   gallery_01: new URL("./images/gallery-img-01.png", import.meta.url).href,
   gallery_02: new URL("./images/gallery-img-02.png", import.meta.url).href,
   gallery_03: new URL("./images/gallery-img-03.png", import.meta.url).href,

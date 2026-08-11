@@ -19,7 +19,7 @@ export const createRangeView = function () {
                 <a href="#/category/chairs">
                   <img
                     class="range__img"
-                    src="${images.diningImg}"
+                    src="${images.home_chairs}"
                     alt="Chair"
                   />
                   <span class="ui-title range__ui-title"> Chairs </span>
@@ -30,7 +30,7 @@ export const createRangeView = function () {
                 <a href="#/category/tables">
                   <img
                     class="range__img"
-                      src="${images.livingImg}"
+                      src="${images.home_tables}"
                     alt="Table"
                   />
                   <span class="ui-title range__ui-title"> Tables </span>
@@ -41,7 +41,7 @@ export const createRangeView = function () {
                 <a href="#/category/sofas">
                   <img
                     class="range__img"
-                    src="${images.bedroomImg}"
+                    src="${images.home_sofas}"
                     alt="Sofa"
                   />
                   <span class="ui-title range__ui-title"> Sofas </span>
