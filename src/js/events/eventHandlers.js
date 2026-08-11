@@ -19,6 +19,7 @@ export const productEventActions = {
   "add-to-compare": productController.controlAddToCompare,
   "remove-from-compare": productController.controlRemoveFromCompare,
   share: productController.controlShare,
+  "copy-link": productController.controlCopyLink,
 };
 
 export const cartEventActions = {

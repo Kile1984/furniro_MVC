@@ -2,8 +2,25 @@ const createShareView = function () {
   return {
     render(id) {
       const card = document.querySelector(`.product-card[data-id="${id}"]`);
+      const shareBtn = card.querySelector(".product-card__action--share");
+
+      shareBtn.disabled = true;
+      shareBtn.classList.add("active");
+
       card.insertAdjacentHTML("beforeend", this.generateMarkup(id));
-      console.log(card);
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+          shareBtn.disabled = false;
+          shareBtn.classList.remove("active");
+          const menu = card.querySelector(
+            `.product-card__share-menu[data-id="${id}"]`,
+          );
+          menu.remove();
+        },
+        { once: true },
+      );
     },
 
     generateMarkup(id) {
@@ -23,7 +40,8 @@ const createShareView = function () {
           class="share-menu__item"
           data-action="share-facebook"
           data-id="${id}"
-          href="#"
+          href="https://www.facebook.com/ilija.zikic.1/?locale=sr_RS"
+          target="_blank"
         >
           <i class="fa-brands fa-facebook-f"></i>
          
@@ -33,7 +51,8 @@ const createShareView = function () {
           class="share-menu__item"
           data-action="share-x"
           data-id="${id}"
-          href="#"
+          href="https://x.com/ilija_zikic"
+          target="_blank"
         >
           <i class="fa-brands fa-x-twitter"></i>
         
@@ -43,7 +62,9 @@ const createShareView = function () {
           class="share-menu__item"
           data-action="share-whatsapp"
           data-id="${id}"
-          href="#"
+            href="https://wa.me/?text=${encodeURIComponent(`${window.location.origin}/#/product/${id}`)}"
+            target="_blank"
+            rel="noopener noreferrer"
         >
           <i class="fa-brands fa-whatsapp"></i>
          

@@ -92,3 +92,10 @@ export const controlShare = function ({ dataset }) {
   shareActions.openShareMenu(dataset.id);
   shareView.render(dataset.id);
 };
+
+export const controlCopyLink = async function ({ dataset }) {
+  const id = dataset.id;
+  const url = `${window.location.origin}/#/product/${id}`;
+
+  await navigator.clipboard.writeText(url);
+};

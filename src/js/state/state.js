@@ -12,11 +12,12 @@ export const state = {
   products: [],
   cart: JSON.parse(localStorage.getItem("cart")) || [],
   wishlist: JSON.parse(localStorage.getItem("wishlist")) || [],
+  compare: JSON.parse(localStorage.getItem("compare")) || [],
   search: {
     query: "",
     results: [],
   },
-  compare: JSON.parse(localStorage.getItem("compare")) || [],
+
   isCompareTrayOpen: false,
 
   singleProduct: {
