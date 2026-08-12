@@ -127,4 +127,18 @@
     margin-top: 0.5rem;
     color: var(--color-pink);
   }
+
+  &__success {
+    margin-left: 1rem;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-accent);
+
+    @include respond(mobile) {
+      display: block;
+      margin-left: 0;
+      margin-top: 1rem;
+      font-size: 16px;
+    }
+  }
 }

@@ -3,21 +3,45 @@ import { sprite, icons } from "../../../assets/icons/icons.js";
 
 export const createContactView = function (appEl) {
   return {
-    clearValidation(form) {},
+    clearValidation(form) {
+      const errors = form.querySelectorAll(".contact-cta__error");
+      const inputs = form.querySelectorAll("[name]");
+
+      errors.forEach((e) => (e.textContent = ""));
+      inputs.forEach((i) => i.classList.remove("success", "error"));
+    },
 
     updateValidation(results) {
       const form = document.querySelector(".contact-cta__form");
+
+      this.clearValidation(form);
+
       const fields = form.querySelectorAll("[name]");
 
       fields.forEach((field) => {
-        field.classList.remove("success", "error");
-
         if (Object.hasOwn(results.errors, field.name)) {
           field.classList.add("error");
-        } else {
+
+          const errorField = field
+            .closest(".contact-cta__form-group")
+            .querySelector(".contact-cta__error");
+          errorField.textContent = results.errors[field.name];
+        } else if (field.value.trim() !== "") {
           field.classList.add("success");
         }
       });
+
+      if (results.isValid) {
+        const successMessage = document.querySelector(".contact-cta__success");
+        console.log(successMessage);
+        successMessage.textContent = "Your message was sent successfully.";
+
+        setTimeout(() => {
+          successMessage.textContent = "";
+          form.reset();
+          this.clearValidation(form);
+        }, 2000);
+      }
     },
 
     generateMarkup() {
@@ -152,6 +176,7 @@ export const createContactView = function (appEl) {
                 >
                   Submit
                 </button>
+                <span class="contact-cta__success"></span>
               </form>
             </div>
           </div>
