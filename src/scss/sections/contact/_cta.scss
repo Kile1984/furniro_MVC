@@ -76,6 +76,14 @@
     padding-left: 1rem;
     transition: border 0.5s ease;
 
+    &.error {
+      border-color: var(--color-pink);
+    }
+
+    &.success {
+      border-color: var(--color-green);
+    }
+
     &:focus {
       border: 2px solid var(--color-accent);
     }
@@ -93,6 +101,14 @@
     border: 2px solid var(--color-gray-light);
     transition: border 0.5s ease;
 
+    &.error {
+      border-color: var(--color-pink);
+    }
+
+    &.success {
+      border-color: var(--color-green);
+    }
+
     &::placeholder {
       color: var(--color-gray-light);
     }
@@ -105,5 +121,10 @@
   &__submit {
     padding-inline: 5rem;
     border-radius: 4px;
+  }
+
+  &__error {
+    margin-top: 0.5rem;
+    color: var(--color-pink);
   }
 }

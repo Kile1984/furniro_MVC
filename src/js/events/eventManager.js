@@ -17,6 +17,7 @@ import {
   comparisonChangeActions,
   shopChangeActions,
   footerActions,
+  contactActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 
@@ -35,6 +36,7 @@ export const initEventManager = function () {
   headerEl.addEventListener("click", handleClick);
   footerEl.addEventListener("click", handleClick);
   footerEl.addEventListener("submit", handleSubmit);
+  appEl.addEventListener("submit", handleSubmit);
   document.addEventListener("click", handleOutsideClick);
 
   function handleOutsideClick(e) {
@@ -138,6 +140,7 @@ export const initEventManager = function () {
 
   const submitMap = {
     footer: footerActions,
+    contact: contactActions,
   };
 
   function handleSubmit(e) {
@@ -148,7 +151,11 @@ export const initEventManager = function () {
 
     if (!action) return;
 
-    const source = target.closest(".footer") ? "footer" : state.currentRoute;
+    const source = target.closest(".footer")
+      ? "footer"
+      : target.closest(".contact-cta__form")
+        ? "contact"
+        : state.currentRoute;
 
     console.log("ACTION: " + action, "SOURCE: " + source);
 

@@ -3,6 +3,23 @@ import { sprite, icons } from "../../../assets/icons/icons.js";
 
 export const createContactView = function (appEl) {
   return {
+    clearValidation(form) {},
+
+    updateValidation(results) {
+      const form = document.querySelector(".contact-cta__form");
+      const fields = form.querySelectorAll("[name]");
+
+      fields.forEach((field) => {
+        field.classList.remove("success", "error");
+
+        if (Object.hasOwn(results.errors, field.name)) {
+          field.classList.add("error");
+        } else {
+          field.classList.add("success");
+        }
+      });
+    },
+
     generateMarkup() {
       return `
       <main class="page page--contact">
@@ -70,15 +87,19 @@ export const createContactView = function (appEl) {
                   <p>Saturday-Sunday: 9:00 - 21:00</p>
                 </div>
               </div>
-              <form action="#" method="post" class="contact-cta__form">
+
+              <form action="#" method="post" class="contact-cta__form" data-submit="submit">
                 <div class="contact-cta__form-group">
                   <label for="name" class="contact-cta__label">Your name</label>
                   <input
+                    name="name"
                     type="text"
                     id="name"
                     class="contact-cta__input"
                     placeholder="Abc"
+                  
                   />
+                  <p class="contact-cta__error "></p>
                 </div>
 
                 <div class="contact-cta__form-group">
@@ -88,9 +109,11 @@ export const createContactView = function (appEl) {
                   <input
                     type="email"
                     id="mail"
+                    name="email"
                     class="contact-cta__input"
                     placeholder="Abc@def.com"
                   />
+                   <p class="contact-cta__error "></p>
                 </div>
 
                 <div class="contact-cta__form-group">
@@ -100,9 +123,11 @@ export const createContactView = function (appEl) {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     class="contact-cta__input"
                     placeholder="This is optional"
                   />
+                   <p class="contact-cta__error "></p>
                 </div>
 
                 <div class="contact-cta__form-group">
@@ -112,15 +137,18 @@ export const createContactView = function (appEl) {
                   <textarea
                     name="message"
                     id="message"
+
                     class="contact-cta__message"
                     placeholder="Hi! i’d like to ask about"
                     rows="5"
                   ></textarea>
+                   <p class="contact-cta__error "></p>
                 </div>
 
                 <button
                   type="submit"
                   class="btn btn--primary contact-cta__submit"
+                  data-submit="submit"
                 >
                   Submit
                 </button>
@@ -186,3 +214,5 @@ export const createContactView = function (appEl) {
     },
   };
 };
+
+export const contactView = new createContactView();
