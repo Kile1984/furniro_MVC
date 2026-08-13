@@ -22,13 +22,14 @@ const validTransitions = {
 class NavigationManager {
   #state;
   #pendingRoute;
+  #currentRoute;
 
   constructor() {
     this.#state = NavigationState.IDLE;
     this.#pendingRoute = null;
   }
 
-  async #leave() {
+  async #leave(route) {
     this.#transitionTo(NavigationState.LEAVING);
 
     navigationUI.close();
@@ -72,7 +73,7 @@ class NavigationManager {
       return;
     }
 
-    await this.#leave();
+    await this.#leave(route);
 
     await this.#load(route);
 

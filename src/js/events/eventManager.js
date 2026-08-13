@@ -20,6 +20,8 @@ import {
   contactActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
+import { shouldSaveScroll } from "../navigation/navigationUtils.js";
+import { navigationActions } from "../state/actions/navigationActions..js";
 
 export const initEventManager = function () {
   const appEl = document.querySelector("#app");
@@ -85,6 +87,13 @@ export const initEventManager = function () {
   };
 
   function handleClick(e) {
+    const link = e.target.closest('a[href^="#/product/"]');
+
+    if (link && shouldSaveScroll(state.currentRoute, "product")) {
+      navigationActions.saveReturnScroll();
+      navigationActions.saveReturnRoute();
+    }
+
     const target = e.target.closest("[data-action]");
 
     if (!target) return;

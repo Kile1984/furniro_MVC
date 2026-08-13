@@ -39,7 +39,8 @@ export const state = {
   },
 
   navigation: {
-    productScrollY: 0,
+    returnScrollY: 0,
+    returnRoute: null,
   },
 
   share: {
