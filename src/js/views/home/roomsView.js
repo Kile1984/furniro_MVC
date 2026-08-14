@@ -22,8 +22,8 @@ export const createRoomsView = function () {
               <img  src="${images.sliderImg_01}" alt="" />
 
               <div class="rooms__overlay">
-                <span class="rooms__index">01 - Bed Room</span>
-                <h3 class="rooms__overlay-title">Inner Peace</h3>
+                <span class="rooms__index"></span>
+                <h3 class="rooms__overlay-title">Go to Shop</h3>
               </div>
 
               <a
@@ -51,14 +51,16 @@ export const createRoomsView = function () {
                   <img  src="${images.sliderImg_02}" alt="" />
                 </div>
 
-                <button class="rooms__slider-btn rooms__slider-btn--left">
+             
+              </div>
+
+                 <button class="rooms__slider-btn rooms__slider-btn--left" data-action="rooms-slider-prev">
                   <img  src="${images.arrowLeft}" alt="" />
                 </button>
 
-                <button class="rooms__slider-btn rooms__slider-btn--right">
+                <button class="rooms__slider-btn rooms__slider-btn--right" data-action="rooms-slider-next">
                   <img  src="${images.arrowRight}" alt="" />
                 </button>
-              </div>
 
               <div class="rooms__dots">
                 <span class="rooms__dot rooms__dot--active">

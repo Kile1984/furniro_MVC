@@ -2,6 +2,8 @@ import * as pageTransition from "../views/pageTransitionView.js";
 import { routerActions } from "../state/actions/routerActions.js";
 import { renderApp } from "../core/render.js";
 import * as navigationUI from "../shared/navigationUI.js";
+import { navigationActions } from "../state/actions/navigationActions..js";
+import { state } from "../state/state.js";
 
 const NavigationState = {
   IDLE: "idle",
@@ -23,6 +25,24 @@ class NavigationManager {
   #state;
   #pendingRoute;
   #currentRoute;
+
+  #handleScroll(route) {
+    const { returnRoute, returnScrollY } = state.navigation;
+
+    if (returnRoute === route) {
+      window.scrollTo(0, returnScrollY);
+      navigationActions.clearReturnNavigation();
+      return;
+    }
+
+    if (route === "product") {
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    window.scrollTo(0, 0);
+    navigationActions.clearReturnNavigation();
+  }
 
   constructor() {
     this.#state = NavigationState.IDLE;
@@ -78,6 +98,8 @@ class NavigationManager {
     await this.#load(route);
 
     await this.#render();
+
+    this.#handleScroll(route);
 
     await this.#enter();
 

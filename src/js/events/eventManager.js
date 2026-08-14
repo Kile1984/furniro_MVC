@@ -18,6 +18,7 @@ import {
   shopChangeActions,
   footerActions,
   contactActions,
+  roomsSliderActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 import { shouldSaveScroll } from "../navigation/navigationUtils.js";
@@ -62,6 +63,8 @@ export const initEventManager = function () {
     }
   }
 
+  // EVENTS
+
   const eventMap = {
     home: productEventActions,
     shop: shopEventActions,
@@ -72,18 +75,7 @@ export const initEventManager = function () {
     compareTray: compareTrayActions,
     header: headerEventActions,
     compare: comparisonActions,
-  };
-
-  const inputMap = {
-    cart: cartInputActions,
-    product: singleProductInputActions,
-    header: searchInputActions,
-    shop: filterInputActions,
-  };
-
-  const changeMap = {
-    compare: comparisonChangeActions,
-    shop: shopChangeActions,
+    roomsSlider: roomsSliderActions,
   };
 
   function handleClick(e) {
@@ -103,7 +95,9 @@ export const initEventManager = function () {
       ? "compareTray"
       : target.closest(".header")
         ? "header"
-        : state.currentRoute;
+        : target.closest(".rooms__slider")
+          ? "roomsSlider"
+          : state.currentRoute;
 
     console.log("ACTION: " + action, "SOURCE: " + source);
 
@@ -113,6 +107,14 @@ export const initEventManager = function () {
       source,
     });
   }
+
+  // INPUT
+  const inputMap = {
+    cart: cartInputActions,
+    product: singleProductInputActions,
+    header: searchInputActions,
+    shop: filterInputActions,
+  };
 
   function handleInput(e) {
     const target = e.target;
@@ -130,6 +132,12 @@ export const initEventManager = function () {
       id: target.dataset.id,
     });
   }
+
+  // CHANGE
+  const changeMap = {
+    compare: comparisonChangeActions,
+    shop: shopChangeActions,
+  };
 
   function handleChange(e) {
     const target = e.target;

@@ -66,10 +66,16 @@
   }
 
   &__slider {
+    position: relative;
+
     &-btn {
       position: absolute;
-      top: 50%;
+      top: calc(50% - 64px);
       transform: translateY(-50%);
+
+      @include respond(tablet) {
+        top: calc(50% - 40px);
+      }
 
       &--right {
         right: 3rem;
@@ -100,7 +106,6 @@
     display: flex;
     gap: 2rem;
     margin-bottom: 40px;
-    position: relative;
   }
 
   &__slide {

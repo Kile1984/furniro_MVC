@@ -10,6 +10,7 @@ import * as filterDrawerController from "../controllers/filterDrawerController.j
 import * as headerController from "../controllers/headerController.js";
 import * as subscribeController from "../controllers/subscribeController.js";
 import * as contactController from "../controllers/contactController.js";
+import * as roomsSliderController from "../controllers/roomsSliderController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -114,4 +115,9 @@ export const footerActions = {
 
 export const contactActions = {
   submit: contactController.controlValidation,
+};
+
+export const roomsSliderActions = {
+  "rooms-slider-next": roomsSliderController.next,
+  "rooms-slider-prev": roomsSliderController.prev,
 };
