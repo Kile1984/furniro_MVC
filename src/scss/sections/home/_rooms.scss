@@ -36,6 +36,7 @@
 
   &__main {
     position: relative;
+    z-index: 9;
 
     @include respond(tablet) {
       display: none;
@@ -106,6 +107,10 @@
     display: flex;
     gap: 2rem;
     margin-bottom: 40px;
+
+    &--initial {
+      transform: translateX(-324px);
+    }
   }
 
   &__slide {

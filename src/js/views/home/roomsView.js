@@ -2,7 +2,23 @@ import { images } from "../../../assets/images";
 
 export const createRoomsView = function () {
   return {
-    generateMarkup() {
+    init() {
+      const track = document.querySelector(".rooms__slider-track");
+      track.classList.add("rooms__slider-track--initial");
+    },
+
+    generateSLides(images) {
+      return images
+        .map((img) => {
+          return ` <div class="rooms__slide">
+                    <img  src="${img}" alt="" />
+                </div>`;
+        })
+        .join("");
+    },
+
+    generateMarkup(data) {
+      console.log(data);
       return `
         <!-- ROOMS -->
         <section class="section rooms">
@@ -36,24 +52,13 @@ export const createRoomsView = function () {
             </div>
 
             <div class="rooms__slider">
+            <div>
               <div class="rooms__slider-track">
-                <div class="rooms__slide">
-                  <img  src="${images.sliderImg_02}" alt="" />
-                </div>
 
-                <div class="rooms__slide">
-                 <img  src="${images.sliderImg_03}" alt="" />
-                </div>
-                <div class="rooms__slide">
-                  <img  src="${images.sliderImg_01}" alt="" />
-                </div>
-                <div class="rooms__slide">
-                  <img  src="${images.sliderImg_02}" alt="" />
-                </div>
-
-             
+               ${this.generateSLides(data.slides)}
+              
               </div>
-
+             </div>
                  <button class="rooms__slider-btn rooms__slider-btn--left" data-action="rooms-slider-prev">
                   <img  src="${images.arrowLeft}" alt="" />
                 </button>
@@ -84,3 +89,5 @@ export const createRoomsView = function () {
     },
   };
 };
+
+export const roomsView = new createRoomsView();

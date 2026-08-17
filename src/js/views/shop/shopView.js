@@ -101,7 +101,7 @@ export const createShopView = function (appEl) {
             </h2>
             
               <div class="products__grid">
-                 ${productCardsView.generateMarkup(data.products)}
+                 ${productCardsView.generateMarkup(data)}
                  ${paginationView.generateMarkup(data)}
               </div>
 

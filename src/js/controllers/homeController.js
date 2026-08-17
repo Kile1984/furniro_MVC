@@ -13,7 +13,12 @@ export const loadProducts = async function () {
 };
 
 export const preparedHomeProducts = function () {
-  return state.products
+  const products = state.products
     .filter((product) => product.featured)
     .map((product) => preparedProduct(product));
+
+  return {
+    products,
+    roomsSlider: state.roomsSlider,
+  };
 };

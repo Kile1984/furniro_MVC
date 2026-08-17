@@ -1,3 +1,4 @@
+import { images } from "../../assets/images.js";
 export const initialFilters = {
   category: [],
   minPrice: null,
@@ -45,5 +46,17 @@ export const state = {
 
   share: {
     openedProductId: null,
+  },
+
+  roomsSlider: {
+    slides: [
+      images.sliderImg_03,
+      images.sliderImg_01,
+      images.sliderImg_02,
+      images.sliderImg_03,
+      images.sliderImg_01,
+    ],
+    currentIndex: 1,
+    isAnimating: false,
   },
 };

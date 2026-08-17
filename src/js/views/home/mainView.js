@@ -11,13 +11,13 @@ const roomsView = createRoomsView();
 
 export const createMainView = function () {
   return {
-    generateMarkup(products) {
+    generateMarkup(data) {
       return `
       <main class="page">
         ${rangeView.generateMarkup()}
-        ${productView.generateMarkup(products)}
+        ${productView.generateMarkup(data)}
         ${shareView.generateMarkup()}
-        ${roomsView.generateMarkup()}
+        ${roomsView.generateMarkup(data.roomsSlider)}
       </main>
       `;
     },

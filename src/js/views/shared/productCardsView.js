@@ -76,7 +76,7 @@ export const createProductCardsView = function () {
       parentEl.innerHTML = this.generateMarkup(products);
     },
 
-    generateMarkup(products) {
+    generateMarkup({ products }) {
       return `
           ${products
             .map((p) => {
