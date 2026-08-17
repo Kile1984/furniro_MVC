@@ -2,23 +2,41 @@ import { images } from "../../../assets/images";
 
 export const createRoomsView = function () {
   return {
+    prev(index, callback) {
+      const track = document.querySelector(".rooms__slider-track");
+      track.style.transform = `translateX(-${324 * index}px)`;
+      track.addEventListener("transitionend", () => {
+        callback();
+      });
+      console.log(index);
+    },
+
+    next(index, callback) {
+      const track = document.querySelector(".rooms__slider-track");
+      track.style.transform = `translateX(-${324 * index}px)`;
+      track.addEventListener("transitionend", () => {
+        callback();
+      });
+      console.log(index);
+    },
+
     init() {
       const track = document.querySelector(".rooms__slider-track");
       track.classList.add("rooms__slider-track--initial");
     },
 
-    generateSLides(images) {
-      return images
+    generateSLides(data) {
+      return data.slides
         .map((img) => {
           return ` <div class="rooms__slide">
-                    <img  src="${img}" alt="" />
+          
+                    <img  src="${img}" alt="${img}" />
                 </div>`;
         })
         .join("");
     },
 
     generateMarkup(data) {
-      console.log(data);
       return `
         <!-- ROOMS -->
         <section class="section rooms">
@@ -55,7 +73,7 @@ export const createRoomsView = function () {
             <div>
               <div class="rooms__slider-track">
 
-               ${this.generateSLides(data.slides)}
+               ${this.generateSLides(data)}
               
               </div>
              </div>

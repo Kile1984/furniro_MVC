@@ -107,6 +107,7 @@
     display: flex;
     gap: 2rem;
     margin-bottom: 40px;
+    transition: transform 1s ease;
 
     &--initial {
       transform: translateX(-324px);

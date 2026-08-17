@@ -7,10 +7,21 @@ export const initSlider = function () {
 };
 
 export const prev = function () {
-  console.log("PREV");
+  if (state.roomsSlider.isAnimating) return;
+  roomsSliderActions.setIsAnimating(true);
+
+  roomsSliderActions.prev();
+  roomsView.prev(state.roomsSlider.currentIndex, () => {
+    roomsSliderActions.setIsAnimating(false);
+  });
 };
 
 export const next = function () {
-  console.log("NEXT");
+  if (state.roomsSlider.isAnimating) return;
+  roomsSliderActions.setIsAnimating(true);
+
   roomsSliderActions.next();
+  roomsView.next(state.roomsSlider.currentIndex, () => {
+    roomsSliderActions.setIsAnimating(false);
+  });
 };
