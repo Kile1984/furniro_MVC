@@ -7,7 +7,6 @@ import { preparaWishlistProduct } from "../controllers/wishlistController.js";
 import { prepareSinglProduct } from "../controllers/singleProductController.js";
 import { preparedCategoryProduct } from "../controllers/categoryCintroller.js";
 import { prepareCompareProducts } from "../controllers/comparisonController.js";
-import { initSlider } from "../controllers/roomsSliderController.js";
 
 const appEl = document.querySelector("#app");
 
@@ -31,8 +30,4 @@ export const renderApp = function () {
   const markup = currentView.generateMarkup(data);
 
   appEl.innerHTML = markup;
-
-  if (state.currentRoute === "home") {
-    initSlider();
-  }
 };

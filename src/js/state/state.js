@@ -50,19 +50,15 @@ export const state = {
 
   roomsSlider: {
     slides: [
-      // images.sliderImg_03,
-      // images.sliderImg_01,
-      // images.sliderImg_02,
-      // images.sliderImg_03,
-      // images.sliderImg_01,
+      images.sliderImg_04,
 
-      "3",
-      "1",
-      "2",
-      "3",
-      "1",
+      images.sliderImg_03,
+
+      images.sliderImg_01,
+
+      images.sliderImg_02,
     ],
-    currentIndex: 1,
+    currentIndex: 0,
     isAnimating: false,
   },
 };

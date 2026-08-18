@@ -1,28 +1,31 @@
 import { images } from "../../../assets/images";
-
+import { state } from "../../state/state.js";
 export const createRoomsView = function () {
   return {
     prev(index, callback) {
       const track = document.querySelector(".rooms__slider-track");
-      track.style.transform = `translateX(-${324 * index}px)`;
-      track.addEventListener("transitionend", () => {
-        callback();
-      });
-      console.log(index);
+
+      track.style.transform = `translateX(-${394 * index}px)`;
+
+      track.addEventListener(
+        "transitionend",
+        (e) => {
+          callback();
+        },
+        { once: true },
+      );
     },
 
     next(index, callback) {
       const track = document.querySelector(".rooms__slider-track");
-      track.style.transform = `translateX(-${324 * index}px)`;
-      track.addEventListener("transitionend", () => {
-        callback();
-      });
-      console.log(index);
-    },
+      const slide = track.querySelector(".rooms__slide");
 
-    init() {
-      const track = document.querySelector(".rooms__slider-track");
-      track.classList.add("rooms__slider-track--initial");
+      const slideWidth = slide.getBoundingClientRect().width;
+      const gap = parseFloat(getComputedStyle(track).gap);
+
+      track.style.transform = `translateX(-${(slideWidth + gap) * index}px)`;
+
+      track.addEventListener("transitionend", () => callback(), { once: true });
     },
 
     generateSLides(data) {
@@ -58,19 +61,20 @@ export const createRoomsView = function () {
               <div class="rooms__overlay">
                 <span class="rooms__index"></span>
                 <h3 class="rooms__overlay-title">Go to Shop</h3>
-              </div>
-
-              <a
+                  <a
                 href="/rooms"
                 class="rooms__arrow"
                 aria-label="View room details"
               >
                 <img src="${images.arrowLeft_small}" alt="" />
               </a>
+              </div>
+
+            
             </div>
 
             <div class="rooms__slider">
-            <div>
+            <div class="rooms__slider-viewport">
               <div class="rooms__slider-track">
 
                ${this.generateSLides(data)}
