@@ -12,4 +12,8 @@ export const roomsSliderActions = {
   setIsAnimating(isAnimating) {
     state.roomsSlider.isAnimating = isAnimating;
   },
+
+  setCurrentIndex(index) {
+    state.roomsSlider.currentIndex = index;
+  },
 };

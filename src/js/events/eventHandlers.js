@@ -118,6 +118,7 @@ export const contactActions = {
 };
 
 export const roomsSliderActions = {
-  "rooms-slider-next": roomsSliderController.next,
-  "rooms-slider-prev": roomsSliderController.prev,
+  "rooms-slider-next": roomsSliderController.controlNext,
+  "rooms-slider-prev": roomsSliderController.controlPrev,
+  "slider-dot": roomsSliderController.controlDots,
 };
