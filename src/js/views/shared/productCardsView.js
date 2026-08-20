@@ -57,8 +57,6 @@ export const createProductCardsView = function () {
 
       if (!compareBtnEl) return;
 
-      console.log(compareBtnEl);
-
       const compareSvg = compareBtnEl.querySelector("svg");
       const compareSpan = compareBtnEl.querySelector("span");
 

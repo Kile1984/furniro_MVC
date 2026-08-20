@@ -9,6 +9,7 @@ import { singleProductView } from "../views/singleProductView.js";
 import { productCardsView } from "../views/shared/productCardsView.js";
 import { syncHeaderCounts } from "./headerController.js";
 import { prepareCompareTrayProduct } from "../utils/prepareCompareTrayProduct.js";
+import { emptyTrayMessage } from "../views/headerView.js";
 
 import {
   openCompareTray,
@@ -21,7 +22,10 @@ export const controlCloseCompareTray = function () {
 };
 
 export const controlOpenCompareTray = function () {
-  if (state.compare.length === 0) return;
+  if (state.compare.length === 0) {
+    emptyTrayMessage();
+    return;
+  }
 
   openCompareTray();
 };

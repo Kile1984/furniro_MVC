@@ -453,8 +453,8 @@ export const createSingleProductView = function () {
             </h2>
 
             <div class="products__grid">
-          
-            ${productCardsView.generateMarkup(product.relatedProducts)}
+                     
+            ${productCardsView.generateMarkup({ products: product.relatedProducts })}
 
               <button class="btn btn--secondary products__btn-load-more">
                 Show More

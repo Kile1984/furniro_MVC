@@ -35,3 +35,13 @@ export const closeMenu = function () {
 export const toggleMenu = function (isOpen) {
   header.classList.toggle("header--open", isOpen);
 };
+
+export const emptyTrayMessage = function () {
+  const messageEl = document.querySelector(".header__empty-tray-message");
+
+  messageEl.classList.add("show");
+
+  setTimeout(() => {
+    messageEl.classList.remove("show");
+  }, 1000);
+};
