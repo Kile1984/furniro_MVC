@@ -29,6 +29,10 @@ export const controlRemoveFromWishlist = function ({ dataset }) {
   productCardsView.updateWishlistButton(dataset.id, false);
   wishListView.removeWishlistItem(dataset.id);
   syncHeaderCounts();
+
+  if (state.wishlist.length === 0) {
+    wishListView.showEmptyState();
+  }
 };
 
 export const controlAddToCartFromWishlist = function ({ dataset }) {
@@ -39,4 +43,8 @@ export const controlAddToCartFromWishlist = function ({ dataset }) {
   model.removeFromWishlist(dataset.id);
   wishListView.removeWishlistItem(dataset.id);
   syncHeaderCounts();
+
+  if (state.wishlist.length === 0) {
+    wishListView.showEmptyState();
+  }
 };

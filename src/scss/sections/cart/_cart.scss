@@ -23,6 +23,10 @@
 
   &__items {
     min-width: 600px;
+
+    &.min-width-0 {
+      min-width: 0;
+    }
   }
 
   &__toggle-min-width {
@@ -55,6 +59,10 @@
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     align-items: center;
     gap: 1rem;
+
+    &.grid-2 {
+      grid-template-columns: 1fr 1fr;
+    }
 
     user-select: none;
 

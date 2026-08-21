@@ -1,5 +1,6 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons.js";
+import { generateEmptyState } from "../../shared/errorMessagesUI.js";
 
 export const createWishlistView = function () {
   return {
@@ -26,6 +27,18 @@ export const createWishlistView = function () {
       }
 
       return "";
+    },
+
+    showEmptyState() {
+      const wrapper = document.querySelector(".wishlist-page__item-wrapp");
+      const pageItems = document.querySelector(".wishlist-page__items");
+      const item = document.querySelector(".wishlist-page__item");
+
+      if (!wrapper) return;
+
+      wrapper.innerHTML = generateEmptyState("wishlist", "Wishlist empty !");
+      pageItems.classList.add("min-width-0");
+      console.log(item);
     },
 
     generateMarkup(data) {
@@ -55,12 +68,13 @@ export const createWishlistView = function () {
         <section class="wishlist-page">
           <div class="container wishlist-page__inner">
             <div class="wishlist-page__items-wrapper">
-              <div class="wishlist-page__items">
+              <div class="wishlist-page__items ${data.length === 0 ? "min-width-0" : ""}" >
                 <div class="wishlist-page__headers">
                   <span>Product</span>
                   <span>Price</span>
                 </div>
                 <ul class="wishlist-page__item-wrapp">
+                ${!data.length ? generateEmptyState("wishlist", "Wishlist empty !") : ""}
                   <!-- JS -->
                   ${data
                     .map((p) => {

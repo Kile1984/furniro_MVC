@@ -114,7 +114,7 @@ export const createRoomsView = function () {
                 <span class="rooms__index"></span>
                 <h3 class="rooms__overlay-title">Go to Shop</h3>
                   <a
-                href="/rooms"
+                href="/#/shop"
                 class="rooms__arrow"
                 aria-label="View room details"
               >

@@ -1,6 +1,7 @@
 import { images } from "../../../assets/images.js";
 import { sprite, icons } from "../../../assets/icons/icons";
 import { formatPrice } from "../../utils/format.js";
+import { generateEmptyState } from "../../shared/errorMessagesUI.js";
 
 export const createCartView = function () {
   return {
@@ -74,6 +75,17 @@ export const createCartView = function () {
       btn.classList.toggle("cart-page__quantity-btn--disabled", isDisabled);
     },
 
+    showEmptyState() {
+      const wrapper = document.querySelector(".cart-page__item-wrapp");
+      const pageItems = document.querySelector(".cart-page__items");
+      const item = document.querySelector(".cart-page__item");
+
+      if (!wrapper) return;
+
+      wrapper.innerHTML = generateEmptyState("cart", "Cart is empty !");
+      pageItems.classList.add("min-width-0");
+    },
+
     generateMarkup(data) {
       return ` 
      <!-- PAGE HEADING SHOP -->
@@ -100,8 +112,8 @@ export const createCartView = function () {
         <!-- CART -->
         <section class="cart-page">
           <div class="container cart-page__inner">
-            <div class="cart-page__items-wrapper">
-              <div class="cart-page__items">
+            <div class="cart-page__items-wrapper ">
+              <div class="cart-page__items ${data.products.length === 0 ? "min-width-0" : ""}">
                 <div class="cart-page__headers">
                   <span>Product</span>
                   <span>Price</span>
@@ -111,6 +123,7 @@ export const createCartView = function () {
 
                 <div class="cart-page__item-wrapp">
                   <!-- JS -->
+                   ${!data.products.length ? generateEmptyState("cart", "Cart is empty !") : ""}
                   ${data.products
 
                     .map((p) => {

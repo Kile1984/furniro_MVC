@@ -82,6 +82,10 @@ export const controlRemoveFromCart = function ({ dataset }) {
 
   syncHeaderCounts();
   updateCartSummary();
+
+  if (state.wishlist.length === 0) {
+    cartView.showEmptyState();
+  }
 };
 
 export const controlUpdateInputField = function ({ id, value }) {

@@ -49,7 +49,7 @@ class NavigationManager {
     this.#pendingRoute = null;
   }
 
-  async #leave(route) {
+  async #leave() {
     this.#transitionTo(NavigationState.LEAVING);
 
     navigationUI.close();

@@ -455,9 +455,9 @@ export const createSingleProductView = function () {
             <div class="products__grid">
                      
             ${productCardsView.generateMarkup({ products: product.relatedProducts })}
-
+ 
               <button class="btn btn--secondary products__btn-load-more">
-                Show More
+               <a href="/#/category/${product.categorySlug}"> See All ${product.categorySlug}</a>
               </button>
             </div>
           </div>

@@ -27,10 +27,9 @@ export const categoryView = function () {
             </h2>
             
               <div class="products__grid">
-                 ${productCardsView.generateMarkup(products)}
-                 <button class="btn btn--secondary products__btn-load-more">
-                  Show More
-                  </button>
+               
+                 ${productCardsView.generateMarkup({ products })}
+                
               </div>
 
              
