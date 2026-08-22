@@ -83,7 +83,7 @@ export const controlRemoveFromCart = function ({ dataset }) {
   syncHeaderCounts();
   updateCartSummary();
 
-  if (state.wishlist.length === 0) {
+  if (state.cart.length === 0) {
     cartView.showEmptyState();
   }
 };

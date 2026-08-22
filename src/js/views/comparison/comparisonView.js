@@ -52,7 +52,6 @@ export const createComparisonView = function () {
     },
 
     generateHeader(products) {
-      console.log(products);
       return products
         .map(
           (p) =>

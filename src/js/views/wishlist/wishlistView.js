@@ -38,7 +38,6 @@ export const createWishlistView = function () {
 
       wrapper.innerHTML = generateEmptyState("wishlist", "Wishlist empty !");
       pageItems.classList.add("min-width-0");
-      console.log(item);
     },
 
     generateMarkup(data) {
