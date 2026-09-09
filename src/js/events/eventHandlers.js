@@ -28,6 +28,7 @@ export const cartEventActions = {
   "remove-from-cart": cartController.controlRemoveFromCart,
   "qt-increment": cartController.controlIncrement,
   "qt-decrement": cartController.controlDecrement,
+  "check-out":cartController.controlCheckOut,
 };
 
 export const wishlistEventActions = {

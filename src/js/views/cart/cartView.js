@@ -5,6 +5,12 @@ import { generateEmptyState } from "../../shared/errorMessagesUI.js";
 
 export const createCartView = function () {
   return {
+    updateCheckoutBtn(isDisabled) {
+      const checkoutBtn = document.querySelector(".cart-page__summary-btn");
+      checkoutBtn.disabled = isDisabled;
+      checkoutBtn.classList.add("btn--disabled");
+    },
+
     updateQuantityValue({ id, quantity }) {
       const inputEl = document.querySelector(
         `.cart-page__quantity-input[data-id="${id}"]`,
@@ -87,6 +93,7 @@ export const createCartView = function () {
     },
 
     generateMarkup(data) {
+      console.log(data);
       return ` 
      <!-- PAGE HEADING SHOP -->
       <main class="page page--cart">
@@ -239,7 +246,7 @@ export const createCartView = function () {
                 </div>
               </div>
 
-              <button type="button" class="btn cart-page__summary-btn">
+              <button type="button" class="btn cart-page__summary-btn ${data.products.length === 0 ? "btn--disabled":""}" data-action="check-out">
                 Check Out
               </button>
             </aside>

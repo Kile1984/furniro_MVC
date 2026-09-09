@@ -61,14 +61,19 @@ export const controlDecrement = function ({ dataset }) {
 
   const product = cartActions.getCartItemById(dataset.id);
 
+ 
   if (!product) {
     cartView.removeCartItem(dataset.id);
     syncHeaderCounts();
     updateCartSummary();
+    cartView.showEmptyState();
+    cartView.updateCheckoutBtn("disabled");
     return;
   }
 
   updateCartItemUI(dataset.id);
+
+ 
 };
 
 export const controlRemoveFromCart = function ({ dataset }) {
@@ -112,3 +117,12 @@ export const controlUpdateInputField = function ({ id, value }) {
 
   updateCartItemUI(id);
 };
+
+export const controlCheckOut = function () {
+  if (state.cart.length === 0) {
+   cartView.updateCheckoutBtn("disabled");
+    return;
+  }
+}
+
+
