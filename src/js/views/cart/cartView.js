@@ -8,7 +8,7 @@ export const createCartView = function () {
     updateCheckoutBtn(isDisabled) {
       const checkoutBtn = document.querySelector(".cart-page__summary-btn");
       checkoutBtn.disabled = isDisabled;
-      checkoutBtn.classList.add("btn--disabled");
+      checkoutBtn.classList.toggle("btn--disabled", isDisabled);
     },
 
     updateQuantityValue({ id, quantity }) {
@@ -246,7 +246,9 @@ export const createCartView = function () {
                 </div>
               </div>
 
-              <button type="button" class="btn cart-page__summary-btn ${data.products.length === 0 ? "btn--disabled":""}" data-action="check-out">
+              <button type="button" class="btn cart-page__summary-btn ${data.products.length === 0 ? "btn--disabled":""}" data-action="check-out" 
+              ${data.products.length === 0 ? "disabled":""}
+              >
                 Check Out
               </button>
             </aside>

@@ -28,6 +28,7 @@ function renderCurrentRoute() {
     "/product": "product",
     "/category": "category",
     "/compare": "compare",
+    "/place-order": "place-order",
   };
 
   const view = routesMap[route] || "home";

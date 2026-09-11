@@ -8,6 +8,7 @@ import { prepareSinglProduct } from "../controllers/singleProductController.js";
 import { preparedCategoryProduct } from "../controllers/categoryCintroller.js";
 import { prepareCompareProducts } from "../controllers/comparisonController.js";
 
+
 const appEl = document.querySelector("#app");
 
 const routeControllers = {
@@ -18,6 +19,7 @@ const routeControllers = {
   product: prepareSinglProduct,
   category: preparedCategoryProduct,
   compare: prepareCompareProducts,
+  
 };
 
 export const renderApp = function () {
@@ -28,6 +30,7 @@ export const renderApp = function () {
   const data = controller ? controller() : null;
 
   const markup = currentView.generateMarkup(data);
+
 
   appEl.innerHTML = markup;
 };
