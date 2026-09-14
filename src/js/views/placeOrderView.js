@@ -1,4 +1,5 @@
 import { images } from "../../assets/images.js";
+import { sprite, icons } from "../../assets/icons/icons.js";
 
 export const createPlaceOrderView = function () {
   return {
@@ -28,7 +29,7 @@ export const createPlaceOrderView = function () {
       <!-- CTA -->
       <section class="checkout">
         <div class="container">
-          <form action="#" class="checkout__form">
+          <form action="#" class="checkout__form" data-action="place-order">
             <div class="checkout__left">
               <h2 class="checkout__header">Billing details</h2>
 
@@ -190,7 +191,7 @@ export const createPlaceOrderView = function () {
                 </div>
               </div>
 
-              <button class="btn checkout__submit" type="submit">
+              <button class="btn checkout__submit" type="submit" >
                 Place order
               </button>
             </div>
@@ -203,7 +204,7 @@ export const createPlaceOrderView = function () {
         <div class="container container--wide features__inner">
           <div class="features__box features__quality">
             <img
-              src="./assets/images/trophy.png"
+              src="${images.trophy}"
               alt=""
               class="features__img"
             />
@@ -216,7 +217,7 @@ export const createPlaceOrderView = function () {
           </div>
           <div class="features__box features__warranty">
             <img
-              src="./assets/images/guarantee.png"
+               src="${images.guarantee}"
               alt=""
               class="features__img"
             />
@@ -227,7 +228,7 @@ export const createPlaceOrderView = function () {
           </div>
           <div class="features__box features__shipping">
             <img
-              src="./assets/images/shipping.png"
+               src="${images.shipping}"
               alt=""
               class="features__img"
             />
@@ -238,7 +239,7 @@ export const createPlaceOrderView = function () {
           </div>
           <div class="features__box features__support">
             <img
-              src="./assets/images/customer-support.png"
+               src="${images.customer_supp}"
               alt=""
               class="features__img"
             />

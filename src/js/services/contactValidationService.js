@@ -16,7 +16,7 @@ export const validateContactForm = function (data) {
     errors.email = "Email is invalid";
   }
 
-  // subject
+  // subject`
   const subject = data.subject.trim();
 
   if (subject.length > 30) {

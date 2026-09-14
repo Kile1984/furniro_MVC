@@ -120,7 +120,7 @@ export const createWishlistView = function () {
           <div class="container container--wide features__inner">
             <div class="features__box features__quality">
               <img
-                src="./assets/images/trophy.png"
+                src="${images.trophy}"
                 alt=""
                 class="features__img"
               />
@@ -133,7 +133,8 @@ export const createWishlistView = function () {
             </div>
             <div class="features__box features__warranty">
               <img
-                src="./assets/images/guarantee.png"
+                
+                 src="${images.guarantee}"
                 alt=""
                 class="features__img"
               />
@@ -144,7 +145,7 @@ export const createWishlistView = function () {
             </div>
             <div class="features__box features__shipping">
               <img
-                src="./assets/images/shipping.png"
+                 src="${images.shipping}"
                 alt=""
                 class="features__img"
               />
@@ -155,7 +156,7 @@ export const createWishlistView = function () {
             </div>
             <div class="features__box features__support">
               <img
-                src="./assets/images/customer-support.png"
+                 src="${images.customer_supp}"
                 alt=""
                 class="features__img"
               />

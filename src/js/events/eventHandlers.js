@@ -11,6 +11,7 @@ import * as headerController from "../controllers/headerController.js";
 import * as subscribeController from "../controllers/subscribeController.js";
 import * as contactController from "../controllers/contactController.js";
 import * as roomsSliderController from "../controllers/roomsSliderController.js";
+import * as placeOrderController from "../controllers/placeOrderController.js";
 
 export const productEventActions = {
   "add-to-cart": productController.controlAddToCart,
@@ -28,7 +29,7 @@ export const cartEventActions = {
   "remove-from-cart": cartController.controlRemoveFromCart,
   "qt-increment": cartController.controlIncrement,
   "qt-decrement": cartController.controlDecrement,
-  "check-out":cartController.controlCheckOut,
+  "check-out": cartController.controlCheckOut,
 };
 
 export const wishlistEventActions = {
@@ -122,4 +123,10 @@ export const roomsSliderActions = {
   "rooms-slider-next": roomsSliderController.controlNext,
   "rooms-slider-prev": roomsSliderController.controlPrev,
   "slider-dot": roomsSliderController.controlDots,
+};
+
+export const placeOrderInputAction = {};
+
+export const placeOrderActions = {
+  "place-order": placeOrderController.controlPlaceOrder,
 };

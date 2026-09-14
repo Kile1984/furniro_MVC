@@ -19,6 +19,8 @@ import {
   footerActions,
   contactActions,
   roomsSliderActions,
+  placeOrderInputAction,
+  placeOrderActions,
 } from "./eventHandlers.js";
 import { controlCloseMenu } from "../controllers/headerController.js";
 import { shouldSaveScroll } from "../navigation/navigationUtils.js";
@@ -64,7 +66,6 @@ export const initEventManager = function () {
   }
 
   // EVENTS
-
   const eventMap = {
     home: productEventActions,
     shop: shopEventActions,
@@ -76,6 +77,7 @@ export const initEventManager = function () {
     header: headerEventActions,
     compare: comparisonActions,
     roomsSlider: roomsSliderActions,
+    "place-order": placeOrderActions,
   };
 
   function handleClick(e) {

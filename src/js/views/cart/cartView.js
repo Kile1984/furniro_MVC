@@ -93,7 +93,6 @@ export const createCartView = function () {
     },
 
     generateMarkup(data) {
-      console.log(data);
       return ` 
      <!-- PAGE HEADING SHOP -->
       <main class="page page--cart">
@@ -246,8 +245,8 @@ export const createCartView = function () {
                 </div>
               </div>
 
-              <button type="button" class="btn cart-page__summary-btn ${data.products.length === 0 ? "btn--disabled":""}" data-action="check-out" 
-              ${data.products.length === 0 ? "disabled":""}
+              <button type="button" class="btn cart-page__summary-btn ${data.products.length === 0 ? "btn--disabled" : ""}" data-action="check-out" 
+              ${data.products.length === 0 ? "disabled" : ""}
               >
                 Check Out
               </button>
@@ -260,7 +259,7 @@ export const createCartView = function () {
           <div class="container container--wide features__inner">
             <div class="features__box features__quality">
               <img
-                src="./assets/images/trophy.png"
+                src="${images.trophy}"
                 alt=""
                 class="features__img"
               />
@@ -273,7 +272,8 @@ export const createCartView = function () {
             </div>
             <div class="features__box features__warranty">
               <img
-                src="./assets/images/guarantee.png"
+              
+                 src="${images.guarantee}"
                 alt=""
                 class="features__img"
               />
@@ -284,7 +284,7 @@ export const createCartView = function () {
             </div>
             <div class="features__box features__shipping">
               <img
-                src="./assets/images/shipping.png"
+                 src="${images.shipping}"
                 alt=""
                 class="features__img"
               />
@@ -295,7 +295,7 @@ export const createCartView = function () {
             </div>
             <div class="features__box features__support">
               <img
-                src="./assets/images/customer-support.png"
+               src="${images.customer_supp}"
                 alt=""
                 class="features__img"
               />
