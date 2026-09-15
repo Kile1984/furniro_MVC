@@ -77,7 +77,6 @@ export const initEventManager = function () {
     header: headerEventActions,
     compare: comparisonActions,
     roomsSlider: roomsSliderActions,
-    "place-order": placeOrderActions,
   };
 
   function handleClick(e) {
@@ -160,6 +159,7 @@ export const initEventManager = function () {
   const submitMap = {
     footer: footerActions,
     contact: contactActions,
+    "place-order": placeOrderActions,
   };
 
   function handleSubmit(e) {

@@ -29,14 +29,14 @@ export const createPlaceOrderView = function () {
       <!-- CTA -->
       <section class="checkout">
         <div class="container">
-          <form action="#" class="checkout__form" data-action="place-order">
+          <form action="#" class="checkout__form" data-submit="place-order">
             <div class="checkout__left">
               <h2 class="checkout__header">Billing details</h2>
 
               <div class="checkout__inputs-wrapper">
                 <div class="checkout__group checkout__group--name">
                   <label for="name" class="checkout__label">First Name</label>
-                  <input id="name" type="text" class="checkout__input" />
+                  <input id="firstaName" name="firstName" type="text" class="checkout__input" />
                 </div>
                 <div class="checkout__group checkout__group--lastname">
                   <label for="lastname" class="checkout__label"
