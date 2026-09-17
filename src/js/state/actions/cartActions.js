@@ -1,3 +1,4 @@
+import { clearCart } from "../../model/model.js";
 import { state } from "../state.js";
 import { persistActions } from "./persistActions.js";
 
@@ -27,6 +28,11 @@ export const cartActions = {
   removeFromCart(id) {
     state.cart = state.cart.filter((p) => p.id !== id);
 
+    persistActions.save("cart", state.cart);
+  },
+
+  clearCart() {
+    state.cart = [];
     persistActions.save("cart", state.cart);
   },
 

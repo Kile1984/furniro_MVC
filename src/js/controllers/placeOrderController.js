@@ -1,4 +1,7 @@
 import { validatePlaceOrderForm } from "../services/placeOrderValidationService.js";
+import { placeOrderView } from "../views/placeOrderView.js";
+import { clearCart } from "../model/model.js";
+import { syncHeaderCounts } from "./headerController.js";
 
 export const controlPlaceOrder = function ({ target }) {
   const formData = new FormData(target);
@@ -7,5 +10,11 @@ export const controlPlaceOrder = function ({ target }) {
 
   const result = validatePlaceOrderForm(data);
 
-  console.log(result);
+  placeOrderView.updateValidation(result);
+
+  if (result.isValid) {
+    window.location.href = "/#/order-success";
+    clearCart();
+    syncHeaderCounts();
+  }
 };

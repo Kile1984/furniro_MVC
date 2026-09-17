@@ -3,9 +3,37 @@ import { sprite, icons } from "../../assets/icons/icons.js";
 
 export const createPlaceOrderView = function () {
   return {
+    clearValidation(form) {
+      const errors = form.querySelectorAll(".checkout-cta__error");
+      const inputs = form.querySelectorAll("[name]");
+
+      errors.forEach((e) => (e.textContent = ""));
+      inputs.forEach((i) => i.classList.remove("success", "error"));
+    },
+
+    updateValidation(results) {
+      const form = document.querySelector(".checkout__form");
+
+      this.clearValidation(form);
+
+      const fields = form.querySelectorAll("[name]");
+
+      fields.forEach((field) => {
+        if (Object.hasOwn(results.errors, field.name)) {
+          field.classList.add("error");
+
+          const errorField = field
+            .closest(".checkout__group")
+            .querySelector(".checkout-cta__error");
+          errorField.textContent = results.errors[field.name];
+        } else if (field.value.trim() !== "") {
+          field.classList.add("success");
+        }
+      });
+    },
     generateMarkup() {
       return `
-             <main class="page page--contact">
+    <main class="page page--contact">
       <header class="page-hero">
         <div class="container page-hero__inner">
           <img
@@ -37,6 +65,7 @@ export const createPlaceOrderView = function () {
                 <div class="checkout__group checkout__group--name">
                   <label for="name" class="checkout__label">First Name</label>
                   <input id="firstaName" name="firstName" type="text" class="checkout__input" />
+                  <p class="checkout-cta__error"></p>
                 </div>
                 <div class="checkout__group checkout__group--lastname">
                   <label for="lastname" class="checkout__label"
@@ -44,10 +73,11 @@ export const createPlaceOrderView = function () {
                   >
                   <input
                     id="lastname"
-                    name="lastname"
+                    name="lastName"
                     type="text"
                     class="checkout__input"
                   />
+                   <p class="checkout-cta__error"></p>
                 </div>
               </div>
 
@@ -61,6 +91,7 @@ export const createPlaceOrderView = function () {
                   name="company"
                   class="checkout__input"
                 />
+                 <p class="checkout-cta__error"></p>
               </div>
 
               <div class="checkout__group">
@@ -73,6 +104,7 @@ export const createPlaceOrderView = function () {
                   name="address"
                   class="checkout__input"
                 />
+                 <p class="checkout-cta__error"></p>
               </div>
 
               <div class="checkout__group">
@@ -83,16 +115,18 @@ export const createPlaceOrderView = function () {
                   name="town"
                   class="checkout__input"
                 />
+                 <p class="checkout-cta__error"></p>
               </div>
 
               <div class="checkout__group">
-                <label for="zip" class="checkout__label">ZIP code</label>
+                <label for="zip" class="checkout__label">ZIP code (Serbia)</label>
                 <input
                   id="zip"
                   type="text"
                   name="zip"
                   class="checkout__input"
                 />
+                 <p class="checkout-cta__error"></p>
               </div>
 
               <div class="checkout__group">
@@ -103,16 +137,18 @@ export const createPlaceOrderView = function () {
                   name="phone"
                   class="checkout__input"
                 />
+                 <p class="checkout-cta__error"></p>
               </div>
 
               <div class="checkout__group">
                 <label for="mail" class="checkout__label">Email address</label>
                 <input
-                  id="mail"
+                  id="email"
                   type="email"
-                  name="mail"
+                  name="email"
                   class="checkout__input"
                 />
+                 <p class="checkout-cta__error"></p>
               </div>
 
               <div class="checkout__group checkout__group--additional">
@@ -123,6 +159,7 @@ export const createPlaceOrderView = function () {
                   class="checkout__textarea"
                   placeholder="Additional information"
                 ></textarea>
+                 <p class="checkout-cta__error"></p>
               </div>
             </div>
 

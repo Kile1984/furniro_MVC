@@ -75,6 +75,14 @@
     outline: none;
     transition: border 0.3s ease;
 
+    &.error {
+      border-color: var(--color-pink);
+    }
+
+    &.success {
+      border-color: var(--color-green);
+    }
+
     &:focus {
       border-color: var(--color-accent);
     }

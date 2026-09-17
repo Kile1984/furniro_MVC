@@ -21,6 +21,10 @@ export const removeFromCart = function (id) {
   cartActions.removeFromCart(id);
 };
 
+export const clearCart = function () {
+  cartActions.clearCart();
+};
+
 export const incrementCartItem = function (id) {
   cartActions.incrementQuantity(id);
 };
