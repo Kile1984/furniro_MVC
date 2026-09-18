@@ -134,10 +134,6 @@
   }
 
   &__product {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
     &-text {
       &--gray {
         color: var(--color-gray-light);
@@ -154,6 +150,14 @@
     &-value {
       font-size: 24px;
       font-weight: 500;
+      color: var(--color-accent);
+    }
+
+    &--gray {
+      color: var(--color-gray-light);
+    }
+
+    &--accent {
       color: var(--color-accent);
     }
   }

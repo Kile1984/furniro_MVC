@@ -31,7 +31,8 @@ export const createPlaceOrderView = function () {
         }
       });
     },
-    generateMarkup() {
+    generateMarkup(data) {
+      console.log(data);
       return `
     <main class="page page--contact">
       <header class="page-hero">
@@ -166,24 +167,12 @@ export const createPlaceOrderView = function () {
             <div class="checkout__right">
               <div class="checkout__product-wrapper">
                 <div class="checkout__product">
-                  <h2 class="checkout__title">Product</h2>
-                  <p class="checkout__product-text">
-                    <span
-                      class="checkout__product-text checkout__product-text--gray"
-                      >Asgaard sofa</span
-                    >
-                    <span>x 1</span>
-                  </p>
-                  <p class="checkout__subtotal-text">Subtotal</p>
-                  <p class="checkout__total-text">Total</p>
+                                
+                  <span class="checkout__total--gray">Total: </span>
+                  <span class="checkout__total--accent">${data[0].summary.total}</span>
                 </div>
 
-                <div class="checkout__total">
-                  <h2 class="checkout__title">Subtotal</h2>
-                  <p class="checkout__price">Rs. 250,000.00</p>
-                  <p class="checkout__subtotal">Rs. 250,000.00</p>
-                  <p class="checkout__total-value">Rs. 250,000.00</p>
-                </div>
+               
               </div>
 
               <div class="checkout__payment">
@@ -201,7 +190,7 @@ export const createPlaceOrderView = function () {
 
                 <div class="checkout__payment-options">
                   <label for="delivery" class="checkout__payment-option">
-                    <input type="radio" name="payment" id="delivery" />
+                    <input type="radio" name="payment" id="delivery" checked/>
                     <div class="checkout__payment-wrapper">
                       <span class="checkout__payment-radio"></span>
                       <span class="checkout__payment-label">
